@@ -3,12 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Xeta Solutions - AI-Powered Hiring & Learning</title>
+    <title>Xeta Solutions - Transforming Recruitment, Learning & Assessment Through AI.</title>
+    <link rel="icon" type="image/png" href="https://res.cloudinary.com/dpz44zf0z/image/upload/v1760704788/XETA_SOLUTIONS_LOGO_bcsbwh.png">
+
     
     <!-- Tailwind CSS CDN --><script src="https://cdn.tailwindcss.com"></script>
     
     <!-- Google Font: Poppins --><link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     
     <style>
@@ -209,12 +212,20 @@
             margin: auto;
             padding: 2.5rem;
             border-radius: 1.5rem;
-            max-width: 500px;
+            max-width: 500px; /* Default max-width */
             width: 90%;
             box-shadow: 0 10px 30px rgba(0,0,0,0.2);
             position: relative;
             animation: fadeInScale 0.3s ease-out;
+            max-height: 90vh; /* Add max-height for scrolling */
+            overflow-y: auto; /* Enable vertical scroll if content overflows */
         }
+        
+        /* Specific width for apply modal */
+        #apply-modal .modal-content {
+            max-width: 700px; /* Wider for the form */
+        }
+
 
         @keyframes fadeInScale {
             from { opacity: 0; transform: scale(0.95) translateY(20px); }
@@ -230,6 +241,7 @@
             font-weight: bold;
             cursor: pointer;
             transition: color 0.2s;
+            z-index: 1010; /* Ensure it's above content */
         }
 
         .close-button:hover,
@@ -244,6 +256,14 @@
             width: 48px;
             height: 48px;
             object-fit: contain; /* Ensure the image fits within the bounds without cropping */
+        }
+
+        /* Careers card styling */
+        .job-card {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            height: 100%; /* Ensure cards are same height in a grid row */
         }
 
     </style>
@@ -262,6 +282,7 @@
                 <a href="#workflow" class="text-gray-600 hover:text-blue-600 transition-colors">Workflow</a>
                 <a href="#features" class="text-gray-600 hover:text-blue-600 transition-colors">Features</a>
                 <a href="#mock-interviews" class="text-gray-600 hover:text-blue-600 transition-colors">Mock Interviews</a>
+                <a href="#careers" class="text-gray-600 hover:text-blue-600 transition-colors">Careers</a> <!-- ADDED -->
                 <button data-modal-target="request-demo-modal" class="bg-blue-600 text-white px-5 py-2 rounded-full font-medium shadow-lg hover:bg-blue-700 transition-transform hover:scale-105">
                     Book a Demo
                 </button>
@@ -278,6 +299,7 @@
             <a href="#workflow" class="block px-6 py-3 text-gray-600 hover:bg-gray-100">Workflow</a>
             <a href="#features" class="block px-6 py-3 text-gray-600 hover:bg-gray-100">Features</a>
             <a href="#mock-interviews" class="block px-6 py-3 text-gray-600 hover:bg-gray-100">Mock Interviews</a>
+            <a href="#careers" class="block px-6 py-3 text-gray-600 hover:bg-gray-100">Careers</a> <!-- ADDED -->
             <button data-modal-target="request-demo-modal" class="block w-full text-left px-6 py-4 bg-blue-600 text-white font-medium hover:bg-blue-700">
                 Book a Demo
             </button>
@@ -340,7 +362,7 @@
             <!-- Icon Grid --><div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
                 <!-- Icon 1: Innovation --><div class="text-center observe-me zoom-in" style="transition-delay: 400ms;">
                     <div class="w-16 h-16 bg-blue-100 text-blue-600 rounded-full flex items-center justify-center mx-auto mb-4">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m21.15 3.8-4.1 1.62c-.3.12-.6.29-.9.5-.3.2-.6.4-.9.7l-4.1 4.1c-.3.2-.6.4-.9.7-.2.3-.5.6-.7.9l-1.6 4.1"></path><path d="m3.8 21.15 4.1-1.62c.3-.12.6-.29.9-.5.3-.2.6-.4.9-.7l4.1-4.1c.3-.2.6-.4.9-.7.2-.3.5-.6.7-.9l1.6-4.1"></path><path d="M12 22v-4"></path><path d="M12 6V2"></path><path d="M4.93 4.93l2.83 2.83"></path><path d="m16.24 16.24 2.83 2.83"></path><path d="M4.93 19.07l2.83-2.83"></path><path d="m16.24 7.76 2.83-2.83"></path></svg>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m21.15 3.8-4.1 1.62c-.3.12-.6.29-.9.5-.3.2-.6.4-.9.7l-4.1 4.1c-.3.2-.6.4-.9.7-.2.3-.5.6-.7.9l-1.6 4.1"></path><path d="m3.8 21.15 4.1-1.62c.3-.12.6-.29.9-.5.3-.2.6-.4.9-.7l4.1-4.1c.3-.2.6-.4.9-.7.2.3.5.6.7-.9l1.6-4.1"></path><path d="M12 22v-4"></path><path d="M12 6V2"></path><path d="M4.93 4.93l2.83 2.83"></path><path d="m16.24 16.24 2.83 2.83"></path><path d="M4.93 19.07l2.83-2.83"></path><path d="m16.24 7.76 2.83-2.83"></path></svg>
                     </div>
                     <h3 class="text-xl font-bold text-gray-900 mb-2">Innovation</h3>
                     <p class="text-gray-600">AI-driven insights and futuristic platform design.</p>
@@ -573,32 +595,38 @@
             </div>
 
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-                <!-- Feature 1 --><div class="bg-white p-8 rounded-2xl shadow-lg hover-glow observe-me zoom-in">
+                
+                <!-- Feature 1: AI-Driven Screening --><div class="bg-white p-8 rounded-2xl shadow-lg hover-glow observe-me zoom-in">
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-10 h-10 text-blue-600 mb-4"><path d="M12 8V4H8"></path><rect x="4" y="4" width="16" height="16" rx="2"></rect><path d="M2 14h2"></path><path d="M2 10h2"></path><path d="M10 2h2"></path><path d="M14 2h2"></path><path d="M20 10h2"></path><path d="M20 14h2"></path><path d="M14 22h2"></path><path d="M10 22h2"></path></svg>
                     <h3 class="text-xl font-bold text-gray-900 mb-2">AI-Driven Screening</h3>
                     <p class="text-gray-600">Automated resume scoring and ID verification to shortlist the best candidates faster.</p>
                 </div>
-                <!-- Feature 2 --><div class="bg-white p-8 rounded-2xl shadow-lg hover-glow observe-me zoom-in" style="transition-delay: 100ms;">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-10 h-10 text-blue-600 mb-4"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path><path d="M12 21v-4"></path><path d="M12 3v4"></path><path d="m4.93 4.93 2.83 2.83"></path><path d="m16.24 16.24 2.83 2.83"></path><path d_d="m4.93 19.07 2.83-2.83"></path><path d="m16.24 7.76 2.83-2.83"></path></svg>
+                
+                <!-- Feature 2: Secure AI Proctoring --><div class="bg-white p-8 rounded-2xl shadow-lg hover-glow observe-me zoom-in" style="transition-delay: 100ms;">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-10 h-10 text-blue-600 mb-4"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg>
                     <h3 class="text-xl font-bold text-gray-900 mb-2">Secure AI Proctoring</h3>
                     <p class="text-gray-600">Advanced behavior monitoring and a lockdown client ensure 100% test integrity.</p>
                 </div>
-                <!-- Feature 3 --><div class="bg-white p-8 rounded-2xl shadow-lg hover-glow observe-me zoom-in" style="transition-delay: 200ms;">
+                
+                <!-- Feature 3: Analytics & Reporting --><div class="bg-white p-8 rounded-2xl shadow-lg hover-glow observe-me zoom-in" style="transition-delay: 200ms;">
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-10 h-10 text-blue-600 mb-4"><line x1="18" y1="20" x2="18" y2="10"></line><line x1="12" y1="20" x2="12" y2="4"></line><line x1="6" y1="20" x2="6" y2="14"></line></svg>
                     <h3 class="text-xl font-bold text-gray-900 mb-2">Analytics & Reporting</h3>
                     <p class="text-gray-600">Actionable insights from application to hire, with detailed performance metrics.</p>
                 </div>
-                <!-- Feature 4 --><div class="bg-white p-8 rounded-2xl shadow-lg hover-glow observe-me zoom-in" style="transition-delay: 300ms;">
+                
+                <!-- Feature 4: Integrated Workflow --><div class="bg-white p-8 rounded-2xl shadow-lg hover-glow observe-me zoom-in" style="transition-delay: 300ms;">
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-10 h-10 text-blue-600 mb-4"><path d="M12.22 2h-4.44a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8.89Z"></path><path d="M18 2h-1.17a2 2 0 0 0-1.76.82l-1.9 2.53a2 2 0 0 1-1.76.82H9.22a2 2 0 0 0-1.76.82L5.56 8.7a2 2 0 0 1-1.76.82H2v4h4.83a2 2 0 0 0 1.76-.82l1.9-2.53a2 2 0 0 1 1.76-.82h2.78a2 2 0 0 1 1.76.82l1.9 2.53a2 2 0 0 0 1.76.82H22v-4h-1.17a2 2 0 0 0-1.76-.82l-1.9-2.53a2 2 0 0 1-1.76-.82Z"></path></svg>
                     <h3 class="text-xl font-bold text-gray-900 mb-2">Integrated Workflow</h3>
                     <p class="text-gray-600">A seamless flow from job posting, to testing, to automated interview scheduling.</p>
                 </div>
-                <!-- Feature 5 --><div class="bg-white p-8 rounded-2xl shadow-lg hover-glow observe-me zoom-in" style="transition-delay: 400ms;">
+                
+                <!-- Feature 5: Gamified Quizzes --><div class="bg-white p-8 rounded-2xl shadow-lg hover-glow observe-me zoom-in" style="transition-delay: 400ms;">
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-10 h-10 text-blue-600 mb-4"><path d="m3.8 6.88 4.1 1.62c.3.12.6.29.9.5.3.2.6.4.9.7l4.1 4.1c.3.2.6.4.9.7.2.3.5.6.7.9l-1.6 4.1"></path><path d="m21.15 3.8-4.1 1.62c-.3.12-.6.29-.9.5-.3.2-.6.4-.9.7l-4.1 4.1c-.3.2-.6.4-.9.7-.2.3.5.6-.7.9l-1.6 4.1"></path><path d="M12 22v-4"></path><path d="M12 6V2"></path></svg>
                     <h3 class="text-xl font-bold text-gray-900 mb-2">Gamified Quizzes</h3>
                     <p class="text-gray-600">Boost engagement in classrooms and corporate events with live, competitive quizzes.</p>
                 </div>
-                <!-- Feature 6 --><div class="bg-white p-8 rounded-2xl shadow-lg hover-glow observe-me zoom-in" style="transition-delay: 500ms;">
+                
+                <!-- Feature 6: Expert Interview Panels --><div class="bg-white p-8 rounded-2xl shadow-lg hover-glow observe-me zoom-in" style="transition-delay: 500ms;">
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-10 h-10 text-blue-600 mb-4"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path></svg>
                     <h3 class="text-xl font-bold text-gray-900 mb-2">Expert Interview Panels</h3>
                     <p class="text-gray-600">Get real-world interview practice and detailed feedback from top industry professionals.</p>
@@ -621,6 +649,7 @@
                     <ul class="space-y-4">
                         <li class="flex items-center">
                             <svg class="w-6 h-6 text-green-500 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+
                             <span class="text-lg text-gray-800"><b class="font-semibold">Accuracy:</b> AI-driven screening delivers the right talent, faster.</span>
                         </li>
                         <li class="flex items-center">
@@ -648,8 +677,7 @@
                         </div>
                     </div>
                     <!-- Overlay Icon 1 --><div class="absolute top-1/4 left-10 w-16 h-16 bg-white shadow-xl rounded-full flex items-center justify-center text-blue-600 floating-delay">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m21.15 3.8-4.1 1.62c-.3.12-.6.29-.9.5-.3.2-.6.4-.9.7l-4.1 4.1c-.3.2-.6.4-.9.7-.2.3-.5.6-.7.9l-1.6 4.1"></path><path d="m3.8 21.15 4.1-1.62c.3-.12.6-.29.9-.5.3-.2.6-.4.9-.7l4.1-4.1c.3-.2.6-.4.9-.7.2-.3.5-.6.7-.9l1.6-4.1"></path><path d="M12 22v-4"></path><path d="M12 6V2"></path></svg>
-Choose an option (e.g., '1', 'a') or type your response:
+                        <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m21.15 3.8-4.1 1.62c-.3.12-.6.29-.9.5-.3.2-.6.4-.9.7l-4.1 4.1c-.3.2-.6.4-.9.7-.2.3-.5.6-.7.9l-1.6 4.1"></path><path d="m3.8 21.15 4.1-1.62c.3-.12.6-.29.9-.5.3-.2.6-.4.9-.7l4.1-4.1c.3-.2.6-.4.9-.7.2.3.5.6.7-.9l1.6-4.1"></path><path d="M12 22v-4"></path><path d="M12 6V2"></path></svg>
                     </div>
                     <!-- Overlay Icon 2 --><div class="absolute bottom-1/4 right-10 w-16 h-16 bg-white shadow-xl rounded-full flex items-center justify-center text-purple-600 floating-delay" style="animation-delay: 1s;">
                         <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle></svg>
@@ -704,7 +732,143 @@ Choose an option (e.g., '1', 'a') or type your response:
         </div>
     </section>
 
-    <!-- 8. Call to Action (CTA) --><section id="cta" class="py-24 cta-gradient text-white">
+    <!-- 8. Careers Section (UPDATED) -->
+    <section id="careers" class="py-24 bg-white">
+        <div class="container mx-auto px-6">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <span class="text-blue-600 font-semibold uppercase observe-me fade-in">Work With Us</span>
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mt-2 mb-4 observe-me fade-in" style="transition-delay: 150ms;">
+                    Join Our Team
+                </h2>
+                <p class="text-lg text-gray-700 observe-me fade-in" style="transition-delay: 300ms;">
+                    We're looking for passionate, innovative individuals to help us build the future of talent and technology. Explore our open roles below.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                
+                <!-- Job Card 1: Frontend Developer (React) -->
+                <div class="job-card bg-white p-8 rounded-2xl shadow-lg hover-glow observe-me zoom-in">
+                    <div>
+                        <h3 class="text-2xl font-bold text-gray-900 mb-2">Frontend Developer (React)</h3>
+                        <span class="inline-block bg-green-100 text-green-800 text-sm font-medium px-3 py-1 rounded-full mb-4">In-Person</span>
+                        <p class="text-gray-600 mb-6">
+                            Seeking a React developer to build and optimize our user-facing platforms. You'll work with modern frontend technologies, translating UI/UX designs into responsive, high-performance web applications.
+                        </p>
+                        <ul class="list-disc list-inside text-gray-600 space-y-1 mb-6">
+                            <li>0-2 years of React.js experience</li>
+                            <li>Strong in HTML, CSS, JavaScript (ES6+)</li>
+                            <li>Experience with Tailwind CSS is a plus</li>
+                            <li>Familiar with REST APIs</li>
+                        </ul>
+                    </div>
+                    <button 
+                        data-modal-target="apply-modal" 
+                        data-job-title="Frontend Developer (React)"
+                        class="w-full bg-blue-600 text-white px-6 py-3 rounded-lg font-semibold text-lg shadow-lg hover:bg-blue-700 transition-all duration-300 transform hover:scale-105">
+                        Apply Now
+                    </button>
+                </div>
+
+                <!-- Job Card 2: Backend Developer (Node.js) -->
+                <div class="job-card bg-white p-8 rounded-2xl shadow-lg hover-glow observe-me zoom-in" style="transition-delay: 100ms;">
+                    <div>
+                        <h3 class="text-2xl font-bold text-gray-900 mb-2">Backend Developer (Node.js)</h3>
+                        <span class="inline-block bg-green-100 text-green-800 text-sm font-medium px-3 py-1 rounded-full mb-4">In-Person</span>
+                        <p class="text-gray-600 mb-6">
+                            Join our backend team to design, build, and maintain scalable, secure, and high-performance server-side applications using Node.js, Express, and modern database technologies.
+                        </p>
+                        <ul class="list-disc list-inside text-gray-600 space-y-1 mb-6">
+                            <li>1-2 years of Node.js & Express experience</li>
+                            <li>Proficient with MongoDB or PostgreSQL</li>
+                            <li>Strong understanding of REST APIs & microservices</li>
+                            <li>Experience with Docker and CI/CD</li>
+                        </ul>
+                    </div>
+                    <button 
+                        data-modal-target="apply-modal" 
+                        data-job-title="Backend Developer (Node.js)"
+                        class="w-full bg-blue-600 text-white px-6 py-3 rounded-lg font-semibold text-lg shadow-lg hover:bg-blue-700 transition-all duration-300 transform hover:scale-105">
+                        Apply Now
+                    </button>
+                </div>
+
+                <!-- Job Card 3: Full Stack Developer (MERN) -->
+                <div class="job-card bg-white p-8 rounded-2xl shadow-lg hover-glow observe-me zoom-in" style="transition-delay: 200ms;">
+                    <div>
+                        <h3 class="text-2xl font-bold text-gray-900 mb-2">Full Stack Developer (MERN)</h3>
+                        <span class="inline-block bg-green-100 text-green-800 text-sm font-medium px-3 py-1 rounded-full mb-4">In-Person</span>
+                        <p class="text-gray-600 mb-6">
+                            We're looking for a versatile MERN stack developer to work on both frontend and backend components. You'll be responsible for the entire development lifecycle, from concept to deployment.
+                        </p>
+                        <ul class="list-disc list-inside text-gray-600 space-y-1 mb-6">
+                            <li>1-2 years of MERN (MongoDB, Express, React, Node) stack experience</li>
+                            <li>Strong problem-solving skills</li>
+                            <li>Ability to work independently</li>
+                            <li>Experience with Git and agile methodologies</li>
+                        </ul>
+                    </div>
+                    <button 
+                        data-modal-target="apply-modal" 
+                        data-job-title="Full Stack Developer (MERN)"
+                        class="w-full bg-blue-600 text-white px-6 py-3 rounded-lg font-semibold text-lg shadow-lg hover:bg-blue-700 transition-all duration-300 transform hover:scale-105">
+                        Apply Now
+                    </button>
+                </div>
+                
+                <!-- Job Card 4: Full Stack Developer (MEAN) -->
+                <div class="job-card bg-white p-8 rounded-2xl shadow-lg hover-glow observe-me zoom-in" style="transition-delay: 300ms;">
+                    <div>
+                        <h3 class="text-2xl font-bold text-gray-900 mb-2">Full Stack Developer (MEAN)</h3>
+                        <span class="inline-block bg-green-100 text-green-800 text-sm font-medium px-3 py-1 rounded-full mb-4">In-Person</span>
+                        <p class="text-gray-600 mb-6">
+                            Are you an expert in the MEAN stack? We need a developer to manage and build complex applications using MongoDB, Express, Angular, and Node.js, focusing on scalability and robust architecture.
+                        </p>
+                        <ul class="list-disc list-inside text-gray-600 space-y-1 mb-6">
+                            <li>1-2 years of MEAN (MongoDB, Express, Angular, Node) stack experience</li>
+                            <li>Proficient in TypeScript</li>
+                            <li>Strong understanding of component-based architecture</li>
+                            <li>Experience with RxJS</li>
+                        </ul>
+                    </div>
+                    <button 
+                        data-modal-target="apply-modal" 
+                        data-job-title="Full Stack Developer (MEAN)"
+                        class="w-full bg-blue-600 text-white px-6 py-3 rounded-lg font-semibold text-lg shadow-lg hover:bg-blue-700 transition-all duration-300 transform hover:scale-105">
+                        Apply Now
+                    </button>
+                </div>
+
+                <!-- Job Card 5: Cloud Engineer (AWS) -->
+                <div class="job-card bg-white p-8 rounded-2xl shadow-lg hover-glow observe-me zoom-in" style="transition-delay: 400ms;">
+                    <div>
+                        <h3 class="text-2xl font-bold text-gray-900 mb-2">Cloud Engineer (AWS)</h3>
+                        <span class="inline-block bg-green-100 text-green-800 text-sm font-medium px-3 py-1 rounded-full mb-4">In-Person</span>
+                        <p class="text-gray-600 mb-6">
+                            Seeking an experienced AWS Cloud Engineer to manage our cloud infrastructure. You will be responsible for deployment, automation, monitoring, and ensuring the security and scalability of our services.
+                        </p>
+                        <ul class="list-disc list-inside text-gray-600 space-y-1 mb-6">
+                            <li>0-2 years of experience with AWS services (EC2, S3, RDS, Lambda)</li>
+                            <li>Strong knowledge of CI/CD pipelines</li>
+                            <li>Experience with Infrastructure as Code (Terraform, CloudFormation)</li>
+                            <li>AWS Certification is a strong plus</li>
+                        </ul>
+                    </div>
+                    <button 
+                        data-modal-target="apply-modal" 
+                        data-job-title="Cloud Engineer (AWS)"
+                        class="w-full bg-blue-600 text-white px-6 py-3 rounded-lg font-semibold text-lg shadow-lg hover:bg-blue-700 transition-all duration-300 transform hover:scale-105">
+                        Apply Now
+                    </button>
+                </div>
+
+            </div>
+        </div>
+    </section>
+    <!-- END Careers Section -->
+
+
+    <!-- 9. Call to Action (CTA) --><section id="cta" class="py-24 cta-gradient text-white">
         <div class="container mx-auto px-6 text-center">
             <h2 class="text-3xl md:text-5xl font-extrabold mb-6 observe-me fade-in">
                 Join the Future of Smart Hiring and Learning with Xeta Solutions.
@@ -723,7 +887,7 @@ Choose an option (e.g., '1', 'a') or type your response:
         </div>
     </section>
 
-    <!-- 9. Footer --><footer class="bg-gray-900 text-gray-400 py-16">
+    <!-- 10. Footer --><footer class="bg-gray-900 text-gray-400 py-16">
         <div class="container mx-auto px-6">
             <div class="grid grid-cols-1 md:grid-cols-4 gap-12">
                 <!-- Column 1: Logo & Social --><div>
@@ -745,10 +909,10 @@ Choose an option (e.g., '1', 'a') or type your response:
                 <!-- Column 2: Products --><div>
                     <h4 class="text-lg font-semibold text-white mb-4">Products</h4>
                     <ul class="space-y-3">
-                        <li><a href="#products" class="hover:text-white transition-colors">HireWithUS</a></li>
-                        <li><a href="#products" class="hover:text-white transition-colors">Testify – Secure Test</a></li>
-                        <li><a href="#products" class="hover:text-white transition-colors">Testify – LAC</a></li>
-                        <li><a href="#products" class="hover:text-white transition-colors">QuizCom</a></li>
+                        <li><a href="www.testify-lac.com/HireWithUS.html" class="hover:text-white transition-colors">HireWithUS</a></li>
+                        <li><a href="testify-lac.com" class="hover:text-white transition-colors">Testify – Secure Test</a></li>
+                        <li><a href="testify-lac.com" class="hover:text-white transition-colors">Testify – LAC</a></li>
+                        <li><a href="www.testify-lac.com/student/quiz-join.html" class="hover:text-white transition-colors">QuizCom</a></li>
                         <li><a href="#mock-interviews" class="hover:text-white transition-colors">Mock Interviews</a></li>
                     </ul>
                 </div>
@@ -757,17 +921,18 @@ Choose an option (e.g., '1', 'a') or type your response:
                     <h4 class="text-lg font-semibold text-white mb-4">Company</h4>
                     <ul class="space-y-3">
                         <li><a href="#about" class="hover:text-white transition-colors">About Us</a></li>
-                        <li><a href="#" class="hover:text-white transition-colors">Careers</a></li>
-                        <li><a href="#" class="hover:text-white transition-colors">Partners</a></li>
-                        <li><a href="#" class="hover:text-white transition-colors">Contact</a></li>
+                        <li><a href="#careers" class="hover:text-white transition-colors">Careers</a></li> <!-- UPDATED -->
+                        <li><a href="#partner-with-us-modal" data-modal-target="partner-with-us-modal" class="hover:text-white transition-colors cursor-pointer">Partners</a></li>
+                        <li><a href="mailto:support@xetasolutions.10" class="hover:text-white transition-colors">Contact</a></li>
                     </ul>
                 </div>
 
                 <!-- Column 4: Contact --><div>
                     <h4 class="text-lg font-semibold text-white mb-4">Get in Touch</h4>
                     <ul class="space-y-3">
-                        <li><span class="hover:text-white transition-colors">support@xetasolutions.com</span></li>
-                        <li><span class="hover:text-white transition-colors">+91 9010408899</span></li>
+                        <li><a href="mailto:support@xetasolutions.in" class="hover:text-white transition-colors">support@xetasolutions.in</a></li>
+                        <li><a href="mailto:sales@xetasolutions.in" class="hover:text-white transition-colors">sales@xetasolutions.in</a></li>
+                        <li><a href="tel:+919010408899" class="hover:text-white transition-colors">+91 9010408899</a></li>
                         <li>
                             <button data-modal-target="request-demo-modal" class="text-blue-400 hover:text-white font-semibold transition-colors">
                                 Request a Demo
@@ -899,6 +1064,106 @@ Choose an option (e.g., '1', 'a') or type your response:
             </form>
         </div>
     </div>
+    
+    <!-- Modal 4: Apply for Job (NEW) -->
+    <div id="apply-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-button" data-modal-close="apply-modal">&times;</span>
+            <h2 id="apply-modal-title" class="text-2xl md:text-3xl font-bold text-gray-900 mb-4 gradient-text">Apply for Job</h2>
+            <p class="text-gray-700 mb-6">Please fill out the application form below.</p>
+            
+            <form action="https://formspree.io/f/xkgpleag" method="POST" class="space-y-4">
+                <!-- This hidden input will be populated by JS -->
+                <input type="hidden" id="apply_job_title_input" name="job_title" value="">
+                <input type="hidden" name="_subject" value="New Job Application Received!">
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div>
+                        <label for="apply_first_name" class="block text-sm font-medium text-gray-700">First Name</label>
+                        <input type="text" id="apply_first_name" name="first_name" required class="mt-1 block w-full px-4 py-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500">
+                    </div>
+                    <div>
+                        <label for="apply_last_name" class="block text-sm font-medium text-gray-700">Last Name</label>
+                        <input type="text" id="apply_last_name" name="last_name" required class="mt-1 block w-full px-4 py-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500">
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div>
+                        <label for="apply_dob" class="block text-sm font-medium text-gray-700">Date of Birth</label>
+                        <input type="date" id="apply_dob" name="dob" required class="mt-1 block w-full px-4 py-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500">
+                    </div>
+                    <div>
+                        <label for="apply_email" class="block text-sm font-medium text-gray-700">Email Address</label>
+                        <input type="email" id="apply_email" name="email" required class="mt-1 block w-full px-4 py-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500">
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div>
+                        <label for="apply_mobile" class="block text-sm font-medium text-gray-700">Mobile Number</label>
+                        <input type="tel" id="apply_mobile" name="mobile" required class="mt-1 block w-full px-4 py-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500">
+                    </div>
+                    <div>
+                        <label for="apply_location" class="block text-sm font-medium text-gray-700">Current Location</label>
+                        <input type="text" id="apply_location" name="current_location" required class="mt-1 block w-full px-4 py-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500">
+                    </div>
+                </div>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div>
+                        <label for="apply_college" class="block text-sm font-medium text-gray-700">College</label>
+                        <input type="text" id="apply_college" name="college" required class="mt-1 block w-full px-4 py-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500">
+                    </div>
+                    <div>
+                        <label for="apply_roll_number" class="block text-sm font-medium text-gray-700">Roll Number</label>
+                        <input type="text" id="apply_roll_number" name="roll_number" required class="mt-1 block w-full px-4 py-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500">
+                    </div>
+                </div>
+                
+                <div>
+                    <label for="apply_experience" class="block text-sm font-medium text-gray-700">Experience (Job/Internship)</label>
+                    <textarea id="apply_experience" name="experience" rows="3" required class="mt-1 block w-full px-4 py-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500" placeholder="e.g., 2 years as Frontend Developer at XYZ"></textarea>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                    <div>
+                        <label for="apply_join_days" class="block text-sm font-medium text-gray-700">Ready to Join in (days)</label>
+                        <input type="number" id="apply_join_days" name="ready_to_join_days" required class="mt-1 block w-full px-4 py-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500">
+                    </div>
+                     <div>
+                        <label for="apply_current_salary" class="block text-sm font-medium text-gray-700">Current Salary (LPA)</label>
+                        <input type="text" id="apply_current_salary" name="current_salary" required class="mt-1 block w-full px-4 py-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500" placeholder="e.g., 5 or N/A">
+                    </div>
+                     <div>
+                        <label for="apply_expected_salary" class="block text-sm font-medium text-gray-700">Expected Salary (LPA)</label>
+                        <input type="text" id="apply_expected_salary" name="expected_salary" required class="mt-1 block w-full px-4 py-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500" placeholder="e.g., 7">
+                    </div>
+                </div>
+
+                <div>
+                    <label for="apply_skills" class="block text-sm font-medium text-gray-700">Skills</label>
+                    <textarea id="apply_skills" name="skills" rows="3" required class="mt-1 block w-full px-4 py-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500" placeholder="e.g., React, Node.js, AWS, Python"></textarea>
+                </div>
+                
+                <div>
+                    <label for="apply_resume_link" class="block text-sm font-medium text-gray-700">Resume Link</label>
+                    <input type="url" id="apply_resume_link" name="resume_link" required class="mt-1 block w-full px-4 py-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500" placeholder="https://www.your-drive.com/resume.pdf">
+                </div>
+                
+                <div>
+                    <label for="apply_certificates_link" class="block text-sm font-medium text-gray-700">Certificates Link</label>
+                    <input type="url" id="apply_certificates_link" name="certificates_link" class="mt-1 block w-full px-4 py-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500" placeholder="https://www.your-drive.com/certificates.pdf">
+                    <p class="mt-1 text-xs text-gray-500">Please merge all certificates into one file (e.g., a single PDF) and provide the link.</p>
+                </div>
+
+                <button type="submit" class="w-full bg-blue-600 text-white px-6 py-3 rounded-lg font-semibold text-lg shadow-lg hover:bg-blue-700 transition-all duration-300 transform hover:scale-105">
+                    Submit Application
+                </button>
+            </form>
+        </div>
+    </div>
+
 
     <script>
         document.addEventListener('DOMContentLoaded', () => {
@@ -955,7 +1220,23 @@ Choose an option (e.g., '1', 'a') or type your response:
                 button.addEventListener('click', () => {
                     const modalId = button.getAttribute('data-modal-target');
                     const modal = document.getElementById(modalId);
+                    
                     if (modal) {
+                        // --- NEW: Logic for Apply Modal ---
+                        if (modalId === 'apply-modal') {
+                            const jobTitle = button.getAttribute('data-job-title');
+                            const modalTitle = modal.querySelector('#apply-modal-title');
+                            const jobTitleInput = modal.querySelector('#apply_job_title_input');
+                            
+                            if (modalTitle) {
+                                modalTitle.textContent = `Apply for: ${jobTitle}`;
+                            }
+                            if (jobTitleInput) {
+                                jobTitleInput.value = jobTitle;
+                            }
+                        }
+                        // --- END NEW ---
+                        
                         modal.style.display = 'flex';
                         document.body.style.overflow = 'hidden'; // Prevent background scrolling
                     }
@@ -992,7 +1273,9 @@ Choose an option (e.g., '1', 'a') or type your response:
             }
             
             // --- Handle Formspree submissions with a success message ---
-            const allForms = document.querySelectorAll('form[action="https://formspree.io/f/xyzbelvz"]');
+            // UPDATED: Select all forms posting to formspree
+            const allForms = document.querySelectorAll('form[action^="https://formspree.io/f/"]');
+            
             allForms.forEach(form => {
                 form.addEventListener('submit', async (e) => {
                     e.preventDefault();
@@ -1005,6 +1288,13 @@ Choose an option (e.g., '1', 'a') or type your response:
                     // Store original close button
                     const closeButton = modalContent.querySelector('.close-button');
                     
+                    // Show a loading state
+                    form.style.display = 'none';
+                    let loadingMessage = document.createElement('div');
+                    loadingMessage.className = 'text-center py-10';
+                    loadingMessage.innerHTML = '<p class="text-lg text-gray-700">Submitting your application...</p>';
+                    modalContent.appendChild(loadingMessage);
+
                     try {
                         const response = await fetch(form.action, {
                             method: form.method,
@@ -1013,6 +1303,9 @@ Choose an option (e.g., '1', 'a') or type your response:
                                 'Accept': 'application/json'
                             }
                         });
+                        
+                        // Clear loading message
+                        loadingMessage.remove();
 
                         let successMessage = `
                             <div class="text-center">
@@ -1032,14 +1325,17 @@ Choose an option (e.g., '1', 'a') or type your response:
                             modalContent.innerHTML = successMessage;
                         } else {
                             modalContent.innerHTML = errorMessage;
+                            form.style.display = 'block'; // Show form again on error
                         }
                     } catch (error) {
+                         loadingMessage.remove();
                          modalContent.innerHTML = `
                             <div class="text-center">
                                 <h2 class="text-2xl font-bold text-red-600 mb-4">Error</h2>
                                 <p class="text-gray-700">An error occurred. Please refresh and try again.</p>
                             </div>
                         `;
+                         form.style.display = 'block'; // Show form again on error
                     } finally {
                         // Re-attach the close button if it was removed
                         if (closeButton && !modalContent.contains(closeButton)) {
@@ -1054,6 +1350,3 @@ Choose an option (e.g., '1', 'a') or type your response:
 
 </body>
 </html>
-
-
-
