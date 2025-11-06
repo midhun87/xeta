@@ -1,0 +1,1061 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Updated Title for Careers Page -->
+    <title>Careers - Xeta Solutions</title>
+    
+    <link rel="icon" type="image/png" href="https://res.cloudinary.com/dpz44zf0z/image/upload/v1760704788/XETA_SOLUTIONS_LOGO_bcsbwh.png">
+
+    <!-- Schema, Google Analytics, and Meta Tags (copied from index) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "Xeta Solutions",
+      "url": "https://www.xetasolutions.in",
+      "logo": "https://res.cloudinary.com/dpz44zf0z/image/upload/v1760704788/XETA_SOLUTIONS_bt6bgn.jpg",
+      "sameAs": [
+        "https://www.linkedin.com/company/xetasolutions",
+        "https://twitter.com/xetasolutions"
+      ]
+    }
+    </script>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-0035HG3WE9">
+    </script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-0035HG3WE9');
+    </script>
+    <meta property="og:title" content="Careers - Xeta Solutions">
+    <meta property="og:description" content="Join the Xeta Solutions team. We're looking for passionate, innovative individuals to help us build the future of talent and technology.">
+    <meta property="og:image" content="https://res.cloudinary.com/dpz44zf0z/image/upload/v1760704788/XETA_SOLUTIONS_bt6bgn.jpg">
+    <meta property="og:url" content="https://www.xetasolutions.in/careers.html">
+    <meta name="twitter:card" content="summary_large_image">
+
+    <!-- Tailwind CSS CDN --><script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Font: Poppins --><link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- All custom styles from index.html -->
+    <style>
+        /* Base font */
+        body {
+            font-family: 'Poppins', sans-serif;
+            overflow-x: hidden;
+        }
+
+        /* Animated gradient text */
+        .gradient-text {
+            background-image: linear-gradient(90deg, #0D6EFD, #6f42c1, #805ad5);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-fill-color: transparent;
+        }
+
+        /* Scroll-based Animations (activated by JS) */
+        .observe-me {
+            transition: opacity 1s ease-out, transform 0.8s ease-out;
+        }
+        .fade-in { opacity: 0; }
+        .fade-in.is-visible { opacity: 1; }
+        .slide-in-left { opacity: 0; transform: translateX(-40px); }
+        .slide-in-left.is-visible { opacity: 1; transform: translateX(0); }
+        .slide-in-right { opacity: 0; transform: translateX(40px); }
+        .slide-in-right.is-visible { opacity: 1; transform: translateX(0); }
+        .slide-in-up { opacity: 0; transform: translateY(40px); }
+        .slide-in-up.is-visible { opacity: 1; transform: translateY(0); }
+        .zoom-in { opacity: 0; transform: scale(0.9); }
+        .zoom-in.is-visible { opacity: 1; transform: scale(1); }
+
+        /* Premium Hover Glow */
+        .hover-glow {
+            transition: all 0.3s ease;
+            border: 1px solid #e5e7eb; /* border-gray-200 */
+        }
+        .hover-glow:hover {
+            transform: translateY(-5px);
+            border-color: rgba(13, 110, 253, 0.3);
+            box-shadow: 0 10px 25px -5px rgba(13, 110, 253, 0.2), 0 8px 10px -6px rgba(13, 110, 253, 0.1);
+        }
+
+        /* Modal specific styles */
+        .modal {
+            display: none; /* Hidden by default */
+            position: fixed; /* Stay in place */
+            z-index: 1000; /* Sit on top */
+            left: 0;
+            top: 0;
+            width: 100%; /* Full width */
+            height: 100%; /* Full height */
+            overflow: auto; /* Enable scroll if needed */
+            background-color: rgba(0,0,0,0.6); /* Black w/ opacity */
+            backdrop-filter: blur(8px); /* Blur effect */
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal-content {
+            background: linear-gradient(135deg, #eef2ff, #ffffff, #ede9fe);
+            margin: auto;
+            padding: 2.5rem;
+            border-radius: 1.5rem;
+            max-width: 500px; /* Default max-width */
+            width: 90%;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            position: relative;
+            animation: fadeInScale 0.3s ease-out;
+            max-height: 90vh; /* Add max-height for scrolling */
+            overflow-y: auto; /* Enable vertical scroll if content overflows */
+        }
+        
+        /* Specific width for apply modal */
+        #apply-modal .modal-content {
+            max-width: 700px; /* Wider for the form */
+        }
+
+        /* Styling for fieldset in Apply Modal */
+        #apply-modal fieldset {
+            border: 1px solid #d1d5db; /* border-gray-300 */
+            padding: 1rem 1.5rem 1.5rem; /* p-4 pt-2 */
+            border-radius: 0.75rem; /* rounded-lg */
+            margin-bottom: 1rem; /* mb-4 */
+        }
+        
+        #apply-modal legend {
+            padding: 0 0.5rem; /* px-2 */
+            font-weight: 600; /* font-semibold */
+            color: #1f2937; /* text-gray-800 */
+            font-size: 1.125rem; /* text-lg */
+        }
+        
+        /* Styling for JD Modal */
+        #jd-modal .modal-content {
+            max-width: 800px; /* Wider for job description */
+        }
+        #jd-modal-content-body h4 {
+            font-size: 1.125rem; /* text-lg */
+            font-weight: 600; /* font-semibold */
+            color: #111827; /* text-gray-900 */
+            margin-top: 1rem; /* mt-4 */
+            margin-bottom: 0.5rem; /* mb-2 */
+        }
+        #jd-modal-content-body ul {
+            list-style-type: disc;
+            list-style-position: inside;
+            padding-left: 0.5rem; /* pl-2 */
+            color: #4b5563; /* text-gray-600 */
+            space-y: 0.5rem; /* space-y-2 */
+        }
+
+
+        @keyframes fadeInScale {
+            from { opacity: 0; transform: scale(0.95) translateY(20px); }
+            to { opacity: 1; transform: scale(1) translateY(0); }
+        }
+
+        .close-button {
+            color: #aaa;
+            position: absolute;
+            top: 1rem;
+            right: 1.5rem;
+            font-size: 2rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: color 0.2s;
+            z-index: 1010; /* Ensure it's above content */
+        }
+
+        .close-button:hover,
+        .close-button:focus {
+            color: #333;
+            text-decoration: none;
+            cursor: pointer;
+        }
+        
+        /* Careers card styling */
+        .job-card {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            height: 100%; /* Ensure cards are same height in a grid row */
+        }
+    </style>
+</head>
+<body class="bg-white text-gray-800 antialiased">
+
+    <!-- Header / Navigation Bar -->
+    <!-- Links updated to point to index.html sections -->
+    <header id="navbar" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300 bg-white/90 backdrop-blur-md">
+        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <!-- Logo --><a href="index.html" class="flex items-center">
+                <img src="https://res.cloudinary.com/dpz44zf0z/image/upload/v1760704788/XETA_SOLUTIONS_LOGO_bcsbwh.png" alt="Xeta Solutions Logo" class="h-8 md:h-10">
+            </a>
+            
+            <!-- Desktop Nav --><nav class="hidden md:flex space-x-8 items-center">
+                <a href="index.html#about" class="text-gray-600 hover:text-blue-600 transition-colors">About</a>
+                <a href="index.html#products" class="text-gray-600 hover:text-blue-600 transition-colors">Products</a>
+                <a href="index.html#workflow" class="text-gray-600 hover:text-blue-600 transition-colors">Workflow</a>
+                <a href="index.html#features" class="text-gray-600 hover:text-blue-600 transition-colors">Features</a>
+                <a href="index.html#mock-interviews" class="text-gray-600 hover:text-blue-600 transition-colors">Mock Interviews</a>
+                <!-- Active Careers Link -->
+                <a href="#" class="text-blue-600 font-semibold hover:text-blue-600 transition-colors">Careers</a>
+                <button data-modal-target="request-demo-modal" class="bg-blue-600 text-white px-5 py-2 rounded-full font-medium shadow-lg hover:bg-blue-700 transition-transform hover:scale-105">
+                    Book a Demo
+                </button>
+            </nav>
+            
+            <!-- Mobile Menu Button --><button id="mobile-menu-btn" class="md:hidden text-gray-800">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+            </button>
+        </div>
+        
+        <!-- Mobile Menu (Hidden by default) --><div id="mobile-menu" class="hidden md:hidden bg-white/95 backdrop-blur-md shadow-xl">
+            <a href="index.html#about" class="block px-6 py-3 text-gray-600 hover:bg-gray-100">About</a>
+            <a href="index.html#products" class="block px-6 py-3 text-gray-600 hover:bg-gray-100">Products</a>
+            <a href="index.html#workflow" class="block px-6 py-3 text-gray-600 hover:bg-gray-100">Workflow</a>
+            <a href="index.html#features" class="block px-6 py-3 text-gray-600 hover:bg-gray-100">Features</a>
+            <a href="index.html#mock-interviews" class="block px-6 py-3 text-gray-600 hover:bg-gray-100">Mock Interviews</a>
+            <!-- Active Careers Link -->
+            <a href="#" class="block px-6 py-3 text-blue-600 font-semibold bg-gray-100">Careers</a>
+            <button data-modal-target="request-demo-modal" class="block w-full text-left px-6 py-4 bg-blue-600 text-white font-medium hover:bg-blue-700">
+                Book a Demo
+            </button>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+        <!-- Careers Section -->
+        <section id="careers" class="py-24 bg-white pt-32"> <!-- Added pt-32 for fixed header offset -->
+            <div class="container mx-auto px-6">
+                <div class="text-center max-w-3xl mx-auto mb-16">
+                    <span class="text-blue-600 font-semibold uppercase observe-me fade-in">Work With Us</span>
+                    <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mt-2 mb-4 observe-me fade-in" style="transition-delay: 150ms;">
+                        Join Our Team
+                    </h2>
+                    <p class="text-lg text-gray-700 observe-me fade-in" style="transition-delay: 300ms;">
+                        We're looking for passionate, innovative individuals to help us build the future of talent and technology. Explore our open roles below.
+                    </p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    
+                    <!-- Job Card 1: Frontend Developer (React) -->
+                    <div class="job-card bg-white p-8 rounded-2xl shadow-lg hover-glow observe-me zoom-in">
+                        <div>
+                            <h3 class="text-2xl font-bold text-gray-900 mb-2">Frontend Developer (React)</h3>
+                            <span class="inline-block bg-green-100 text-green-800 text-sm font-medium px-3 py-1 rounded-full mb-4">In-Person</span>
+                            <p class="text-gray-600 mb-6">
+                                Seeking a React developer to build and optimize our user-facing platforms. You'll work with modern frontend technologies, translating UI/UX designs into responsive, high-performance web applications.
+                            </p>
+                            <ul class="list-disc list-inside text-gray-600 space-y-1 mb-6">
+                                <li>0-2 years of React.js experience</li>
+                                <li>Strong in HTML, CSS, JavaScript (ES6+)</li>
+                                <li>Experience with Tailwind CSS is a plus</li>
+                                <li>Familiar with REST APIs</li>
+                            </ul>
+                        </div>
+                        <!-- UPDATED: Two-button layout -->
+                        <div class="flex gap-3 mt-6">
+                            <button 
+                                data-modal-target="jd-modal" 
+                                data-job-id="frontend-react"
+                                class="w-full bg-white text-blue-600 border border-blue-600 px-6 py-3 rounded-lg font-semibold text-lg shadow-sm hover:bg-blue-50 transition-all duration-300">
+                                View Details
+                            </button>
+                            <button 
+                                data-modal-target="apply-modal" 
+                                data-job-title="Frontend Developer (React)"
+                                class="w-full bg-blue-600 text-white px-6 py-3 rounded-lg font-semibold text-lg shadow-lg hover:bg-blue-700 transition-all duration-300 transform hover:scale-105">
+                                Apply Now
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Job Card 2: Backend Developer (Node.js) -->
+                    <div class="job-card bg-white p-8 rounded-2xl shadow-lg hover-glow observe-me zoom-in" style="transition-delay: 100ms;">
+                        <div>
+                            <h3 class="text-2xl font-bold text-gray-900 mb-2">Backend Developer (Node.js)</h3>
+                            <span class="inline-block bg-green-100 text-green-800 text-sm font-medium px-3 py-1 rounded-full mb-4">In-Person</span>
+                            <p class="text-gray-600 mb-6">
+                                Join our backend team to design, build, and maintain scalable, secure, and high-performance server-side applications using Node.js, Express, and modern database technologies.
+                            </p>
+                            <ul class="list-disc list-inside text-gray-600 space-y-1 mb-6">
+                                <li>1-2 years of Node.js & Express experience</li>
+                                <li>Proficient with MongoDB or PostgreSQL</li>
+                                <li>Strong understanding of REST APIs & microservices</li>
+                                <li>Experience with Docker and CI/CD</li>
+                            </ul>
+                        </div>
+                        <!-- UPDATED: Two-button layout -->
+                        <div class="flex gap-3 mt-6">
+                            <button 
+                                data-modal-target="jd-modal" 
+                                data-job-id="backend-nodejs"
+                                class="w-full bg-white text-blue-600 border border-blue-600 px-6 py-3 rounded-lg font-semibold text-lg shadow-sm hover:bg-blue-50 transition-all duration-300">
+                                View Details
+                            </button>
+                            <button 
+                                data-modal-target="apply-modal" 
+                                data-job-title="Backend Developer (Node.js)"
+                                class="w-full bg-blue-600 text-white px-6 py-3 rounded-lg font-semibold text-lg shadow-lg hover:bg-blue-700 transition-all duration-300 transform hover:scale-105">
+                                Apply Now
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Job Card 3: Full Stack Developer (MERN) -->
+                    <div class="job-card bg-white p-8 rounded-2xl shadow-lg hover-glow observe-me zoom-in" style="transition-delay: 200ms;">
+                        <div>
+                            <h3 class="text-2xl font-bold text-gray-900 mb-2">Full Stack Developer (MERN)</h3>
+                            <span class="inline-block bg-green-100 text-green-800 text-sm font-medium px-3 py-1 rounded-full mb-4">In-Person</span>
+                            <p class="text-gray-600 mb-6">
+                                We're looking for a versatile MERN stack developer to work on both frontend and backend components. You'll be responsible for the entire development lifecycle, from concept to deployment.
+                            </p>
+                            <ul class="list-disc list-inside text-gray-600 space-y-1 mb-6">
+                                <li>1-2 years of MERN (MongoDB, Express, React, Node) stack experience</li>
+                                <li>Strong problem-solving skills</li>
+                                <li>Ability to work independently</li>
+                                <li>Experience with Git and agile methodologies</li>
+                            </ul>
+                        </div>
+                        <!-- UPDATED: Two-button layout -->
+                        <div class="flex gap-3 mt-6">
+                            <button 
+                                data-modal-target="jd-modal" 
+                                data-job-id="fullstack-mern"
+                                class="w-full bg-white text-blue-600 border border-blue-600 px-6 py-3 rounded-lg font-semibold text-lg shadow-sm hover:bg-blue-50 transition-all duration-300">
+                                View Details
+                            </button>
+                            <button 
+                                data-modal-target="apply-modal" 
+                                data-job-title="Full Stack Developer (MERN)"
+                                class="w-full bg-blue-600 text-white px-6 py-3 rounded-lg font-semibold text-lg shadow-lg hover:bg-blue-700 transition-all duration-300 transform hover:scale-105">
+                                Apply Now
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <!-- Job Card 4: Full Stack Developer (MEAN) -->
+                    <div class="job-card bg-white p-8 rounded-2xl shadow-lg hover-glow observe-me zoom-in" style="transition-delay: 300ms;">
+                        <div>
+                            <h3 class="text-2xl font-bold text-gray-900 mb-2">Full Stack Developer (MEAN)</h3>
+                            <span class="inline-block bg-green-100 text-green-800 text-sm font-medium px-3 py-1 rounded-full mb-4">In-Person</span>
+                            <p class="text-gray-600 mb-6">
+                                Are you an expert in the MEAN stack? We need a developer to manage and build complex applications using MongoDB, Express, Angular, and Node.js, focusing on scalability and robust architecture.
+                            </p>
+                            <ul class="list-disc list-inside text-gray-600 space-y-1 mb-6">
+                                <li>1-2 years of MEAN (MongoDB, Express, Angular, Node) stack experience</li>
+                                <li>Proficient in TypeScript</li>
+                                <li>Strong understanding of component-based architecture</li>
+                                <li>Experience with RxJS</li>
+                            </ul>
+                        </div>
+                        <!-- UPDATED: Two-button layout -->
+                        <div class="flex gap-3 mt-6">
+                            <button 
+                                data-modal-target="jd-modal" 
+                                data-job-id="fullstack-mean"
+                                class="w-full bg-white text-blue-600 border border-blue-600 px-6 py-3 rounded-lg font-semibold text-lg shadow-sm hover:bg-blue-50 transition-all duration-300">
+                                View Details
+                            </button>
+                            <button 
+                                data-modal-target="apply-modal" 
+                                data-job-title="Full Stack Developer (MEAN)"
+                                class="w-full bg-blue-600 text-white px-6 py-3 rounded-lg font-semibold text-lg shadow-lg hover:bg-blue-700 transition-all duration-300 transform hover:scale-105">
+                                Apply Now
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Job Card 5: Cloud Engineer (AWS) -->
+                    <div class="job-card bg-white p-8 rounded-2xl shadow-lg hover-glow observe-me zoom-in" style="transition-delay: 400ms;">
+                        <div>
+                            <h3 class="text-2xl font-bold text-gray-900 mb-2">Cloud Engineer (AWS)</h3>
+                            <span class="inline-block bg-green-100 text-green-800 text-sm font-medium px-3 py-1 rounded-full mb-4">In-Person</span>
+                            <p class="text-gray-600 mb-6">
+                                Seeking an experienced AWS Cloud Engineer to manage our cloud infrastructure. You will be responsible for deployment, automation, monitoring, and ensuring the security and scalability of our services.
+                            </p>
+                            <ul class="list-disc list-inside text-gray-600 space-y-1 mb-6">
+                                <li>0-2 years of experience with AWS services (EC2, S3, RDS, Lambda)</li>
+                                <li>Strong knowledge of CI/CD pipelines</li>
+                                <li>Experience with Infrastructure as Code (Terraform, CloudFormation)</li>
+                                <li>AWS Certification is a strong plus</li>
+                            </ul>
+                        </div>
+                        <!-- UPDATED: Two-button layout -->
+                        <div class="flex gap-3 mt-6">
+                            <button 
+                                data-modal-target="jd-modal" 
+                                data-job-id="cloud-aws"
+                                class="w-full bg-white text-blue-600 border border-blue-600 px-6 py-3 rounded-lg font-semibold text-lg shadow-sm hover:bg-blue-50 transition-all duration-300">
+                                View Details
+                            </button>
+                            <button 
+                                data-modal-target="apply-modal" 
+                                data-job-title="Cloud Engineer (AWS)"
+                                class="w-full bg-blue-600 text-white px-6 py-3 rounded-lg font-semibold text-lg shadow-lg hover:bg-blue-700 transition-all duration-300 transform hover:scale-105">
+                                Apply Now
+                            </button>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+        <!-- END Careers Section -->
+    </main>
+    
+    <!-- Footer -->
+    <!-- Links updated to point to index.html sections -->
+    <footer class="bg-gray-900 text-gray-400 py-16">
+        <div class="container mx-auto px-6">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-12">
+                <!-- Column 1: Logo & Social --><div>
+                    <a href="index.html" class="flex items-center">
+                        <img src="https://res.cloudinary.com/dpz44zf0z/image/upload/v1760704788/XETA_SOLUTIONS_LOGO_bcsbwh.png" alt="Xeta Solutions Logo" class="h-8 md:h-10">
+                    </a>
+                    <p class="mt-4 text-gray-500">
+                        Innovating Talent & Technology.
+                    </p>
+                    <div class="flex space-x-4 mt-6">
+                        <a href="https://www.linkedin.com/company/109604953/
+" class="text-gray-400 hover:text-white transition-colors" aria-label="LinkedIn">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"></path></svg>
+                        </a>
+          
+                    </div>
+                </div>
+
+                <!-- Column 2: Products --><div>
+                    <h4 class="text-lg font-semibold text-white mb-4">Products</h4>
+                    <ul class="space-y-3">
+                        <li><a href="www.testify-lac.com/HireWithUS.html" class="hover:text-white transition-colors">HireWithUS</a></li>
+                        <li><a href="testify-lac.com" class="hover:text-white transition-colors">Testify – Secure Test</a></li>
+                        <li><a href="testify-lac.com" class="hover:text-white transition-colors">Testify – LAC</a></li>
+                        <li><a href="www.testify-lac.com/student/quiz-join.html" class="hover:text-white transition-colors">QuizCom</a></li>
+                        <li><a href="index.html#mock-interviews" class="hover:text-white transition-colors">Mock Interviews</a></li>
+                    </ul>
+                </div>
+
+                <!-- Column 3: Company --><div>
+                    <h4 class="text-lg font-semibold text-white mb-4">Company</h4>
+                    <ul class="space-y-3">
+                        <li><a href="index.html#about" class="hover:text-white transition-colors">About Us</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Careers</a></li> <!-- Active Link -->
+                        <li><a href="#partner-with-us-modal" data-modal-target="partner-with-us-modal" class="hover:text-white transition-colors cursor-pointer">Partners</a></li>
+                        <li><a href="mailto:support@xetasolutions.10" class="hover:text-white transition-colors">Contact</a></li>
+                    </ul>
+                </div>
+
+                <!-- Column 4: Contact --><div>
+                    <h4 class="text-lg font-semibold text-white mb-4">Get in Touch</h4>
+                    <ul class="space-y-3">
+                        <li><a href="mailto:support@xetasolutions.in" class="hover:text-white transition-colors">support@xetasolutions.in</a></li>
+                        <li><a href="mailto:sales@xetasolutions.in" class="hover:text-white transition-colors">sales@xetasolutions.in</a></li>
+                        <li><a href="tel:+919010408899" class="hover:text-white transition-colors">+91 9010408899</a></li>
+                        <li>
+                            <button data-modal-target="request-demo-modal" class="text-blue-400 hover:text-white font-semibold transition-colors">
+                                Request a Demo
+                            </button>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Copyright -->
+            <div class="border-t border-gray-800 mt-12 pt-8 text-center">
+                <p class="text-gray-500">&copy; <span id="current-year"></span> Xeta Solutions. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Modals -->
+    <!-- All modals are included to ensure header/footer/page buttons function correctly -->
+    
+    <!-- Modal 1: Request Demo (for Header) -->
+    <div id="request-demo-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-button" data-modal-close="request-demo-modal">&times;</span>
+            <h2 class="text-2xl md:text-3xl font-bold text-gray-900 mb-4 gradient-text">Book a Demo</h2>
+            <p class="text-gray-700 mb-6">Fill out the form below and we'll get back to you.</p>
+            <form action="https://formspree.io/f/xyzbelvz" method="POST" class="space-y-4">
+                <input type="hidden" name="_subject" value="New Demo Request from Xeta Website">
+                <div>
+                    <label for="demo_name" class="block text-sm font-medium text-gray-700">Full Name</label>
+                    <input type="text" id="demo_name" name="name" required class="mt-1 block w-full px-4 py-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500">
+                </div>
+                <div>
+                    <label for="demo_email" class="block text-sm font-medium text-gray-700">Work Email</label>
+                    <input type="email" id="demo_email" name="email" required class="mt-1 block w-full px-4 py-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500">
+                </div>
+                <div>
+                    <label for="demo_company" class="block text-sm font-medium text-gray-700">Company Name</label>
+                    <input type="text" id="demo_company" name="company" required class="mt-1 block w-full px-4 py-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500">
+                </div>
+                <div>
+                    <label for="demo_phone" class="block text-sm font-medium text-gray-700">Phone Number (Optional)</label>
+                    <input type="tel" id="demo_phone" name="phone" class="mt-1 block w-full px-4 py-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500">
+                </div>
+                <div>
+                    <label for="demo_message" class="block text-sm font-medium text-gray-700">Message (Optional)</label>
+                    <textarea id="demo_message" name="message" rows="4" class="mt-1 block w-full px-4 py-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500"></textarea>
+                </div>
+                <button type="submit" class="w-full bg-blue-600 text-white px-6 py-3 rounded-lg font-semibold text-lg shadow-lg hover:bg-blue-700 transition-all duration-300 transform hover:scale-105">
+                    Submit Request
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Modal 2: Get Started (for Footer - though not used in footer, good to keep) -->
+    <div id="get-started-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-button" data-modal-close="get-started-modal">&times;</span>
+            <h2 class="text-2xl md:text-3xl font-bold text-gray-900 mb-4 gradient-text">Get Started with Xeta</h2>
+            <p class="text-gray-700 mb-6">Fill out the form below and we'll get back to you.</p>
+            <form action="https://formspree.io/f/xyzbelvz" method="POST" class="space-y-4">
+                <input type="hidden" name="_subject" value="New 'Get Started' Inquiry from Xeta Website">
+                <div>
+                    <label for="start_name" class="block text-sm font-medium text-gray-700">Full Name</label>
+                    <input type="text" id="start_name" name="name" required class="mt-1 block w-full px-4 py-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500">
+                </div>
+                <div>
+                    <label for="start_email" class="block text-sm font-medium text-gray-700">Work Email</label>
+                    <input type="email" id="start_email" name="email" required class="mt-1 block w-full px-4 py-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500">
+                </div>
+                <div>
+                    <label for="start_company" class="block text-sm font-medium text-gray-700">Company Name</label>
+                    <input type="text" id="start_company" name="company" required class="mt-1 block w-full px-4 py-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500">
+                </div>
+                <div>
+                    <label for="start_phone" class="block text-sm font-medium text-gray-700">Phone Number (Optional)</label>
+                    <input type="tel" id="start_phone" name="phone" class="mt-1 block w-full px-4 py-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500">
+                </div>
+                <div>
+                    <label for="start_interest" class="block text-sm font-medium text-gray-700">I'm interested in...</label>
+                    <select id="start_interest" name="interest" class="mt-1 block w-full px-4 py-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 bg-white">
+                        <option>Hiring & Recruitment</option>
+                        <option>Secure Assessments</option>
+                        <option>Learning & Development (LAC)</option>
+                        <option>Mock Interviews</option>
+                        <option>Other</option>
+                    </select>
+                </div>
+                <div>
+                    <label for="start_message" class="block text-sm font-medium text-gray-700">Message (Optional)</label>
+                    <textarea id="start_message" name="message" rows="4" class="mt-1 block w-full px-4 py-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500"></textarea>
+                </div>
+                <button type="submit" class="w-full bg-blue-600 text-white px-6 py-3 rounded-lg font-semibold text-lg shadow-lg hover:bg-blue-700 transition-all duration-300 transform hover:scale-105">
+                    Submit
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Modal 3: Partner With Us (for Footer) -->
+    <div id="partner-with-us-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-button" data-modal-close="partner-with-us-modal">&times;</span>
+            <h2 class="text-2xl md:text-3xl font-bold text-gray-900 mb-4 gradient-text">Partner With Us</h2>
+            <p class="text-gray-700 mb-6">Fill out the form below and we'll get back to you.</p>
+            <form action="https://formspree.io/f/xyzbelvz" method="POST" class="space-y-4">
+                <input type="hidden" name="_subject" value="New Partnership Inquiry from Xeta Website">
+                <div>
+                    <label for="partner_fullname" class="block text-sm font-medium text-gray-700">Full Name</label>
+                    <input type="text" id="partner_fullname" name="name" required class="mt-1 block w-full px-4 py-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500">
+                </div>
+                <div>
+                    <label for="partner_name" class="block text-sm font-medium text-gray-700">Organization Name</label>
+                    <input type="text" id="partner_name" name="organization" required class="mt-1 block w-full px-4 py-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500">
+                </div>
+                <div>
+                    <label for="partner_email" class="block text-sm font-medium text-gray-700">Work Email</label>
+                    <input type="email" id="partner_email" name="email" required class="mt-1 block w-full px-4 py-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500">
+                </div>
+                <div>
+                    <label for="partner_phone" class="block text-sm font-medium text-gray-700">Phone Number (Optional)</label>
+                    <input type="tel" id="partner_phone" name="phone" class="mt-1 block w-full px-4 py-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500">
+                </div>
+                <div>
+                    <label for="partner_message" class="block text-sm font-medium text-gray-700">How would you like to partner? (Optional)</label>
+                    <textarea id="partner_message" name="message" rows="4" class="mt-1 block w-full px-4 py-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500"></textarea>
+                </div>
+                <button type="submit" class="w-full bg-blue-600 text-white px-6 py-3 rounded-lg font-semibold text-lg shadow-lg hover:bg-blue-700 transition-all duration-300 transform hover:scale-105">
+                    Send Partnership Request
+                </button>
+            </form>
+        </div>
+    </div>
+    
+    <!-- NEW Modal 4: Job Description -->
+    <div id="jd-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-button" data-modal-close="jd-modal">&times;</span>
+            <h2 id="jd-modal-title" class="text-2xl md:text-3xl font-bold text-gray-900 mb-6 gradient-text">Job Description</h2>
+            <div id="jd-modal-content-body" class="text-gray-700 text-left">
+                <!-- Content will be injected by JavaScript -->
+                <p>Loading job details...</p>
+            </div>
+            <!-- Apply button inside the JD modal -->
+            <button 
+                data-modal-target="apply-modal" 
+                id="jd-apply-button"
+                data-job-title=""
+                class="w-full bg-blue-600 text-white px-6 py-3 rounded-lg font-semibold text-lg shadow-lg hover:bg-blue-700 transition-all duration-300 transform hover:scale-105 mt-8">
+                Apply for this Job
+            </button>
+        </div>
+    </div>
+
+    <!-- Modal 5: Apply for Job (for Careers Section) -->
+    <!-- This was Modal 4, now it's 5 (though ID remains the same) -->
+    <div id="apply-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-button" data-modal-close="apply-modal">&times;</span>
+            <h2 id="apply-modal-title" class="text-2xl md:text-3xl font-bold text-gray-900 mb-4 gradient-text">Apply for Job</h2>
+            <p class="text-gray-700 mb-6">Please fill out the application form below.</p>
+            
+            <!-- UPDATED: Form restructured with fieldsets -->
+            <form action="https://formspree.io/f/xkgpleag" method="POST" class="space-y-4">
+                <!-- This hidden input will be populated by JS -->
+                <input type="hidden" id="apply_job_title_input" name="job_title" value="">
+                <input type="hidden" name="_subject" value="New Job Application Received!">
+
+                <!-- Personal Information -->
+                <fieldset>
+                    <legend>Personal Information</legend>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-x-6 gap-y-4 mt-4">
+                        <div>
+                            <label for="apply_first_name" class="block text-sm font-medium text-gray-700">First Name</label>
+                            <input type="text" id="apply_first_name" name="first_name" required class="mt-1 block w-full px-4 py-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500">
+                        </div>
+                        <div>
+                            <label for="apply_last_name" class="block text-sm font-medium text-gray-700">Last Name</label>
+                            <input type="text" id="apply_last_name" name="last_name" required class="mt-1 block w-full px-4 py-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500">
+                        </div>
+                        <div>
+                            <label for="apply_email" class="block text-sm font-medium text-gray-700">Email Address</label>
+                            <input type="email" id="apply_email" name="email" required class="mt-1 block w-full px-4 py-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500">
+                        </div>
+                        <div>
+                            <label for="apply_mobile" class="block text-sm font-medium text-gray-700">Mobile Number</label>
+                            <input type="tel" id="apply_mobile" name="mobile" required class="mt-1 block w-full px-4 py-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500">
+                        </div>
+                        <div>
+                            <label for="apply_dob" class="block text-sm font-medium text-gray-700">Date of Birth</label>
+                            <input type="date" id="apply_dob" name="dob" required class="mt-1 block w-full px-4 py-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500">
+                        </div>
+                        <div>
+                            <label for="apply_location" class="block text-sm font-medium text-gray-700">Current Location</label>
+                            <input type="text" id="apply_location" name="current_location" required class="mt-1 block w-full px-4 py-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500">
+                        </div>
+                    </div>
+                </fieldset>
+
+                <!-- Education & Experience -->
+                <fieldset>
+                    <legend>Education & Experience</legend>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-x-6 gap-y-4 mt-4">
+                        <div>
+                            <label for="apply_college" class="block text-sm font-medium text-gray-700">College</label>
+                            <input type="text" id="apply_college" name="college" required class="mt-1 block w-full px-4 py-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500">
+                        </div>
+                        <div>
+                            <label for="apply_roll_number" class="block text-sm font-medium text-gray-700">Roll Number</label>
+                            <input type="text" id="apply_roll_number" name="roll_number" required class="mt-1 block w-full px-4 py-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500">
+                        </div>
+                    </div>
+                    <div class="mt-4">
+                        <label for="apply_experience" class="block text-sm font-medium text-gray-700">Experience (Job/Internship)</label>
+                        <textarea id="apply_experience" name="experience" rows="3" required class="mt-1 block w-full px-4 py-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500" placeholder="e.g., 2 years as Frontend Developer at XYZ"></textarea>
+                    </div>
+                    <div class="mt-4">
+                        <label for="apply_skills" class="block text-sm font-medium text-gray-700">Skills</label>
+                        <textarea id="apply_skills" name="skills" rows="3" required class="mt-1 block w-full px-4 py-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500" placeholder="e.g., React, Node.js, AWS, Python"></textarea>
+                    </div>
+                </fieldset>
+
+                <!-- Application Details -->
+                <fieldset>
+                    <legend>Application Details</legend>
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-x-6 gap-y-4 mt-4">
+                        <div>
+                            <label for="apply_join_days" class="block text-sm font-medium text-gray-700">Ready to Join in (days)</label>
+                            <input type="number" id="apply_join_days" name="ready_to_join_days" required class="mt-1 block w-full px-4 py-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500">
+                        </div>
+                         <div>
+                            <label for="apply_current_salary" class="block text-sm font-medium text-gray-700">Current Salary (LPA)</label>
+                            <input type="text" id="apply_current_salary" name="current_salary" required class="mt-1 block w-full px-4 py-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500" placeholder="e.g., 5 or N/A">
+                        </div>
+                         <div>
+                            <label for="apply_expected_salary" class="block text-sm font-medium text-gray-700">Expected Salary (LPA)</label>
+                            <input type="text" id="apply_expected_salary" name="expected_salary" required class="mt-1 block w-full px-4 py-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500" placeholder="e.g., 7">
+                        </div>
+                    </div>
+                    <div class="mt-4">
+                        <label for="apply_resume_link" class="block text-sm font-medium text-gray-700">Resume Link</label>
+                        <input type="url" id="apply_resume_link" name="resume_link" required class="mt-1 block w-full px-4 py-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500" placeholder="https://www.your-drive.com/resume.pdf">
+                    </div>
+                    
+                    <div class="mt-4">
+                        <label for="apply_certificates_link" class="block text-sm font-medium text-gray-700">Certificates Link (Optional)</label>
+                        <input type="url" id="apply_certificates_link" name="certificates_link" class="mt-1 block w-full px-4 py-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500" placeholder="https://www.your-drive.com/certificates.pdf">
+                        <p class="mt-1 text-xs text-gray-500">Please merge all certificates into one file (e.g., a single PDF) and provide the link.</p>
+                    </div>
+                </fieldset>
+
+                <button type="submit" class="w-full bg-blue-600 text-white px-6 py-3 rounded-lg font-semibold text-lg shadow-lg hover:bg-blue-700 transition-all duration-300 transform hover:scale-105 mt-6">
+                    Submit Application
+                </button>
+            </form>
+        </div>
+    </div>
+
+
+    <!-- All JavaScript from index.html -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+
+            // --- NEW: Job Description Data ---
+            const jobDescriptions = {
+                "frontend-react": {
+                    title: "Frontend Developer (React)",
+                    description: "Seeking a React developer to build and optimize our user-facing platforms. You'll work with modern frontend technologies, translating UI/UX designs into responsive, high-performance web applications.",
+                    responsibilities: [
+                        "Develop new user-facing features using React.js and TypeScript.",
+                        "Build reusable components and frontend libraries for future use.",
+                        "Translate designs and wireframes from Figma into high-quality code.",
+                        "Optimize applications for maximum speed and scalability.",
+                        "Collaborate with backend developers to integrate RESTful APIs.",
+                        "Perform code reviews and mentor junior developers."
+                    ],
+                    qualifications: [
+                        "0-2 years of professional experience in frontend development.",
+                        "Strong proficiency in JavaScript (ES6+), HTML5, and CSS3.",
+                        "In-depth knowledge of React.js and its core principles.",
+                        "Experience with popular React.js workflows (such as Redux or Context API).",
+                        "Familiarity with Tailwind CSS is a major plus.",
+                        "Knowledge of modern authorization mechanisms (e.g., JSON Web Token)."
+                    ]
+                },
+                "backend-nodejs": {
+                    title: "Backend Developer (Node.js)",
+                    description: "Join our backend team to design, build, and maintain scalable, secure, and high-performance server-side applications using Node.js, Express, and modern database technologies.",
+                    responsibilities: [
+                        "Design and implement scalable backend services and microservices.",
+                        "Develop and maintain RESTful APIs for our frontend applications.",
+                        "Manage database schemas and optimize queries (MongoDB/PostgreSQL).",
+                        "Ensure security and data protection are implemented at all levels.",
+                        "Write unit and integration tests to ensure code quality.",
+                        "Deploy and manage applications using Docker and CI/CD pipelines."
+                    ],
+                    qualifications: [
+                        "1-2 years of experience in backend development with Node.js and Express.",
+                        "Proficient with NoSQL (MongoDB) or SQL (PostgreSQL) databases.",
+                        "Strong understanding of REST API design and microservice architecture.",
+                        "Experience with Docker and containerization.",
+                        "Familiarity with cloud platforms (AWS, Azure, or GCP) is a plus.",
+                        "Strong problem-solving and analytical skills."
+                    ]
+                },
+                "fullstack-mern": {
+                    title: "Full Stack Developer (MERN)",
+                    description: "We're looking for a versatile MERN stack developer to work on both frontend and backend components. You'll be responsible for the entire development lifecycle, from concept to deployment.",
+                    responsibilities: [
+                        "Develop and maintain web applications using the MERN stack.",
+                        "Build responsive frontend components using React.js.",
+                        "Design and implement backend APIs using Node.js and Express.",
+                        "Manage database operations with MongoDB and Mongoose.",
+                        "Collaborate with the team to define and ship new features.",
+                        "Write clean, maintainable, and well-documented code."
+                    ],
+                    qualifications: [
+                        "1-2 years of proven experience as a MERN Stack Developer.",
+                        "Strong proficiency in MongoDB, Express, React, and Node.js.",
+                        "Experience with state management libraries (e.g., Redux, Context API).",
+                        "Familiarity with Git and agile development methodologies.",
+                        "Ability to work independently and manage project priorities."
+                    ]
+                },
+                "fullstack-mean": {
+                    title: "Full Stack Developer (MEAN)",
+                    description: "Are you an expert in the MEAN stack? We need a developer to manage and build complex applications using MongoDB, Express, Angular, and Node.js, focusing on scalability and robust architecture.",
+                    responsibilities: [
+                        "Develop scalable web applications using the MEAN stack.",
+                        "Create responsive and dynamic frontend UIs with Angular.",
+                        "Build and maintain robust backend APIs with Node.js and Express.",
+                        "Integrate with MongoDB for database persistence.",
+                        "Write and maintain high-quality code with a focus on performance.",
+                        "Participate in the entire software development lifecycle."
+                    ],
+                    qualifications: [
+                        "1-2 years of experience with the MEAN stack.",
+                        "Proficient in TypeScript for Angular development.",
+                        "Strong understanding of component-based architecture in Angular.",
+                        "Experience with RxJS and observable patterns.",
+                        "Solid knowledge of Node.js, Express, and MongoDB.",
+                        "Excellent problem-solving and communication skills."
+                    ]
+                },
+                "cloud-aws": {
+                    title: "Cloud Engineer (AWS)",
+                    description: "Seeking an experienced AWS Cloud Engineer to manage our cloud infrastructure. You will be responsible for deployment, automation, monitoring, and ensuring the security and scalability of our services.",
+                    responsibilities: [
+                        "Design, deploy, and manage scalable and secure infrastructure on AWS.",
+                        "Implement and manage CI/CD pipelines for automated deployments.",
+                        "Monitor system performance, reliability, and security.",
+                        "Manage AWS services (EC2, S3, RDS, Lambda, VPC, IAM).",
+                        "Implement Infrastructure as Code (IaC) using Terraform or CloudFormation.",
+                        "Respond to and resolve infrastructure-related incidents."
+                    ],
+                    qualifications: [
+                        "0-2 years of hands-on experience with AWS services.",
+                        "Strong knowledge of CI/CD principles and tools (e.g., Jenkins, GitLab CI).",
+                        "Experience with Infrastructure as Code (Terraform or CloudFormation).",
+                        "Understanding of networking and security principles in the cloud.",
+                        "Scripting skills (e.g., Bash, Python) are a plus.",
+                        "AWS Certification (e.g., Solutions Architect, DevOps Engineer) is a strong plus."
+                    ]
+                }
+            };
+            // --- END Job Data ---
+
+
+            // --- Navbar Scroll Effect ---
+            const navbar = document.getElementById('navbar');
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 50) {
+                    navbar.classList.add('bg-white/95', 'backdrop-blur-md', 'shadow-lg');
+                } else {
+                    navbar.classList.remove('bg-white/95', 'backdrop-blur-md', 'shadow-lg');
+                }
+            });
+
+            // --- Mobile Menu Toggle ---
+            const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+            const mobileMenu = document.getElementById('mobile-menu');
+            mobileMenuBtn.addEventListener('click', () => {
+                mobileMenu.classList.toggle('hidden');
+            });
+            // Close mobile menu when a link is clicked
+            mobileMenu.querySelectorAll('a, button').forEach(item => {
+                item.addEventListener('click', () => {
+                    // Don't close if it's the modal button
+                    if (!item.hasAttribute('data-modal-target')) {
+                         mobileMenu.classList.add('hidden');
+                    }
+                });
+            });
+
+            // --- Scroll-based Animations ---
+            const observerOptions = {
+                root: null,
+                rootMargin: '0px',
+                threshold: 0.1
+            };
+
+            const observerCallback = (entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('is-visible');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            };
+
+            const observer = new IntersectionObserver(observerCallback, observerOptions);
+            const elementsToObserve = document.querySelectorAll('.observe-me');
+            elementsToObserve.forEach(el => observer.observe(el));
+
+            // --- Modal Functionality (UPDATED) ---
+            const openModalButtons = document.querySelectorAll('[data-modal-target]');
+            const closeModalButtons = document.querySelectorAll('[data-modal-close]');
+            const modals = document.querySelectorAll('.modal');
+            const jdApplyButton = document.getElementById('jd-apply-button'); // Get the "Apply" button from JD modal
+
+            openModalButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    const modalId = button.getAttribute('data-modal-target');
+                    const modal = document.getElementById(modalId);
+                    
+                    if (modal) {
+                        
+                        // --- Logic for Apply Modal ---
+                        if (modalId === 'apply-modal') {
+                            const jobTitle = button.getAttribute('data-job-title');
+                            const modalTitle = modal.querySelector('#apply-modal-title');
+                            const jobTitleInput = modal.querySelector('#apply_job_title_input');
+                            
+                            if (modalTitle) {
+                                modalTitle.textContent = `Apply for: ${jobTitle}`;
+                            }
+                            if (jobTitleInput) {
+                                jobTitleInput.value = jobTitle;
+                            }
+
+                            // If we're opening the Apply modal from the JD modal, close the JD modal
+                            const jdModal = document.getElementById('jd-modal');
+                            if (jdModal && jdModal.style.display === 'flex') {
+                                closeModal(jdModal);
+                            }
+                        }
+                        
+                        // --- NEW: Logic for JD Modal ---
+                        if (modalId === 'jd-modal') {
+                            const jobId = button.getAttribute('data-job-id');
+                            const jobData = jobDescriptions[jobId];
+                            const modalTitle = modal.querySelector('#jd-modal-title');
+                            const modalContentBody = modal.querySelector('#jd-modal-content-body');
+                            
+                            if (jobData) {
+                                modalTitle.textContent = jobData.title;
+                                let contentHTML = `<p>${jobData.description}</p>`;
+                                
+                                contentHTML += '<h4>Responsibilities:</h4>';
+                                contentHTML += '<ul>';
+                                jobData.responsibilities.forEach(item => {
+                                    contentHTML += `<li>${item}</li>`;
+                                });
+                                contentHTML += '</ul>';
+                                
+                                contentHTML += '<h4>Qualifications:</h4>';
+                                contentHTML += '<ul>';
+                                jobData.qualifications.forEach(item => {
+                                    contentHTML += `<li>${item}</li>`;
+                                });
+                                contentHTML += '</ul>';
+                                
+                                modalContentBody.innerHTML = contentHTML;
+
+                                // Set the job title on the "Apply" button inside the JD modal
+                                if (jdApplyButton) {
+                                    jdApplyButton.setAttribute('data-job-title', jobData.title);
+                                }
+
+                            } else {
+                                modalTitle.textContent = 'Error';
+                                modalContentBody.innerHTML = '<p>Job description not found. Please try again later.</p>';
+                                if (jdApplyButton) {
+                                    jdApplyButton.setAttribute('data-job-title', '');
+                                }
+                            }
+                        }
+                        // --- END NEW ---
+                        
+                        modal.style.display = 'flex';
+                        document.body.style.overflow = 'hidden'; // Prevent background scrolling
+                    }
+                });
+            });
+
+            const closeModal = (modal) => {
+                if (modal) {
+                    modal.style.display = 'none';
+                    document.body.style.overflow = 'auto'; // Restore background scrolling
+                }
+            };
+
+            closeModalButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    const modal = button.closest('.modal');
+                    closeModal(modal);
+                });
+            });
+
+            // Close modal by clicking on the background overlay
+            modals.forEach(modal => {
+                modal.addEventListener('click', (event) => {
+                    if (event.target === modal) {
+                        closeModal(modal);
+                    }
+                });
+            });
+
+            // --- Footer Current Year ---
+            const yearSpan = document.getElementById('current-year');
+            if(yearSpan) {
+                yearSpan.textContent = new Date().getFullYear();
+            }
+            
+            // --- Handle Formspree submissions with a success message ---
+            const allForms = document.querySelectorAll('form[action^="https://formspree.io/f/"]');
+            
+            allForms.forEach(form => {
+                form.addEventListener('submit', async (e) => {
+                    e.preventDefault();
+                    const data = new FormData(form);
+                    
+                    const modalContent = form.closest('.modal-content');
+                    if (!modalContent) return;
+                    
+                    const closeButton = modalContent.querySelector('.close-button');
+                    
+                    form.style.display = 'none';
+                    let loadingMessage = document.createElement('div');
+                    loadingMessage.className = 'text-center py-10';
+                    loadingMessage.innerHTML = '<p class="text-lg text-gray-700">Submitting...</p>';
+                    modalContent.appendChild(loadingMessage);
+
+                    try {
+                        const response = await fetch(form.action, {
+                            method: form.method,
+                            body: data,
+                            headers: {
+                                'Accept': 'application/json'
+                            }
+                        });
+                        
+                        loadingMessage.remove();
+
+                        let successMessage = `
+                            <div class="text-center">
+                                <h2 class="text-2xl font-bold text-green-600 mb-4">Thank You!</h2>
+                                <p class="text-gray-700">Your submission has been received. Our team will get in touch with you shortly.</p>
+                            </div>
+                        `;
+                        
+                        let errorMessage = `
+                            <div class="text-center">
+                                <h2 class="text-2xl font-bold text-red-600 mb-4">Oops!</h2>
+                                <p class="text-gray-700">Something went wrong. Please try again later.</p>
+                            </div>
+                        `;
+
+                        if (response.ok) {
+                            modalContent.innerHTML = successMessage;
+                        } else {
+                            modalContent.innerHTML = errorMessage;
+                            form.style.display = 'block'; // Show form again on error
+                        }
+                    } catch (error) {
+                         loadingMessage.remove();
+                         modalContent.innerHTML = `
+                            <div class="text-center">
+                                <h2 class="text-2xl font-bold text-red-600 mb-4">Error</h2>
+                                <p class="text-gray-700">An error occurred. Please refresh and try again.</p>
+                            </div>
+                        `;
+                         form.style.display = 'block'; // Show form again on error
+                    } finally {
+                        if (closeButton && !modalContent.contains(closeButton)) {
+                            modalContent.prepend(closeButton);
+                        }
+                    }
+                });
+            });
+
+        });
+    </script>
+
+</body>
+</html>
