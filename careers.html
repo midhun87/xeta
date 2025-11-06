@@ -51,34 +51,45 @@
             font-family: 'Inter Tight', 'Manrope', sans-serif;
             overflow-x: hidden;
             
-            /* Light mode default background */
-            background-color: #f8f9fa; /* A very light gray */
-            
-            /* Smooth transition for color changes */
-            transition: background-color 0.3s ease, color 0.3s ease;
+            /* Light mode default */
+            background-color: #f8faff; /* bg-blue-50/20 */
+            color: #1e293b; /* text-slate-800 */
+            transition: background-color 0.5s ease, color 0.5s ease;
         }
 
-        /* NEW: Dark mode (AI theme) styles */
-        .dark body {
-            /* Futuristic gradient background */
-            background: linear-gradient(135deg, #020617 0%, #0f172a 30%, #1e1b4b 70%, #4c1d95 100%);
-            background-attachment: fixed;
+        /* NEW: Dark mode AI theme */
+        body.dark {
+            /* Futuristic gradient */
+            background-color: #0d0a1b;
+            background-image: radial-gradient(at 0% 0%, hsla(253, 50%, 15%, 0.4) 0px, transparent 50%),
+                              radial-gradient(at 100% 0%, hsla(280, 50%, 15%, 0.4) 0px, transparent 50%),
+                              radial-gradient(at 100% 100%, hsla(300, 50%, 15%, 0.4) 0px, transparent 50%),
+                              radial-gradient(at 0% 100%, hsla(240, 50%, 15%, 0.4) 0px, transparent 50%);
+            color: #cbd5e1; /* text-slate-300 */
+        }
+        
+        /* Fix for dark mode form inputs */
+        .dark input, .dark select, .dark textarea {
+            color-scheme: dark;
         }
 
-        /* Original: Animated gradient text (now with dark mode compatibility) */
+        /* Animated gradient text (subtle for dark mode) */
         .gradient-text {
-            background-image: linear-gradient(90deg, #3b82f6, #a855f7, #ec4899);
+            background-image: linear-gradient(90deg, #a78bfa, #c084fc, #f0abfc);
             -webkit-background-clip: text;
             background-clip: text;
             -webkit-text-fill-color: transparent;
             text-fill-color: transparent;
         }
-        
-        /* NEW: Light mode gradient text */
-        .dark .gradient-text {
-             background-image: linear-gradient(90deg, #60a5fa, #c084fc, #f472b6);
+        /* Light mode gradient */
+        .light .gradient-text {
+            background-image: linear-gradient(90deg, #6d28d9, #9333ea, #c026d3);
         }
-
+        
+        /* NEW: File input styling */
+        input[type="file"]::file-selector-button {
+            @apply px-4 py-2 mr-4 bg-gray-100 dark:bg-gray-700 border-0 rounded-md font-semibold text-sm text-blue-600 dark:text-blue-400 hover:bg-gray-200 dark:hover:bg-gray-600 cursor-pointer transition-colors;
+        }
 
         /* Scroll-based Animations (activated by JS) */
         .observe-me {
@@ -86,14 +97,16 @@
         }
         .fade-in { opacity: 0; }
         .fade-in.is-visible { opacity: 1; }
+        .slide-in-left { opacity: 0; transform: translateX(-40px); }
+        .slide-in-left.is-visible { opacity: 1; transform: translateX(0); }
+        .slide-in-right { opacity: 0; transform: translateX(40px); }
+        .slide-in-right.is-visible { opacity: 1; transform: translateX(0); }
         .slide-in-up { opacity: 0; transform: translateY(40px); }
         .slide-in-up.is-visible { opacity: 1; transform: translateY(0); }
         .zoom-in { opacity: 0; transform: scale(0.9); }
         .zoom-in.is-visible { opacity: 1; transform: scale(1); }
 
-        /* REMOVED: .hover-glow (replaced with Tailwind classes directly) */
-
-        /* Modal specific styles (Updated for Glassmorphism & Dark Mode) */
+        /* Modal specific styles */
         .modal {
             display: none; /* Hidden by default */
             position: fixed; /* Stay in place */
@@ -103,66 +116,75 @@
             width: 100%; /* Full width */
             height: 100%; /* Full height */
             overflow: auto; /* Enable scroll if needed */
-            
-            /* Dark backdrop */
-            background-color: rgba(0,0,0,0.6);
+            background-color: rgba(10, 10, 25, 0.6); /* Dark overlay */
             backdrop-filter: blur(8px); /* Blur effect */
-            
-            /* Flex layout for centering */
             justify-content: center;
             align-items: center;
         }
 
+        /* NEW: Glassmorphism modal content */
         .modal-content {
-            /* Light Mode Style */
-            background: linear-gradient(135deg, #eef2ff, #ffffff, #ede9fe);
+            /* Light mode */
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.6));
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            
+            /* Dark mode */
+            background: linear-gradient(135deg, rgba(20, 15, 40, 0.8), rgba(30, 20, 60, 0.7));
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            
             margin: auto;
             padding: 2.5rem;
-            border-radius: 1.5rem; /* rounded-3xl */
+            border-radius: 1.5rem;
             max-width: 500px; /* Default max-width */
             width: 90%;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
             position: relative;
             animation: fadeInScale 0.3s ease-out;
             max-height: 90vh; /* Add max-height for scrolling */
             overflow-y: auto; /* Enable vertical scroll if content overflows */
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            
-            /* Dark Mode (AI Glassmorphism) Style */
-            .dark & {
-                background: rgba(15, 23, 42, 0.7); /* bg-slate-900/70 */
-                backdrop-filter: blur(20px);
-                border: 1px solid rgba(255, 255, 255, 0.1);
-                box-shadow: 0 20px 40px rgba(0,0,0,0.4);
-            }
         }
+        
+        .dark .modal-content {
+            /* Dark mode glass */
+            background: linear-gradient(135deg, rgba(20, 15, 40, 0.8), rgba(30, 20, 60, 0.7));
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .light .modal-content {
+             /* Light mode glass */
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.8), rgba(245, 245, 255, 0.7));
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
         
         /* Specific width for apply modal */
         #apply-modal .modal-content {
             max-width: 700px; /* Wider for the form */
         }
 
-        /* Styling for fieldset in Apply Modal (Updated for Dark Mode) */
+        /* Styling for fieldset in Apply Modal */
         #apply-modal fieldset {
-            border: 1px solid #d1d5db; /* border-gray-300 */
+            border: 1px solid;
+            border-color: rgba(209, 213, 219, 0.5); /* border-gray-300/50 */
             padding: 1rem 1.5rem 1.5rem; /* p-4 pt-2 */
             border-radius: 0.75rem; /* rounded-lg */
             margin-bottom: 1rem; /* mb-4 */
-            
-            .dark & {
-                border-color: #4b5563; /* border-gray-600 */
-            }
+        }
+        .dark #apply-modal fieldset {
+            border-color: rgba(255, 255, 255, 0.2); /* dark:border-white/20 */
         }
         
         #apply-modal legend {
             padding: 0 0.5rem; /* px-2 */
             font-weight: 600; /* font-semibold */
-            color: #1f2937; /* text-gray-800 */
             font-size: 1.125rem; /* text-lg */
-            
-            .dark & {
-                color: #d1d5db; /* text-gray-300 */
-            }
+            /* Color is inherited (dark:text-white, text-gray-800) */
         }
         
         /* Styling for JD Modal */
@@ -172,24 +194,16 @@
         #jd-modal-content-body h4 {
             font-size: 1.125rem; /* text-lg */
             font-weight: 600; /* font-semibold */
-            color: #111827; /* text-gray-900 */
             margin-top: 1rem; /* mt-4 */
             margin-bottom: 0.5rem; /* mb-2 */
-            
-            .dark & {
-                color: #e5e7eb; /* text-gray-200 */
-            }
+            @apply text-gray-900 dark:text-white;
         }
         #jd-modal-content-body ul {
             list-style-type: disc;
             list-style-position: inside;
             padding-left: 0.5rem; /* pl-2 */
-            color: #4b5563; /* text-gray-600 */
             space-y: 0.5rem; /* space-y-2 */
-            
-            .dark & {
-                 color: #9ca3af; /* text-gray-400 */
-            }
+            @apply text-gray-700 dark:text-gray-300;
         }
 
 
@@ -199,7 +213,7 @@
         }
 
         .close-button {
-            color: #9ca3af; /* text-gray-400 */
+            color: #aaa;
             position: absolute;
             top: 1rem;
             right: 1.5rem;
@@ -208,392 +222,483 @@
             cursor: pointer;
             transition: color 0.2s;
             z-index: 1010; /* Ensure it's above content */
-            
-            .dark & {
-                 color: #6b7280; /* text-gray-500 */
-            }
         }
 
         .close-button:hover,
         .close-button:focus {
-            color: #111827; /* text-gray-900 */
-            text-decoration: none;
-            cursor: pointer;
-            
-             .dark & {
-                 color: #e5e7eb; /* text-gray-200 */
-            }
+            @apply text-gray-800 dark:text-white;
         }
         
-        /* Original: Careers card styling */
+        /* Careers card styling */
         .job-card {
             display: flex;
             flex-direction: column;
             justify-content: space-between;
             height: 100%; /* Ensure cards are same height in a grid row */
         }
+
+        /* NEW: AI Chatbot bubble styles */
+        #ai-chatbot-bubble {
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.2), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
+        }
+        .dark #ai-chatbot-bubble {
+            box-shadow: 0 10px 25px -5px rgba(160, 80, 255, 0.2), 0 8px 10px -6px rgba(160, 80, 255, 0.1);
+        }
+        
+        /* NEW: Custom scrollbar for chat */
+        #ai-chat-body::-webkit-scrollbar {
+            width: 6px;
+        }
+        #ai-chat-body::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        #ai-chat-body::-webkit-scrollbar-thumb {
+            background-color: rgba(128, 128, 128, 0.5);
+            border-radius: 3px;
+        }
     </style>
 </head>
-<body class="text-gray-800 dark:text-gray-200 antialiased">
+<body class="antialiased">
 
     <!-- Header / Navigation Bar -->
-    <!-- NEW: Updated with glassmorphism, dark mode, and toggle button -->
-    <header id="navbar" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300 
-                             dark:bg-black/30 dark:backdrop-blur-md dark:border-b dark:border-white/10
-                             bg-white/90 backdrop-blur-md border-b border-gray-200">
+    <header id="navbar" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300 bg-transparent">
         <div class="container mx-auto px-6 py-4 flex justify-between items-center">
-            <!-- Logo -->
-            <a href="index.html" class="flex items-center">
-                <!-- Logo image is fine, no dark mode variant needed -->
+            <!-- Logo --><a href="index.html" class="flex items-center">
                 <img src="https://res.cloudinary.com/dpz44zf0z/image/upload/v1760704788/XETA_SOLUTIONS_LOGO_bcsbwh.png" alt="Xeta Solutions Logo" class="h-8 md:h-10">
             </a>
             
-            <!-- Desktop Nav -->
-            <nav class="hidden md:flex space-x-6 items-center">
-                <a href="index.html#about" class="text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors">About</a>
-                <a href="index.html#products" class="text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors">Products</a>
-                <a href="index.html#workflow" class="text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors">Workflow</a>
-                <a href="index.html#features" class="text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors">Features</a>
-                <a href="index.html#mock-interviews" class="text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors">Mock Interviews</a>
+            <!-- Desktop Nav --><nav class="hidden md:flex space-x-8 items-center">
+                <a href="index.html#about" class="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-white transition-colors">About</a>
+                <a href="index.html#products" class="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-white transition-colors">Products</a>
+                <a href="index.html#workflow" class="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-white transition-colors">Workflow</a>
+                <a href="index.html#features" class="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-white transition-colors">Features</a>
+                <a href="index.html#mock-interviews" class="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-white transition-colors">Mock Interviews</a>
                 <!-- Active Careers Link -->
                 <a href="#" class="text-blue-600 dark:text-blue-400 font-semibold hover:text-blue-600 dark:hover:text-blue-400 transition-colors">Careers</a>
-                
-                <!-- Dark Mode Toggle Button -->
-                <button id="theme-toggle-btn" class="text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors" aria-label="Toggle theme">
-                    <!-- Sun Icon (Light Mode) -->
-                    <svg id="theme-icon-light" class="w-6 h-6 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"></path></svg>
-                    <!-- Moon Icon (Dark Mode) -->
-                    <svg id="theme-icon-dark" class="w-6 h-6 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path></svg>
-                </button>
-                
                 <button data-modal-target="request-demo-modal" class="bg-blue-600 text-white px-5 py-2 rounded-full font-medium shadow-lg hover:bg-blue-700 transition-transform hover:scale-105">
                     Book a Demo
                 </button>
+                
+                <!-- NEW: Dark Mode Toggle -->
+                <button id="theme-toggle" class="p-2 rounded-full text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors">
+                    <svg id="theme-toggle-dark-icon" class="w-5 h-5 hidden" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path></svg>
+                    <svg id="theme-toggle-light-icon" class="w-5 h-5 hidden" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.707.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM10 16a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM3.05 4.536a1 1 0 011.414 0l.707.707a1 1 0 11-1.414 1.414l-.707-.707a1 1 0 010-1.414zM16.95 15.464a1 1 0 01-1.414 0l-.707-.707a1 1 0 111.414-1.414l.707.707a1 1 0 010 1.414zM1 10a1 1 0 011-1h1a1 1 0 110 2H2a1 1 0 01-1-1zM16 10a1 1 0 011-1h1a1 1 0 110 2h-1a1 1 0 01-1-1z" fill-rule="evenodd" clip-rule="evenodd"></path></svg>
+                </button>
             </nav>
             
-            <!-- Mobile Menu Button -->
-            <div class="md:hidden flex items-center space-x-4">
-                <!-- Dark Mode Toggle Button (Mobile) -->
-                <button id="theme-toggle-btn-mobile" class="text-gray-800 dark:text-gray-200" aria-label="Toggle theme">
-                    <svg id="theme-icon-light-mobile" class="w-6 h-6 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"></path></svg>
-                    <svg id="theme-icon-dark-mobile" class="w-6 h-6 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path></svg>
-                </button>
-                <button id="mobile-menu-btn" class="text-gray-800 dark:text-gray-200">
-                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
-                </button>
-            </div>
+            <!-- Mobile Menu Button --><button id="mobile-menu-btn" class="md:hidden text-gray-800 dark:text-gray-300">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+            </button>
         </div>
         
         <!-- Mobile Menu (Hidden by default) -->
-        <div id="mobile-menu" class="hidden md:hidden 
-                                    dark:bg-slate-900/95 dark:text-gray-200
-                                    bg-white/95 backdrop-blur-md shadow-xl">
-            <a href="index.html#about" class="block px-6 py-3 text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-slate-800">About</a>
-            <a href="index.html#products" class="block px-6 py-3 text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-slate-800">Products</a>
-            <a href="index.html#workflow" class="block px-6 py-3 text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-slate-800">Workflow</a>
-            <a href="index.html#features" class="block px-6 py-3 text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-slate-800">Features</a>
-            <a href="index.html#mock-interviews" class="block px-6 py-3 text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-slate-800">Mock Interviews</a>
+        <div id="mobile-menu" class="hidden md:hidden bg-white/95 dark:bg-gray-800/95 backdrop-blur-md shadow-xl">
+            <a href="index.html#about" class="block px-6 py-3 text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700">About</a>
+            <a href="index.html#products" class="block px-6 py-3 text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700">Products</a>
+            <a href="index.html#workflow" class="block px-6 py-3 text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700">Workflow</a>
+            <a href="index.html#features" class="block px-6 py-3 text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700">Features</a>
+            <a href="index.html#mock-interviews" class="block px-6 py-3 text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700">Mock Interviews</a>
             <!-- Active Careers Link -->
-            <a href="#" class="block px-6 py-3 text-blue-600 dark:text-blue-400 font-semibold bg-gray-100 dark:bg-slate-800">Careers</a>
+            <a href="#" class="block px-6 py-3 text-blue-600 dark:text-blue-400 font-semibold bg-gray-100 dark:bg-gray-700">Careers</a>
             <button data-modal-target="request-demo-modal" class="block w-full text-left px-6 py-4 bg-blue-600 text-white font-medium hover:bg-blue-700">
                 Book a Demo
             </button>
+            <div class="px-6 py-3">
+                <button id="theme-toggle-mobile" class="w-full flex justify-between items-center text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 p-2 rounded-md">
+                    <span>Toggle Theme</span>
+                    <span>
+                        <svg id="theme-toggle-dark-icon-mobile" class="w-5 h-5 hidden" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path></svg>
+                        <svg id="theme-toggle-light-icon-mobile" class="w-5 h-5 hidden" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.707.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM10 16a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM3.05 4.536a1 1 0 011.414 0l.707.707a1 1 0 11-1.414 1.414l-.707-.707a1 1 0 010-1.414zM16.95 15.464a1 1 0 01-1.414 0l-.707-.707a1 1 0 111.414-1.414l.707.707a1 1 0 010 1.414zM1 10a1 1 0 011-1h1a1 1 0 110 2H2a1 1 0 01-1-1zM16 10a1 1 0 011-1h1a1 1 0 110 2h-1a1 1 0 01-1-1z" fill-rule="evenodd" clip-rule="evenodd"></path></svg>
+                    </span>
+                </button>
+            </div>
         </div>
     </header>
 
     <!-- Main Content -->
-    <main>
+    <main class="relative z-10">
         <!-- Careers Section -->
-        <section id="careers" class="py-24 pt-32 relative overflow-hidden"> <!-- Added pt-32 for fixed header offset -->
-            
-            <!-- NEW: Gradient background elements for AI feel (visible in dark mode) -->
-            <div class="absolute top-0 left-1/4 w-96 h-96 bg-purple-600/20 dark:bg-purple-600/20 rounded-full filter blur-3xl opacity-50 dark:opacity-30 animate-pulse" style="animation-duration: 8s;"></div>
-            <div class="absolute bottom-0 right-0 w-96 h-96 bg-blue-600/20 dark:bg-blue-600/20 rounded-full filter blur-3xl opacity-50 dark:opacity-30 animate-pulse" style="animation-duration: 10s;"></div>
-
-            <div class="container mx-auto px-6 relative z-10">
+        <section id="careers" class="py-24 pt-32 min-h-screen"> <!-- Added pt-32 for fixed header offset -->
+            <div class="container mx-auto px-6">
                 <div class="text-center max-w-3xl mx-auto mb-16">
-                    <span class="text-blue-600 dark:text-blue-400 font-semibold uppercase observe-me fade-in">Work With Us</span>
+                    <span class="font-semibold uppercase observe-me fade-in gradient-text">Work With Us</span>
                     <h2 class="text-3xl md:text-5xl font-bold text-gray-900 dark:text-white mt-2 mb-4 observe-me fade-in" style="transition-delay: 150ms;">
-                        Build the Future of AI
+                        Join Our Team
                     </h2>
                     <p class="text-lg text-gray-700 dark:text-gray-300 observe-me fade-in" style="transition-delay: 300ms;">
                         We're looking for passionate, innovative individuals to help us build the future of talent and technology. Explore our open roles below.
                     </p>
                 </div>
-
+                
                 <!-- NEW: Search and Filter Bar -->
-                <div class="mb-12 observe-me slide-in-up" style="transition-delay: 400ms;">
-                    <div class="flex flex-col md:flex-row gap-4 max-w-3xl mx-auto
-                                p-4 rounded-xl 
-                                bg-white/60 dark:bg-white/10 
-                                backdrop-blur-md 
-                                border border-gray-200 dark:border-white/20 
-                                shadow-lg">
-                        <!-- Search Input -->
-                        <div class="relative flex-grow">
-                            <input type="text" id="job-search-input" placeholder="Search by role (e.g., React, Node, AWS)" 
-                                   class="w-full px-5 py-3 pl-12 rounded-lg 
-                                          bg-white/50 dark:bg-white/10 
-                                          text-gray-900 dark:text-white
-                                          border border-gray-300 dark:border-white/20
-                                          focus:outline-none focus:ring-2 focus:ring-blue-500 dark:focus:ring-blue-400
-                                          placeholder-gray-500 dark:placeholder-gray-400">
-                            <svg class="w-5 h-5 absolute left-4 top-1/2 -translate-y-1/2 text-gray-500 dark:text-gray-400" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
-                            </svg>
-                        </div>
-                        <!-- Filter Select -->
-                        <div class="relative flex-shrink-0 md:w-1/3">
-                            <select id="job-filter-select"
-                                    class="w-full px-5 py-3 pr-10 rounded-lg appearance-none 
-                                           bg-white/50 dark:bg-white/10 
-                                           text-gray-900 dark:text-white
-                                           border border-gray-300 dark:border-white/20
-                                           focus:outline-none focus:ring-2 focus:ring-blue-500 dark:focus:ring-blue-400">
-                                <option value="all" class="text-black">All Departments</option>
-                                <option value="frontend" class="text-black">Frontend</option>
-                                <option value="backend" class="text-black">Backend</option>
-                                <option value="fullstack" class="text-black">Full Stack</option>
-                                <option value="cloud" class="text-black">Cloud & DevOps</option>
-                            </select>
-                            <svg class="w-5 h-5 absolute right-4 top-1/2 -translate-y-1/2 text-gray-500 dark:text-gray-400 pointer-events-none" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
-                            </svg>
-                        </div>
+                <div class="flex flex-col md:flex-row gap-4 mb-12 observe-me slide-in-up" style="transition-delay: 400ms;">
+                    <!-- Search Input -->
+                    <div class="relative flex-grow">
+                        <input type="text" id="job-search-input" placeholder="Search by job title (e.g., 'Engineer')"
+                               class="w-full px-5 py-3 pl-12 rounded-lg 
+                                      bg-white/50 dark:bg-white/5 
+                                      backdrop-blur-sm 
+                                      text-gray-900 dark:text-white 
+                                      placeholder-gray-500 dark:placeholder-gray-400
+                                      border border-gray-300 dark:border-white/20
+                                      focus:outline-none focus:ring-2 focus:ring-blue-500 dark:focus:ring-blue-400">
+                        <svg class="w-5 h-5 absolute left-4 top-1/2 -translate-y-1/2 text-gray-500 dark:text-gray-400" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                        </svg>
+                    </div>
+                    <!-- Filter Select -->
+                    <div class="relative flex-shrink-0 md:w-1/3">
+                        <select id="job-filter-select"
+                                class="w-full px-5 py-3 pr-10 rounded-lg appearance-none 
+                                       bg-white/50 dark:bg-white/5 
+                                       backdrop-blur-sm 
+                                       text-gray-900 dark:text-white
+                                       border border-gray-300 dark:border-white/20
+                                       focus:outline-none focus:ring-2 focus:ring-blue-500 dark:focus:ring-blue-400">
+                            <option value="all" class="text-black">All Departments</option>
+                            <option value="engineering" class="text-black">Engineering</option>
+                            <option value="ai" class="text-black">AI</option>
+                            <option value="product" class="text-black">Product</option>
+                            <option value="qa" class="text-black">Quality Assurance</option>
+                            <option value="cloud" class="text-black">Cloud</option>
+                        </select>
+                        <svg class="w-5 h-5 absolute right-4 top-1/2 -translate-y-1/2 text-gray-500 dark:text-gray-400 pointer-events-none" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                        </svg>
                     </div>
                 </div>
 
                 <!-- Job Grid -->
                 <div id="job-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                     
-                    <!-- Job Card 1: Frontend Developer (React) -->
-                    <!-- NEW: Added data-title and data-department for filtering -->
+                    <!-- Job Card 1: Backend Developer (Node.js) -->
                     <div class="job-card p-8 rounded-3xl
                                 dark:bg-white/5 dark:backdrop-blur-lg dark:border dark:border-white/10 dark:shadow-xl
                                 bg-white border border-gray-200 shadow-lg
                                 transition-all duration-300 ease-out 
                                 hover:-translate-y-2 dark:hover:shadow-purple-500/10 hover:shadow-2xl
                                 observe-me zoom-in"
-                         data-title="Frontend Developer (React)" data-department="frontend">
+                         data-title="Backend Developer (Node.js)" data-department="engineering">
                         <div>
-                            <!-- REMOVED: Icon -->
-                            <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-2">Frontend Developer (React)</h3>
-                            <span class="inline-block bg-green-100 dark:bg-green-500/20 text-green-800 dark:text-green-300 text-sm font-medium px-3 py-1 rounded-full mb-4">In-Person</span>
-                            <p class="text-gray-600 dark:text-gray-300 mb-6">
-                                Seeking a React developer to build and optimize our user-facing platforms. You'll work with modern frontend technologies.
-                            </p>
-                            <ul class="list-disc list-inside text-gray-600 dark:text-gray-400 space-y-1 mb-6">
-                                <li>0-2 years of React.js experience</li>
-                                <li>Strong in HTML, CSS, JavaScript (ES6+)</li>
-                                <li>Tailwind CSS is a plus</li>
-                            </ul>
-                        </div>
-                        <!-- UPDATED: Button styles -->
-                        <div class="flex gap-3 mt-6">
-                            <button 
-                                data-modal-target="jd-modal" 
-                                data-job-id="frontend-react"
-                                class="w-full bg-white/0 dark:bg-white/10 text-blue-600 dark:text-blue-300 border border-blue-500 dark:border-blue-400 px-6 py-3 rounded-lg font-semibold text-base shadow-sm hover:bg-blue-500/10 dark:hover:bg-white/20 transition-all duration-300">
-                                View Details
-                            </button>
-                            <button 
-                                data-modal-target="apply-modal" 
-                                data-job-title="Frontend Developer (React)"
-                                class="w-full bg-blue-600 text-white px-6 py-3 rounded-lg font-semibold text-base shadow-lg hover:bg-blue-700 transition-all duration-300 transform hover:scale-105">
-                                Apply Now
-                            </button>
-                        </div>
-                    </div>
-
-                    <!-- Job Card 2: Backend Developer (Node.js) -->
-                    <div class="job-card p-8 rounded-3xl
-                                dark:bg-white/5 dark:backdrop-blur-lg dark:border dark:border-white/10 dark:shadow-xl
-                                bg-white border border-gray-200 shadow-lg
-                                transition-all duration-300 ease-out 
-                                hover:-translate-y-2 dark:hover:shadow-purple-500/10 hover:shadow-2xl
-                                observe-me zoom-in" style="transition-delay: 100ms;"
-                         data-title="Backend Developer (Node.js)" data-department="backend">
-                        <div>
-                            <!-- REMOVED: Icon -->
                             <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-2">Backend Developer (Node.js)</h3>
                             <span class="inline-block bg-green-100 dark:bg-green-500/20 text-green-800 dark:text-green-300 text-sm font-medium px-3 py-1 rounded-full mb-4">In-Person</span>
                             <p class="text-gray-600 dark:text-gray-300 mb-6">
-                                Join our backend team to design, build, and maintain scalable, secure server-side applications using Node.js.
+                                Join our backend team to design, build, and maintain scalable, secure, and high-performance server-side applications using Node.js, Express, and modern database technologies.
                             </p>
-                            <ul class="list-disc list-inside text-gray-600 dark:text-gray-400 space-y-1 mb-6">
-                                <li>1-2 years of Node.js & Express</li>
+                            <ul class="list-disc list-inside text-gray-600 dark:text-gray-300 space-y-1 mb-6">
+                                <li>1-2 years of Node.js & Express experience</li>
                                 <li>Proficient with MongoDB or PostgreSQL</li>
-                                <li>Understanding of REST APIs</li>
+                                <li>Strong understanding of REST APIs & microservices</li>
+                                <li>Experience with Docker and CI/CD</li>
                             </ul>
                         </div>
                         <div class="flex gap-3 mt-6">
                             <button 
                                 data-modal-target="jd-modal" 
                                 data-job-id="backend-nodejs"
-                                class="w-full bg-white/0 dark:bg-white/10 text-blue-600 dark:text-blue-300 border border-blue-500 dark:border-blue-400 px-6 py-3 rounded-lg font-semibold text-base shadow-sm hover:bg-blue-500/10 dark:hover:bg-white/20 transition-all duration-300">
+                                class="w-full bg-transparent dark:bg-white/10 dark:hover:bg-white/20 text-blue-600 dark:text-blue-300 border border-blue-600 dark:border-blue-400 px-6 py-3 rounded-lg font-semibold text-lg shadow-sm hover:bg-blue-50 transition-all duration-300">
                                 View Details
                             </button>
                             <button 
                                 data-modal-target="apply-modal" 
                                 data-job-title="Backend Developer (Node.js)"
-                                class="w-full bg-blue-600 text-white px-6 py-3 rounded-lg font-semibold text-base shadow-lg hover:bg-blue-700 transition-all duration-300 transform hover:scale-105">
+                                class="w-full bg-blue-600 text-white px-6 py-3 rounded-lg font-semibold text-lg shadow-lg hover:bg-blue-700 transition-all duration-300 transform hover:scale-105">
                                 Apply Now
                             </button>
                         </div>
                     </div>
 
-                    <!-- Job Card 3: Full Stack Developer (MERN) -->
+                    <!-- Job Card 2: Full Stack Developer (MERN/MEAN) -->
+                    <div class="job-card p-8 rounded-3xl
+                                dark:bg-white/5 dark:backdrop-blur-lg dark:border dark:border-white/10 dark:shadow-xl
+                                bg-white border border-gray-200 shadow-lg
+                                transition-all duration-300 ease-out 
+                                hover:-translate-y-2 dark:hover:shadow-purple-500/10 hover:shadow-2xl
+                                observe-me zoom-in" style="transition-delay: 100ms;"
+                         data-title="Full Stack Developer (MERN/MEAN)" data-department="engineering">
+                        <div>
+                            <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-2">Full Stack Developer (MERN/MEAN)</h3>
+                            <span class="inline-block bg-green-100 dark:bg-green-500/20 text-green-800 dark:text-green-300 text-sm font-medium px-3 py-1 rounded-full mb-4">In-Person</span>
+                            <p class="text-gray-600 dark:text-gray-300 mb-6">
+                                We're looking for a versatile full-stack developer (MERN/MEAN) to work on both frontend and backend components, from concept to deployment.
+                            </p>
+                            <ul class="list-disc list-inside text-gray-600 dark:text-gray-300 space-y-1 mb-6">
+                                <li>1-2 years of MERN or MEAN stack experience</li>
+                                <li>Strong problem-solving skills</li>
+                                <li>Proficient in React or Angular</li>
+                                <li>Experience with Git and agile methodologies</li>
+                            </ul>
+                        </div>
+                        <div class="flex gap-3 mt-6">
+                            <button 
+                                data-modal-target="jd-modal" 
+                                data-job-id="fullstack-mern-mean"
+                                class="w-full bg-transparent dark:bg-white/10 dark:hover:bg-white/20 text-blue-600 dark:text-blue-300 border border-blue-600 dark:border-blue-400 px-6 py-3 rounded-lg font-semibold text-lg shadow-sm hover:bg-blue-50 transition-all duration-300">
+                                View Details
+                            </button>
+                            <button 
+                                data-modal-target="apply-modal" 
+                                data-job-title="Full Stack Developer (MERN/MEAN)"
+                                class="w-full bg-blue-600 text-white px-6 py-3 rounded-lg font-semibold text-lg shadow-lg hover:bg-blue-700 transition-all duration-300 transform hover:scale-105">
+                                Apply Now
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <!-- Job Card 3: Cloud Engineer (AWS) -->
                     <div class="job-card p-8 rounded-3xl
                                 dark:bg-white/5 dark:backdrop-blur-lg dark:border dark:border-white/10 dark:shadow-xl
                                 bg-white border border-gray-200 shadow-lg
                                 transition-all duration-300 ease-out 
                                 hover:-translate-y-2 dark:hover:shadow-purple-500/10 hover:shadow-2xl
                                 observe-me zoom-in" style="transition-delay: 200ms;"
-                         data-title="Full Stack Developer (MERN)" data-department="fullstack">
-                        <div>
-                            <!-- REMOVED: Icon -->
-                            <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-2">Full Stack Developer (MERN)</h3>
-                            <span class="inline-block bg-green-100 dark:bg-green-500/20 text-green-800 dark:text-green-300 text-sm font-medium px-3 py-1 rounded-full mb-4">In-Person</span>
-                            <p class="text-gray-600 dark:text-gray-300 mb-6">
-                                We're looking for a versatile MERN stack developer to work on both frontend and backend components.
-                            </p>
-                            <ul class="list-disc list-inside text-gray-600 dark:text-gray-400 space-y-1 mb-6">
-                                <li>1-2 years of MERN experience</li>
-                                <li>Strong problem-solving skills</li>
-                                <li>Experience with Git</li>
-                            </ul>
-                        </div>
-                        <div class="flex gap-3 mt-6">
-                            <button 
-                                data-modal-target="jd-modal" 
-                                data-job-id="fullstack-mern"
-                                class="w-full bg-white/0 dark:bg-white/10 text-blue-600 dark:text-blue-300 border border-blue-500 dark:border-blue-400 px-6 py-3 rounded-lg font-semibold text-base shadow-sm hover:bg-blue-500/10 dark:hover:bg-white/20 transition-all duration-300">
-                                View Details
-                            </button>
-                            <button 
-                                data-modal-target="apply-modal" 
-                                data-job-title="Full Stack Developer (MERN)"
-                                class="w-full bg-blue-600 text-white px-6 py-3 rounded-lg font-semibold text-base shadow-lg hover:bg-blue-700 transition-all duration-300 transform hover:scale-105">
-                                Apply Now
-                            </button>
-                        </div>
-                    </div>
-                    
-                    <!-- Job Card 4: Full Stack Developer (MEAN) -->
-                    <div class="job-card p-8 rounded-3xl
-                                dark:bg-white/5 dark:backdrop-blur-lg dark:border dark:border-white/10 dark:shadow-xl
-                                bg-white border border-gray-200 shadow-lg
-                                transition-all duration-300 ease-out 
-                                hover:-translate-y-2 dark:hover:shadow-purple-500/10 hover:shadow-2xl
-                                observe-me zoom-in" style="transition-delay: 300ms;"
-                         data-title="Full Stack Developer (MEAN)" data-department="fullstack">
-                        <div>
-                            <!-- REMOVED: Icon -->
-                            <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-2">Full Stack Developer (MEAN)</h3>
-                            <span class="inline-block bg-green-100 dark:bg-green-500/20 text-green-800 dark:text-green-300 text-sm font-medium px-3 py-1 rounded-full mb-4">In-Person</span>
-                            <p class="text-gray-600 dark:text-gray-300 mb-6">
-                                Expert in the MEAN stack? We need a developer to manage and build complex applications using MongoDB, Express, Angular, and Node.js.
-                            </p>
-                            <ul class="list-disc list-inside text-gray-600 dark:text-gray-400 space-y-1 mb-6">
-                                <li>1-2 years of MEAN experience</li>
-                                <li>Proficient in TypeScript</li>
-                                <li>Experience with RxJS</li>
-                            </ul>
-                        </div>
-                        <div class="flex gap-3 mt-6">
-                            <button 
-                                data-modal-target="jd-modal" 
-                                data-job-id="fullstack-mean"
-                                class="w-full bg-white/0 dark:bg-white/10 text-blue-600 dark:text-blue-300 border border-blue-500 dark:border-blue-400 px-6 py-3 rounded-lg font-semibold text-base shadow-sm hover:bg-blue-500/10 dark:hover:bg-white/20 transition-all duration-300">
-                                View Details
-                            </button>
-                            <button 
-                                data-modal-target="apply-modal" 
-                                data-job-title="Full Stack Developer (MEAN)"
-                                class="w-full bg-blue-600 text-white px-6 py-3 rounded-lg font-semibold text-base shadow-lg hover:bg-blue-700 transition-all duration-300 transform hover:scale-105">
-                                Apply Now
-                            </button>
-                        </div>
-                    </div>
-
-                    <!-- Job Card 5: Cloud Engineer (AWS) -->
-                    <div class="job-card p-8 rounded-3xl
-                                dark:bg-white/5 dark:backdrop-blur-lg dark:border dark:border-white/10 dark:shadow-xl
-                                bg-white border border-gray-200 shadow-lg
-                                transition-all duration-300 ease-out 
-                                hover:-translate-y-2 dark:hover:shadow-purple-500/10 hover:shadow-2xl
-                                observe-me zoom-in" style="transition-delay: 400ms;"
                          data-title="Cloud Engineer (AWS)" data-department="cloud">
                         <div>
-                            <!-- REMOVED: Icon -->
                             <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-2">Cloud Engineer (AWS)</h3>
                             <span class="inline-block bg-green-100 dark:bg-green-500/20 text-green-800 dark:text-green-300 text-sm font-medium px-3 py-1 rounded-full mb-4">In-Person</span>
                             <p class="text-gray-600 dark:text-gray-300 mb-6">
-                                Seeking an experienced AWS Cloud Engineer to manage our cloud infrastructure, focusing on deployment, automation, and monitoring.
+                                Seeking an experienced AWS Cloud Engineer to manage our cloud infrastructure, focusing on deployment, automation, monitoring, and ensuring security and scalability.
                             </p>
-                            <ul class="list-disc list-inside text-gray-600 dark:text-gray-400 space-y-1 mb-6">
-                                <li>0-2 years of AWS experience</li>
-                                <li>Knowledge of CI/CD pipelines</li>
-                                <li>Terraform or CloudFormation</li>
+                            <ul class="list-disc list-inside text-gray-600 dark:text-gray-300 space-y-1 mb-6">
+                                <li>0-2 years of experience with AWS services</li>
+                                <li>Strong knowledge of CI/CD pipelines</li>
+                                <li>Experience with IaC (Terraform, CloudFormation)</li>
+                                <li>AWS Certification is a strong plus</li>
                             </ul>
                         </div>
                         <div class="flex gap-3 mt-6">
                             <button 
                                 data-modal-target="jd-modal" 
                                 data-job-id="cloud-aws"
-                                class="w-full bg-white/0 dark:bg-white/10 text-blue-600 dark:text-blue-300 border border-blue-500 dark:border-blue-400 px-6 py-3 rounded-lg font-semibold text-base shadow-sm hover:bg-blue-500/10 dark:hover:bg-white/20 transition-all duration-300">
+                                class="w-full bg-transparent dark:bg-white/10 dark:hover:bg-white/20 text-blue-600 dark:text-blue-300 border border-blue-600 dark:border-blue-400 px-6 py-3 rounded-lg font-semibold text-lg shadow-sm hover:bg-blue-50 transition-all duration-300">
                                 View Details
                             </button>
                             <button 
                                 data-modal-target="apply-modal" 
                                 data-job-title="Cloud Engineer (AWS)"
-                                class="w-full bg-blue-600 text-white px-6 py-3 rounded-lg font-semibold text-base shadow-lg hover:bg-blue-700 transition-all duration-300 transform hover:scale-105">
+                                class="w-full bg-blue-600 text-white px-6 py-3 rounded-lg font-semibold text-lg shadow-lg hover:bg-blue-700 transition-all duration-300 transform hover:scale-105">
                                 Apply Now
                             </button>
                         </div>
                     </div>
                     
-                    <!-- NEW: No Jobs Found Message (hidden by default) -->
-                    <div id="no-jobs-message" class="hidden col-span-1 md:col-span-2 lg:col-span-3 text-center py-12">
-                        <h3 class="text-2xl font-semibold text-gray-900 dark:text-white mb-3">No Roles Match Your Search</h3>
-                        <p class="text-lg text-gray-600 dark:text-gray-400">Try adjusting your search terms or filter.</p>
+                    <!-- Job Card 4: Machine Learning Engineer -->
+                    <div class="job-card p-8 rounded-3xl
+                                dark:bg-white/5 dark:backdrop-blur-lg dark:border dark:border-white/10 dark:shadow-xl
+                                bg-white border border-gray-200 shadow-lg
+                                transition-all duration-300 ease-out 
+                                hover:-translate-y-2 dark:hover:shadow-purple-500/10 hover:shadow-2xl
+                                observe-me zoom-in" style="transition-delay: 300ms;"
+                         data-title="Machine Learning Engineer" data-department="ai">
+                        <div>
+                            <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-2">Machine Learning Engineer</h3>
+                            <span class="inline-block bg-purple-100 dark:bg-purple-500/20 text-purple-800 dark:text-purple-300 text-sm font-medium px-3 py-1 rounded-full mb-4">Remote / Hybrid</span>
+                            <p class="text-gray-600 dark:text-gray-300 mb-6">
+                                Build and optimize intelligent systems for our AI-driven recruitment and testing products, including resume scoring, automated screening, and analytics.
+                            </p>
+                            <ul class="list-disc list-inside text-gray-600 dark:text-gray-300 space-y-1 mb-6">
+                                <li>Strong Python (NumPy, Pandas, Scikit-learn)</li>
+                                <li>Experience with TensorFlow/PyTorch</li>
+                                <li>Familiarity with REST API integration</li>
+                                <li>B.S. or M.S. in Computer Science or AI</li>
+                            </ul>
+                        </div>
+                        <div class="flex gap-3 mt-6">
+                            <button 
+                                data-modal-target="jd-modal" 
+                                data-job-id="ml-engineer"
+                                class="w-full bg-transparent dark:bg-white/10 dark:hover:bg-white/20 text-blue-600 dark:text-blue-300 border border-blue-600 dark:border-blue-400 px-6 py-3 rounded-lg font-semibold text-lg shadow-sm hover:bg-blue-50 transition-all duration-300">
+                                View Details
+                            </button>
+                            <button 
+                                data-modal-target="apply-modal" 
+                                data-job-title="Machine Learning Engineer"
+                                class="w-full bg-blue-600 text-white px-6 py-3 rounded-lg font-semibold text-lg shadow-lg hover:bg-blue-700 transition-all duration-300 transform hover:scale-105">
+                                Apply Now
+                            </button>
+                        </div>
                     </div>
 
+                    <!-- Job Card 5: Computer Vision Engineer -->
+                    <div class="job-card p-8 rounded-3xl
+                                dark:bg-white/5 dark:backdrop-blur-lg dark:border dark:border-white/10 dark:shadow-xl
+                                bg-white border border-gray-200 shadow-lg
+                                transition-all duration-300 ease-out 
+                                hover:-translate-y-2 dark:hover:shadow-purple-500/10 hover:shadow-2xl
+                                observe-me zoom-in" style="transition-delay: 400ms;"
+                         data-title="Computer Vision Engineer" data-department="ai">
+                        <div>
+                            <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-2">Computer Vision Engineer</h3>
+                            <span class="inline-block bg-purple-100 dark:bg-purple-500/20 text-purple-800 dark:text-purple-300 text-sm font-medium px-3 py-1 rounded-full mb-4">Remote / Hybrid</span>
+                            <p class="text-gray-600 dark:text-gray-300 mb-6">
+                                Join our AI security team to advance Testify – Secure Test. You will design and deploy computer vision systems for real-time proctoring and anomaly detection.
+                            </p>
+                            <ul class="list-disc list-inside text-gray-600 dark:text-gray-300 space-y-1 mb-6">
+                                <li>Expertise in OpenCV, Deep Learning (CNNs)</li>
+                                <li>Experience with MediaPipe, YOLO, or face recognition</li>
+                                <li>Real-time video stream processing</li>
+                                <li>Experience with AI proctoring systems is a plus</li>
+                            </ul>
+                        </div>
+                        <div class="flex gap-3 mt-6">
+                            <button 
+                                data-modal-target="jd-modal" 
+                                data-job-id="cv-engineer"
+                                class="w-full bg-transparent dark:bg-white/10 dark:hover:bg-white/20 text-blue-600 dark:text-blue-300 border border-blue-600 dark:border-blue-400 px-6 py-3 rounded-lg font-semibold text-lg shadow-sm hover:bg-blue-50 transition-all duration-300">
+                                View Details
+                            </button>
+                            <button 
+                                data-modal-target="apply-modal" 
+                                data-job-title="Computer Vision Engineer"
+                                class="w-full bg-blue-600 text-white px-6 py-3 rounded-lg font-semibold text-lg shadow-lg hover:bg-blue-700 transition-all duration-300 transform hover:scale-105">
+                                Apply Now
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <!-- Job Card 6: NLP Engineer -->
+                    <div class="job-card p-8 rounded-3xl
+                                dark:bg-white/5 dark:backdrop-blur-lg dark:border dark:border-white/10 dark:shadow-xl
+                                bg-white border border-gray-200 shadow-lg
+                                transition-all duration-300 ease-out 
+                                hover:-translate-y-2 dark:hover:shadow-purple-500/10 hover:shadow-2xl
+                                observe-me zoom-in" style="transition-delay: 500ms;"
+                         data-title="NLP Engineer (Conversational AI & Text Evaluation)" data-department="ai">
+                        <div>
+                            <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-2">NLP Engineer</h3>
+                            <span class="inline-block bg-purple-100 dark:bg-purple-500/20 text-purple-800 dark:text-purple-300 text-sm font-medium px-3 py-1 rounded-full mb-4">Remote / Hybrid</span>
+                            <p class="text-gray-600 dark:text-gray-300 mb-6">
+                                Design conversational systems and automated text evaluation models for our Testify – LAC and Mock Interview platforms, creating AI-driven chatbots and intelligent scoring systems.
+                            </p>
+                            <ul class="list-disc list-inside text-gray-600 dark:text-gray-300 space-y-1 mb-6">
+                                <li>Proficiency in Python, spaCy, Transformers</li>
+                                <li>Experience with OpenAI APIs, LangChain, or RAG</li>
+                                <li>Strong grasp of text preprocessing</li>
+                                <li>Experience in chatbots or learning assessment</li>
+                            </ul>
+                        </div>
+                        <div class="flex gap-3 mt-6">
+                            <button 
+                                data-modal-target="jd-modal" 
+                                data-job-id="nlp-engineer"
+                                class="w-full bg-transparent dark:bg-white/10 dark:hover:bg-white/20 text-blue-600 dark:text-blue-300 border border-blue-600 dark:border-blue-400 px-6 py-3 rounded-lg font-semibold text-lg shadow-sm hover:bg-blue-50 transition-all duration-300">
+                                View Details
+                            </button>
+                            <button 
+                                data-modal-target="apply-modal" 
+                                data-job-title="NLP Engineer (Conversational AI & Text Evaluation)"
+                                class="w-full bg-blue-600 text-white px-6 py-3 rounded-lg font-semibold text-lg shadow-lg hover:bg-blue-700 transition-all duration-300 transform hover:scale-105">
+                                Apply Now
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <!-- Job Card 7: Product Manager -->
+                    <div class="job-card p-8 rounded-3xl
+                                dark:bg-white/5 dark:backdrop-blur-lg dark:border dark:border-white/10 dark:shadow-xl
+                                bg-white border border-gray-200 shadow-lg
+                                transition-all duration-300 ease-out 
+                                hover:-translate-y-2 dark:hover:shadow-purple-500/10 hover:shadow-2xl
+                                observe-me zoom-in" style="transition-delay: 600ms;"
+                         data-title="Product Manager (SaaS / EdTech / Recruitment Tech)" data-department="product">
+                        <div>
+                            <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-2">Product Manager</h3>
+                            <span class="inline-block bg-sky-100 dark:bg-sky-500/20 text-sky-800 dark:text-sky-300 text-sm font-medium px-3 py-1 rounded-full mb-4">Hybrid / On-site</span>
+                            <p class="text-gray-600 dark:text-gray-300 mb-6">
+                                Define the roadmap for our integrated platforms. You will work cross-functionally to prioritize features, improve UX, and align business goals with technology outcomes.
+                            </p>
+                            <ul class="list-disc list-inside text-gray-600 dark:text-gray-300 space-y-1 mb-6">
+                                <li>Experience with Agile / Scrum methodologies</li>
+                                <li>Familiarity with product analytics tools</li>
+                                <li>Excellent communication skills</li>
+                                <li>Prior experience in SaaS, EdTech, or HRTech</li>
+                            </ul>
+                        </div>
+                        <div class="flex gap-3 mt-6">
+                            <button 
+                                data-modal-target="jd-modal" 
+                                data-job-id="product-manager"
+                                class="w-full bg-transparent dark:bg-white/10 dark:hover:bg-white/20 text-blue-600 dark:text-blue-300 border border-blue-600 dark:border-blue-400 px-6 py-3 rounded-lg font-semibold text-lg shadow-sm hover:bg-blue-50 transition-all duration-300">
+                                View Details
+                            </button>
+                            <button 
+                                data-modal-target="apply-modal" 
+                                data-job-title="Product Manager (SaaS / EdTech / Recruitment Tech)"
+                                class="w-full bg-blue-600 text-white px-6 py-3 rounded-lg font-semibold text-lg shadow-lg hover:bg-blue-700 transition-all duration-300 transform hover:scale-105">
+                                Apply Now
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <!-- Job Card 8: QA Automation Engineer -->
+                    <div class="job-card p-8 rounded-3xl
+                                dark:bg-white/5 dark:backdrop-blur-lg dark:border dark:border-white/10 dark:shadow-xl
+                                bg-white border border-gray-200 shadow-lg
+                                transition-all duration-300 ease-out 
+                                hover:-translate-y-2 dark:hover:shadow-purple-500/10 hover:shadow-2xl
+                                observe-me zoom-in" style="transition-delay: 700ms;"
+                         data-title="QA Automation Engineer" data-department="qa">
+                        <div>
+                            <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-2">QA Automation Engineer</h3>
+                            <span class="inline-block bg-purple-100 dark:bg-purple-500/20 text-purple-800 dark:text-purple-300 text-sm font-medium px-3 py-1 rounded-full mb-4">Remote / Hybrid</span>
+                            <p class="text-gray-600 dark:text-gray-300 mb-6">
+                                Ensure top-notch quality, security, and performance across all Xeta Solutions platforms, including web portals, desktop clients, and AI-driven assessment modules.
+                            </p>
+                            <ul class="list-disc list-inside text-gray-600 dark:text-gray-300 space-y-1 mb-6">
+                                <li>Experience with Selenium, Cypress, or Playwright</li>
+                                <li>API testing knowledge (Postman, RestAssured)</li>
+                                <li>Experience in Jenkins, Git, or similar CI tools</li>
+                                <li>Strong understanding of testing methodologies</li>
+                            </ul>
+                        </div>
+                        <div class="flex gap-3 mt-6">
+                            <button 
+                                data-modal-target="jd-modal" 
+                                data-job-id="qa-engineer"
+                                class="w-full bg-transparent dark:bg-white/10 dark:hover:bg-white/20 text-blue-600 dark:text-blue-300 border border-blue-600 dark:border-blue-400 px-6 py-3 rounded-lg font-semibold text-lg shadow-sm hover:bg-blue-50 transition-all duration-300">
+                                View Details
+                            </button>
+                            <button 
+                                data-modal-target="apply-modal" 
+                                data-job-title="QA Automation Engineer"
+                                class="w-full bg-blue-600 text-white px-6 py-3 rounded-lg font-semibold text-lg shadow-lg hover:bg-blue-700 transition-all duration-300 transform hover:scale-105">
+                                Apply Now
+                            </button>
+                        </div>
+                    </div>
+
+                </div>
+                
+                <!-- NEW: No Jobs Found Message -->
+                <div id="no-jobs-message" class="hidden text-center py-16 observe-me fade-in">
+                    <svg class="w-16 h-16 mx-auto text-gray-400 dark:text-gray-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18.364 18.364A9 9 0 005.636 5.636m12.728 12.728A9 9 0 015.636 5.636m12.728 12.728L5.636 5.636" />
+                    </svg>
+                    <h3 class="text-2xl font-bold text-gray-900 dark:text-white mt-4">No Jobs Found</h3>
+                    <p class="text-lg text-gray-600 dark:text-gray-400 mt-2">
+                        Your search and filter criteria did not match any open positions. Try broadening your search.
+                    </p>
                 </div>
             </div>
         </section>
         
-        <!-- "HireWithUS" Link (Styled for dark/light modes) -->
-        <p class="font-sans text-sm dark:text-gray-400 text-gray-600 text-center -mt-8 mb-12">
-          Hiring & Recruitment was managed by 
-          <a href="https://www.testify-lac.com/HireWithUS.html" 
-             target="_blank" 
-             class="text-blue-600 dark:text-blue-400 font-semibold inline-flex items-center gap-2 hover:underline">
-            HireWithUS
-            <img 
-              src="https://res.cloudinary.com/dpz44zf0z/image/upload/v1760086493/HireWithUS_wtn0pc.png" 
-              alt="HireWithUS Logo" 
-              class="w-14 h-auto">
-          </a>
-        </p>
-       
         <!-- END Careers Section -->
     </main>
     
-    <!-- Footer (Original footer is already dark-themed, fits well) -->
-    <footer class="bg-gray-900 text-gray-400 py-16">
+    <!-- Footer -->
+    <footer class="bg-gray-100 dark:bg-gray-900/50 text-gray-600 dark:text-gray-400 py-16 relative z-10 border-t border-gray-200 dark:border-white/10">
         <div class="container mx-auto px-6">
             <div class="grid grid-cols-1 md:grid-cols-4 gap-12">
                 <!-- Column 1: Logo & Social --><div>
                     <a href="index.html" class="flex items-center">
                         <img src="https://res.cloudinary.com/dpz44zf0z/image/upload/v1760704788/XETA_SOLUTIONS_LOGO_bcsbwh.png" alt="Xeta Solutions Logo" class="h-8 md:h-10">
                     </a>
-                    <p class="mt-4 text-gray-500">
+                    <p class="mt-4 text-gray-500 dark:text-gray-400">
                         Innovating Talent & Technology.
                     </p>
                     <div class="flex space-x-4 mt-6">
                         <a href="https://www.linkedin.com/company/109604953/
-" class="text-gray-400 hover:text-white transition-colors" aria-label="LinkedIn">
+" class="text-gray-400 hover:text-blue-600 dark:hover:text-white transition-colors" aria-label="LinkedIn">
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"></path></svg>
                         </a>
           
@@ -601,34 +706,34 @@
                 </div>
 
                 <!-- Column 2: Products --><div>
-                    <h4 class="text-lg font-semibold text-white mb-4">Products</h4>
+                    <h4 class="text-lg font-semibold text-gray-800 dark:text-white mb-4">Products</h4>
                     <ul class="space-y-3">
-                        <li><a href="www.testify-lac.com/HireWithUS.html" class="hover:text-white transition-colors">HireWithUS</a></li>
-                        <li><a href="testify-lac.com" class="hover:text-white transition-colors">Testify – Secure Test</a></li>
-                        <li><a href="testify-lac.com" class="hover:text-white transition-colors">Testify – LAC</a></li>
-                        <li><a href="www.testify-lac.com/student/quiz-join.html" class="hover:text-white transition-colors">QuizCom</a></li>
-                        <li><a href="index.html#mock-interviews" class="hover:text-white transition-colors">Mock Interviews</a></li>
+                        <li><a href="www.testify-lac.com/HireWithUS.html" class="hover:text-blue-600 dark:hover:text-white transition-colors">HireWithUS</a></li>
+                        <li><a href="testify-lac.com" class="hover:text-blue-600 dark:hover:text-white transition-colors">Testify – Secure Test</a></li>
+                        <li><a href="testify-lac.com" class="hover:text-blue-600 dark:hover:text-white transition-colors">Testify – LAC</a></li>
+                        <li><a href="www.testify-lac.com/student/quiz-join.html" class="hover:text-blue-600 dark:hover:text-white transition-colors">QuizCom</a></li>
+                        <li><a href="index.html#mock-interviews" class="hover:text-blue-600 dark:hover:text-white transition-colors">Mock Interviews</a></li>
                     </ul>
                 </div>
 
                 <!-- Column 3: Company --><div>
-                    <h4 class="text-lg font-semibold text-white mb-4">Company</h4>
+                    <h4 class="text-lg font-semibold text-gray-800 dark:text-white mb-4">Company</h4>
                     <ul class="space-y-3">
-                        <li><a href="index.html#about" class="hover:text-white transition-colors">About Us</a></li>
-                        <li><a href="#" class="hover:text-white transition-colors">Careers</a></li> <!-- Active Link -->
-                        <li><a href="#partner-with-us-modal" data-modal-target="partner-with-us-modal" class="hover:text-white transition-colors cursor-pointer">Partners</a></li>
-                        <li><a href="mailto:support@xetasolutions.10" class="hover:text-white transition-colors">Contact</a></li>
+                        <li><a href="index.html#about" class="hover:text-blue-600 dark:hover:text-white transition-colors">About Us</a></li>
+                        <li><a href="#" class="text-blue-600 dark:text-blue-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors">Careers</a></li> <!-- Active Link -->
+                        <li><a href="#partner-with-us-modal" data-modal-target="partner-with-us-modal" class="hover:text-blue-600 dark:hover:text-white transition-colors cursor-pointer">Partners</a></li>
+                        <li><a href="mailto:support@xetasolutions.10" class="hover:text-blue-600 dark:hover:text-white transition-colors">Contact</a></li>
                     </ul>
                 </div>
 
                 <!-- Column 4: Contact --><div>
-                    <h4 class="text-lg font-semibold text-white mb-4">Get in Touch</h4>
+                    <h4 class="text-lg font-semibold text-gray-800 dark:text-white mb-4">Get in Touch</h4>
                     <ul class="space-y-3">
-                        <li><a href="mailto:support@xetasolutions.in" class="hover:text-white transition-colors">support@xetasolutions.in</a></li>
-                        <li><a href="mailto:sales@xetasolutions.in" class="hover:text-white transition-colors">sales@xetasolutions.in</a></li>
-                        <li><a href="tel:+919010408899" class="hover:text-white transition-colors">+91 9010408899</a></li>
+                        <li><a href="mailto:support@xetasolutions.in" class="hover:text-blue-600 dark:hover:text-white transition-colors">support@xetasolutions.in</a></li>
+                        <li><a href="mailto:sales@xetasolutions.in" class="hover:text-blue-600 dark:hover:text-white transition-colors">sales@xetasolutions.in</a></li>
+                        <li><a href="tel:+919010408899" class="hover:text-blue-600 dark:hover:text-white transition-colors">+91 9010408899</a></li>
                         <li>
-                            <button data-modal-target="request-demo-modal" class="text-blue-400 hover:text-white font-semibold transition-colors">
+                            <button data-modal-target="request-demo-modal" class="text-blue-500 dark:text-blue-400 hover:text-blue-600 dark:hover:text-white font-semibold transition-colors">
                                 Request a Demo
                             </button>
                         </li>
@@ -637,16 +742,90 @@
             </div>
 
             <!-- Copyright -->
-            <div class="border-t border-gray-800 mt-12 pt-8 text-center">
-                <p class="text-gray-500">&copy; <span id="current-year"></span> Xeta Solutions. All rights reserved.</p>
+            <div class="border-t border-gray-300 dark:border-gray-700/50 mt-12 pt-8 text-center">
+                <p class="text-gray-500 dark:text-gray-500">&copy; <span id="current-year"></span> Xeta Solutions. All rights reserved.</p>
+                <p class="text-sm text-gray-500 dark:text-gray-500 mt-2">
+                    Hiring & Recruitment was managed by 
+                    <a href="https://www.testify-lac.com/HireWithUS.html" 
+                       target="_blank" 
+                       class="font-medium text-blue-600 dark:text-blue-400 hover:underline">
+                        HireWithUS
+                    </a>
+                </p>
             </div>
         </div>
     </footer>
+    
+    <!-- NEW: AI Chatbot Toggle Button -->
+    <div id="ai-chatbot-bubble" class="fixed bottom-8 right-8 z-[900] 
+                        w-16 h-16 rounded-full 
+                        bg-gradient-to-br from-blue-600 to-purple-600 
+                        dark:from-blue-500 dark:to-purple-500 
+                        text-white 
+                        flex items-center justify-center 
+                        cursor-pointer 
+                        transition-all duration-300 transform 
+                        hover:scale-110 hover:shadow-2xl">
+        <button id="ai-chatbot-toggle-btn" class="w-full h-full flex items-center justify-center">
+            <!-- Open Icon (Chat) -->
+            <svg id="ai-chat-icon-open" class="w-8 h-8" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
+            </svg>
+            <!-- Close Icon (X) -->
+            <svg id="ai-chat-icon-close" class="w-8 h-8 hidden" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+            </svg>
+        </button>
+    </div>
+
+    <!-- NEW: AI Chatbot Window -->
+    <div id="ai-chatbot-window" class="fixed bottom-28 right-8 z-[890]
+                       w-[90vw] max-w-md h-[60vh] max-h-[500px]
+                       bg-white/70 dark:bg-black/70 
+                       backdrop-blur-lg
+                       border border-gray-300 dark:border-white/20
+                       rounded-2xl shadow-2xl
+                       flex flex-col
+                       transition-all duration-300 ease-in-out
+                       transform scale-95 opacity-0 hidden
+                       origin-bottom-right">
+        <!-- Chat Header -->
+        <div class="flex-shrink-0 flex items-center justify-between p-4 border-b dark:border-white/20 border-gray-200">
+            <div class="flex items-center space-x-2">
+                <span class="w-3 h-3 bg-green-500 rounded-full"></span>
+                <h3 class="font-bold text-lg text-gray-900 dark:text-white">Ask Xeta AI</h3>
+            </div>
+            <button id="ai-chatbot-close-btn" class="text-gray-500 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white">
+                <svg class="w-5 h-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" /></svg>
+            </button>
+        </div>
+        <!-- Chat Body -->
+        <div id="ai-chat-body" class="flex-grow p-4 space-y-4 overflow-y-auto">
+            <!-- Chat messages will be dynamically injected here -->
+        </div>
+        <!-- Input -->
+        <div class="flex-shrink-0 p-4 border-t dark:border-white/20 border-gray-200">
+            <div class="relative">
+                <input type="text" id="ai-chat-input" placeholder="Type your message..."
+                       class="w-full px-4 py-3 pr-12 rounded-lg 
+                              bg-white dark:bg-slate-700 
+                              text-gray-900 dark:text-white
+                              placeholder-gray-500 dark:placeholder-gray-300
+                              border border-gray-300 dark:border-gray-600
+                              focus:outline-none focus:ring-2 focus:ring-blue-500
+                              disabled:opacity-50">
+                <button id="ai-chat-send-btn" class="absolute right-2 top-1/2 -translate-y-1/2 p-2 rounded-full text-white bg-blue-600 hover:bg-blue-700 disabled:opacity-50">
+                    <svg class="w-5 h-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 10l7-7m0 0l7 7m-7-7v18" /></svg>
+                </button>
+            </div>
+        </div>
+    </div>
+
 
     <!-- Modals -->
-    <!-- NEW: Modals restyled with dark mode classes -->
+    <!-- All modals are included to ensure header/footer/page buttons function correctly -->
     
-    <!-- Modal 1: Request Demo -->
+    <!-- Modal 1: Request Demo (for Header) -->
     <div id="request-demo-modal" class="modal">
         <div class="modal-content">
             <span class="close-button" data-modal-close="request-demo-modal">&times;</span>
@@ -656,23 +835,23 @@
                 <input type="hidden" name="_subject" value="New Demo Request from Xeta Website">
                 <div>
                     <label for="demo_name" class="block text-sm font-medium text-gray-700 dark:text-gray-300">Full Name</label>
-                    <input type="text" id="demo_name" name="name" required class="mt-1 block w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 bg-white/50 dark:bg-gray-800/50 text-gray-900 dark:text-white">
+                    <input type="text" id="demo_name" name="name" required class="mt-1 block w-full px-4 py-3 border rounded-lg shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 bg-white/50 dark:bg-gray-700/50 border-gray-300 dark:border-gray-600 text-gray-900 dark:text-white">
                 </div>
                 <div>
                     <label for="demo_email" class="block text-sm font-medium text-gray-700 dark:text-gray-300">Work Email</label>
-                    <input type="email" id="demo_email" name="email" required class="mt-1 block w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 bg-white/50 dark:bg-gray-800/50 text-gray-900 dark:text-white">
+                    <input type="email" id="demo_email" name="email" required class="mt-1 block w-full px-4 py-3 border rounded-lg shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 bg-white/50 dark:bg-gray-700/50 border-gray-300 dark:border-gray-600 text-gray-900 dark:text-white">
                 </div>
                 <div>
                     <label for="demo_company" class="block text-sm font-medium text-gray-700 dark:text-gray-300">Company Name</label>
-                    <input type="text" id="demo_company" name="company" required class="mt-1 block w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 bg-white/50 dark:bg-gray-800/50 text-gray-900 dark:text-white">
+                    <input type="text" id="demo_company" name="company" required class="mt-1 block w-full px-4 py-3 border rounded-lg shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 bg-white/50 dark:bg-gray-700/50 border-gray-300 dark:border-gray-600 text-gray-900 dark:text-white">
                 </div>
                 <div>
                     <label for="demo_phone" class="block text-sm font-medium text-gray-700 dark:text-gray-300">Phone Number (Optional)</label>
-                    <input type="tel" id="demo_phone" name="phone" class="mt-1 block w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 bg-white/50 dark:bg-gray-800/50 text-gray-900 dark:text-white">
+                    <input type="tel" id="demo_phone" name="phone" class="mt-1 block w-full px-4 py-3 border rounded-lg shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 bg-white/50 dark:bg-gray-700/50 border-gray-300 dark:border-gray-600 text-gray-900 dark:text-white">
                 </div>
                 <div>
                     <label for="demo_message" class="block text-sm font-medium text-gray-700 dark:text-gray-300">Message (Optional)</label>
-                    <textarea id="demo_message" name="message" rows="4" class="mt-1 block w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 bg-white/50 dark:bg-gray-800/50 text-gray-900 dark:text-white"></textarea>
+                    <textarea id="demo_message" name="message" rows="4" class="mt-1 block w-full px-4 py-3 border rounded-lg shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 bg-white/50 dark:bg-gray-700/50 border-gray-300 dark:border-gray-600 text-gray-900 dark:text-white"></textarea>
                 </div>
                 <button type="submit" class="w-full bg-blue-600 text-white px-6 py-3 rounded-lg font-semibold text-lg shadow-lg hover:bg-blue-700 transition-all duration-300 transform hover:scale-105">
                     Submit Request
@@ -681,27 +860,87 @@
         </div>
     </div>
 
-    <!-- Modal 2: Get Started (Unused but kept) -->
+    <!-- Modal 2: Get Started (for Footer - though not used in footer, good to keep) -->
     <div id="get-started-modal" class="modal">
         <div class="modal-content">
             <span class="close-button" data-modal-close="get-started-modal">&times;</span>
             <h2 class="text-2xl md:text-3xl font-bold text-gray-900 dark:text-white mb-4 gradient-text">Get Started with Xeta</h2>
             <p class="text-gray-700 dark:text-gray-300 mb-6">Fill out the form below and we'll get back to you.</p>
-            <!-- Form fields would need dark mode styling like Modal 1 -->
+            <form action="https://formspree.io/f/xyzbelvz" method="POST" class="space-y-4">
+                <input type="hidden" name="_subject" value="New 'Get Started' Inquiry from Xeta Website">
+                <div>
+                    <label for="start_name" class="block text-sm font-medium text-gray-700 dark:text-gray-300">Full Name</label>
+                    <input type="text" id="start_name" name="name" required class="mt-1 block w-full px-4 py-3 border rounded-lg shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 bg-white/50 dark:bg-gray-700/50 border-gray-300 dark:border-gray-600 text-gray-900 dark:text-white">
+                </div>
+                <div>
+                    <label for="start_email" class="block text-sm font-medium text-gray-700 dark:text-gray-300">Work Email</label>
+                    <input type="email" id="start_email" name="email" required class="mt-1 block w-full px-4 py-3 border rounded-lg shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 bg-white/50 dark:bg-gray-700/50 border-gray-300 dark:border-gray-600 text-gray-900 dark:text-white">
+                </div>
+                <div>
+                    <label for="start_company" class="block text-sm font-medium text-gray-700 dark:text-gray-300">Company Name</label>
+                    <input type="text" id="start_company" name="company" required class="mt-1 block w-full px-4 py-3 border rounded-lg shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 bg-white/50 dark:bg-gray-700/50 border-gray-300 dark:border-gray-600 text-gray-900 dark:text-white">
+                </div>
+                <div>
+                    <label for="start_phone" class="block text-sm font-medium text-gray-700 dark:text-gray-300">Phone Number (Optional)</label>
+                    <input type="tel" id="start_phone" name="phone" class="mt-1 block w-full px-4 py-3 border rounded-lg shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 bg-white/50 dark:bg-gray-700/50 border-gray-300 dark:border-gray-600 text-gray-900 dark:text-white">
+                </div>
+                <div>
+                    <label for="start_interest" class="block text-sm font-medium text-gray-700 dark:text-gray-300">I'm interested in...</label>
+                    <select id="start_interest" name="interest" class="mt-1 block w-full px-4 py-3 border rounded-lg shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 bg-white/50 dark:bg-gray-700/50 border-gray-300 dark:border-gray-600 text-gray-900 dark:text-white">
+                        <option class="text-black">Hiring & Recruitment</option>
+                        <option class="text-black">Secure Assessments</option>
+                        <option class="text-black">Learning & Development (LAC)</option>
+                        <option class="text-black">Mock Interviews</option>
+                        <option class="text-black">Other</option>
+                    </select>
+                </div>
+                <div>
+                    <label for="start_message" class="block text-sm font-medium text-gray-700 dark:text-gray-300">Message (Optional)</label>
+                    <textarea id="start_message" name="message" rows="4" class="mt-1 block w-full px-4 py-3 border rounded-lg shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 bg-white/50 dark:bg-gray-700/50 border-gray-300 dark:border-gray-600 text-gray-900 dark:text-white"></textarea>
+                </div>
+                <button type="submit" class="w-full bg-blue-600 text-white px-6 py-3 rounded-lg font-semibold text-lg shadow-lg hover:bg-blue-700 transition-all duration-300 transform hover:scale-105">
+                    Submit
+                </button>
+            </form>
         </div>
     </div>
 
-    <!-- Modal 3: Partner With Us -->
+    <!-- Modal 3: Partner With Us (for Footer) -->
     <div id="partner-with-us-modal" class="modal">
         <div class="modal-content">
             <span class="close-button" data-modal-close="partner-with-us-modal">&times;</span>
             <h2 class="text-2xl md:text-3xl font-bold text-gray-900 dark:text-white mb-4 gradient-text">Partner With Us</h2>
             <p class="text-gray-700 dark:text-gray-300 mb-6">Fill out the form below and we'll get back to you.</p>
-            <!-- Form fields would need dark mode styling like Modal 1 -->
+            <form action="https://formspree.io/f/xyzbelvz" method="POST" class="space-y-4">
+                <input type="hidden" name="_subject" value="New Partnership Inquiry from Xeta Website">
+                <div>
+                    <label for="partner_fullname" class="block text-sm font-medium text-gray-700 dark:text-gray-300">Full Name</label>
+                    <input type="text" id="partner_fullname" name="name" required class="mt-1 block w-full px-4 py-3 border rounded-lg shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 bg-white/50 dark:bg-gray-700/50 border-gray-300 dark:border-gray-600 text-gray-900 dark:text-white">
+                </div>
+                <div>
+                    <label for="partner_name" class="block text-sm font-medium text-gray-700 dark:text-gray-300">Organization Name</label>
+                    <input type="text" id="partner_name" name="organization" required class="mt-1 block w-full px-4 py-3 border rounded-lg shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 bg-white/50 dark:bg-gray-700/50 border-gray-300 dark:border-gray-600 text-gray-900 dark:text-white">
+                </div>
+                <div>
+                    <label for="partner_email" class="block text-sm font-medium text-gray-700 dark:text-gray-300">Work Email</label>
+                    <input type="email" id="partner_email" name="email" required class="mt-1 block w-full px-4 py-3 border rounded-lg shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 bg-white/50 dark:bg-gray-700/50 border-gray-300 dark:border-gray-600 text-gray-900 dark:text-white">
+                </div>
+                <div>
+                    <label for="partner_phone" class="block text-sm font-medium text-gray-700 dark:text-gray-300">Phone Number (Optional)</label>
+                    <input type="tel" id="partner_phone" name="phone" class="mt-1 block w-full px-4 py-3 border rounded-lg shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 bg-white/50 dark:bg-gray-700/50 border-gray-300 dark:border-gray-600 text-gray-900 dark:text-white">
+                </div>
+                <div>
+                    <label for="partner_message" class="block text-sm font-medium text-gray-700 dark:text-gray-300">How would you like to partner? (Optional)</label>
+                    <textarea id="partner_message" name="message" rows="4" class="mt-1 block w-full px-4 py-3 border rounded-lg shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 bg-white/50 dark:bg-gray-700/50 border-gray-300 dark:border-gray-600 text-gray-900 dark:text-white"></textarea>
+                </div>
+                <button type="submit" class="w-full bg-blue-600 text-white px-6 py-3 rounded-lg font-semibold text-lg shadow-lg hover:bg-blue-700 transition-all duration-300 transform hover:scale-105">
+                    Send Partnership Request
+                </button>
+            </form>
         </div>
     </div>
     
-    <!-- Modal 4: Job Description -->
+    <!-- NEW Modal 4: Job Description -->
     <div id="jd-modal" class="modal">
         <div class="modal-content">
             <span class="close-button" data-modal-close="jd-modal">&times;</span>
@@ -710,6 +949,7 @@
                 <!-- Content will be injected by JavaScript -->
                 <p>Loading job details...</p>
             </div>
+            <!-- Apply button inside the JD modal -->
             <button 
                 data-modal-target="apply-modal" 
                 id="jd-apply-button"
@@ -720,96 +960,116 @@
         </div>
     </div>
 
-    <!-- Modal 5: Apply for Job -->
+    <!-- Modal 5: Apply for Job (for Careers Section) -->
     <div id="apply-modal" class="modal">
         <div class="modal-content">
             <span class="close-button" data-modal-close="apply-modal">&times;</span>
             <h2 id="apply-modal-title" class="text-2xl md:text-3xl font-bold text-gray-900 dark:text-white mb-4 gradient-text">Apply for Job</h2>
             <p class="text-gray-700 dark:text-gray-300 mb-6">Please fill out the application form below.</p>
             
+            <!-- 
+                REMOVED enctype from form
+            -->
             <form action="https://formspree.io/f/xkgpleag" method="POST" class="space-y-4">
+                <!-- This hidden input will be populated by JS -->
                 <input type="hidden" id="apply_job_title_input" name="job_title" value="">
                 <input type="hidden" name="_subject" value="New Job Application Received!">
 
                 <!-- Personal Information -->
                 <fieldset>
-                    <legend>Personal Information</legend>
+                    <legend class="text-gray-900 dark:text-white">Personal Information</legend>
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-x-6 gap-y-4 mt-4">
                         <div>
                             <label for="apply_first_name" class="block text-sm font-medium text-gray-700 dark:text-gray-300">First Name</label>
-                            <input type="text" id="apply_first_name" name="first_name" required class="mt-1 block w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 bg-white/50 dark:bg-gray-800/50 text-gray-900 dark:text-white">
+                            <input type="text" id="apply_first_name" name="first_name" required class="mt-1 block w-full px-4 py-3 border rounded-lg shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 bg-white/50 dark:bg-gray-700/50 border-gray-300 dark:border-gray-600 text-gray-900 dark:text-white">
                         </div>
                         <div>
                             <label for="apply_last_name" class="block text-sm font-medium text-gray-700 dark:text-gray-300">Last Name</label>
-                            <input type="text" id="apply_last_name" name="last_name" required class="mt-1 block w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 bg-white/50 dark:bg-gray-800/50 text-gray-900 dark:text-white">
+                            <input type="text" id="apply_last_name" name="last_name" required class="mt-1 block w-full px-4 py-3 border rounded-lg shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 bg-white/50 dark:bg-gray-700/50 border-gray-300 dark:border-gray-600 text-gray-900 dark:text-white">
                         </div>
                         <div>
                             <label for="apply_email" class="block text-sm font-medium text-gray-700 dark:text-gray-300">Email Address</label>
-                            <input type="email" id="apply_email" name="email" required class="mt-1 block w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 bg-white/50 dark:bg-gray-800/50 text-gray-900 dark:text-white">
+                            <input type="email" id="apply_email" name="email" required class="mt-1 block w-full px-4 py-3 border rounded-lg shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 bg-white/50 dark:bg-gray-700/50 border-gray-300 dark:border-gray-600 text-gray-900 dark:text-white">
                         </div>
                         <div>
                             <label for="apply_mobile" class="block text-sm font-medium text-gray-700 dark:text-gray-300">Mobile Number</label>
-                            <input type="tel" id="apply_mobile" name="mobile" required class="mt-1 block w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 bg-white/50 dark:bg-gray-800/50 text-gray-900 dark:text-white">
+                            <input type="tel" id="apply_mobile" name="mobile" required class="mt-1 block w-full px-4 py-3 border rounded-lg shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 bg-white/50 dark:bg-gray-700/50 border-gray-300 dark:border-gray-600 text-gray-900 dark:text-white">
                         </div>
                         <div>
                             <label for="apply_dob" class="block text-sm font-medium text-gray-700 dark:text-gray-300">Date of Birth</label>
-                            <input type="date" id="apply_dob" name="dob" required class="mt-1 block w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 bg-white/50 dark:bg-gray-800/50 text-gray-900 dark:text-white" style="color-scheme: dark;">
+                            <input type="date" id="apply_dob" name="dob" required class="mt-1 block w-full px-4 py-3 border rounded-lg shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 bg-white/50 dark:bg-gray-700/50 border-gray-300 dark:border-gray-600 text-gray-900 dark:text-white">
                         </div>
                         <div>
                             <label for="apply_location" class="block text-sm font-medium text-gray-700 dark:text-gray-300">Current Location</label>
-                            <input type="text" id="apply_location" name="current_location" required class="mt-1 block w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 bg-white/50 dark:bg-gray-800/50 text-gray-900 dark:text-white">
+                            <input type="text" id="apply_location" name="current_location" required class="mt-1 block w-full px-4 py-3 border rounded-lg shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 bg-white/50 dark:bg-gray-700/50 border-gray-300 dark:border-gray-600 text-gray-900 dark:text-white">
                         </div>
+                    </div>
+                    <!-- REVERTED: Link for Resume -->
+                    <div class="mt-4">
+                        <label for="apply_resume_link" class="block text-sm font-medium text-gray-700 dark:text-gray-300">Resume Link</label>
+                        <input type="url" id="apply_resume_link" name="resume_link" required class="mt-1 block w-full px-4 py-3 border rounded-lg shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 bg-white/50 dark:bg-gray-700/50 border-gray-300 dark:border-gray-600 text-gray-900 dark:text-white" placeholder="https://www.your-drive.com/resume.pdf">
+                        <p class="mt-1 text-xs text-gray-500 dark:text-gray-400">Please provide a public link (e.g., Google Drive, Dropbox) to your resume.</p>
+                    </div>
+                    
+                    <!-- REVERTED: Link for Certificates -->
+                    <div class="mt-4">
+                        <label for="apply_certificates_link" class="block text-sm font-medium text-gray-700 dark:text-gray-300">Certificates Link (Optional)</label>
+                        <input type="url" id="apply_certificates_link" name="certificates_link" class="mt-1 block w-full px-4 py-3 border rounded-lg shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 bg-white/50 dark:bg-gray-700/50 border-gray-300 dark:border-gray-600 text-gray-900 dark:text-white" placeholder="https://www.your-drive.com/certificates.pdf">
+                        <p class="mt-1 text-xs text-gray-500 dark:text-gray-400">Please merge all certificates into one file (e.g., a single PDF) and provide the link.</p>
                     </div>
                 </fieldset>
 
-                <!-- Education & Experience -->
+                <!-- RESTORED: Education & Experience -->
                 <fieldset>
-                    <legend>Education & Experience</legend>
+                    <legend class="text-gray-900 dark:text-white">Education & Experience</legend>
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-x-6 gap-y-4 mt-4">
                         <div>
                             <label for="apply_college" class="block text-sm font-medium text-gray-700 dark:text-gray-300">College</label>
-                            <input type="text" id="apply_college" name="college" required class="mt-1 block w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 bg-white/50 dark:bg-gray-800/50 text-gray-900 dark:text-white">
+                            <input type="text" id="apply_college" name="college" required class="mt-1 block w-full px-4 py-3 border rounded-lg shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 bg-white/50 dark:bg-gray-700/50 border-gray-300 dark:border-gray-600 text-gray-900 dark:text-white">
                         </div>
                         <div>
                             <label for="apply_roll_number" class="block text-sm font-medium text-gray-700 dark:text-gray-300">Roll Number</label>
-                            <input type="text" id="apply_roll_number" name="roll_number" required class="mt-1 block w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 bg-white/50 dark:bg-gray-800/50 text-gray-900 dark:text-white">
+                            <input type="text" id="apply_roll_number" name="roll_number" required class="mt-1 block w-full px-4 py-3 border rounded-lg shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 bg-white/50 dark:bg-gray-700/50 border-gray-300 dark:border-gray-600 text-gray-900 dark:text-white">
                         </div>
                     </div>
                     <div class="mt-4">
                         <label for="apply_experience" class="block text-sm font-medium text-gray-700 dark:text-gray-300">Experience (Job/Internship)</label>
-                        <textarea id="apply_experience" name="experience" rows="3" required class="mt-1 block w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 bg-white/50 dark:bg-gray-800/50 text-gray-900 dark:text-white" placeholder="e.g., 2 years as Frontend Developer at XYZ"></textarea>
+                        <textarea id="apply_experience" name="experience" rows="3" required class="mt-1 block w-full px-4 py-3 border rounded-lg shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 bg-white/50 dark:bg-gray-700/50 border-gray-300 dark:border-gray-600 text-gray-900 dark:text-white" placeholder="e.g., 2 years as Frontend Developer at XYZ"></textarea>
                     </div>
                     <div class="mt-4">
                         <label for="apply_skills" class="block text-sm font-medium text-gray-700 dark:text-gray-300">Skills</label>
-                        <textarea id="apply_skills" name="skills" rows="3" required class="mt-1 block w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 bg-white/50 dark:bg-gray-800/50 text-gray-900 dark:text-white" placeholder="e.g., React, Node.js, AWS, Python"></textarea>
+                        <textarea id="apply_skills" name="skills" rows="3" required class="mt-1 block w-full px-4 py-3 border rounded-lg shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 bg-white/50 dark:bg-gray-700/50 border-gray-300 dark:border-gray-600 text-gray-900 dark:text-white" placeholder="e.g., React, Node.js, AWS, Python"></textarea>
                     </div>
                 </fieldset>
 
-                <!-- Application Details -->
+                <!-- RESTORED: Application Details -->
                 <fieldset>
-                    <legend>Application Details</legend>
+                    <legend class="text-gray-900 dark:text-white">Application Details</legend>
                     <div class="grid grid-cols-1 md:grid-cols-3 gap-x-6 gap-y-4 mt-4">
                         <div>
                             <label for="apply_join_days" class="block text-sm font-medium text-gray-700 dark:text-gray-300">Ready to Join in (days)</label>
-                            <input type="number" id="apply_join_days" name="ready_to_join_days" required class="mt-1 block w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 bg-white/50 dark:bg-gray-800/50 text-gray-900 dark:text-white">
+                            <input type="number" id="apply_join_days" name="ready_to_join_days" required class="mt-1 block w-full px-4 py-3 border rounded-lg shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 bg-white/50 dark:bg-gray-700/50 border-gray-300 dark:border-gray-600 text-gray-900 dark:text-white">
                         </div>
                          <div>
                             <label for="apply_current_salary" class="block text-sm font-medium text-gray-700 dark:text-gray-300">Current Salary (LPA)</label>
-                            <input type="text" id="apply_current_salary" name="current_salary" required class="mt-1 block w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 bg-white/50 dark:bg-gray-800/50 text-gray-900 dark:text-white" placeholder="e.g., 5 or N/A">
+                            <input type="text" id="apply_current_salary" name="current_salary" required class="mt-1 block w-full px-4 py-3 border rounded-lg shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 bg-white/50 dark:bg-gray-700/50 border-gray-300 dark:border-gray-600 text-gray-900 dark:text-white" placeholder="e.g., 5 or N/A">
                         </div>
                          <div>
                             <label for="apply_expected_salary" class="block text-sm font-medium text-gray-700 dark:text-gray-300">Expected Salary (LPA)</label>
-                            <input type="text" id="apply_expected_salary" name="expected_salary" required class="mt-1 block w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 bg-white/50 dark:bg-gray-800/50 text-gray-900 dark:text-white" placeholder="e.g., 7">
+                            <input type="text" id="apply_expected_salary" name="expected_salary" required class="mt-1 block w-full px-4 py-3 border rounded-lg shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 bg-white/50 dark:bg-gray-700/50 border-gray-300 dark:border-gray-600 text-gray-900 dark:text-white" placeholder="e.g., 7">
                         </div>
                     </div>
+                    <!-- REVERTED: Link for Resume -->
                     <div class="mt-4">
                         <label for="apply_resume_link" class="block text-sm font-medium text-gray-700 dark:text-gray-300">Resume Link</label>
-                        <input type="url" id="apply_resume_link" name="resume_link" required class="mt-1 block w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 bg-white/50 dark:bg-gray-800/50 text-gray-900 dark:text-white" placeholder="https://www.your-drive.com/resume.pdf">
+                        <input type="url" id="apply_resume_link" name="resume_link" required class="mt-1 block w-full px-4 py-3 border rounded-lg shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 bg-white/50 dark:bg-gray-700/50 border-gray-300 dark:border-gray-600 text-gray-900 dark:text-white" placeholder="https://www.your-drive.com/resume.pdf">
+                        <p class="mt-1 text-xs text-gray-500 dark:text-gray-400">Please provide a public link (e.g., Google Drive, Dropbox) to your resume.</p>
                     </div>
                     
+                    <!-- REVERTED: Link for Certificates -->
                     <div class="mt-4">
                         <label for="apply_certificates_link" class="block text-sm font-medium text-gray-700 dark:text-gray-300">Certificates Link (Optional)</label>
-                        <input type="url" id="apply_certificates_link" name="certificates_link" class="mt-1 block w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 bg-white/50 dark:bg-gray-800/5Y0 text-gray-900 dark:text-white" placeholder="https://www.your-drive.com/certificates.pdf">
+                        <input type="url" id="apply_certificates_link" name="certificates_link" class="mt-1 block w-full px-4 py-3 border rounded-lg shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 bg-white/50 dark:bg-gray-700/50 border-gray-300 dark:border-gray-600 text-gray-900 dark:text-white" placeholder="https://www.your-drive.com/certificates.pdf">
                         <p class="mt-1 text-xs text-gray-500 dark:text-gray-400">Please merge all certificates into one file (e.g., a single PDF) and provide the link.</p>
                     </div>
                 </fieldset>
@@ -820,88 +1080,14 @@
             </form>
         </div>
     </div>
-    
-    
-    <!-- NEW: AI Chatbot Popup -->
-    <div id="ai-chatbot-container" class="fixed bottom-6 right-6 z-[900]">
-        <!-- Chat Window (hidden by default) -->
-        <div id="ai-chatbot-window" class="hidden absolute bottom-20 right-0 
-                                          w-80 sm:w-96 h-[500px] 
-                                          flex flex-col
-                                          rounded-2xl shadow-2xl overflow-hidden
-                                          dark:bg-slate-800/80 dark:backdrop-blur-xl dark:border dark:border-white/20
-                                          bg-white/90 backdrop-blur-xl border border-gray-200
-                                          transition-all duration-300 origin-bottom-right transform scale-95 opacity-0">
-            <!-- Header -->
-            <div class="flex-shrink-0 flex justify-between items-center p-4 border-b dark:border-white/20 border-gray-200">
-                <h3 class="text-lg font-semibold text-gray-900 dark:text-white">Ask Xeta AI</h3>
-                <button id="ai-chatbot-close-btn" class="text-gray-500 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white">
-                    <svg class="w-5 h-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" /></svg>
-                </button>
-            </div>
-            <!-- Chat Body -->
-            <div id="ai-chat-body" class="flex-grow p-4 space-y-4 overflow-y-auto">
-                <!-- Chat messages will be dynamically injected here -->
-            </div>
-            <!-- Input -->
-            <div class="flex-shrink-0 p-4 border-t dark:border-white/20 border-gray-200">
-                <div class="relative">
-                    <input type="text" id="ai-chat-input" placeholder="Type your message..."
-                           class="w-full px-4 py-3 pr-12 rounded-lg 
-                                  bg-white dark:bg-slate-700 
-                                  text-gray-900 dark:text-white
-                                  border border-gray-300 dark:border-gray-600
-                                  focus:outline-none focus:ring-2 focus:ring-blue-500
-                                  disabled:opacity-50">
-                    <button id="ai-chat-send-btn" class="absolute right-2 top-1/2 -translate-y-1/2 p-2 rounded-full text-white bg-blue-600 hover:bg-blue-700 disabled:opacity-50">
-                        <svg class="w-5 h-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 10l7-7m0 0l7 7m-7-7v18" /></svg>
-                    </button>
-                </div>
-            </div>
-        </div>
-        
-        <!-- Chat Toggle Button -->
-        <button id="ai-chatbot-toggle-btn" class="w-16 h-16 bg-blue-600 text-white rounded-full shadow-2xl flex items-center justify-center
-                                                transition-all duration-300 transform hover:scale-110 hover:bg-blue-700"
-                aria-label="Toggle AI Chatbot">
-            <!-- Chat Icon -->
-            <svg id="ai-chat-icon-open" class="w-8 h-8" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
-            </svg>
-            <!-- Close Icon (hidden by default) -->
-            <svg id="ai-chat-icon-close" class="w-8 h-8 hidden" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
-            </svg>
-        </button>
-    </div>
 
 
-    <!-- All JavaScript -->
+    <!-- All JavaScript from index.html -->
     <script>
         document.addEventListener('DOMContentLoaded', () => {
 
-            // --- Job Description Data (Original) ---
+            // --- Job Description Data ---
             const jobDescriptions = {
-                "frontend-react": {
-                    title: "Frontend Developer (React)",
-                    description: "Seeking a React developer to build and optimize our user-facing platforms. You'll work with modern frontend technologies, translating UI/UX designs into responsive, high-performance web applications.",
-                    responsibilities: [
-                        "Develop new user-facing features using React.js and TypeScript.",
-                        "Build reusable components and frontend libraries for future use.",
-                        "Translate designs and wireframes from Figma into high-quality code.",
-                        "Optimize applications for maximum speed and scalability.",
-                        "Collaborate with backend developers to integrate RESTful APIs.",
-                        "Perform code reviews and mentor junior developers."
-                    ],
-                    qualifications: [
-                        "0-2 years of professional experience in frontend development.",
-                        "Strong proficiency in JavaScript (ES6+), HTML5, and CSS3.",
-                        "In-depth knowledge of React.js and its core principles.",
-                        "Experience with popular React.js workflows (such as Redux or Context API).",
-                        "Familiarity with Tailwind CSS is a major plus.",
-                        "Knowledge of modern authorization mechanisms (e.g., JSON Web Token)."
-                    ]
-                },
                 "backend-nodejs": {
                     title: "Backend Developer (Node.js)",
                     description: "Join our backend team to design, build, and maintain scalable, secure, and high-performance server-side applications using Node.js, Express, and modern database technologies.",
@@ -922,43 +1108,24 @@
                         "Strong problem-solving and analytical skills."
                     ]
                 },
-                "fullstack-mern": {
-                    title: "Full Stack Developer (MERN)",
-                    description: "We're looking for a versatile MERN stack developer to work on both frontend and backend components. You'll be responsible for the entire development lifecycle, from concept to deployment.",
+                "fullstack-mern-mean": {
+                    title: "Full Stack Developer (MERN/MEAN)",
+                    description: "We're looking for a versatile MERN/MEAN stack developer to work on both frontend and backend components. You'll be responsible for the entire development lifecycle, from concept to deployment.",
                     responsibilities: [
-                        "Develop and maintain web applications using the MERN stack.",
-                        "Build responsive frontend components using React.js.",
+                        "Develop and maintain web applications using the MERN or MEAN stack.",
+                        "Build responsive frontend components using React.js or Angular.",
                         "Design and implement backend APIs using Node.js and Express.",
                         "Manage database operations with MongoDB and Mongoose.",
                         "Collaborate with the team to define and ship new features.",
                         "Write clean, maintainable, and well-documented code."
                     ],
                     qualifications: [
-                        "1-2 years of proven experience as a MERN Stack Developer.",
-                        "Strong proficiency in MongoDB, Express, React, and Node.js.",
-                        "Experience with state management libraries (e.g., Redux, Context API).",
+                        "1-2 years of proven experience as a MERN or MEAN Stack Developer.",
+                        "Strong proficiency in MongoDB, Express, Node.js.",
+                        "Strong proficiency in *either* React.js *or* Angular (TypeScript).",
+                        "Experience with state management libraries (e.g., Redux, Context API, RxJS).",
                         "Familiarity with Git and agile development methodologies.",
                         "Ability to work independently and manage project priorities."
-                    ]
-                },
-                "fullstack-mean": {
-                    title: "Full Stack Developer (MEAN)",
-                    description: "Are you an expert in the MEAN stack? We need a developer to manage and build complex applications using MongoDB, Express, Angular, and Node.js, focusing on scalability and robust architecture.",
-                    responsibilities: [
-                        "Develop scalable web applications using the MEAN stack.",
-                        "Create responsive and dynamic frontend UIs with Angular.",
-                        "Build and maintain robust backend APIs with Node.js and Express.",
-                        "Integrate with MongoDB for database persistence.",
-                        "Write and maintain high-quality code with a focus on performance.",
-                        "Participate in the entire software development lifecycle."
-                    ],
-                    qualifications: [
-                        "1-2 years of experience with the MEAN stack.",
-                        "Proficient in TypeScript for Angular development.",
-                        "Strong understanding of component-based architecture in Angular.",
-                        "Experience with RxJS and observable patterns.",
-                        "Solid knowledge of Node.js, Express, and MongoDB.",
-                        "Excellent problem-solving and communication skills."
                     ]
                 },
                 "cloud-aws": {
@@ -980,41 +1147,212 @@
                         "Scripting skills (e.g., Bash, Python) are a plus.",
                         "AWS Certification (e.g., Solutions Architect, DevOps Engineer) is a strong plus."
                     ]
+                },
+                "ml-engineer": {
+                    title: "Machine Learning Engineer",
+                    description: "At Xeta Solutions, the Machine Learning Engineer will play a key role in building and optimizing intelligent systems that power our AI-driven recruitment and testing products — including resume scoring, automated screening, and analytics for HireWithUS and Testify.",
+                    responsibilities: [
+                        "Develop and train ML models for resume scoring, candidate shortlisting, and application screening.",
+                        "Design algorithms for data validation (e.g., CGPA and ID verification).",
+                        "Build dashboards and predictive analytics for recruiters and admins.",
+                        "Collaborate with backend teams to integrate ML APIs with production systems.",
+                        "Continuously improve model performance through data-driven feedback loops."
+                    ],
+                    qualifications: [
+                        "Strong Python programming skills (NumPy, Pandas, Scikit-learn, TensorFlow/PyTorch).",
+                        "Experience in building regression/classification models and evaluation metrics.",
+                        "Familiarity with REST API integration for ML models.",
+                        "Understanding of data preprocessing, feature engineering, and model optimization."
+                    ],
+                    preferred: [
+                        "Bachelor’s or Master’s in Computer Science, AI, or related field.",
+                        "Experience with AWS SageMaker, MLflow, or DataRobot is a plus.",
+                        "Prior experience in HRTech or EdTech ML projects is highly desirable."
+                    ]
+                },
+                "cv-engineer": {
+                    title: "Computer Vision Engineer",
+                    description: "Join our AI security team to advance Testify – Secure Test, a lockdown testing application that uses real-time proctoring and anomaly detection. You will design and deploy computer vision systems that ensure fairness, security, and integrity in online examinations.",
+                    responsibilities: [
+                        "Develop face detection and behavioral anomaly models for AI proctoring.",
+                        "Implement real-time monitoring for multiple faces, mobile usage, or abnormal activities.",
+                        "Build and optimize vision pipelines for the Testify desktop client (Windows/macOS).",
+                        "Work with ML and backend teams to integrate detection outputs into test reports.",
+                        "Analyze proctoring data and improve detection precision through continuous retraining."
+                    ],
+                    qualifications: [
+                        "Expertise in OpenCV, Deep Learning (CNNs), and TensorFlow/PyTorch.",
+                        "Experience with MediaPipe, YOLO, or face recognition libraries.",
+                        "Understanding of video stream processing and real-time inference.",
+                        "Strong analytical and problem-solving abilities."
+                    ],
+                    preferred: [
+                        "Experience working on AI proctoring or security-based vision systems.",
+                        "Familiarity with edge inference optimization (ONNX / TensorRT).",
+                        "Bachelor’s or Master’s in Computer Vision, AI, or similar domain."
+                    ]
+                },
+                "nlp-engineer": {
+                    title: "NLP Engineer (Conversational AI & Text Evaluation)",
+                    description: "The NLP Engineer will design conversational systems and automated text evaluation models for our Testify – LAC and Mock Interview platforms. You’ll be creating AI-driven chatbots and intelligent scoring systems that assess communication and writing skills.",
+                    responsibilities: [
+                        "Develop NLP models for chatbots, interview simulations, and essay evaluation.",
+                        "Use LLMs to generate feedback and insights from textual answers.",
+                        "Implement question-answering models for learning and training modules.",
+                        "Integrate NLP APIs into web and learning platforms.",
+                        "Continuously fine-tune models based on user interactions and feedback."
+                    ],
+                    qualifications: [
+                        "Proficiency in Python, spaCy, Transformers (HuggingFace), and NLTK.",
+                        "Experience with OpenAI APIs, LangChain, or RAG pipelines.",
+                        "Strong grasp of text preprocessing, sentiment analysis, and semantic similarity.",
+                        "Knowledge of cloud-based NLP deployment (AWS, GCP)."
+                    ],
+                    preferred: [
+                        "Experience in chatbots, learning assessment, or HR communication evaluation.",
+                        "Familiarity with multilingual NLP models (English + Indian languages).",
+                        "Bachelor’s or Master’s in Computer Science, AI, or Computational Linguistics."
+                    ]
+                },
+                "product-manager": {
+                    title: "Product Manager (SaaS / EdTech / Recruitment Tech)",
+                    description: "As a Product Manager at Xeta Solutions, you’ll define the roadmap for our integrated platforms — HireWithUS, Testify, and Testify-LAC. You will work cross-functionally to prioritize features, improve user experience, and align business goals with technology outcomes.",
+                    responsibilities: [
+                        "Define and execute product strategy across multiple Xeta platforms.",
+                        "Conduct user research and competitor analysis to guide roadmap decisions.",
+                        "Collaborate with engineering, design, and marketing teams for feature rollouts.",
+                        "Track KPIs for product adoption, user retention, and conversion.",
+                        "Maintain documentation and coordinate sprint planning with technical teams."
+                    ],
+                    qualifications: [
+                        "Strong analytical and decision-making skills.",
+                        "Experience with Agile / Scrum methodologies.",
+                        "Familiarity with product analytics tools (Mixpanel, GA4, Hotjar).",
+                        "Excellent communication and stakeholder management skills."
+                    ],
+                    preferred: [
+                        "Bachelor’s degree in Engineering, Business, or related field.",
+                        "Prior experience in SaaS, EdTech, or HRTech product management.",
+                        "Understanding of UX/UI best practices and basic technical architecture."
+                    ]
+                },
+                "qa-engineer": {
+                    title: "QA Automation Engineer",
+                    description: "You will be responsible for ensuring top-notch quality, security, and performance across all Xeta Solutions platforms — including web portals, desktop clients, and AI-driven assessment modules.",
+                    responsibilities: [
+                        "Design and implement automated test scripts for APIs, UI, and workflows.",
+                        "Perform regression, integration, and cross-browser testing.",
+                        "Validate proctoring modules, application lockdown features, and performance benchmarks.",
+                        "Identify, document, and report bugs; ensure timely resolution through collaboration with developers.",
+                        "Maintain continuous testing pipelines integrated with CI/CD systems."
+                    ],
+                    qualifications: [
+                        "Hands-on experience with Selenium, Cypress, or Playwright.",
+                        "API testing knowledge using Postman or RestAssured.",
+                        "Experience in Jenkins, Git, or similar CI tools.",
+                        "Strong understanding of web, desktop, and mobile testing methodologies."
+                    ],
+                    preferred: [
+                        "Bachelor’s in Computer Science, IT, or related field.",
+                        "Familiarity with test management tools (JIRA, TestRail).",
+                        "Knowledge of security and performance testing tools."
+                    ]
                 }
             };
             // --- END Job Data ---
+            
+            
+            // --- NEW: Theme Toggle Logic ---
+            const themeToggleBtn = document.getElementById('theme-toggle');
+            const themeToggleMobileBtn = document.getElementById('theme-toggle-mobile');
+            const darkIcon = document.getElementById('theme-toggle-dark-icon');
+            const lightIcon = document.getElementById('theme-toggle-light-icon');
+            const darkIconMobile = document.getElementById('theme-toggle-dark-icon-mobile');
+            const lightIconMobile = document.getElementById('theme-toggle-light-icon-mobile');
+            const docElement = document.documentElement; // <html>
+            const bodyElement = document.body;
+
+            // Function to set theme
+            function setTheme(theme) {
+                if (theme === 'dark') {
+                    docElement.classList.add('dark');
+                    bodyElement.classList.add('dark');
+                    bodyElement.classList.remove('light');
+                    lightIcon.classList.remove('hidden');
+                    darkIcon.classList.add('hidden');
+                    lightIconMobile.classList.remove('hidden');
+                    darkIconMobile.classList.add('hidden');
+                    localStorage.setItem('theme', 'dark');
+                } else {
+                    docElement.classList.remove('dark');
+                    bodyElement.classList.remove('dark');
+                    bodyElement.classList.add('light');
+                    lightIcon.classList.add('hidden');
+                    darkIcon.classList.remove('hidden');
+                    lightIconMobile.classList.add('hidden');
+                    darkIconMobile.classList.remove('hidden');
+                    localStorage.setItem('theme', 'light');
+                }
+            }
+
+            // Toggle function
+            function toggleTheme() {
+                const currentTheme = localStorage.getItem('theme') || (docElement.classList.contains('dark') ? 'dark' : 'light');
+                setTheme(currentTheme === 'dark' ? 'light' : 'dark');
+            }
+
+            // Set initial theme
+            // We default to 'dark' (AI theme) if no preference is saved
+            const savedTheme = localStorage.getItem('theme');
+            if (savedTheme) {
+                setTheme(savedTheme);
+            } else {
+                setTheme('dark'); // Default to AI dark theme
+            }
+
+            themeToggleBtn.addEventListener('click', toggleTheme);
+            themeToggleMobileBtn.addEventListener('click', toggleTheme);
+            // --- END Theme Toggle Logic ---
 
 
-            // --- Navbar Scroll Effect (Original) ---
+            // --- Navbar Scroll Effect (Updated for theme) ---
             const navbar = document.getElementById('navbar');
             window.addEventListener('scroll', () => {
                 if (window.scrollY > 50) {
-                    navbar.classList.add('dark:bg-black/50', 'bg-white/95', 'shadow-lg');
+                    navbar.classList.add('bg-white/80', 'dark:bg-gray-900/80', 'backdrop-blur-md', 'shadow-lg');
+                    navbar.classList.remove('bg-transparent');
                 } else {
-                    navbar.classList.remove('dark:bg-black/50', 'bg-white/95', 'shadow-lg');
+                    navbar.classList.remove('bg-white/80', 'dark:bg-gray-900/80', 'backdrop-blur-md', 'shadow-lg');
+                    navbar.classList.add('bg-transparent');
                 }
             });
 
-            // --- Mobile Menu Toggle (Original) ---
+            // --- Mobile Menu Toggle ---
             const mobileMenuBtn = document.getElementById('mobile-menu-btn');
             const mobileMenu = document.getElementById('mobile-menu');
             mobileMenuBtn.addEventListener('click', () => {
                 mobileMenu.classList.toggle('hidden');
             });
+            // Close mobile menu when a link is clicked
             mobileMenu.querySelectorAll('a, button').forEach(item => {
                 item.addEventListener('click', () => {
+                    // Check if it's the theme toggle
+                    if(item.id === 'theme-toggle-mobile') return;
+                    
+                    // Don't close if it's the modal button
                     if (!item.hasAttribute('data-modal-target')) {
                          mobileMenu.classList.add('hidden');
                     }
                 });
             });
 
-            // --- Scroll-based Animations (Original) ---
+            // --- Scroll-based Animations ---
             const observerOptions = {
                 root: null,
                 rootMargin: '0px',
                 threshold: 0.1
             };
+
             const observerCallback = (entries, observer) => {
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
@@ -1023,15 +1361,16 @@
                     }
                 });
             };
+
             const observer = new IntersectionObserver(observerCallback, observerOptions);
             const elementsToObserve = document.querySelectorAll('.observe-me');
             elementsToObserve.forEach(el => observer.observe(el));
 
-            // --- Modal Functionality (Original, with updates for JD modal) ---
+            // --- Modal Functionality (UPDATED) ---
             const openModalButtons = document.querySelectorAll('[data-modal-target]');
             const closeModalButtons = document.querySelectorAll('[data-modal-close]');
             const modals = document.querySelectorAll('.modal');
-            const jdApplyButton = document.getElementById('jd-apply-button');
+            const jdApplyButton = document.getElementById('jd-apply-button'); // Get the "Apply" button from JD modal
 
             openModalButtons.forEach(button => {
                 button.addEventListener('click', () => {
@@ -1039,6 +1378,8 @@
                     const modal = document.getElementById(modalId);
                     
                     if (modal) {
+                        
+                        // --- Logic for Apply Modal ---
                         if (modalId === 'apply-modal') {
                             const jobTitle = button.getAttribute('data-job-title');
                             const modalTitle = modal.querySelector('#apply-modal-title');
@@ -1050,12 +1391,15 @@
                             if (jobTitleInput) {
                                 jobTitleInput.value = jobTitle;
                             }
+
+                            // If we're opening the Apply modal from the JD modal, close the JD modal
                             const jdModal = document.getElementById('jd-modal');
                             if (jdModal && jdModal.style.display === 'flex') {
                                 closeModal(jdModal);
                             }
                         }
                         
+                        // --- Logic for JD Modal ---
                         if (modalId === 'jd-modal') {
                             const jobId = button.getAttribute('data-job-id');
                             const jobData = jobDescriptions[jobId];
@@ -1064,7 +1408,7 @@
                             
                             if (jobData) {
                                 modalTitle.textContent = jobData.title;
-                                let contentHTML = `<p class="text-lg text-gray-600 dark:text-gray-300">${jobData.description}</p>`;
+                                let contentHTML = `<p class="text-gray-700 dark:text-gray-300">${jobData.description}</p>`;
                                 
                                 contentHTML += '<h4>Responsibilities:</h4>';
                                 contentHTML += '<ul>';
@@ -1073,18 +1417,30 @@
                                 });
                                 contentHTML += '</ul>';
                                 
-                                contentHTML += '<h4>Qualifications:</h4>';
+                                contentHTML += '<h4>Required Skills:</h4>';
                                 contentHTML += '<ul>';
                                 jobData.qualifications.forEach(item => {
                                     contentHTML += `<li>${item}</li>`;
                                 });
                                 contentHTML += '</ul>';
+
+                                // Add preferred qualifications if they exist
+                                if (jobData.preferred && jobData.preferred.length > 0) {
+                                    contentHTML += '<h4>Preferred Qualifications:</h4>';
+                                    contentHTML += '<ul>';
+                                    jobData.preferred.forEach(item => {
+                                        contentHTML += `<li>${item}</li>`;
+                                    });
+                                    contentHTML += '</ul>';
+                                }
                                 
                                 modalContentBody.innerHTML = contentHTML;
 
+                                // Set the job title on the "Apply" button inside the JD modal
                                 if (jdApplyButton) {
                                     jdApplyButton.setAttribute('data-job-title', jobData.title);
                                 }
+
                             } else {
                                 modalTitle.textContent = 'Error';
                                 modalContentBody.innerHTML = '<p>Job description not found. Please try again later.</p>';
@@ -1093,9 +1449,10 @@
                                 }
                             }
                         }
+                        // --- END ---
                         
                         modal.style.display = 'flex';
-                        document.body.style.overflow = 'hidden'; 
+                        document.body.style.overflow = 'hidden'; // Prevent background scrolling
                     }
                 });
             });
@@ -1103,7 +1460,7 @@
             const closeModal = (modal) => {
                 if (modal) {
                     modal.style.display = 'none';
-                    document.body.style.overflow = 'auto'; 
+                    document.body.style.overflow = 'auto'; // Restore background scrolling
                 }
             };
 
@@ -1114,6 +1471,7 @@
                 });
             });
 
+            // Close modal by clicking on the background overlay
             modals.forEach(modal => {
                 modal.addEventListener('click', (event) => {
                     if (event.target === modal) {
@@ -1122,47 +1480,57 @@
                 });
             });
 
-            // --- Footer Current Year (Original) ---
+            // --- Footer Current Year ---
             const yearSpan = document.getElementById('current-year');
             if(yearSpan) {
                 yearSpan.textContent = new Date().getFullYear();
             }
             
-            // --- Formspree submission logic (Original, with updated selectors for dark mode success/error messages) ---
+            // --- Handle Formspree submissions with a success message ---
             const allForms = document.querySelectorAll('form[action^="https://formspree.io/f/"]');
+            
             allForms.forEach(form => {
                 form.addEventListener('submit', async (e) => {
                     e.preventDefault();
-                    const data = new FormData(form);
+                    
+                    // Find the modal content and close button
                     const modalContent = form.closest('.modal-content');
                     if (!modalContent) return;
                     const closeButton = modalContent.querySelector('.close-button');
+
+                    // Create and show loading message
                     form.style.display = 'none';
-                    
                     let loadingMessage = document.createElement('div');
                     loadingMessage.className = 'text-center py-10';
                     loadingMessage.innerHTML = '<p class="text-lg text-gray-700 dark:text-gray-300">Submitting...</p>';
                     modalContent.appendChild(loadingMessage);
 
+                    // Get form data (handling file uploads)
+                    const data = new FormData(form);
+
                     try {
                         const response = await fetch(form.action, {
                             method: form.method,
                             body: data,
-                            headers: { 'Accept': 'application/json' }
+                            headers: {
+                                'Accept': 'application/json'
+                            }
+                            // Note: File upload 'Content-Type' is set automatically by browser.
                         });
                         
-                        loadingMessage.remove();
+                        loadingMessage.remove(); // Remove loading message
 
+                        // Define success/error messages
                         let successMessage = `
                             <div class="text-center">
-                                <h2 class="text-2xl font-bold text-green-600 dark:text-green-400 mb-4">Thank You!</h2>
+                                <h2 class="text-2xl font-bold text-green-600 mb-4">Thank You!</h2>
                                 <p class="text-gray-700 dark:text-gray-300">Your submission has been received. Our team will get in touch with you shortly.</p>
                             </div>
                         `;
                         
                         let errorMessage = `
                             <div class="text-center">
-                                <h2 class="text-2xl font-bold text-red-600 dark:text-red-400 mb-4">Oops!</h2>
+                                <h2 class="text-2xl font-bold text-red-600 mb-4">Oops!</h2>
                                 <p class="text-gray-700 dark:text-gray-300">Something went wrong. Please try again later.</p>
                             </div>
                         `;
@@ -1171,78 +1539,35 @@
                             modalContent.innerHTML = successMessage;
                         } else {
                             modalContent.innerHTML = errorMessage;
-                            form.style.display = 'block'; 
+                            form.style.display = 'block'; // Show form again on error
                         }
                     } catch (error) {
                          loadingMessage.remove();
                          modalContent.innerHTML = `
                             <div class="text-center">
-                                <h2 class="text-2xl font-bold text-red-600 dark:text-red-400 mb-4">Error</h2>
+                                <h2 class="text-2xl font-bold text-red-600 mb-4">Error</h2>
                                 <p class="text-gray-700 dark:text-gray-300">An error occurred. Please refresh and try again.</p>
                             </div>
                         `;
-                         form.style.display = 'block';
+                         form.style.display = 'block'; // Show form again on error
                     } finally {
+                        // Ensure the close button is still present and functional
                         if (closeButton && !modalContent.contains(closeButton)) {
                             modalContent.prepend(closeButton);
                         }
                     }
                 });
             });
-
-            // --- NEW: Dark Mode Toggle Logic ---
-            const themeToggleBtn = document.getElementById('theme-toggle-btn');
-            const themeToggleBtnMobile = document.getElementById('theme-toggle-btn-mobile');
-            const lightIcon = document.getElementById('theme-icon-light');
-            const darkIcon = document.getElementById('theme-icon-dark');
-            const lightIconMobile = document.getElementById('theme-icon-light-mobile');
-            const darkIconMobile = document.getElementById('theme-icon-dark-mobile');
-            const html = document.documentElement;
-
-            function updateThemeIcons() {
-                if (html.classList.contains('dark')) {
-                    lightIcon.classList.remove('hidden');
-                    darkIcon.classList.add('hidden');
-                    lightIconMobile.classList.remove('hidden');
-                    darkIconMobile.classList.add('hidden');
-                } else {
-                    lightIcon.classList.add('hidden');
-                    darkIcon.classList.remove('hidden');
-                    lightIconMobile.classList.add('hidden');
-                    darkIconMobile.classList.remove('hidden');
-                }
-            }
-
-            function toggleTheme() {
-                html.classList.toggle('dark');
-                if (html.classList.contains('dark')) {
-                    localStorage.theme = 'dark';
-                } else {
-                    localStorage.theme = 'light';
-                }
-                updateThemeIcons();
-            }
-
-            // Set initial theme on page load
-            // We default to 'dark' (AI theme) unless 'light' is explicitly set in localStorage
-            if (localStorage.theme === 'light') {
-                html.classList.remove('dark');
-            } else {
-                html.classList.add('dark');
-            }
-            updateThemeIcons();
-
-            themeToggleBtn.addEventListener('click', toggleTheme);
-            themeToggleBtnMobile.addEventListener('click', toggleTheme);
             
-            // --- NEW: AI Chatbot Toggle Logic ---
-            const chatToggleBtn = document.getElementById('ai-chatbot-toggle-btn');
+            
+            // --- AI Chatbot ---
             const chatWindow = document.getElementById('ai-chatbot-window');
+            const chatToggleBtn = document.getElementById('ai-chatbot-toggle-btn');
             const chatCloseBtn = document.getElementById('ai-chatbot-close-btn');
             const chatIconOpen = document.getElementById('ai-chat-icon-open');
             const chatIconClose = document.getElementById('ai-chat-icon-close');
             
-            // --- NEW: AI Chatbot Logic ---
+            // --- AI Chatbot Logic ---
             const chatBody = document.getElementById('ai-chat-body');
             const chatInput = document.getElementById('ai-chat-input');
             const chatSendBtn = document.getElementById('ai-chat-send-btn');
@@ -1251,7 +1576,7 @@
             const systemPrompt = `
                 You are "Xeta AI", a helpful assistant for the Xeta Solutions careers page. 
                 Your goal is to answer questions about the company, the job openings, and the application process. 
-                The available jobs are: Frontend Developer (React), Backend Developer (Node.js), Full Stack Developer (MERN), Full Stack Developer (MEAN), and Cloud Engineer (AWS).
+                The available jobs are: Backend Developer (Node.js), Full Stack Developer (MERN/MEAN), Cloud Engineer (AWS), Machine Learning Engineer, Computer Vision Engineer, NLP Engineer, Product Manager, and QA Automation Engineer.
                 Be friendly, professional, and concise. Encourage users to apply for roles that fit their skills.
             `;
             
@@ -1319,7 +1644,18 @@
             
             // Function to call Gemini API
             async function callGeminiAPI(userQuery, history) {
-                const apiKey = ""; // API key is handled by the environment
+                // --- IMPORTANT: API KEY REQUIRED ---
+                // 1. Get your free key from Google AI Studio (aistudio.google.com)
+                // 2. Paste it here to enable the chatbot for testing.
+                // WARNING: Do NOT deploy this to a public website with the key pasted here.
+                // For production, this call must be made from a secure backend server.
+                const apiKey = "PASTE_YOUR_GOOGLE_AI_STUDIO_API_KEY_HERE";
+                
+                if (apiKey === "PASTE_YOUR_GOOGLE_AI_STUDIO_API_KEY_HERE") {
+                    showTyping(false); // Make sure to hide typing
+                    return "I'm not fully connected yet. The developer needs to add an API key to enable my brain. (See the code for instructions).";
+                }
+                
                 const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-09-2025:generateContent?key=${apiKey}`;
                 
                 const payload = {
@@ -1356,26 +1692,39 @@
                                 return text;
                             } else {
                                 console.error("API response was OK, but no text found.", result);
-                                return "I'm sorry, I couldn't process that response. Please try again.";
+                                // This can happen if the content was blocked for safety
+                                if (result.candidates?.[0]?.finishReason === 'SAFETY') {
+                                    return "I'm sorry, I can't respond to that. Let's talk about something else.";
+                                }
+                                return "I'm sorry, I received an empty response. Please try again.";
                             }
+                        } else if (response.status === 400) {
+                            // Bad request, likely a problem with the *prompt* or model config
+                            console.error("API Error 400 (Bad Request):", await response.text());
+                            return "I'm sorry, I couldn't process that specific request. It might be due to safety settings. Please try rephrasing.";
+                        } else if (response.status === 403) {
+                             // Forbidden, almost certainly a bad/disabled API key
+                            console.error("API Error 403 (Forbidden): Check your API key. Is it valid and enabled?");
+                            return "It looks like my API key is invalid or has not been set up correctly. Please ask the site administrator to check it.";
                         } else if (response.status === 429) {
                             // Throttled, wait and retry
                             await new Promise(resolve => setTimeout(resolve, backoffTime));
                             backoffTime *= 2; // Exponential backoff
                         } else {
-                            // Other error
+                            // Other server error
                             console.error("API Error:", response.status, await response.text());
-                            return "I'm having trouble connecting right now. Please try again later.";
+                            return "I'm having trouble connecting to my brain (Server Error " + response.status + "). Please try again later.";
                         }
                     } catch (error) {
+                        // Network error, CORS error, etc.
                         console.error("Fetch Error:", error);
-                        // Network error, wait and retry
+                        // Wait and retry
                         await new Promise(resolve => setTimeout(resolve, backoffTime));
                         backoffTime *= 2;
                     }
                 }
                 
-                return "I'm experiencing high traffic right now. Please try again in a moment.";
+                return "I'm experiencing high traffic or a network issue right now. Please try again in a moment.";
             }
 
             // Function to handle sending a message
@@ -1457,7 +1806,7 @@
             chatToggleBtn.addEventListener('click', toggleChatbot);
             chatCloseBtn.addEventListener('click', toggleChatbot);
             
-            // --- NEW: Job Search & Filter Logic ---
+            // --- Job Search & Filter Logic ---
             const searchInput = document.getElementById('job-search-input');
             const filterSelect = document.getElementById('job-filter-select');
             const jobGrid = document.getElementById('job-grid');
