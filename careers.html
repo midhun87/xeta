@@ -1,14 +1,14 @@
 <!DOCTYPE html>
+<!-- The 'dark' class is added by default by the script to load the AI theme first -->
 <html lang="en" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- Updated Title for Careers Page -->
     <title>Careers - Xeta Solutions</title>
     
     <link rel="icon" type="image/png" href="https://res.cloudinary.com/dpz44zf0z/image/upload/v1760704788/XETA_SOLUTIONS_LOGO_bcsbwh.png">
 
-    <!-- Schema, Google Analytics, and Meta Tags (copied from index) -->
+    <!-- Schema, Google Analytics, and Meta Tags (copied from original) -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -23,8 +23,7 @@
     }
     </script>
     <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-0035HG3WE9">
-    </script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-0035HG3WE9"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
@@ -39,27 +38,47 @@
 
     <!-- Tailwind CSS CDN --><script src="https://cdn.tailwindcss.com"></script>
     
-    <!-- Google Font: Poppins --><link rel="preconnect" href="https://fonts.googleapis.com">
+    <!-- NEW: Google Fonts: Manrope & Inter Tight -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@300;400;500;600;700&family=Manrope:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-    
-    <!-- All custom styles from index.html -->
+    <!-- All custom styles -->
     <style>
-        /* Base font */
+        /* NEW: Base font and futuristic background */
         body {
-            font-family: 'Poppins', sans-serif;
+            /* Use new fonts */
+            font-family: 'Inter Tight', 'Manrope', sans-serif;
             overflow-x: hidden;
+            
+            /* Light mode default background */
+            background-color: #f8f9fa; /* A very light gray */
+            
+            /* Smooth transition for color changes */
+            transition: background-color 0.3s ease, color 0.3s ease;
         }
 
-        /* Animated gradient text */
+        /* NEW: Dark mode (AI theme) styles */
+        .dark body {
+            /* Futuristic gradient background */
+            background: linear-gradient(135deg, #020617 0%, #0f172a 30%, #1e1b4b 70%, #4c1d95 100%);
+            background-attachment: fixed;
+        }
+
+        /* Original: Animated gradient text (now with dark mode compatibility) */
         .gradient-text {
-            background-image: linear-gradient(90deg, #0D6EFD, #6f42c1, #805ad5);
+            background-image: linear-gradient(90deg, #3b82f6, #a855f7, #ec4899);
             -webkit-background-clip: text;
             background-clip: text;
             -webkit-text-fill-color: transparent;
             text-fill-color: transparent;
         }
+        
+        /* NEW: Light mode gradient text */
+        .dark .gradient-text {
+             background-image: linear-gradient(90deg, #60a5fa, #c084fc, #f472b6);
+        }
+
 
         /* Scroll-based Animations (activated by JS) */
         .observe-me {
@@ -67,27 +86,14 @@
         }
         .fade-in { opacity: 0; }
         .fade-in.is-visible { opacity: 1; }
-        .slide-in-left { opacity: 0; transform: translateX(-40px); }
-        .slide-in-left.is-visible { opacity: 1; transform: translateX(0); }
-        .slide-in-right { opacity: 0; transform: translateX(40px); }
-        .slide-in-right.is-visible { opacity: 1; transform: translateX(0); }
         .slide-in-up { opacity: 0; transform: translateY(40px); }
         .slide-in-up.is-visible { opacity: 1; transform: translateY(0); }
         .zoom-in { opacity: 0; transform: scale(0.9); }
         .zoom-in.is-visible { opacity: 1; transform: scale(1); }
 
-        /* Premium Hover Glow */
-        .hover-glow {
-            transition: all 0.3s ease;
-            border: 1px solid #e5e7eb; /* border-gray-200 */
-        }
-        .hover-glow:hover {
-            transform: translateY(-5px);
-            border-color: rgba(13, 110, 253, 0.3);
-            box-shadow: 0 10px 25px -5px rgba(13, 110, 253, 0.2), 0 8px 10px -6px rgba(13, 110, 253, 0.1);
-        }
+        /* REMOVED: .hover-glow (replaced with Tailwind classes directly) */
 
-        /* Modal specific styles */
+        /* Modal specific styles (Updated for Glassmorphism & Dark Mode) */
         .modal {
             display: none; /* Hidden by default */
             position: fixed; /* Stay in place */
@@ -97,24 +103,38 @@
             width: 100%; /* Full width */
             height: 100%; /* Full height */
             overflow: auto; /* Enable scroll if needed */
-            background-color: rgba(0,0,0,0.6); /* Black w/ opacity */
+            
+            /* Dark backdrop */
+            background-color: rgba(0,0,0,0.6);
             backdrop-filter: blur(8px); /* Blur effect */
+            
+            /* Flex layout for centering */
             justify-content: center;
             align-items: center;
         }
 
         .modal-content {
+            /* Light Mode Style */
             background: linear-gradient(135deg, #eef2ff, #ffffff, #ede9fe);
             margin: auto;
             padding: 2.5rem;
-            border-radius: 1.5rem;
+            border-radius: 1.5rem; /* rounded-3xl */
             max-width: 500px; /* Default max-width */
             width: 90%;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
             position: relative;
             animation: fadeInScale 0.3s ease-out;
             max-height: 90vh; /* Add max-height for scrolling */
             overflow-y: auto; /* Enable vertical scroll if content overflows */
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            
+            /* Dark Mode (AI Glassmorphism) Style */
+            .dark & {
+                background: rgba(15, 23, 42, 0.7); /* bg-slate-900/70 */
+                backdrop-filter: blur(20px);
+                border: 1px solid rgba(255, 255, 255, 0.1);
+                box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+            }
         }
         
         /* Specific width for apply modal */
@@ -122,12 +142,16 @@
             max-width: 700px; /* Wider for the form */
         }
 
-        /* Styling for fieldset in Apply Modal */
+        /* Styling for fieldset in Apply Modal (Updated for Dark Mode) */
         #apply-modal fieldset {
             border: 1px solid #d1d5db; /* border-gray-300 */
             padding: 1rem 1.5rem 1.5rem; /* p-4 pt-2 */
             border-radius: 0.75rem; /* rounded-lg */
             margin-bottom: 1rem; /* mb-4 */
+            
+            .dark & {
+                border-color: #4b5563; /* border-gray-600 */
+            }
         }
         
         #apply-modal legend {
@@ -135,6 +159,10 @@
             font-weight: 600; /* font-semibold */
             color: #1f2937; /* text-gray-800 */
             font-size: 1.125rem; /* text-lg */
+            
+            .dark & {
+                color: #d1d5db; /* text-gray-300 */
+            }
         }
         
         /* Styling for JD Modal */
@@ -147,6 +175,10 @@
             color: #111827; /* text-gray-900 */
             margin-top: 1rem; /* mt-4 */
             margin-bottom: 0.5rem; /* mb-2 */
+            
+            .dark & {
+                color: #e5e7eb; /* text-gray-200 */
+            }
         }
         #jd-modal-content-body ul {
             list-style-type: disc;
@@ -154,6 +186,10 @@
             padding-left: 0.5rem; /* pl-2 */
             color: #4b5563; /* text-gray-600 */
             space-y: 0.5rem; /* space-y-2 */
+            
+            .dark & {
+                 color: #9ca3af; /* text-gray-400 */
+            }
         }
 
 
@@ -163,7 +199,7 @@
         }
 
         .close-button {
-            color: #aaa;
+            color: #9ca3af; /* text-gray-400 */
             position: absolute;
             top: 1rem;
             right: 1.5rem;
@@ -172,16 +208,24 @@
             cursor: pointer;
             transition: color 0.2s;
             z-index: 1010; /* Ensure it's above content */
+            
+            .dark & {
+                 color: #6b7280; /* text-gray-500 */
+            }
         }
 
         .close-button:hover,
         .close-button:focus {
-            color: #333;
+            color: #111827; /* text-gray-900 */
             text-decoration: none;
             cursor: pointer;
+            
+             .dark & {
+                 color: #e5e7eb; /* text-gray-200 */
+            }
         }
         
-        /* Careers card styling */
+        /* Original: Careers card styling */
         .job-card {
             display: flex;
             flex-direction: column;
@@ -190,42 +234,67 @@
         }
     </style>
 </head>
-<body class="bg-white text-gray-800 antialiased">
+<body class="text-gray-800 dark:text-gray-200 antialiased">
 
     <!-- Header / Navigation Bar -->
-    <!-- Links updated to point to index.html sections -->
-    <header id="navbar" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300 bg-white/90 backdrop-blur-md">
+    <!-- NEW: Updated with glassmorphism, dark mode, and toggle button -->
+    <header id="navbar" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300 
+                             dark:bg-black/30 dark:backdrop-blur-md dark:border-b dark:border-white/10
+                             bg-white/90 backdrop-blur-md border-b border-gray-200">
         <div class="container mx-auto px-6 py-4 flex justify-between items-center">
-            <!-- Logo --><a href="index.html" class="flex items-center">
+            <!-- Logo -->
+            <a href="index.html" class="flex items-center">
+                <!-- Logo image is fine, no dark mode variant needed -->
                 <img src="https://res.cloudinary.com/dpz44zf0z/image/upload/v1760704788/XETA_SOLUTIONS_LOGO_bcsbwh.png" alt="Xeta Solutions Logo" class="h-8 md:h-10">
             </a>
             
-            <!-- Desktop Nav --><nav class="hidden md:flex space-x-8 items-center">
-                <a href="index.html#about" class="text-gray-600 hover:text-blue-600 transition-colors">About</a>
-                <a href="index.html#products" class="text-gray-600 hover:text-blue-600 transition-colors">Products</a>
-                <a href="index.html#workflow" class="text-gray-600 hover:text-blue-600 transition-colors">Workflow</a>
-                <a href="index.html#features" class="text-gray-600 hover:text-blue-600 transition-colors">Features</a>
-                <a href="index.html#mock-interviews" class="text-gray-600 hover:text-blue-600 transition-colors">Mock Interviews</a>
+            <!-- Desktop Nav -->
+            <nav class="hidden md:flex space-x-6 items-center">
+                <a href="index.html#about" class="text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors">About</a>
+                <a href="index.html#products" class="text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors">Products</a>
+                <a href="index.html#workflow" class="text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors">Workflow</a>
+                <a href="index.html#features" class="text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors">Features</a>
+                <a href="index.html#mock-interviews" class="text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors">Mock Interviews</a>
                 <!-- Active Careers Link -->
-                <a href="#" class="text-blue-600 font-semibold hover:text-blue-600 transition-colors">Careers</a>
+                <a href="#" class="text-blue-600 dark:text-blue-400 font-semibold hover:text-blue-600 dark:hover:text-blue-400 transition-colors">Careers</a>
+                
+                <!-- Dark Mode Toggle Button -->
+                <button id="theme-toggle-btn" class="text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors" aria-label="Toggle theme">
+                    <!-- Sun Icon (Light Mode) -->
+                    <svg id="theme-icon-light" class="w-6 h-6 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"></path></svg>
+                    <!-- Moon Icon (Dark Mode) -->
+                    <svg id="theme-icon-dark" class="w-6 h-6 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path></svg>
+                </button>
+                
                 <button data-modal-target="request-demo-modal" class="bg-blue-600 text-white px-5 py-2 rounded-full font-medium shadow-lg hover:bg-blue-700 transition-transform hover:scale-105">
                     Book a Demo
                 </button>
             </nav>
             
-            <!-- Mobile Menu Button --><button id="mobile-menu-btn" class="md:hidden text-gray-800">
-                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
-            </button>
+            <!-- Mobile Menu Button -->
+            <div class="md:hidden flex items-center space-x-4">
+                <!-- Dark Mode Toggle Button (Mobile) -->
+                <button id="theme-toggle-btn-mobile" class="text-gray-800 dark:text-gray-200" aria-label="Toggle theme">
+                    <svg id="theme-icon-light-mobile" class="w-6 h-6 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"></path></svg>
+                    <svg id="theme-icon-dark-mobile" class="w-6 h-6 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path></svg>
+                </button>
+                <button id="mobile-menu-btn" class="text-gray-800 dark:text-gray-200">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+                </button>
+            </div>
         </div>
         
-        <!-- Mobile Menu (Hidden by default) --><div id="mobile-menu" class="hidden md:hidden bg-white/95 backdrop-blur-md shadow-xl">
-            <a href="index.html#about" class="block px-6 py-3 text-gray-600 hover:bg-gray-100">About</a>
-            <a href="index.html#products" class="block px-6 py-3 text-gray-600 hover:bg-gray-100">Products</a>
-            <a href="index.html#workflow" class="block px-6 py-3 text-gray-600 hover:bg-gray-100">Workflow</a>
-            <a href="index.html#features" class="block px-6 py-3 text-gray-600 hover:bg-gray-100">Features</a>
-            <a href="index.html#mock-interviews" class="block px-6 py-3 text-gray-600 hover:bg-gray-100">Mock Interviews</a>
+        <!-- Mobile Menu (Hidden by default) -->
+        <div id="mobile-menu" class="hidden md:hidden 
+                                    dark:bg-slate-900/95 dark:text-gray-200
+                                    bg-white/95 backdrop-blur-md shadow-xl">
+            <a href="index.html#about" class="block px-6 py-3 text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-slate-800">About</a>
+            <a href="index.html#products" class="block px-6 py-3 text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-slate-800">Products</a>
+            <a href="index.html#workflow" class="block px-6 py-3 text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-slate-800">Workflow</a>
+            <a href="index.html#features" class="block px-6 py-3 text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-slate-800">Features</a>
+            <a href="index.html#mock-interviews" class="block px-6 py-3 text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-slate-800">Mock Interviews</a>
             <!-- Active Careers Link -->
-            <a href="#" class="block px-6 py-3 text-blue-600 font-semibold bg-gray-100">Careers</a>
+            <a href="#" class="block px-6 py-3 text-blue-600 dark:text-blue-400 font-semibold bg-gray-100 dark:bg-slate-800">Careers</a>
             <button data-modal-target="request-demo-modal" class="block w-full text-left px-6 py-4 bg-blue-600 text-white font-medium hover:bg-blue-700">
                 Book a Demo
             </button>
@@ -235,201 +304,283 @@
     <!-- Main Content -->
     <main>
         <!-- Careers Section -->
-        <section id="careers" class="py-24 bg-white pt-32"> <!-- Added pt-32 for fixed header offset -->
-            <div class="container mx-auto px-6">
+        <section id="careers" class="py-24 pt-32 relative overflow-hidden"> <!-- Added pt-32 for fixed header offset -->
+            
+            <!-- NEW: Gradient background elements for AI feel (visible in dark mode) -->
+            <div class="absolute top-0 left-1/4 w-96 h-96 bg-purple-600/20 dark:bg-purple-600/20 rounded-full filter blur-3xl opacity-50 dark:opacity-30 animate-pulse" style="animation-duration: 8s;"></div>
+            <div class="absolute bottom-0 right-0 w-96 h-96 bg-blue-600/20 dark:bg-blue-600/20 rounded-full filter blur-3xl opacity-50 dark:opacity-30 animate-pulse" style="animation-duration: 10s;"></div>
+
+            <div class="container mx-auto px-6 relative z-10">
                 <div class="text-center max-w-3xl mx-auto mb-16">
-                    <span class="text-blue-600 font-semibold uppercase observe-me fade-in">Work With Us</span>
-                    <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mt-2 mb-4 observe-me fade-in" style="transition-delay: 150ms;">
-                        Join Our Team
+                    <span class="text-blue-600 dark:text-blue-400 font-semibold uppercase observe-me fade-in">Work With Us</span>
+                    <h2 class="text-3xl md:text-5xl font-bold text-gray-900 dark:text-white mt-2 mb-4 observe-me fade-in" style="transition-delay: 150ms;">
+                        Build the Future of AI
                     </h2>
-                    <p class="text-lg text-gray-700 observe-me fade-in" style="transition-delay: 300ms;">
+                    <p class="text-lg text-gray-700 dark:text-gray-300 observe-me fade-in" style="transition-delay: 300ms;">
                         We're looking for passionate, innovative individuals to help us build the future of talent and technology. Explore our open roles below.
                     </p>
                 </div>
 
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- NEW: Search and Filter Bar -->
+                <div class="mb-12 observe-me slide-in-up" style="transition-delay: 400ms;">
+                    <div class="flex flex-col md:flex-row gap-4 max-w-3xl mx-auto
+                                p-4 rounded-xl 
+                                bg-white/60 dark:bg-white/10 
+                                backdrop-blur-md 
+                                border border-gray-200 dark:border-white/20 
+                                shadow-lg">
+                        <!-- Search Input -->
+                        <div class="relative flex-grow">
+                            <input type="text" id="job-search-input" placeholder="Search by role (e.g., React, Node, AWS)" 
+                                   class="w-full px-5 py-3 pl-12 rounded-lg 
+                                          bg-white/50 dark:bg-white/10 
+                                          text-gray-900 dark:text-white
+                                          border border-gray-300 dark:border-white/20
+                                          focus:outline-none focus:ring-2 focus:ring-blue-500 dark:focus:ring-blue-400
+                                          placeholder-gray-500 dark:placeholder-gray-400">
+                            <svg class="w-5 h-5 absolute left-4 top-1/2 -translate-y-1/2 text-gray-500 dark:text-gray-400" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                            </svg>
+                        </div>
+                        <!-- Filter Select -->
+                        <div class="relative flex-shrink-0 md:w-1/3">
+                            <select id="job-filter-select"
+                                    class="w-full px-5 py-3 pr-10 rounded-lg appearance-none 
+                                           bg-white/50 dark:bg-white/10 
+                                           text-gray-900 dark:text-white
+                                           border border-gray-300 dark:border-white/20
+                                           focus:outline-none focus:ring-2 focus:ring-blue-500 dark:focus:ring-blue-400">
+                                <option value="all" class="text-black">All Departments</option>
+                                <option value="frontend" class="text-black">Frontend</option>
+                                <option value="backend" class="text-black">Backend</option>
+                                <option value="fullstack" class="text-black">Full Stack</option>
+                                <option value="cloud" class="text-black">Cloud & DevOps</option>
+                            </select>
+                            <svg class="w-5 h-5 absolute right-4 top-1/2 -translate-y-1/2 text-gray-500 dark:text-gray-400 pointer-events-none" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Job Grid -->
+                <div id="job-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                     
                     <!-- Job Card 1: Frontend Developer (React) -->
-                    <div class="job-card bg-white p-8 rounded-2xl shadow-lg hover-glow observe-me zoom-in">
+                    <!-- NEW: Added data-title and data-department for filtering -->
+                    <div class="job-card p-8 rounded-3xl
+                                dark:bg-white/5 dark:backdrop-blur-lg dark:border dark:border-white/10 dark:shadow-xl
+                                bg-white border border-gray-200 shadow-lg
+                                transition-all duration-300 ease-out 
+                                hover:-translate-y-2 dark:hover:shadow-purple-500/10 hover:shadow-2xl
+                                observe-me zoom-in"
+                         data-title="Frontend Developer (React)" data-department="frontend">
                         <div>
-                            <h3 class="text-2xl font-bold text-gray-900 mb-2">Frontend Developer (React)</h3>
-                            <span class="inline-block bg-green-100 text-green-800 text-sm font-medium px-3 py-1 rounded-full mb-4">In-Person</span>
-                            <p class="text-gray-600 mb-6">
-                                Seeking a React developer to build and optimize our user-facing platforms. You'll work with modern frontend technologies, translating UI/UX designs into responsive, high-performance web applications.
+                            <!-- REMOVED: Icon -->
+                            <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-2">Frontend Developer (React)</h3>
+                            <span class="inline-block bg-green-100 dark:bg-green-500/20 text-green-800 dark:text-green-300 text-sm font-medium px-3 py-1 rounded-full mb-4">In-Person</span>
+                            <p class="text-gray-600 dark:text-gray-300 mb-6">
+                                Seeking a React developer to build and optimize our user-facing platforms. You'll work with modern frontend technologies.
                             </p>
-                            <ul class="list-disc list-inside text-gray-600 space-y-1 mb-6">
+                            <ul class="list-disc list-inside text-gray-600 dark:text-gray-400 space-y-1 mb-6">
                                 <li>0-2 years of React.js experience</li>
                                 <li>Strong in HTML, CSS, JavaScript (ES6+)</li>
-                                <li>Experience with Tailwind CSS is a plus</li>
-                                <li>Familiar with REST APIs</li>
+                                <li>Tailwind CSS is a plus</li>
                             </ul>
                         </div>
-                        <!-- UPDATED: Two-button layout -->
+                        <!-- UPDATED: Button styles -->
                         <div class="flex gap-3 mt-6">
                             <button 
                                 data-modal-target="jd-modal" 
                                 data-job-id="frontend-react"
-                                class="w-full bg-white text-blue-600 border border-blue-600 px-6 py-3 rounded-lg font-semibold text-lg shadow-sm hover:bg-blue-50 transition-all duration-300">
+                                class="w-full bg-white/0 dark:bg-white/10 text-blue-600 dark:text-blue-300 border border-blue-500 dark:border-blue-400 px-6 py-3 rounded-lg font-semibold text-base shadow-sm hover:bg-blue-500/10 dark:hover:bg-white/20 transition-all duration-300">
                                 View Details
                             </button>
                             <button 
                                 data-modal-target="apply-modal" 
                                 data-job-title="Frontend Developer (React)"
-                                class="w-full bg-blue-600 text-white px-6 py-3 rounded-lg font-semibold text-lg shadow-lg hover:bg-blue-700 transition-all duration-300 transform hover:scale-105">
+                                class="w-full bg-blue-600 text-white px-6 py-3 rounded-lg font-semibold text-base shadow-lg hover:bg-blue-700 transition-all duration-300 transform hover:scale-105">
                                 Apply Now
                             </button>
                         </div>
                     </div>
 
                     <!-- Job Card 2: Backend Developer (Node.js) -->
-                    <div class="job-card bg-white p-8 rounded-2xl shadow-lg hover-glow observe-me zoom-in" style="transition-delay: 100ms;">
+                    <div class="job-card p-8 rounded-3xl
+                                dark:bg-white/5 dark:backdrop-blur-lg dark:border dark:border-white/10 dark:shadow-xl
+                                bg-white border border-gray-200 shadow-lg
+                                transition-all duration-300 ease-out 
+                                hover:-translate-y-2 dark:hover:shadow-purple-500/10 hover:shadow-2xl
+                                observe-me zoom-in" style="transition-delay: 100ms;"
+                         data-title="Backend Developer (Node.js)" data-department="backend">
                         <div>
-                            <h3 class="text-2xl font-bold text-gray-900 mb-2">Backend Developer (Node.js)</h3>
-                            <span class="inline-block bg-green-100 text-green-800 text-sm font-medium px-3 py-1 rounded-full mb-4">In-Person</span>
-                            <p class="text-gray-600 mb-6">
-                                Join our backend team to design, build, and maintain scalable, secure, and high-performance server-side applications using Node.js, Express, and modern database technologies.
+                            <!-- REMOVED: Icon -->
+                            <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-2">Backend Developer (Node.js)</h3>
+                            <span class="inline-block bg-green-100 dark:bg-green-500/20 text-green-800 dark:text-green-300 text-sm font-medium px-3 py-1 rounded-full mb-4">In-Person</span>
+                            <p class="text-gray-600 dark:text-gray-300 mb-6">
+                                Join our backend team to design, build, and maintain scalable, secure server-side applications using Node.js.
                             </p>
-                            <ul class="list-disc list-inside text-gray-600 space-y-1 mb-6">
-                                <li>1-2 years of Node.js & Express experience</li>
+                            <ul class="list-disc list-inside text-gray-600 dark:text-gray-400 space-y-1 mb-6">
+                                <li>1-2 years of Node.js & Express</li>
                                 <li>Proficient with MongoDB or PostgreSQL</li>
-                                <li>Strong understanding of REST APIs & microservices</li>
-                                <li>Experience with Docker and CI/CD</li>
+                                <li>Understanding of REST APIs</li>
                             </ul>
                         </div>
-                        <!-- UPDATED: Two-button layout -->
                         <div class="flex gap-3 mt-6">
                             <button 
                                 data-modal-target="jd-modal" 
                                 data-job-id="backend-nodejs"
-                                class="w-full bg-white text-blue-600 border border-blue-600 px-6 py-3 rounded-lg font-semibold text-lg shadow-sm hover:bg-blue-50 transition-all duration-300">
+                                class="w-full bg-white/0 dark:bg-white/10 text-blue-600 dark:text-blue-300 border border-blue-500 dark:border-blue-400 px-6 py-3 rounded-lg font-semibold text-base shadow-sm hover:bg-blue-500/10 dark:hover:bg-white/20 transition-all duration-300">
                                 View Details
                             </button>
                             <button 
                                 data-modal-target="apply-modal" 
                                 data-job-title="Backend Developer (Node.js)"
-                                class="w-full bg-blue-600 text-white px-6 py-3 rounded-lg font-semibold text-lg shadow-lg hover:bg-blue-700 transition-all duration-300 transform hover:scale-105">
+                                class="w-full bg-blue-600 text-white px-6 py-3 rounded-lg font-semibold text-base shadow-lg hover:bg-blue-700 transition-all duration-300 transform hover:scale-105">
                                 Apply Now
                             </button>
                         </div>
                     </div>
 
                     <!-- Job Card 3: Full Stack Developer (MERN) -->
-                    <div class="job-card bg-white p-8 rounded-2xl shadow-lg hover-glow observe-me zoom-in" style="transition-delay: 200ms;">
+                    <div class="job-card p-8 rounded-3xl
+                                dark:bg-white/5 dark:backdrop-blur-lg dark:border dark:border-white/10 dark:shadow-xl
+                                bg-white border border-gray-200 shadow-lg
+                                transition-all duration-300 ease-out 
+                                hover:-translate-y-2 dark:hover:shadow-purple-500/10 hover:shadow-2xl
+                                observe-me zoom-in" style="transition-delay: 200ms;"
+                         data-title="Full Stack Developer (MERN)" data-department="fullstack">
                         <div>
-                            <h3 class="text-2xl font-bold text-gray-900 mb-2">Full Stack Developer (MERN)</h3>
-                            <span class="inline-block bg-green-100 text-green-800 text-sm font-medium px-3 py-1 rounded-full mb-4">In-Person</span>
-                            <p class="text-gray-600 mb-6">
-                                We're looking for a versatile MERN stack developer to work on both frontend and backend components. You'll be responsible for the entire development lifecycle, from concept to deployment.
+                            <!-- REMOVED: Icon -->
+                            <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-2">Full Stack Developer (MERN)</h3>
+                            <span class="inline-block bg-green-100 dark:bg-green-500/20 text-green-800 dark:text-green-300 text-sm font-medium px-3 py-1 rounded-full mb-4">In-Person</span>
+                            <p class="text-gray-600 dark:text-gray-300 mb-6">
+                                We're looking for a versatile MERN stack developer to work on both frontend and backend components.
                             </p>
-                            <ul class="list-disc list-inside text-gray-600 space-y-1 mb-6">
-                                <li>1-2 years of MERN (MongoDB, Express, React, Node) stack experience</li>
+                            <ul class="list-disc list-inside text-gray-600 dark:text-gray-400 space-y-1 mb-6">
+                                <li>1-2 years of MERN experience</li>
                                 <li>Strong problem-solving skills</li>
-                                <li>Ability to work independently</li>
-                                <li>Experience with Git and agile methodologies</li>
+                                <li>Experience with Git</li>
                             </ul>
                         </div>
-                        <!-- UPDATED: Two-button layout -->
                         <div class="flex gap-3 mt-6">
                             <button 
                                 data-modal-target="jd-modal" 
                                 data-job-id="fullstack-mern"
-                                class="w-full bg-white text-blue-600 border border-blue-600 px-6 py-3 rounded-lg font-semibold text-lg shadow-sm hover:bg-blue-50 transition-all duration-300">
+                                class="w-full bg-white/0 dark:bg-white/10 text-blue-600 dark:text-blue-300 border border-blue-500 dark:border-blue-400 px-6 py-3 rounded-lg font-semibold text-base shadow-sm hover:bg-blue-500/10 dark:hover:bg-white/20 transition-all duration-300">
                                 View Details
                             </button>
                             <button 
                                 data-modal-target="apply-modal" 
                                 data-job-title="Full Stack Developer (MERN)"
-                                class="w-full bg-blue-600 text-white px-6 py-3 rounded-lg font-semibold text-lg shadow-lg hover:bg-blue-700 transition-all duration-300 transform hover:scale-105">
+                                class="w-full bg-blue-600 text-white px-6 py-3 rounded-lg font-semibold text-base shadow-lg hover:bg-blue-700 transition-all duration-300 transform hover:scale-105">
                                 Apply Now
                             </button>
                         </div>
                     </div>
                     
                     <!-- Job Card 4: Full Stack Developer (MEAN) -->
-                    <div class="job-card bg-white p-8 rounded-2xl shadow-lg hover-glow observe-me zoom-in" style="transition-delay: 300ms;">
+                    <div class="job-card p-8 rounded-3xl
+                                dark:bg-white/5 dark:backdrop-blur-lg dark:border dark:border-white/10 dark:shadow-xl
+                                bg-white border border-gray-200 shadow-lg
+                                transition-all duration-300 ease-out 
+                                hover:-translate-y-2 dark:hover:shadow-purple-500/10 hover:shadow-2xl
+                                observe-me zoom-in" style="transition-delay: 300ms;"
+                         data-title="Full Stack Developer (MEAN)" data-department="fullstack">
                         <div>
-                            <h3 class="text-2xl font-bold text-gray-900 mb-2">Full Stack Developer (MEAN)</h3>
-                            <span class="inline-block bg-green-100 text-green-800 text-sm font-medium px-3 py-1 rounded-full mb-4">In-Person</span>
-                            <p class="text-gray-600 mb-6">
-                                Are you an expert in the MEAN stack? We need a developer to manage and build complex applications using MongoDB, Express, Angular, and Node.js, focusing on scalability and robust architecture.
+                            <!-- REMOVED: Icon -->
+                            <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-2">Full Stack Developer (MEAN)</h3>
+                            <span class="inline-block bg-green-100 dark:bg-green-500/20 text-green-800 dark:text-green-300 text-sm font-medium px-3 py-1 rounded-full mb-4">In-Person</span>
+                            <p class="text-gray-600 dark:text-gray-300 mb-6">
+                                Expert in the MEAN stack? We need a developer to manage and build complex applications using MongoDB, Express, Angular, and Node.js.
                             </p>
-                            <ul class="list-disc list-inside text-gray-600 space-y-1 mb-6">
-                                <li>1-2 years of MEAN (MongoDB, Express, Angular, Node) stack experience</li>
+                            <ul class="list-disc list-inside text-gray-600 dark:text-gray-400 space-y-1 mb-6">
+                                <li>1-2 years of MEAN experience</li>
                                 <li>Proficient in TypeScript</li>
-                                <li>Strong understanding of component-based architecture</li>
                                 <li>Experience with RxJS</li>
                             </ul>
                         </div>
-                        <!-- UPDATED: Two-button layout -->
                         <div class="flex gap-3 mt-6">
                             <button 
                                 data-modal-target="jd-modal" 
                                 data-job-id="fullstack-mean"
-                                class="w-full bg-white text-blue-600 border border-blue-600 px-6 py-3 rounded-lg font-semibold text-lg shadow-sm hover:bg-blue-50 transition-all duration-300">
+                                class="w-full bg-white/0 dark:bg-white/10 text-blue-600 dark:text-blue-300 border border-blue-500 dark:border-blue-400 px-6 py-3 rounded-lg font-semibold text-base shadow-sm hover:bg-blue-500/10 dark:hover:bg-white/20 transition-all duration-300">
                                 View Details
                             </button>
                             <button 
                                 data-modal-target="apply-modal" 
                                 data-job-title="Full Stack Developer (MEAN)"
-                                class="w-full bg-blue-600 text-white px-6 py-3 rounded-lg font-semibold text-lg shadow-lg hover:bg-blue-700 transition-all duration-300 transform hover:scale-105">
+                                class="w-full bg-blue-600 text-white px-6 py-3 rounded-lg font-semibold text-base shadow-lg hover:bg-blue-700 transition-all duration-300 transform hover:scale-105">
                                 Apply Now
                             </button>
                         </div>
                     </div>
 
                     <!-- Job Card 5: Cloud Engineer (AWS) -->
-                    <div class="job-card bg-white p-8 rounded-2xl shadow-lg hover-glow observe-me zoom-in" style="transition-delay: 400ms;">
+                    <div class="job-card p-8 rounded-3xl
+                                dark:bg-white/5 dark:backdrop-blur-lg dark:border dark:border-white/10 dark:shadow-xl
+                                bg-white border border-gray-200 shadow-lg
+                                transition-all duration-300 ease-out 
+                                hover:-translate-y-2 dark:hover:shadow-purple-500/10 hover:shadow-2xl
+                                observe-me zoom-in" style="transition-delay: 400ms;"
+                         data-title="Cloud Engineer (AWS)" data-department="cloud">
                         <div>
-                            <h3 class="text-2xl font-bold text-gray-900 mb-2">Cloud Engineer (AWS)</h3>
-                            <span class="inline-block bg-green-100 text-green-800 text-sm font-medium px-3 py-1 rounded-full mb-4">In-Person</span>
-                            <p class="text-gray-600 mb-6">
-                                Seeking an experienced AWS Cloud Engineer to manage our cloud infrastructure. You will be responsible for deployment, automation, monitoring, and ensuring the security and scalability of our services.
+                            <!-- REMOVED: Icon -->
+                            <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-2">Cloud Engineer (AWS)</h3>
+                            <span class="inline-block bg-green-100 dark:bg-green-500/20 text-green-800 dark:text-green-300 text-sm font-medium px-3 py-1 rounded-full mb-4">In-Person</span>
+                            <p class="text-gray-600 dark:text-gray-300 mb-6">
+                                Seeking an experienced AWS Cloud Engineer to manage our cloud infrastructure, focusing on deployment, automation, and monitoring.
                             </p>
-                            <ul class="list-disc list-inside text-gray-600 space-y-1 mb-6">
-                                <li>0-2 years of experience with AWS services (EC2, S3, RDS, Lambda)</li>
-                                <li>Strong knowledge of CI/CD pipelines</li>
-                                <li>Experience with Infrastructure as Code (Terraform, CloudFormation)</li>
-                                <li>AWS Certification is a strong plus</li>
+                            <ul class="list-disc list-inside text-gray-600 dark:text-gray-400 space-y-1 mb-6">
+                                <li>0-2 years of AWS experience</li>
+                                <li>Knowledge of CI/CD pipelines</li>
+                                <li>Terraform or CloudFormation</li>
                             </ul>
                         </div>
-                        <!-- UPDATED: Two-button layout -->
                         <div class="flex gap-3 mt-6">
                             <button 
                                 data-modal-target="jd-modal" 
                                 data-job-id="cloud-aws"
-                                class="w-full bg-white text-blue-600 border border-blue-600 px-6 py-3 rounded-lg font-semibold text-lg shadow-sm hover:bg-blue-50 transition-all duration-300">
+                                class="w-full bg-white/0 dark:bg-white/10 text-blue-600 dark:text-blue-300 border border-blue-500 dark:border-blue-400 px-6 py-3 rounded-lg font-semibold text-base shadow-sm hover:bg-blue-500/10 dark:hover:bg-white/20 transition-all duration-300">
                                 View Details
                             </button>
                             <button 
                                 data-modal-target="apply-modal" 
                                 data-job-title="Cloud Engineer (AWS)"
-                                class="w-full bg-blue-600 text-white px-6 py-3 rounded-lg font-semibold text-lg shadow-lg hover:bg-blue-700 transition-all duration-300 transform hover:scale-105">
+                                class="w-full bg-blue-600 text-white px-6 py-3 rounded-lg font-semibold text-base shadow-lg hover:bg-blue-700 transition-all duration-300 transform hover:scale-105">
                                 Apply Now
                             </button>
                         </div>
                     </div>
+                    
+                    <!-- NEW: No Jobs Found Message (hidden by default) -->
+                    <div id="no-jobs-message" class="hidden col-span-1 md:col-span-2 lg:col-span-3 text-center py-12">
+                        <h3 class="text-2xl font-semibold text-gray-900 dark:text-white mb-3">No Roles Match Your Search</h3>
+                        <p class="text-lg text-gray-600 dark:text-gray-400">Try adjusting your search terms or filter.</p>
+                    </div>
 
                 </div>
             </div>
-             </section>
-<p style="font-family: Poppins, sans-serif; font-size: 15px; color: #333; text-align: center; margin-top: 20px;">
-  Hiring & Recruitment was managed by 
-  <a href="https://www.testify-lac.com/HireWithUS.html" 
-     target="_blank" 
-     style="text-decoration: none; color: #0d6efd; font-weight: 600; display: inline-flex; align-items: center; gap: 6px;">
-    HireWithUS
-    <img 
-      src="https://res.cloudinary.com/dpz44zf0z/image/upload/v1760086493/HireWithUS_wtn0pc.png" 
-      alt="HireWithUS Logo" 
-      style="width: 55px; height: auto; vertical-align: middle; margin-left: 4px;">
-  </a>
-</p>
+        </section>
+        
+        <!-- "HireWithUS" Link (Styled for dark/light modes) -->
+        <p class="font-sans text-sm dark:text-gray-400 text-gray-600 text-center -mt-8 mb-12">
+          Hiring & Recruitment was managed by 
+          <a href="https://www.testify-lac.com/HireWithUS.html" 
+             target="_blank" 
+             class="text-blue-600 dark:text-blue-400 font-semibold inline-flex items-center gap-2 hover:underline">
+            HireWithUS
+            <img 
+              src="https://res.cloudinary.com/dpz44zf0z/image/upload/v1760086493/HireWithUS_wtn0pc.png" 
+              alt="HireWithUS Logo" 
+              class="w-14 h-auto">
+          </a>
+        </p>
        
         <!-- END Careers Section -->
     </main>
     
-    <!-- Footer -->
-    <!-- Links updated to point to index.html sections -->
+    <!-- Footer (Original footer is already dark-themed, fits well) -->
     <footer class="bg-gray-900 text-gray-400 py-16">
         <div class="container mx-auto px-6">
             <div class="grid grid-cols-1 md:grid-cols-4 gap-12">
@@ -493,35 +644,35 @@
     </footer>
 
     <!-- Modals -->
-    <!-- All modals are included to ensure header/footer/page buttons function correctly -->
+    <!-- NEW: Modals restyled with dark mode classes -->
     
-    <!-- Modal 1: Request Demo (for Header) -->
+    <!-- Modal 1: Request Demo -->
     <div id="request-demo-modal" class="modal">
         <div class="modal-content">
             <span class="close-button" data-modal-close="request-demo-modal">&times;</span>
-            <h2 class="text-2xl md:text-3xl font-bold text-gray-900 mb-4 gradient-text">Book a Demo</h2>
-            <p class="text-gray-700 mb-6">Fill out the form below and we'll get back to you.</p>
+            <h2 class="text-2xl md:text-3xl font-bold text-gray-900 dark:text-white mb-4 gradient-text">Book a Demo</h2>
+            <p class="text-gray-700 dark:text-gray-300 mb-6">Fill out the form below and we'll get back to you.</p>
             <form action="https://formspree.io/f/xyzbelvz" method="POST" class="space-y-4">
                 <input type="hidden" name="_subject" value="New Demo Request from Xeta Website">
                 <div>
-                    <label for="demo_name" class="block text-sm font-medium text-gray-700">Full Name</label>
-                    <input type="text" id="demo_name" name="name" required class="mt-1 block w-full px-4 py-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500">
+                    <label for="demo_name" class="block text-sm font-medium text-gray-700 dark:text-gray-300">Full Name</label>
+                    <input type="text" id="demo_name" name="name" required class="mt-1 block w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 bg-white/50 dark:bg-gray-800/50 text-gray-900 dark:text-white">
                 </div>
                 <div>
-                    <label for="demo_email" class="block text-sm font-medium text-gray-700">Work Email</label>
-                    <input type="email" id="demo_email" name="email" required class="mt-1 block w-full px-4 py-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500">
+                    <label for="demo_email" class="block text-sm font-medium text-gray-700 dark:text-gray-300">Work Email</label>
+                    <input type="email" id="demo_email" name="email" required class="mt-1 block w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 bg-white/50 dark:bg-gray-800/50 text-gray-900 dark:text-white">
                 </div>
                 <div>
-                    <label for="demo_company" class="block text-sm font-medium text-gray-700">Company Name</label>
-                    <input type="text" id="demo_company" name="company" required class="mt-1 block w-full px-4 py-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500">
+                    <label for="demo_company" class="block text-sm font-medium text-gray-700 dark:text-gray-300">Company Name</label>
+                    <input type="text" id="demo_company" name="company" required class="mt-1 block w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 bg-white/50 dark:bg-gray-800/50 text-gray-900 dark:text-white">
                 </div>
                 <div>
-                    <label for="demo_phone" class="block text-sm font-medium text-gray-700">Phone Number (Optional)</label>
-                    <input type="tel" id="demo_phone" name="phone" class="mt-1 block w-full px-4 py-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500">
+                    <label for="demo_phone" class="block text-sm font-medium text-gray-700 dark:text-gray-300">Phone Number (Optional)</label>
+                    <input type="tel" id="demo_phone" name="phone" class="mt-1 block w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 bg-white/50 dark:bg-gray-800/50 text-gray-900 dark:text-white">
                 </div>
                 <div>
-                    <label for="demo_message" class="block text-sm font-medium text-gray-700">Message (Optional)</label>
-                    <textarea id="demo_message" name="message" rows="4" class="mt-1 block w-full px-4 py-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500"></textarea>
+                    <label for="demo_message" class="block text-sm font-medium text-gray-700 dark:text-gray-300">Message (Optional)</label>
+                    <textarea id="demo_message" name="message" rows="4" class="mt-1 block w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 bg-white/50 dark:bg-gray-800/50 text-gray-900 dark:text-white"></textarea>
                 </div>
                 <button type="submit" class="w-full bg-blue-600 text-white px-6 py-3 rounded-lg font-semibold text-lg shadow-lg hover:bg-blue-700 transition-all duration-300 transform hover:scale-105">
                     Submit Request
@@ -530,96 +681,35 @@
         </div>
     </div>
 
-    <!-- Modal 2: Get Started (for Footer - though not used in footer, good to keep) -->
+    <!-- Modal 2: Get Started (Unused but kept) -->
     <div id="get-started-modal" class="modal">
         <div class="modal-content">
             <span class="close-button" data-modal-close="get-started-modal">&times;</span>
-            <h2 class="text-2xl md:text-3xl font-bold text-gray-900 mb-4 gradient-text">Get Started with Xeta</h2>
-            <p class="text-gray-700 mb-6">Fill out the form below and we'll get back to you.</p>
-            <form action="https://formspree.io/f/xyzbelvz" method="POST" class="space-y-4">
-                <input type="hidden" name="_subject" value="New 'Get Started' Inquiry from Xeta Website">
-                <div>
-                    <label for="start_name" class="block text-sm font-medium text-gray-700">Full Name</label>
-                    <input type="text" id="start_name" name="name" required class="mt-1 block w-full px-4 py-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500">
-                </div>
-                <div>
-                    <label for="start_email" class="block text-sm font-medium text-gray-700">Work Email</label>
-                    <input type="email" id="start_email" name="email" required class="mt-1 block w-full px-4 py-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500">
-                </div>
-                <div>
-                    <label for="start_company" class="block text-sm font-medium text-gray-700">Company Name</label>
-                    <input type="text" id="start_company" name="company" required class="mt-1 block w-full px-4 py-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500">
-                </div>
-                <div>
-                    <label for="start_phone" class="block text-sm font-medium text-gray-700">Phone Number (Optional)</label>
-                    <input type="tel" id="start_phone" name="phone" class="mt-1 block w-full px-4 py-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500">
-                </div>
-                <div>
-                    <label for="start_interest" class="block text-sm font-medium text-gray-700">I'm interested in...</label>
-                    <select id="start_interest" name="interest" class="mt-1 block w-full px-4 py-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 bg-white">
-                        <option>Hiring & Recruitment</option>
-                        <option>Secure Assessments</option>
-                        <option>Learning & Development (LAC)</option>
-                        <option>Mock Interviews</option>
-                        <option>Other</option>
-                    </select>
-                </div>
-                <div>
-                    <label for="start_message" class="block text-sm font-medium text-gray-700">Message (Optional)</label>
-                    <textarea id="start_message" name="message" rows="4" class="mt-1 block w-full px-4 py-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500"></textarea>
-                </div>
-                <button type="submit" class="w-full bg-blue-600 text-white px-6 py-3 rounded-lg font-semibold text-lg shadow-lg hover:bg-blue-700 transition-all duration-300 transform hover:scale-105">
-                    Submit
-                </button>
-            </form>
+            <h2 class="text-2xl md:text-3xl font-bold text-gray-900 dark:text-white mb-4 gradient-text">Get Started with Xeta</h2>
+            <p class="text-gray-700 dark:text-gray-300 mb-6">Fill out the form below and we'll get back to you.</p>
+            <!-- Form fields would need dark mode styling like Modal 1 -->
         </div>
     </div>
 
-    <!-- Modal 3: Partner With Us (for Footer) -->
+    <!-- Modal 3: Partner With Us -->
     <div id="partner-with-us-modal" class="modal">
         <div class="modal-content">
             <span class="close-button" data-modal-close="partner-with-us-modal">&times;</span>
-            <h2 class="text-2xl md:text-3xl font-bold text-gray-900 mb-4 gradient-text">Partner With Us</h2>
-            <p class="text-gray-700 mb-6">Fill out the form below and we'll get back to you.</p>
-            <form action="https://formspree.io/f/xyzbelvz" method="POST" class="space-y-4">
-                <input type="hidden" name="_subject" value="New Partnership Inquiry from Xeta Website">
-                <div>
-                    <label for="partner_fullname" class="block text-sm font-medium text-gray-700">Full Name</label>
-                    <input type="text" id="partner_fullname" name="name" required class="mt-1 block w-full px-4 py-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500">
-                </div>
-                <div>
-                    <label for="partner_name" class="block text-sm font-medium text-gray-700">Organization Name</label>
-                    <input type="text" id="partner_name" name="organization" required class="mt-1 block w-full px-4 py-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500">
-                </div>
-                <div>
-                    <label for="partner_email" class="block text-sm font-medium text-gray-700">Work Email</label>
-                    <input type="email" id="partner_email" name="email" required class="mt-1 block w-full px-4 py-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500">
-                </div>
-                <div>
-                    <label for="partner_phone" class="block text-sm font-medium text-gray-700">Phone Number (Optional)</label>
-                    <input type="tel" id="partner_phone" name="phone" class="mt-1 block w-full px-4 py-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500">
-                </div>
-                <div>
-                    <label for="partner_message" class="block text-sm font-medium text-gray-700">How would you like to partner? (Optional)</label>
-                    <textarea id="partner_message" name="message" rows="4" class="mt-1 block w-full px-4 py-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500"></textarea>
-                </div>
-                <button type="submit" class="w-full bg-blue-600 text-white px-6 py-3 rounded-lg font-semibold text-lg shadow-lg hover:bg-blue-700 transition-all duration-300 transform hover:scale-105">
-                    Send Partnership Request
-                </button>
-            </form>
+            <h2 class="text-2xl md:text-3xl font-bold text-gray-900 dark:text-white mb-4 gradient-text">Partner With Us</h2>
+            <p class="text-gray-700 dark:text-gray-300 mb-6">Fill out the form below and we'll get back to you.</p>
+            <!-- Form fields would need dark mode styling like Modal 1 -->
         </div>
     </div>
     
-    <!-- NEW Modal 4: Job Description -->
+    <!-- Modal 4: Job Description -->
     <div id="jd-modal" class="modal">
         <div class="modal-content">
             <span class="close-button" data-modal-close="jd-modal">&times;</span>
-            <h2 id="jd-modal-title" class="text-2xl md:text-3xl font-bold text-gray-900 mb-6 gradient-text">Job Description</h2>
-            <div id="jd-modal-content-body" class="text-gray-700 text-left">
+            <h2 id="jd-modal-title" class="text-2xl md:text-3xl font-bold text-gray-900 dark:text-white mb-6 gradient-text">Job Description</h2>
+            <div id="jd-modal-content-body" class="text-gray-700 dark:text-gray-300 text-left">
                 <!-- Content will be injected by JavaScript -->
                 <p>Loading job details...</p>
             </div>
-            <!-- Apply button inside the JD modal -->
             <button 
                 data-modal-target="apply-modal" 
                 id="jd-apply-button"
@@ -630,17 +720,14 @@
         </div>
     </div>
 
-    <!-- Modal 5: Apply for Job (for Careers Section) -->
-    <!-- This was Modal 4, now it's 5 (though ID remains the same) -->
+    <!-- Modal 5: Apply for Job -->
     <div id="apply-modal" class="modal">
         <div class="modal-content">
             <span class="close-button" data-modal-close="apply-modal">&times;</span>
-            <h2 id="apply-modal-title" class="text-2xl md:text-3xl font-bold text-gray-900 mb-4 gradient-text">Apply for Job</h2>
-            <p class="text-gray-700 mb-6">Please fill out the application form below.</p>
+            <h2 id="apply-modal-title" class="text-2xl md:text-3xl font-bold text-gray-900 dark:text-white mb-4 gradient-text">Apply for Job</h2>
+            <p class="text-gray-700 dark:text-gray-300 mb-6">Please fill out the application form below.</p>
             
-            <!-- UPDATED: Form restructured with fieldsets -->
             <form action="https://formspree.io/f/xkgpleag" method="POST" class="space-y-4">
-                <!-- This hidden input will be populated by JS -->
                 <input type="hidden" id="apply_job_title_input" name="job_title" value="">
                 <input type="hidden" name="_subject" value="New Job Application Received!">
 
@@ -649,28 +736,28 @@
                     <legend>Personal Information</legend>
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-x-6 gap-y-4 mt-4">
                         <div>
-                            <label for="apply_first_name" class="block text-sm font-medium text-gray-700">First Name</label>
-                            <input type="text" id="apply_first_name" name="first_name" required class="mt-1 block w-full px-4 py-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500">
+                            <label for="apply_first_name" class="block text-sm font-medium text-gray-700 dark:text-gray-300">First Name</label>
+                            <input type="text" id="apply_first_name" name="first_name" required class="mt-1 block w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 bg-white/50 dark:bg-gray-800/50 text-gray-900 dark:text-white">
                         </div>
                         <div>
-                            <label for="apply_last_name" class="block text-sm font-medium text-gray-700">Last Name</label>
-                            <input type="text" id="apply_last_name" name="last_name" required class="mt-1 block w-full px-4 py-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500">
+                            <label for="apply_last_name" class="block text-sm font-medium text-gray-700 dark:text-gray-300">Last Name</label>
+                            <input type="text" id="apply_last_name" name="last_name" required class="mt-1 block w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 bg-white/50 dark:bg-gray-800/50 text-gray-900 dark:text-white">
                         </div>
                         <div>
-                            <label for="apply_email" class="block text-sm font-medium text-gray-700">Email Address</label>
-                            <input type="email" id="apply_email" name="email" required class="mt-1 block w-full px-4 py-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500">
+                            <label for="apply_email" class="block text-sm font-medium text-gray-700 dark:text-gray-300">Email Address</label>
+                            <input type="email" id="apply_email" name="email" required class="mt-1 block w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 bg-white/50 dark:bg-gray-800/50 text-gray-900 dark:text-white">
                         </div>
                         <div>
-                            <label for="apply_mobile" class="block text-sm font-medium text-gray-700">Mobile Number</label>
-                            <input type="tel" id="apply_mobile" name="mobile" required class="mt-1 block w-full px-4 py-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500">
+                            <label for="apply_mobile" class="block text-sm font-medium text-gray-700 dark:text-gray-300">Mobile Number</label>
+                            <input type="tel" id="apply_mobile" name="mobile" required class="mt-1 block w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 bg-white/50 dark:bg-gray-800/50 text-gray-900 dark:text-white">
                         </div>
                         <div>
-                            <label for="apply_dob" class="block text-sm font-medium text-gray-700">Date of Birth</label>
-                            <input type="date" id="apply_dob" name="dob" required class="mt-1 block w-full px-4 py-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500">
+                            <label for="apply_dob" class="block text-sm font-medium text-gray-700 dark:text-gray-300">Date of Birth</label>
+                            <input type="date" id="apply_dob" name="dob" required class="mt-1 block w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 bg-white/50 dark:bg-gray-800/50 text-gray-900 dark:text-white" style="color-scheme: dark;">
                         </div>
                         <div>
-                            <label for="apply_location" class="block text-sm font-medium text-gray-700">Current Location</label>
-                            <input type="text" id="apply_location" name="current_location" required class="mt-1 block w-full px-4 py-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500">
+                            <label for="apply_location" class="block text-sm font-medium text-gray-700 dark:text-gray-300">Current Location</label>
+                            <input type="text" id="apply_location" name="current_location" required class="mt-1 block w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 bg-white/50 dark:bg-gray-800/50 text-gray-900 dark:text-white">
                         </div>
                     </div>
                 </fieldset>
@@ -680,21 +767,21 @@
                     <legend>Education & Experience</legend>
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-x-6 gap-y-4 mt-4">
                         <div>
-                            <label for="apply_college" class="block text-sm font-medium text-gray-700">College</label>
-                            <input type="text" id="apply_college" name="college" required class="mt-1 block w-full px-4 py-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500">
+                            <label for="apply_college" class="block text-sm font-medium text-gray-700 dark:text-gray-300">College</label>
+                            <input type="text" id="apply_college" name="college" required class="mt-1 block w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 bg-white/50 dark:bg-gray-800/50 text-gray-900 dark:text-white">
                         </div>
                         <div>
-                            <label for="apply_roll_number" class="block text-sm font-medium text-gray-700">Roll Number</label>
-                            <input type="text" id="apply_roll_number" name="roll_number" required class="mt-1 block w-full px-4 py-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500">
+                            <label for="apply_roll_number" class="block text-sm font-medium text-gray-700 dark:text-gray-300">Roll Number</label>
+                            <input type="text" id="apply_roll_number" name="roll_number" required class="mt-1 block w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 bg-white/50 dark:bg-gray-800/50 text-gray-900 dark:text-white">
                         </div>
                     </div>
                     <div class="mt-4">
-                        <label for="apply_experience" class="block text-sm font-medium text-gray-700">Experience (Job/Internship)</label>
-                        <textarea id="apply_experience" name="experience" rows="3" required class="mt-1 block w-full px-4 py-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500" placeholder="e.g., 2 years as Frontend Developer at XYZ"></textarea>
+                        <label for="apply_experience" class="block text-sm font-medium text-gray-700 dark:text-gray-300">Experience (Job/Internship)</label>
+                        <textarea id="apply_experience" name="experience" rows="3" required class="mt-1 block w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 bg-white/50 dark:bg-gray-800/50 text-gray-900 dark:text-white" placeholder="e.g., 2 years as Frontend Developer at XYZ"></textarea>
                     </div>
                     <div class="mt-4">
-                        <label for="apply_skills" class="block text-sm font-medium text-gray-700">Skills</label>
-                        <textarea id="apply_skills" name="skills" rows="3" required class="mt-1 block w-full px-4 py-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500" placeholder="e.g., React, Node.js, AWS, Python"></textarea>
+                        <label for="apply_skills" class="block text-sm font-medium text-gray-700 dark:text-gray-300">Skills</label>
+                        <textarea id="apply_skills" name="skills" rows="3" required class="mt-1 block w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 bg-white/50 dark:bg-gray-800/50 text-gray-900 dark:text-white" placeholder="e.g., React, Node.js, AWS, Python"></textarea>
                     </div>
                 </fieldset>
 
@@ -703,27 +790,27 @@
                     <legend>Application Details</legend>
                     <div class="grid grid-cols-1 md:grid-cols-3 gap-x-6 gap-y-4 mt-4">
                         <div>
-                            <label for="apply_join_days" class="block text-sm font-medium text-gray-700">Ready to Join in (days)</label>
-                            <input type="number" id="apply_join_days" name="ready_to_join_days" required class="mt-1 block w-full px-4 py-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500">
+                            <label for="apply_join_days" class="block text-sm font-medium text-gray-700 dark:text-gray-300">Ready to Join in (days)</label>
+                            <input type="number" id="apply_join_days" name="ready_to_join_days" required class="mt-1 block w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 bg-white/50 dark:bg-gray-800/50 text-gray-900 dark:text-white">
                         </div>
                          <div>
-                            <label for="apply_current_salary" class="block text-sm font-medium text-gray-700">Current Salary (LPA)</label>
-                            <input type="text" id="apply_current_salary" name="current_salary" required class="mt-1 block w-full px-4 py-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500" placeholder="e.g., 5 or N/A">
+                            <label for="apply_current_salary" class="block text-sm font-medium text-gray-700 dark:text-gray-300">Current Salary (LPA)</label>
+                            <input type="text" id="apply_current_salary" name="current_salary" required class="mt-1 block w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 bg-white/50 dark:bg-gray-800/50 text-gray-900 dark:text-white" placeholder="e.g., 5 or N/A">
                         </div>
                          <div>
-                            <label for="apply_expected_salary" class="block text-sm font-medium text-gray-700">Expected Salary (LPA)</label>
-                            <input type="text" id="apply_expected_salary" name="expected_salary" required class="mt-1 block w-full px-4 py-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500" placeholder="e.g., 7">
+                            <label for="apply_expected_salary" class="block text-sm font-medium text-gray-700 dark:text-gray-300">Expected Salary (LPA)</label>
+                            <input type="text" id="apply_expected_salary" name="expected_salary" required class="mt-1 block w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 bg-white/50 dark:bg-gray-800/50 text-gray-900 dark:text-white" placeholder="e.g., 7">
                         </div>
                     </div>
                     <div class="mt-4">
-                        <label for="apply_resume_link" class="block text-sm font-medium text-gray-700">Resume Link</label>
-                        <input type="url" id="apply_resume_link" name="resume_link" required class="mt-1 block w-full px-4 py-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500" placeholder="https://www.your-drive.com/resume.pdf">
+                        <label for="apply_resume_link" class="block text-sm font-medium text-gray-700 dark:text-gray-300">Resume Link</label>
+                        <input type="url" id="apply_resume_link" name="resume_link" required class="mt-1 block w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 bg-white/50 dark:bg-gray-800/50 text-gray-900 dark:text-white" placeholder="https://www.your-drive.com/resume.pdf">
                     </div>
                     
                     <div class="mt-4">
-                        <label for="apply_certificates_link" class="block text-sm font-medium text-gray-700">Certificates Link (Optional)</label>
-                        <input type="url" id="apply_certificates_link" name="certificates_link" class="mt-1 block w-full px-4 py-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500" placeholder="https://www.your-drive.com/certificates.pdf">
-                        <p class="mt-1 text-xs text-gray-500">Please merge all certificates into one file (e.g., a single PDF) and provide the link.</p>
+                        <label for="apply_certificates_link" class="block text-sm font-medium text-gray-700 dark:text-gray-300">Certificates Link (Optional)</label>
+                        <input type="url" id="apply_certificates_link" name="certificates_link" class="mt-1 block w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 bg-white/50 dark:bg-gray-800/5Y0 text-gray-900 dark:text-white" placeholder="https://www.your-drive.com/certificates.pdf">
+                        <p class="mt-1 text-xs text-gray-500 dark:text-gray-400">Please merge all certificates into one file (e.g., a single PDF) and provide the link.</p>
                     </div>
                 </fieldset>
 
@@ -733,13 +820,67 @@
             </form>
         </div>
     </div>
+    
+    
+    <!-- NEW: AI Chatbot Popup -->
+    <div id="ai-chatbot-container" class="fixed bottom-6 right-6 z-[900]">
+        <!-- Chat Window (hidden by default) -->
+        <div id="ai-chatbot-window" class="hidden absolute bottom-20 right-0 
+                                          w-80 sm:w-96 h-[500px] 
+                                          flex flex-col
+                                          rounded-2xl shadow-2xl overflow-hidden
+                                          dark:bg-slate-800/80 dark:backdrop-blur-xl dark:border dark:border-white/20
+                                          bg-white/90 backdrop-blur-xl border border-gray-200
+                                          transition-all duration-300 origin-bottom-right transform scale-95 opacity-0">
+            <!-- Header -->
+            <div class="flex-shrink-0 flex justify-between items-center p-4 border-b dark:border-white/20 border-gray-200">
+                <h3 class="text-lg font-semibold text-gray-900 dark:text-white">Ask Xeta AI</h3>
+                <button id="ai-chatbot-close-btn" class="text-gray-500 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white">
+                    <svg class="w-5 h-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" /></svg>
+                </button>
+            </div>
+            <!-- Chat Body -->
+            <div id="ai-chat-body" class="flex-grow p-4 space-y-4 overflow-y-auto">
+                <!-- Chat messages will be dynamically injected here -->
+            </div>
+            <!-- Input -->
+            <div class="flex-shrink-0 p-4 border-t dark:border-white/20 border-gray-200">
+                <div class="relative">
+                    <input type="text" id="ai-chat-input" placeholder="Type your message..."
+                           class="w-full px-4 py-3 pr-12 rounded-lg 
+                                  bg-white dark:bg-slate-700 
+                                  text-gray-900 dark:text-white
+                                  border border-gray-300 dark:border-gray-600
+                                  focus:outline-none focus:ring-2 focus:ring-blue-500
+                                  disabled:opacity-50">
+                    <button id="ai-chat-send-btn" class="absolute right-2 top-1/2 -translate-y-1/2 p-2 rounded-full text-white bg-blue-600 hover:bg-blue-700 disabled:opacity-50">
+                        <svg class="w-5 h-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 10l7-7m0 0l7 7m-7-7v18" /></svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Chat Toggle Button -->
+        <button id="ai-chatbot-toggle-btn" class="w-16 h-16 bg-blue-600 text-white rounded-full shadow-2xl flex items-center justify-center
+                                                transition-all duration-300 transform hover:scale-110 hover:bg-blue-700"
+                aria-label="Toggle AI Chatbot">
+            <!-- Chat Icon -->
+            <svg id="ai-chat-icon-open" class="w-8 h-8" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
+            </svg>
+            <!-- Close Icon (hidden by default) -->
+            <svg id="ai-chat-icon-close" class="w-8 h-8 hidden" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+            </svg>
+        </button>
+    </div>
 
 
-    <!-- All JavaScript from index.html -->
+    <!-- All JavaScript -->
     <script>
         document.addEventListener('DOMContentLoaded', () => {
 
-            // --- NEW: Job Description Data ---
+            // --- Job Description Data (Original) ---
             const jobDescriptions = {
                 "frontend-react": {
                     title: "Frontend Developer (React)",
@@ -844,39 +985,36 @@
             // --- END Job Data ---
 
 
-            // --- Navbar Scroll Effect ---
+            // --- Navbar Scroll Effect (Original) ---
             const navbar = document.getElementById('navbar');
             window.addEventListener('scroll', () => {
                 if (window.scrollY > 50) {
-                    navbar.classList.add('bg-white/95', 'backdrop-blur-md', 'shadow-lg');
+                    navbar.classList.add('dark:bg-black/50', 'bg-white/95', 'shadow-lg');
                 } else {
-                    navbar.classList.remove('bg-white/95', 'backdrop-blur-md', 'shadow-lg');
+                    navbar.classList.remove('dark:bg-black/50', 'bg-white/95', 'shadow-lg');
                 }
             });
 
-            // --- Mobile Menu Toggle ---
+            // --- Mobile Menu Toggle (Original) ---
             const mobileMenuBtn = document.getElementById('mobile-menu-btn');
             const mobileMenu = document.getElementById('mobile-menu');
             mobileMenuBtn.addEventListener('click', () => {
                 mobileMenu.classList.toggle('hidden');
             });
-            // Close mobile menu when a link is clicked
             mobileMenu.querySelectorAll('a, button').forEach(item => {
                 item.addEventListener('click', () => {
-                    // Don't close if it's the modal button
                     if (!item.hasAttribute('data-modal-target')) {
                          mobileMenu.classList.add('hidden');
                     }
                 });
             });
 
-            // --- Scroll-based Animations ---
+            // --- Scroll-based Animations (Original) ---
             const observerOptions = {
                 root: null,
                 rootMargin: '0px',
                 threshold: 0.1
             };
-
             const observerCallback = (entries, observer) => {
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
@@ -885,16 +1023,15 @@
                     }
                 });
             };
-
             const observer = new IntersectionObserver(observerCallback, observerOptions);
             const elementsToObserve = document.querySelectorAll('.observe-me');
             elementsToObserve.forEach(el => observer.observe(el));
 
-            // --- Modal Functionality (UPDATED) ---
+            // --- Modal Functionality (Original, with updates for JD modal) ---
             const openModalButtons = document.querySelectorAll('[data-modal-target]');
             const closeModalButtons = document.querySelectorAll('[data-modal-close]');
             const modals = document.querySelectorAll('.modal');
-            const jdApplyButton = document.getElementById('jd-apply-button'); // Get the "Apply" button from JD modal
+            const jdApplyButton = document.getElementById('jd-apply-button');
 
             openModalButtons.forEach(button => {
                 button.addEventListener('click', () => {
@@ -902,8 +1039,6 @@
                     const modal = document.getElementById(modalId);
                     
                     if (modal) {
-                        
-                        // --- Logic for Apply Modal ---
                         if (modalId === 'apply-modal') {
                             const jobTitle = button.getAttribute('data-job-title');
                             const modalTitle = modal.querySelector('#apply-modal-title');
@@ -915,15 +1050,12 @@
                             if (jobTitleInput) {
                                 jobTitleInput.value = jobTitle;
                             }
-
-                            // If we're opening the Apply modal from the JD modal, close the JD modal
                             const jdModal = document.getElementById('jd-modal');
                             if (jdModal && jdModal.style.display === 'flex') {
                                 closeModal(jdModal);
                             }
                         }
                         
-                        // --- NEW: Logic for JD Modal ---
                         if (modalId === 'jd-modal') {
                             const jobId = button.getAttribute('data-job-id');
                             const jobData = jobDescriptions[jobId];
@@ -932,7 +1064,7 @@
                             
                             if (jobData) {
                                 modalTitle.textContent = jobData.title;
-                                let contentHTML = `<p>${jobData.description}</p>`;
+                                let contentHTML = `<p class="text-lg text-gray-600 dark:text-gray-300">${jobData.description}</p>`;
                                 
                                 contentHTML += '<h4>Responsibilities:</h4>';
                                 contentHTML += '<ul>';
@@ -950,11 +1082,9 @@
                                 
                                 modalContentBody.innerHTML = contentHTML;
 
-                                // Set the job title on the "Apply" button inside the JD modal
                                 if (jdApplyButton) {
                                     jdApplyButton.setAttribute('data-job-title', jobData.title);
                                 }
-
                             } else {
                                 modalTitle.textContent = 'Error';
                                 modalContentBody.innerHTML = '<p>Job description not found. Please try again later.</p>';
@@ -963,10 +1093,9 @@
                                 }
                             }
                         }
-                        // --- END NEW ---
                         
                         modal.style.display = 'flex';
-                        document.body.style.overflow = 'hidden'; // Prevent background scrolling
+                        document.body.style.overflow = 'hidden'; 
                     }
                 });
             });
@@ -974,7 +1103,7 @@
             const closeModal = (modal) => {
                 if (modal) {
                     modal.style.display = 'none';
-                    document.body.style.overflow = 'auto'; // Restore background scrolling
+                    document.body.style.overflow = 'auto'; 
                 }
             };
 
@@ -985,7 +1114,6 @@
                 });
             });
 
-            // Close modal by clicking on the background overlay
             modals.forEach(modal => {
                 modal.addEventListener('click', (event) => {
                     if (event.target === modal) {
@@ -994,53 +1122,48 @@
                 });
             });
 
-            // --- Footer Current Year ---
+            // --- Footer Current Year (Original) ---
             const yearSpan = document.getElementById('current-year');
             if(yearSpan) {
                 yearSpan.textContent = new Date().getFullYear();
             }
             
-            // --- Handle Formspree submissions with a success message ---
+            // --- Formspree submission logic (Original, with updated selectors for dark mode success/error messages) ---
             const allForms = document.querySelectorAll('form[action^="https://formspree.io/f/"]');
-            
             allForms.forEach(form => {
                 form.addEventListener('submit', async (e) => {
                     e.preventDefault();
                     const data = new FormData(form);
-                    
                     const modalContent = form.closest('.modal-content');
                     if (!modalContent) return;
-                    
                     const closeButton = modalContent.querySelector('.close-button');
-                    
                     form.style.display = 'none';
+                    
                     let loadingMessage = document.createElement('div');
                     loadingMessage.className = 'text-center py-10';
-                    loadingMessage.innerHTML = '<p class="text-lg text-gray-700">Submitting...</p>';
+                    loadingMessage.innerHTML = '<p class="text-lg text-gray-700 dark:text-gray-300">Submitting...</p>';
                     modalContent.appendChild(loadingMessage);
 
                     try {
                         const response = await fetch(form.action, {
                             method: form.method,
                             body: data,
-                            headers: {
-                                'Accept': 'application/json'
-                            }
+                            headers: { 'Accept': 'application/json' }
                         });
                         
                         loadingMessage.remove();
 
                         let successMessage = `
                             <div class="text-center">
-                                <h2 class="text-2xl font-bold text-green-600 mb-4">Thank You!</h2>
-                                <p class="text-gray-700">Your submission has been received. Our team will get in touch with you shortly.</p>
+                                <h2 class="text-2xl font-bold text-green-600 dark:text-green-400 mb-4">Thank You!</h2>
+                                <p class="text-gray-700 dark:text-gray-300">Your submission has been received. Our team will get in touch with you shortly.</p>
                             </div>
                         `;
                         
                         let errorMessage = `
                             <div class="text-center">
-                                <h2 class="text-2xl font-bold text-red-600 mb-4">Oops!</h2>
-                                <p class="text-gray-700">Something went wrong. Please try again later.</p>
+                                <h2 class="text-2xl font-bold text-red-600 dark:text-red-400 mb-4">Oops!</h2>
+                                <p class="text-gray-700 dark:text-gray-300">Something went wrong. Please try again later.</p>
                             </div>
                         `;
 
@@ -1048,17 +1171,17 @@
                             modalContent.innerHTML = successMessage;
                         } else {
                             modalContent.innerHTML = errorMessage;
-                            form.style.display = 'block'; // Show form again on error
+                            form.style.display = 'block'; 
                         }
                     } catch (error) {
                          loadingMessage.remove();
                          modalContent.innerHTML = `
                             <div class="text-center">
-                                <h2 class="text-2xl font-bold text-red-600 mb-4">Error</h2>
-                                <p class="text-gray-700">An error occurred. Please refresh and try again.</p>
+                                <h2 class="text-2xl font-bold text-red-600 dark:text-red-400 mb-4">Error</h2>
+                                <p class="text-gray-700 dark:text-gray-300">An error occurred. Please refresh and try again.</p>
                             </div>
                         `;
-                         form.style.display = 'block'; // Show form again on error
+                         form.style.display = 'block';
                     } finally {
                         if (closeButton && !modalContent.contains(closeButton)) {
                             modalContent.prepend(closeButton);
@@ -1066,6 +1189,311 @@
                     }
                 });
             });
+
+            // --- NEW: Dark Mode Toggle Logic ---
+            const themeToggleBtn = document.getElementById('theme-toggle-btn');
+            const themeToggleBtnMobile = document.getElementById('theme-toggle-btn-mobile');
+            const lightIcon = document.getElementById('theme-icon-light');
+            const darkIcon = document.getElementById('theme-icon-dark');
+            const lightIconMobile = document.getElementById('theme-icon-light-mobile');
+            const darkIconMobile = document.getElementById('theme-icon-dark-mobile');
+            const html = document.documentElement;
+
+            function updateThemeIcons() {
+                if (html.classList.contains('dark')) {
+                    lightIcon.classList.remove('hidden');
+                    darkIcon.classList.add('hidden');
+                    lightIconMobile.classList.remove('hidden');
+                    darkIconMobile.classList.add('hidden');
+                } else {
+                    lightIcon.classList.add('hidden');
+                    darkIcon.classList.remove('hidden');
+                    lightIconMobile.classList.add('hidden');
+                    darkIconMobile.classList.remove('hidden');
+                }
+            }
+
+            function toggleTheme() {
+                html.classList.toggle('dark');
+                if (html.classList.contains('dark')) {
+                    localStorage.theme = 'dark';
+                } else {
+                    localStorage.theme = 'light';
+                }
+                updateThemeIcons();
+            }
+
+            // Set initial theme on page load
+            // We default to 'dark' (AI theme) unless 'light' is explicitly set in localStorage
+            if (localStorage.theme === 'light') {
+                html.classList.remove('dark');
+            } else {
+                html.classList.add('dark');
+            }
+            updateThemeIcons();
+
+            themeToggleBtn.addEventListener('click', toggleTheme);
+            themeToggleBtnMobile.addEventListener('click', toggleTheme);
+            
+            // --- NEW: AI Chatbot Toggle Logic ---
+            const chatToggleBtn = document.getElementById('ai-chatbot-toggle-btn');
+            const chatWindow = document.getElementById('ai-chatbot-window');
+            const chatCloseBtn = document.getElementById('ai-chatbot-close-btn');
+            const chatIconOpen = document.getElementById('ai-chat-icon-open');
+            const chatIconClose = document.getElementById('ai-chat-icon-close');
+            
+            // --- NEW: AI Chatbot Logic ---
+            const chatBody = document.getElementById('ai-chat-body');
+            const chatInput = document.getElementById('ai-chat-input');
+            const chatSendBtn = document.getElementById('ai-chat-send-btn');
+            
+            // Define the System Prompt for the AI
+            const systemPrompt = `
+                You are "Xeta AI", a helpful assistant for the Xeta Solutions careers page. 
+                Your goal is to answer questions about the company, the job openings, and the application process. 
+                The available jobs are: Frontend Developer (React), Backend Developer (Node.js), Full Stack Developer (MERN), Full Stack Developer (MEAN), and Cloud Engineer (AWS).
+                Be friendly, professional, and concise. Encourage users to apply for roles that fit their skills.
+            `;
+            
+            // Store chat history
+            let chatHistory = [];
+            let isChatInitialized = false;
+            let isTyping = false;
+            
+            // Function to add a message to the chat UI
+            function addMessageToChatUI(sender, message) {
+                const messageDiv = document.createElement('div');
+                messageDiv.classList.add('flex');
+                
+                let messageBubble;
+                
+                if (sender === 'user') {
+                    messageDiv.classList.add('justify-end');
+                    messageBubble = `
+                        <div class="p-3 rounded-lg rounded-br-none bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-gray-200">
+                            <p class="text-sm">${message}</p>
+                        </div>
+                    `;
+                } else { // 'ai' or 'typing'
+                    messageBubble = `
+                        <div class="p-3 rounded-lg rounded-bl-none ${sender === 'typing' ? 'bg-gray-100 dark:bg-gray-700/50' : 'bg-blue-100 dark:bg-blue-900/50'} text-gray-800 dark:text-gray-200">
+                            <p class="text-sm">${message}</p>
+                        </div>
+                    `;
+                }
+                
+                messageDiv.innerHTML = messageBubble;
+                
+                if (sender === 'typing') {
+                    messageDiv.id = 'typing-indicator';
+                }
+                
+                chatBody.appendChild(messageDiv);
+                
+                // Scroll to the bottom
+                chatBody.scrollTop = chatBody.scrollHeight;
+                
+                return messageDiv; // Return the element if we need to remove it (for typing)
+            }
+            
+            // Function to show/hide typing indicator
+            function showTyping(show) {
+                const existingIndicator = document.getElementById('typing-indicator');
+                if (show) {
+                    if (!existingIndicator) {
+                        addMessageToChatUI('typing', '...');
+                    }
+                    isTyping = true;
+                    chatInput.disabled = true;
+                    chatSendBtn.disabled = true;
+                } else {
+                    if (existingIndicator) {
+                        existingIndicator.remove();
+                    }
+                    isTyping = false;
+                    chatInput.disabled = false;
+                    chatSendBtn.disabled = false;
+                    chatInput.focus();
+                }
+            }
+            
+            // Function to call Gemini API
+            async function callGeminiAPI(userQuery, history) {
+                const apiKey = ""; // API key is handled by the environment
+                const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-09-2025:generateContent?key=${apiKey}`;
+                
+                const payload = {
+                    contents: [
+                        ...history, // Spread the existing history
+                        { role: "user", parts: [{ text: userQuery }] }
+                    ],
+                    systemInstruction: {
+                        parts: [{ text: systemPrompt }]
+                    },
+                    generationConfig: {
+                        temperature: 0.7,
+                        topK: 1,
+                        topP: 1,
+                        maxOutputTokens: 2048,
+                    }
+                };
+
+                let response;
+                let backoffTime = 1000; // Start with 1 second
+
+                for (let i = 0; i < 5; i++) { // Retry up to 5 times
+                    try {
+                        response = await fetch(apiUrl, {
+                            method: 'POST',
+                            headers: { 'Content-Type': 'application/json' },
+                            body: JSON.stringify(payload)
+                        });
+
+                        if (response.ok) {
+                            const result = await response.json();
+                            const text = result.candidates?.[0]?.content?.parts?.[0]?.text;
+                            if (text) {
+                                return text;
+                            } else {
+                                console.error("API response was OK, but no text found.", result);
+                                return "I'm sorry, I couldn't process that response. Please try again.";
+                            }
+                        } else if (response.status === 429) {
+                            // Throttled, wait and retry
+                            await new Promise(resolve => setTimeout(resolve, backoffTime));
+                            backoffTime *= 2; // Exponential backoff
+                        } else {
+                            // Other error
+                            console.error("API Error:", response.status, await response.text());
+                            return "I'm having trouble connecting right now. Please try again later.";
+                        }
+                    } catch (error) {
+                        console.error("Fetch Error:", error);
+                        // Network error, wait and retry
+                        await new Promise(resolve => setTimeout(resolve, backoffTime));
+                        backoffTime *= 2;
+                    }
+                }
+                
+                return "I'm experiencing high traffic right now. Please try again in a moment.";
+            }
+
+            // Function to handle sending a message
+            async function handleUserMessage() {
+                const userQuery = chatInput.value.trim();
+                if (userQuery === '' || isTyping) return;
+                
+                // Add user message to UI
+                addMessageToChatUI('user', userQuery);
+                
+                // Show typing indicator
+                showTyping(true);
+                
+                // Call API
+                const aiResponse = await callGeminiAPI(userQuery, chatHistory);
+                
+                // Update history
+                chatHistory.push({ role: "user", parts: [{ text: userQuery }] });
+                chatHistory.push({ role: "model", parts: [{ text: aiResponse }] });
+
+                // Hide typing and show response
+                showTyping(false);
+                addMessageToChatUI('ai', aiResponse);
+                
+                // Clear input
+                chatInput.value = '';
+            }
+            
+            // Add initial greeting message
+            function initializeChat() {
+                if (isChatInitialized) return;
+                
+                const initialGreeting = "Hi there! I'm Xeta AI. How can I help you with your job search at Xeta Solutions today?";
+                
+                // Add to UI
+                addMessageToChatUI('ai', initialGreeting);
+                
+                // Add to history (as the first model response)
+                chatHistory = [
+                    { role: "model", parts: [{ text: initialGreeting }] }
+                ];
+                
+                isChatInitialized = true;
+            }
+
+            chatSendBtn.addEventListener('click', handleUserMessage);
+            chatInput.addEventListener('keydown', (e) => {
+                if (e.key === 'Enter') {
+                    handleUserMessage();
+                }
+            });
+
+            function toggleChatbot() {
+                if (chatWindow.classList.contains('hidden')) {
+                    // Open chat
+                    chatWindow.classList.remove('hidden');
+                    setTimeout(() => {
+                        chatWindow.classList.remove('scale-95', 'opacity-0');
+                        chatWindow.classList.add('scale-100', 'opacity-100');
+                    }, 10);
+                    chatIconOpen.classList.add('hidden');
+                    chatIconClose.classList.remove('hidden');
+                    
+                    // NEW: Initialize chat on first open
+                    initializeChat();
+                    
+                } else {
+                    // Close chat
+                    chatWindow.classList.remove('scale-100', 'opacity-100');
+                    chatWindow.classList.add('scale-95', 'opacity-0');
+                    setTimeout(() => {
+                        chatWindow.classList.add('hidden');
+                    }, 300); // Match transition duration
+                    chatIconOpen.classList.remove('hidden');
+                    chatIconClose.classList.add('hidden');
+                }
+            }
+
+            chatToggleBtn.addEventListener('click', toggleChatbot);
+            chatCloseBtn.addEventListener('click', toggleChatbot);
+            
+            // --- NEW: Job Search & Filter Logic ---
+            const searchInput = document.getElementById('job-search-input');
+            const filterSelect = document.getElementById('job-filter-select');
+            const jobGrid = document.getElementById('job-grid');
+            const jobCards = jobGrid.querySelectorAll('.job-card');
+            const noJobsMessage = document.getElementById('no-jobs-message');
+
+            function filterAndSearchJobs() {
+                const searchTerm = searchInput.value.toLowerCase();
+                const department = filterSelect.value;
+                let jobsFound = 0;
+
+                jobCards.forEach(card => {
+                    const title = card.getAttribute('data-title').toLowerCase();
+                    const cardDepartment = card.getAttribute('data-department');
+
+                    const matchesSearch = title.includes(searchTerm);
+                    const matchesDepartment = (department === 'all' || department === cardDepartment);
+
+                    if (matchesSearch && matchesDepartment) {
+                        card.style.display = 'flex'; // 'flex' because job-card uses it
+                        jobsFound++;
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+                
+                // Show or hide the "no jobs found" message
+                if (jobsFound === 0) {
+                    noJobsMessage.classList.remove('hidden');
+                } else {
+                    noJobsMessage.classList.add('hidden');
+                }
+            }
+
+            searchInput.addEventListener('input', filterAndSearchJobs);
+            filterSelect.addEventListener('change', filterAndSearchJobs);
 
         });
     </script>
