@@ -5,17 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Build Your Career at Xeta Solutions</title>
     
-    <!-- TailwindCSS CDN -->
-    <script src="https://cdn.tailwindcss.com"></script>
-     <link rel="icon" type="image/png" href="https://res.cloudinary.com/dpz44zf0z/image/upload/v1760704788/XETA_SOLUTIONS_LOGO_bcsbwh.png">
+    <!-- TailwindCSS CDN --><script src="https://cdn.tailwindcss.com"></script>
+    <link rel="icon" type="image/png" href="https://res.cloudinary.com/dpz44zf0z/image/upload/v1760704788/XETA_SOLUTIONS_LOGO_bcsbwh.png">
 
-    <!-- Google Font: Inter -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <!-- Google Font: Inter --><link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     
-    <!-- Custom Tailwind Config to use Inter -->
-    <script>
+    <!-- Custom Tailwind Config to use Inter --><script>
         tailwind.config = {
             theme: {
                 extend: {
@@ -26,18 +23,27 @@
             },
         }
     </script>
+    
+    <!-- Custom styles for modal transitions --><style>
+        /* Smooth transition for the backdrop */
+        #redirect-modal {
+            transition: opacity 0.3s ease-out;
+        }
+        /* Smooth transition for the inner modal panel */
+        #redirect-modal > div:not(.hidden) > div { 
+            transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1); /* Bounce effect */
+        }
+        /* Ensure the logo fallback text is visible on the dark header */
+        .text-white { color: #ffffff; } 
+    </style>
 </head>
 <body class="bg-white text-gray-900 font-sans antialiased">
 
-    <!-- Page Wrapper -->
-    <div class="flex flex-col min-h-screen">
+    <!-- Page Wrapper --><div class="flex flex-col min-h-screen">
 
-        <!-- Header -->
-        <header class="absolute top-0 left-0 w-full z-20 py-6 px-4 sm:px-6 lg:px-8">
+        <!-- Header --><header class="absolute top-0 left-0 w-full z-20 py-6 px-4 sm:px-6 lg:px-8">
             <div class="max-w-7xl mx-auto">
-                <!-- Logo/Company Name -->
-                <a href="#" aria-label="Xeta Solutions Home">
-                    <!-- Replaced text with your logo -->
+                <!-- Logo/Company Name --><a href="#" aria-label="Xeta Solutions Home">
                     <img src="https://res.cloudinary.com/dpz44zf0z/image/upload/v1760704788/XETA_SOLUTIONS_LOGO_bcsbwh.png" 
                          alt="Xeta Solutions Logo" 
                          class="h-10 w-auto"
@@ -50,35 +56,27 @@
             <!-- 
               Hero Section 
               - Full-width with background image and gradient overlay
-              - overflow-hidden and relative positioning for the decorative shapes
-            -->
-            <section class="relative w-full overflow-hidden text-white" 
+            --><section class="relative w-full overflow-hidden text-white" 
                      style="background-image: url('https://images.unsplash.com/photo-1521737852567-6949f3f9f2b5?q=80&w=2070&auto=format&fit=crop'); background-size: cover; background-position: center center;">
                 
-                <!-- Dark gradient overlay for text readability -->
-                <div class="absolute inset-0 bg-gradient-to-r from-blue-700/80 to-indigo-900/80"></div>
+                <!-- Dark gradient overlay for text readability --><div class="absolute inset-0 bg-gradient-to-r from-blue-700/80 to-indigo-900/80"></div>
 
-                <!-- Decorative Blurred Shapes -->
-                <div class="absolute -top-20 -left-20 w-72 h-72 md:w-96 md:h-96 bg-blue-400 rounded-full opacity-20 blur-3xl z-0"></div>
+                <!-- Decorative Blurred Shapes --><div class="absolute -top-20 -left-20 w-72 h-72 md:w-96 md:h-96 bg-blue-400 rounded-full opacity-20 blur-3xl z-0"></div>
                 <div class="absolute -bottom-20 -right-10 w-80 h-80 md:w-[28rem] md:h-[28rem] bg-indigo-400 rounded-full opacity-20 blur-3xl z-0"></div>
 
-                <!-- Hero Content -->
-                <div class="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-32 md:py-48 text-center flex flex-col items-center">
+                <!-- Hero Content --><div class="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-32 md:py-48 text-center flex flex-col items-center">
                     
-                    <!-- Headline -->
-                    <h2 class="text-4xl md:text-6xl font-bold tracking-tight text-white shadow-sm">
+                    <!-- Headline --><h2 class="text-4xl md:text-6xl font-bold tracking-tight text-white shadow-sm">
                         Build Your Career at Xeta Solutions
                     </h2>
                     
-                    <!-- Subtext -->
-                    <p class="mt-6 text-lg md:text-xl text-blue-100 max-w-2xl">
+                    <!-- Subtext --><p class="mt-6 text-lg md:text-xl text-blue-100 max-w-2xl">
                         We’re building intelligent, secure, and innovative technology that powers hiring, assessments, and learning. Join us and be a part of the future.
                     </p>
                     
-                    <!-- Call to Action Button -->
-                    <!-- Updated href to external link, added target="_blank" -->
-                    <a href="https://www.testify-lac.com/careers" 
-                       target="_blank" 
+                    <!-- Call to Action Button --><a href="#" 
+                       id="view-roles-btn"
+                       data-href="https://www.testify-lac.com/careers"
                        rel="noopener noreferrer"
                        class="mt-10 inline-block bg-white text-indigo-700 font-semibold px-8 py-3 rounded-full shadow-lg transition-all duration-300 ease-in-out transform hover:scale-105 hover:shadow-xl focus:outline-none focus:ring-2 focus:ring-white focus:ring-opacity-50">
                         View Open Roles
@@ -88,12 +86,9 @@
 
             <!-- 
               Work Culture Section
-              - Added to highlight company values and attract talent.
-            -->
-            <section class="bg-white py-24 sm:py-32">
+            --><section class="bg-white py-24 sm:py-32">
                 <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                    <!-- Section Header -->
-                    <div class="max-w-3xl mx-auto text-center">
+                    <!-- Section Header --><div class="max-w-3xl mx-auto text-center">
                         <h2 class="text-base font-semibold leading-7 text-indigo-600">Our Culture</h2>
                         <p class="mt-2 text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
                             Life at Xeta Solutions
@@ -103,15 +98,14 @@
                         </p>
                     </div>
 
-                    <!-- Culture/Values Grid -->
-                    <div class="mt-20 max-w-lg mx-auto grid grid-cols-1 gap-x-8 gap-y-16 lg:max-w-none lg:grid-cols-3">
+                    <!-- Culture/Values Grid - UPDATED ICONS --><div class="mt-20 max-w-lg mx-auto grid grid-cols-1 gap-x-8 gap-y-16 lg:max-w-none lg:grid-cols-3">
                         
-                        <!-- Feature 1: Innovation -->
-                        <div class="flex flex-col items-center lg:items-start text-center lg:text-left">
+                        <!-- Feature 1: Innovation (Abstract Rocket/Speed Icon) --><div class="flex flex-col items-center lg:items-start text-center lg:text-left">
                             <div class="flex h-12 w-12 items-center justify-center rounded-lg bg-indigo-600 text-white">
-                                <!-- Heroicon: light-bulb -->
-                                <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-                                    <path stroke-linecap="round" stroke-linejoin="round" d="M12 18v-5.25m0 0a6.01 6.01 0 001.5-.189m-1.5.189a6.01 6.01 0 01-1.5-.189m3 7.5a6.01 6.01 0 00-3-7.5m3 7.5a6.01 6.01 0 01-3-7.5m-9.75 7.5a9 9 0 0118 0p-18 0z" />
+                                <!-- SVG for Innovation/Speed --><svg class="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M12 2L2 7l10 5 10-5-10-5z"></path>
+                                    <path d="M2 17l10 5 10-5"></path>
+                                    <path d="M2 12l10 5 10-5"></path>
                                 </svg>
                             </div>
                             <h3 class="mt-6 text-xl font-semibold leading-7 text-gray-900">Innovation at Core</h3>
@@ -120,12 +114,13 @@
                             </p>
                         </div>
 
-                        <!-- Feature 2: Collaboration -->
-                        <div class="flex flex-col items-center lg:items-start text-center lg:text-left">
+                        <!-- Feature 2: Collaboration (Users/Team Icon) --><div class="flex flex-col items-center lg:items-start text-center lg:text-left">
                             <div class="flex h-12 w-12 items-center justify-center rounded-lg bg-indigo-600 text-white">
-                                <!-- Heroicon: users -->
-                                <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-                                    <path stroke-linecap="round" stroke-linejoin="round" d="M18 18.72a9.094 9.094 0 003.741-.479 3 3 0 00-4.682-2.72m-4.682 2.72a.75.75 0 01-1.06 0m-1.06 0a.75.75 0 01-1.06 0m1.06 0a.75.75 0 01-1.06 0M10.5 6.375a3.375 3.375 0 11-6.75 0 3.375 3.375 0 016.75 0zM10.5 10.5h-6.75a3 3 0 00-3 3v.75c0 .414.336.75.75.75h11.25c.414 0 .75-.336.75-.75v-.75a3 3 0 00-3-3h-6.75z" />
+                                <!-- SVG for Collaboration/Team --><svg class="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M16 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"></path>
+                                    <circle cx="8.5" cy="7" r="4"></circle>
+                                    <path d="M20 8v6"></path>
+                                    <path d="M23 11H17"></path>
                                 </svg>
                             </div>
                             <h3 class="mt-6 text-xl font-semibold leading-7 text-gray-900">One Global Team</h3>
@@ -134,12 +129,11 @@
                             </p>
                         </div>
 
-                        <!-- Feature 3: Growth -->
-                        <div class="flex flex-col items-center lg:items-start text-center lg:text-left">
+                        <!-- Feature 3: Growth (Upward Trend Chart Icon) --><div class="flex flex-col items-center lg:items-start text-center lg:text-left">
                             <div class="flex h-12 w-12 items-center justify-center rounded-lg bg-indigo-600 text-white">
-                                <!-- Heroicon: academic-cap -->
-                                <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-                                    <path stroke-linecap="round" stroke-linejoin="round" d="M4.26 10.147a60.436 60.436 0 00-.491 6.347A48.627 48.627 0 0112 20.904a48.627 48.627 0 018.232-4.41 60.46 60.46 0 00-.491-6.347m-15.482 0a50.57 50.57 0 00-2.658-.813A59.905 59.905 0 0112 3.493a59.902 59.902 0 0110.399 5.84c-.896.248-1.783.52-2.658.814m-15.482 0A50.697 50.697 0 0112 13.489a50.702 50.702 0 017.74-3.342M6.75 15a.75.75 0 100-1.5.75.75 0 000 1.5z" />
+                                <!-- SVG for Growth/Upward Trend --><svg class="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <polyline points="23 6 13.5 15.5 8.5 10.5 1 18"></polyline>
+                                    <polyline points="17 6 23 6 23 12"></polyline>
                                 </svg>
                             </div>
                             <h3 class="mt-6 text-xl font-semibold leading-7 text-gray-900">Grow With Us</h3>
@@ -152,16 +146,139 @@
                 </div>
             </section>
             
+            <!-- 
+              Hiring Process Disclaimer 
+            --><section id="hiring-process" class="bg-gray-50 py-24 sm:py-32">
+                <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <div class="relative rounded-2xl bg-white p-8 sm:p-12 shadow-xl border border-gray-100">
+                        <!-- Icon - SHIELD WITH CHECKMARK ICON (UPDATED) --><div class="absolute -top-7 left-1/2 -translate-x-1/2 sm:left-0 sm:-translate-x-0 sm:-top-8 sm:-left-8 h-16 w-16 rounded-full bg-indigo-600 text-white flex items-center justify-center shadow-lg">
+                            <!-- SVG for Security/Official Process with Checkmark --><svg class="h-8 w-8" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+                                <polyline points="9 12 11 14 15 10"></polyline>
+                            </svg>
+                        </div>
+                        
+                        <!-- Content --><div class="text-center sm:text-left sm:ml-12 pt-8 sm:pt-0">
+                            <h3 class="text-2xl font-bold tracking-tight text-gray-900 sm:text-3xl">
+                                Our Hiring Process
+                            </h3>
+                            <p class="mt-4 text-lg leading-8 text-gray-700">
+                                We want your application experience to be clear, fair, and secure. Please take note of our official process.
+                            </p>
+                            <ul class="mt-8 space-y-4 list-disc list-inside text-gray-600 text-left max-w-lg mx-auto sm:mx-0">
+                                <li>
+                                    <strong>Managed In-House:</strong> All career opportunities at Xeta Solutions are managed directly by our internal talent acquisition team.
+                                </li>
+                                <li>
+                                    <strong>Official Portal:</strong> All subsequent rounds and communications regarding your application will be conducted exclusively through the official <strong>Testify Portal</strong>.
+                                </li>
+                                <li>
+                                    <strong class="text-indigo-700">No Fees Guaranteed:</strong> We will <span class="font-bold underline">never</span> charge any single rupee or fee at any stage of the hiring process.
+                                </li>
+                                <li>
+                                    <strong>Stay Alert:</strong> Please do not believe any messages or requests asking for payment. If you receive such a request, it is fraudulent.
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
         </main>
 
-        <!-- Footer -->
-        <footer class="bg-white py-8 border-t border-gray-100">
+        <!-- Footer --><footer class="bg-white py-8 border-t border-gray-100">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
                 <p class="text-gray-500">&copy; 2025 Xeta Solutions. All rights reserved.</p>
             </div>
         </footer>
 
     </div>
+    
+    <!-- Redirect Modal --><div id="redirect-modal" class="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50 transition-opacity duration-300 hidden opacity-0" aria-labelledby="modal-title" role="dialog" aria-modal="true">
+        <div class="relative w-full max-w-md transform-gpu overflow-hidden rounded-2xl bg-white p-6 text-left shadow-xl transition-all scale-95 opacity-0 duration-300">
+            <!-- Modal Header --><div class="flex items-center space-x-3">
+                <div class="flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-full bg-indigo-100 text-indigo-600">
+                    <!-- SVG for Information/Chat Bubble --><svg class="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"></path>
+                    </svg>
+                </div>
+                <div>
+                    <h3 class="text-xl font-semibold leading-6 text-gray-900" id="modal-title">Please Note</h3>
+                </div>
+            </div>
+            
+            <!-- Modal Body --><div class="mt-6">
+                <p class="text-base text-gray-600">
+                    You are now being redirected. All our hiring processes are managed through <strong>Testify - A Product of Xeta.</strong>
+                </p>
+            </div>
+
+            <!-- Modal Footer --><div class="mt-8 sm:flex sm:flex-row-reverse sm:space-x-4 sm:space-x-reverse">
+                <button id="modal-ok-btn" type="button" class="inline-flex w-full justify-center rounded-md border border-transparent bg-indigo-600 px-4 py-2 text-base font-semibold text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 sm:w-auto sm:text-sm transition-colors">
+                    Proceed
+                </button>
+                <button id="modal-cancel-btn" type="button" class="mt-3 inline-flex w-full justify-center rounded-md border border-gray-300 bg-white px-4 py-2 text-base font-semibold text-gray-700 shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 sm:mt-0 sm:w-auto sm:text-sm transition-colors">
+                    Cancel
+                </button>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Modal Interaction Script --><script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const viewRolesBtn = document.getElementById('view-roles-btn');
+            const redirectModal = document.getElementById('redirect-modal');
+            const modalOkBtn = document.getElementById('modal-ok-btn');
+            const modalCancelBtn = document.getElementById('modal-cancel-btn');
+            
+            if (viewRolesBtn && redirectModal && modalOkBtn && modalCancelBtn) {
+                const redirectUrl = viewRolesBtn.dataset.href;
+                // Target the inner modal panel for scaling effect
+                const modalContent = redirectModal.querySelector('.relative.w-full.max-w-md'); 
+
+                const showModal = () => {
+                    redirectModal.classList.remove('hidden');
+                    // Use requestAnimationFrame for smoother transition start on modern browsers
+                    requestAnimationFrame(() => {
+                        redirectModal.classList.remove('opacity-0');
+                        modalContent.classList.remove('scale-95', 'opacity-0');
+                    });
+                };
+
+                const hideModal = () => {
+                    redirectModal.classList.add('opacity-0');
+                    modalContent.classList.add('scale-95', 'opacity-0');
+                    setTimeout(() => {
+                        redirectModal.classList.add('hidden');
+                    }, 300); // Hide after transition
+                };
+
+                viewRolesBtn.addEventListener('click', (e) => {
+                    e.preventDefault(); 
+                    showModal();
+                });
+
+                modalOkBtn.addEventListener('click', () => {
+                    if (redirectUrl) {
+                        // Open link in a new tab
+                        window.open(redirectUrl, '_blank');
+                    }
+                    hideModal();
+                });
+
+                modalCancelBtn.addEventListener('click', () => {
+                    hideModal();
+                });
+
+                // Close if clicking the backdrop
+                redirectModal.addEventListener('click', (e) => {
+                    if (e.target === redirectModal) {
+                        hideModal();
+                    }
+                });
+            }
+        });
+    </script>
 
 </body>
 </html>
