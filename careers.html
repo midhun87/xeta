@@ -28,6 +28,8 @@
         /* Smooth transition for the backdrop */
         #redirect-modal {
             transition: opacity 0.3s ease-out;
+            /* Added a slightly darker backdrop for more focus */
+            background-color: rgba(17, 24, 39, 0.75); /* bg-gray-900 bg-opacity-75 */
         }
         /* Smooth transition for the inner modal panel */
         #redirect-modal > div:not(.hidden) > div { 
@@ -268,42 +270,59 @@
 
     </div>
     
-    <!-- Redirect Modal -->
-    <div id="redirect-modal" class="fixed inset-0 z-[100] flex items-center justify-center bg-black bg-opacity-50 transition-opacity duration-300 hidden opacity-0" aria-labelledby="modal-title" role="dialog" aria-modal="true">
-        <div class="relative w-full max-w-md transform-gpu overflow-hidden rounded-2xl bg-white p-6 text-left shadow-xl transition-all scale-95 opacity-0 duration-300">
+    <!-- 
+      ============================================
+      ==  UPGRADED REDIRECT MODAL START HERE  ==
+      ============================================
+    -->
+    <div id="redirect-modal" class="fixed inset-0 z-[100] flex items-center justify-center p-4 transition-opacity duration-300 hidden opacity-0" aria-labelledby="modal-title" role="dialog" aria-modal="true">
+        
+        <!-- Modal Panel -->
+        <div class="relative w-full max-w-lg transform-gpu overflow-hidden rounded-2xl bg-white p-8 text-center shadow-xl transition-all scale-95 opacity-0 duration-300">
+            
+            <!-- Icon -->
+            <div class="mx-auto flex h-16 w-16 items-center justify-center rounded-full bg-indigo-100 text-indigo-600">
+                <!-- Upgraded: External Link Icon -->
+                <svg class="h-8 w-8" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 6H5.25A2.25 2.25 0 003 8.25v10.5A2.25 2.25 0 005.25 21h10.5A2.25 2.25 0 0018 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25" />
+                </svg>
+            </div>
+
             <!-- Modal Header -->
-            <div class="flex items-center space-x-3">
-                <div class="flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-full bg-indigo-100 text-indigo-600">
-                    <!-- SVG for Information/Chat Bubble -->
-                    <svg class="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                        <path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"></path>
-                    </svg>
-                </div>
-                <div>
-                    <h3 class="text-xl font-semibold leading-6 text-gray-900" id="modal-title">Please Note</h3>
-                </div>
+            <div class="mt-5">
+                <h3 class="text-2xl font-semibold leading-6 text-gray-900" id="modal-title">
+                    You are being redirected
+                </h3>
             </div>
             
             <!-- Modal Body -->
-            <div class="mt-6">
+            <div class="mt-4">
                 <p class="text-base text-gray-600">
-                    You are now being redirected. All our hiring processes are managed through <strong>Testify - A Product of Xeta.</strong>
+                    Our hiring processes are managed exclusively through <strong class="font-semibold text-indigo-700">Testify - A Product of Xeta.</strong>
+                </p>
+                <p class="mt-2 text-sm text-gray-500">
+                    You will be taken to our official careers portal.
                 </p>
             </div>
 
             <!-- Modal Footer -->
-            <div class="mt-8 sm:flex sm:flex-row-reverse sm:space-x-4 sm:space-x-reverse">
-                <button id="modal-ok-btn" type="button" class="inline-flex w-full justify-center rounded-md border border-transparent bg-indigo-600 px-4 py-2 text-base font-semibold text-white shadow-sm hover:bg-indigo-500 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 sm:w-auto sm:text-sm transition-all duration-200 transform hover:scale-105">
-                    Proceed
-                </button>
-                <button id="modal-cancel-btn" type="button" class="mt-3 inline-flex w-full justify-center rounded-md border border-gray-300 bg-white px-4 py-2 text-base font-semibold text-gray-700 shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 sm:mt-0 sm:w-auto sm:text-sm transition-all duration-200 transform hover:scale-105">
+            <div class="mt-8 grid grid-cols-1 gap-4 sm:grid-cols-2 sm:gap-6">
+                <button id="modal-cancel-btn" type="button" class="inline-flex w-full justify-center rounded-lg border border-gray-300 bg-white px-6 py-3 text-base font-semibold text-gray-700 shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-gray-400 focus:ring-offset-2 transition-all duration-200 transform hover:scale-105">
                     Cancel
+                </button>
+                <button id="modal-ok-btn" type="button" class="inline-flex w-full justify-center rounded-lg border border-transparent bg-indigo-600 px-6 py-3 text-base font-semibold text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 transition-all duration-200 transform hover:scale-105">
+                    Proceed to Testify
                 </button>
             </div>
         </div>
     </div>
+    <!-- 
+      ============================================
+      ==   UPGRADED REDIRECT MODAL END HERE   ==
+      ============================================
+    -->
     
-    <!-- Modal Interaction Script -->
+    <!-- Modal Interaction Script (Unchanged, as IDs are the same) -->
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             const viewRolesBtn = document.getElementById('view-roles-btn');
@@ -314,20 +333,25 @@
             if (viewRolesBtn && redirectModal && modalOkBtn && modalCancelBtn) {
                 const redirectUrl = viewRolesBtn.dataset.href;
                 // Target the inner modal panel for scaling effect
-                const modalContent = redirectModal.querySelector('.relative.w-full.max-w-md'); 
+                // Updated querySelector to match new structure
+                const modalContent = redirectModal.querySelector('.relative.w-full.max-w-lg'); 
 
                 const showModal = () => {
                     redirectModal.classList.remove('hidden');
                     // Use requestAnimationFrame for smoother transition start on modern browsers
                     requestAnimationFrame(() => {
                         redirectModal.classList.remove('opacity-0');
-                        modalContent.classList.remove('scale-95', 'opacity-0');
+                        if (modalContent) {
+                            modalContent.classList.remove('scale-95', 'opacity-0');
+                        }
                     });
                 };
 
                 const hideModal = () => {
                     redirectModal.classList.add('opacity-0');
-                    modalContent.classList.add('scale-95', 'opacity-0');
+                    if (modalContent) {
+                        modalContent.classList.add('scale-95', 'opacity-0');
+                    }
                     setTimeout(() => {
                         redirectModal.classList.add('hidden');
                     }, 300); // Hide after transition
@@ -352,10 +376,14 @@
 
                 // Close if clicking the backdrop
                 redirectModal.addEventListener('click', (e) => {
+                    // Check if the click is on the backdrop itself, not the panel
                     if (e.target === redirectModal) {
                         hideModal();
                     }
                 });
+            } else {
+                // Helper log in case elements aren't found
+                console.warn("Modal script couldn't find all required elements.");
             }
         });
     </script>
