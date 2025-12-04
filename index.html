@@ -6,7 +6,7 @@
     <title>Xeta Solutions | Intelligent Recruitment & Assessment Ecosystem</title>
     <meta name="description" content="End-to-end recruitment, secure proctoring, and AI-driven learning solutions.">
     
-    <!-- Fonts: Inter & Plus Jakarta Sans for a modern tech feel -->
+    <!-- Fonts: Inter & Plus Jakarta Sans -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
@@ -64,13 +64,6 @@
             border: 1px solid rgba(255, 255, 255, 0.5);
         }
         
-        .glass-dark {
-            background: rgba(15, 23, 42, 0.8);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-        }
-
         /* Gradient Mesh Background */
         .mesh-bg {
             background-color: #f8fafc;
@@ -146,18 +139,15 @@
         <div class="absolute inset-0 bg-white/0 backdrop-blur-none border-b border-transparent transition-all duration-300" id="navbar-bg"></div>
         <div class="container mx-auto px-6 h-20 flex items-center justify-between relative z-10">
             <!-- Logo -->
-           <a href="#" class="flex items-center gap-2 group">
-    <div class="w-8 h-8 rounded-lg flex items-center justify-center shadow-lg group-hover:shadow-brand-500/30 transition-shadow">
-        <img src="https://res.cloudinary.com/dpz44zf0z/image/upload/v1760704788/XETA_SOLUTIONS_LOGO_bcsbwh.png"
-             alt="Logo"
-             class="w-full h-full object-contain" />
-    </div>
-
-    <span class="font-display font-bold text-xl text-slate-900 tracking-tight group-hover:text-brand-700 transition-colors">
-        Xeta<span class="text-brand-600">Solutions</span>
-    </span>
-</a>
-
+            <a href="#" class="flex items-center gap-2 group">
+                <div class="w-8 h-8 rounded-lg flex items-center justify-center shadow-lg group-hover:shadow-brand-500/30 transition-shadow">
+                    <img src="https://res.cloudinary.com/dpz44zf0z/image/upload/v1760704788/XETA_SOLUTIONS_LOGO_bcsbwh.png"
+                         alt="Logo"
+                         class="w-full h-full object-contain" />
+                </div>
+                <span class="font-display font-bold text-xl text-slate-900 tracking-tight group-hover:text-brand-700 transition-colors">
+                    Xeta<span class="text-brand-600">Solutions</span>
+                </span>
             </a>
 
             <!-- Desktop Nav -->
@@ -314,7 +304,7 @@
     </section>
 
     <!-- Key Numbers Section -->
-   <section class="py-10 border-y border-slate-200 bg-white/50 backdrop-blur-sm">
+    <section class="py-10 border-y border-slate-200 bg-white/50 backdrop-blur-sm">
         <div class="container mx-auto px-6">
             <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center divide-x divide-slate-200/50">
                 <div class="reveal">
@@ -463,7 +453,7 @@
 
                 <!-- Step 3 -->
                 <div class="relative p-6 bg-white rounded-2xl border border-slate-100 shadow-sm hover:border-brand-300 transition-colors reveal" style="transition-delay: 200ms;">
-                     <div class="absolute -top-4 -left-4 w-10 h-10 bg-teal-500 text-white rounded-lg flex items-center justify-center font-bold shadow-lg shadow-teal-500/30">3</div>
+                      <div class="absolute -top-4 -left-4 w-10 h-10 bg-teal-500 text-white rounded-lg flex items-center justify-center font-bold shadow-lg shadow-teal-500/30">3</div>
                     <h3 class="mt-4 text-lg font-bold text-slate-900">Test Assign</h3>
                     <p class="text-sm text-slate-500 mt-2">Admins shortlist candidates & assign coding/aptitude tests.</p>
                 </div>
@@ -500,30 +490,50 @@
 
         <div class="container mx-auto px-6 relative z-10 flex flex-col lg:flex-row items-center gap-16">
             <div class="lg:w-1/2 reveal">
-                <span class="text-brand-400 font-bold tracking-wider uppercase text-xs">New Vertical</span>
+                <span class="text-brand-400 font-bold tracking-wider uppercase text-xs">Bridge Campus to Corporate</span>
                 <h2 class="font-display text-4xl lg:text-5xl font-bold mt-4 mb-6 leading-tight">Mock Interviews by Industry Experts</h2>
                 <p class="text-slate-300 text-lg mb-8 leading-relaxed">
-                    Bridge the gap between campus and corporate. We simulate the entire hiring cycle—from application to a final interview with professionals from top MNCs.
+                    We simulate the <strong>entire recruitment lifecycle</strong>. Students don't just "practice speaking"—they undergo the full rigorous process of a top-tier company, evaluated by professionals from leading MNCs.
                 </p>
                 
+                <!-- Process Steps Visual -->
+                <div class="mb-10 space-y-2">
+                    <p class="text-sm font-semibold text-slate-400 uppercase tracking-wide mb-4">The Simulated Workflow:</p>
+                    <div class="flex flex-col md:flex-row gap-4">
+                        <div class="flex-1 bg-white/5 border border-white/10 p-3 rounded-lg text-center">
+                            <div class="text-brand-400 font-bold text-sm">Step 1</div>
+                            <div class="text-white text-sm">Job Application</div>
+                        </div>
+                        <div class="flex items-center justify-center text-slate-500 transform rotate-90 md:rotate-0">→</div>
+                        <div class="flex-1 bg-white/5 border border-white/10 p-3 rounded-lg text-center">
+                            <div class="text-brand-400 font-bold text-sm">Step 2</div>
+                            <div class="text-white text-sm">AI Screening</div>
+                        </div>
+                        <div class="flex items-center justify-center text-slate-500 transform rotate-90 md:rotate-0">→</div>
+                        <div class="flex-1 bg-white/5 border border-white/10 p-3 rounded-lg text-center">
+                            <div class="text-brand-400 font-bold text-sm">Step 3</div>
+                            <div class="text-white text-sm">Secure Test</div>
+                        </div>
+                         <div class="flex items-center justify-center text-slate-500 transform rotate-90 md:rotate-0">→</div>
+                        <div class="flex-1 bg-brand-600/20 border border-brand-500/50 p-3 rounded-lg text-center shadow-[0_0_15px_rgba(59,130,246,0.2)]">
+                            <div class="text-brand-400 font-bold text-sm">Step 4</div>
+                            <div class="text-white text-sm font-semibold">Expert Interview</div>
+                        </div>
+                    </div>
+                </div>
+
                 <ul class="space-y-4 mb-10">
                     <li class="flex items-center gap-4">
                         <div class="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center text-green-400">
-                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
                         </div>
-                        <span class="text-slate-200">Interviewed by experts from top-tier companies</span>
+                        <span class="text-slate-200"><strong>Industry Panels:</strong> Interviews conducted by real experts from top MNCs.</span>
                     </li>
                     <li class="flex items-center gap-4">
                         <div class="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center text-green-400">
-                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path></svg>
                         </div>
-                        <span class="text-slate-200">Detailed feedback report on strengths & weaknesses</span>
-                    </li>
-                    <li class="flex items-center gap-4">
-                        <div class="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center text-green-400">
-                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
-                        </div>
-                        <span class="text-slate-200">Real-world process flow: App -> Test -> Interview</span>
+                        <span class="text-slate-200"><strong>Detailed Report:</strong> Strengths, weaknesses, & score on Tech/Aptitude/Comm.</span>
                     </li>
                 </ul>
                 
@@ -534,15 +544,16 @@
             
             <div class="lg:w-1/2 reveal">
                 <div class="bg-white/5 backdrop-blur-md rounded-2xl border border-white/10 p-2 shadow-2xl transform rotate-3 hover:rotate-0 transition-transform duration-500">
-                    <img src="https://res.cloudinary.com/dpz44zf0z/image/upload/v1761656750/Screenshot_2025-10-28_183254_fwpqru.png" alt="Professional Interview" class="rounded-xl w-full object-cover h-[400px]">
+                    <img src="https://res.cloudinary.com/dpz44zf0z/image/upload/v1764834186/Screenshot_2025-12-04_131143_yjcjov.png" alt="Professional Interview" class="rounded-xl w-full object-cover h-[400px]">
                     <div class="p-6">
                         <div class="flex items-center justify-between mb-2">
                             <h4 class="text-white font-bold text-lg">Detailed Performance Report</h4>
                             <span class="text-green-400 font-mono text-sm">Score: 8.5/10</span>
                         </div>
-                        <div class="w-full bg-white/10 rounded-full h-2">
+                        <div class="w-full bg-white/10 rounded-full h-2 mb-2">
                             <div class="bg-gradient-to-r from-brand-500 to-purple-500 h-2 rounded-full w-[85%]"></div>
                         </div>
+                        <p class="text-xs text-slate-400">Feedback provided by Senior Engineer @ Top MNC</p>
                     </div>
                 </div>
             </div>
