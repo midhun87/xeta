@@ -1,0 +1,679 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Memory Question Card Game</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .container {
+            max-width: 1200px;
+            width: 100%;
+            background: white;
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 20px;
+            font-size: 2.5em;
+        }
+
+        .game-info {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        .timer-container {
+            background: #f0f0f0;
+            padding: 15px 25px;
+            border-radius: 10px;
+            font-size: 1.5em;
+            font-weight: bold;
+            color: #333;
+        }
+
+        .timer-container.warning {
+            background: #ffeb3b;
+            color: #d32f2f;
+        }
+
+        .timer-container.danger {
+            background: #f44336;
+            color: white;
+            animation: pulse 1s infinite;
+        }
+
+        @keyframes pulse {
+
+            0%,
+            100% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.05);
+            }
+        }
+
+        .score-container {
+            background: #4caf50;
+            color: white;
+            padding: 15px 25px;
+            border-radius: 10px;
+            font-size: 1.2em;
+            font-weight: bold;
+        }
+
+        .progress-container {
+            background: #2196f3;
+            color: white;
+            padding: 15px 25px;
+            border-radius: 10px;
+            font-size: 1.2em;
+            font-weight: bold;
+        }
+
+        .phase-indicator {
+            background: #9c27b0;
+            color: white;
+            padding: 15px 25px;
+            border-radius: 10px;
+            font-size: 1.2em;
+            font-weight: bold;
+        }
+
+        .controls {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        button {
+            padding: 12px 24px;
+            font-size: 1em;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: all 0.3s;
+        }
+
+        button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        button:active {
+            transform: translateY(0);
+        }
+
+        .btn-primary {
+            background: #2196f3;
+            color: white;
+        }
+
+        .btn-success {
+            background: #4caf50;
+            color: white;
+        }
+
+        .btn-danger {
+            background: #f44336;
+            color: white;
+        }
+
+        .btn-secondary {
+            background: #757575;
+            color: white;
+        }
+
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+
+        .card {
+            aspect-ratio: 1;
+            background: #fff;
+            border: 3px solid #333;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s;
+            position: relative;
+            overflow: hidden;
+            font-size: 0.9em;
+            padding: 10px;
+            text-align: center;
+            font-weight: bold;
+        }
+
+        .card.face-up {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+
+        .card.face-down {
+            background: #333;
+            color: #333;
+        }
+
+        .card.revealed {
+            background: #4caf50;
+            color: white;
+            border-color: #2e7d32;
+            box-shadow: 0 0 20px rgba(76, 175, 80, 0.6);
+        }
+
+        .card-number {
+            position: absolute;
+            top: 5px;
+            left: 5px;
+            font-size: 0.8em;
+            opacity: 0.7;
+        }
+
+        .answer-section {
+            background: #f5f5f5;
+            padding: 25px;
+            border-radius: 12px;
+            margin-top: 20px;
+        }
+
+        .answer-section h2 {
+            margin-bottom: 15px;
+            color: #333;
+        }
+
+        .answer-input-group {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 15px;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+
+        input[type="number"],
+        input[type="text"] {
+            padding: 12px;
+            font-size: 1em;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            flex: 1;
+            min-width: 200px;
+        }
+
+        input[type="number"]:focus,
+        input[type="text"]:focus {
+            outline: none;
+            border-color: #2196f3;
+        }
+
+        .feedback {
+            margin-top: 15px;
+            padding: 15px;
+            border-radius: 8px;
+            font-weight: bold;
+            display: none;
+        }
+
+        .feedback.correct {
+            background: #4caf50;
+            color: white;
+            display: block;
+        }
+
+        .feedback.incorrect {
+            background: #f44336;
+            color: white;
+            display: block;
+        }
+
+        .game-over {
+            text-align: center;
+            padding: 30px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border-radius: 12px;
+            margin-top: 20px;
+        }
+
+        .game-over h2 {
+            font-size: 2em;
+            margin-bottom: 15px;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        .instructions {
+            background: #f5f5f5;
+            padding: 25px;
+            border-radius: 12px;
+            margin-bottom: 30px;
+            border-left: 5px solid #2196f3;
+        }
+
+        .instructions h2 {
+            color: #2196f3;
+            margin-bottom: 15px;
+            font-size: 1.5em;
+        }
+
+        .instructions ul {
+            list-style-type: none;
+            padding-left: 0;
+        }
+
+        .instructions li {
+            margin: 10px 0;
+            padding-left: 25px;
+            position: relative;
+        }
+
+        .instructions li:before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: #4caf50;
+            font-weight: bold;
+        }
+
+        @media (max-width: 768px) {
+            .cards-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+
+            .game-info {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>🧠 Memory Question Card Game</h1>
+
+        <div class="game-info">
+            <div class="phase-indicator" id="phaseIndicator">Memorization Phase</div>
+            <div class="timer-container" id="timer">02:00</div>
+            <div class="score-container" id="score">Score: 0</div>
+            <div class="progress-container" id="progress">Progress: 0/25</div>
+        </div>
+
+        <div class="instructions" id="instructions">
+            <h2>📖 How to Play</h2>
+            <ul>
+                <li>Click "Start Game" to begin the memorization phase</li>
+                <li>You will have 2 minutes to memorize all 25 questions</li>
+                <li>All cards will be shown face-up during the memorization phase</li>
+                <li>After 2 minutes, all cards will automatically flip face-down</li>
+                <li>You will then have 15 minutes to answer all questions</li>
+                <li>In the answer phase, select a question number (1-25) and type your answer from memory</li>
+                <li>Press Enter in the question number field to select, or press Enter in the answer field to submit
+                </li>
+                <li>Correct answers will reveal the card in green</li>
+                <li>Incorrect answers keep the card hidden - try again!</li>
+                <li>Complete all 25 cards to win the game!</li>
+            </ul>
+        </div>
+
+        <div class="controls">
+            <button class="btn-primary" id="startBtn" onclick="startGame()">Start Game</button>
+        </div>
+
+        <div class="cards-grid" id="cardsGrid"></div>
+
+        <div class="answer-section" id="answerSection" style="display: none;">
+            <h2>Answer Phase</h2>
+            <div class="answer-input-group">
+                <label for="cardNumber">Question Number:</label>
+                <input type="number" id="cardNumber" min="1" max="25" placeholder="Enter question number (1-25)"
+                    onkeypress="handleCardNumberKeyPress(event)">
+                <button class="btn-primary" onclick="selectQuestion()">Select Question</button>
+            </div>
+            <div id="currentQuestion"
+                style="margin: 15px 0; padding: 15px; background: white; border-radius: 8px; display: none;">
+                <strong>Answering Question #<span id="questionNumber"></span></strong>
+            </div>
+            <div class="answer-input-group">
+                <input type="text" id="answerInput" placeholder="Type your answer here..."
+                    onkeypress="handleKeyPress(event)">
+                <button class="btn-success" onclick="submitAnswer()">Submit Answer</button>
+            </div>
+            <div class="feedback" id="feedback"></div>
+        </div>
+
+        <div class="game-over hidden" id="gameOver">
+            <h2>🎉 Congratulations!</h2>
+            <p>You've completed the game!</p>
+            <p id="finalScore"></p>
+        </div>
+    </div>
+
+    <script>
+        // Game state
+        let gameState = {
+            phase: 'waiting', // waiting, memorization, answering
+            timer: 120, // 2 minutes for memorization, will be reset to 900 for answer phase
+            score: 0,
+            currentQuestionIndex: null,
+            revealedCards: new Set(),
+            questions: [],
+            answers: [],
+            timerInterval: null
+        };
+
+        // Sample questions and answers (you can modify these)
+        const questionData = [
+            { question: "Changing computer language of 1's and 0's to characters that a person can understand is...", answer: "Decode" },
+            { question: "14, 28, 20, 40, 32, 64, ...", answer: "56" },
+            { question: "How many bits is a byte?", answer: "8" },
+            { question: "Made from a variety of materials, such as carbon, which inhibits the flow of current...?", answer: "Resistor" },
+            { question: "What is the chemical symbol for gold?", answer: "Au" },
+            { question: "Technique used to map virtual to physical memory?", answer: "Paging" },
+            { question: "A flip-flop is used for ___", answer: "Memory" },
+            { question: "Which is heavier: 1kg cotton or 1kg iron?", answer: "Same" },
+            { question: "Who invented the printing press?", answer: "Gutenberg" },
+            { question: "What system protects a network from unauthorized access", answer: "F" },
+            { question: "8, 6, 9, 23, 87 , ... ", answer: "429" },
+            { question: "Which city is the silicon city of India?", answer: "Bangalore" },
+            { question: "Mars mission of India", answer: "Mangalyaan" },
+            { question: "Study of past fossils", answer: "Paleontology" },
+            { question: "21, 9, 21, 11, 21, 13, 21, ... ", answer: "15" },
+            { question: "If 40% of a number is 120, what is the number?", answer: "Brasilia" },
+            { question: "What is the largest mammal?", answer: "Blue Whale" },
+            { question: "Full form of URL", answer: "Uniform Resource Locator" },
+            { question: "In a Digital circuit, what is 1 'AND' 1?", answer: "1" },
+            { question: "What is the smallest country in the world?", answer: "Vatican City" },
+            { question: "31, 29, 24, 22, 17, ...", answer: "15" },
+            { question: "What is the freezing point of water in Celsius?", answer: "0" },
+            { question: "Add prefix to make “possible” negative", answer: "Impossible" },
+            { question: "How many diodes are in a full wave bridge rectifier?", answer: "4" },
+            { question: "Computers calculate numbers in what mode?", answer: "Binary" }
+        ];
+
+        // Initialize game
+        function initGame() {
+            gameState.questions = [...questionData];
+            gameState.answers = questionData.map(q => q.answer.toLowerCase().trim());
+            createCards();
+            updateDisplay();
+        }
+
+        // Create card elements
+        function createCards() {
+            const grid = document.getElementById('cardsGrid');
+            grid.innerHTML = '';
+
+            for (let i = 0; i < 25; i++) {
+                const card = document.createElement('div');
+                card.className = 'card face-down';
+                card.id = `card-${i}`;
+                card.innerHTML = `
+                    <div class="card-number">${i + 1}</div>
+                    <div>?</div>
+                `;
+                grid.appendChild(card);
+            }
+        }
+
+        // Start the game
+        function startGame() {
+            // Clear any existing timer
+            if (gameState.timerInterval) {
+                clearInterval(gameState.timerInterval);
+            }
+
+            gameState.phase = 'memorization';
+            gameState.timer = 120; // 2 minutes for memorization
+            gameState.score = 0;
+            gameState.revealedCards.clear();
+            gameState.currentQuestionIndex = null;
+
+            document.getElementById('startBtn').style.display = 'none';
+            document.getElementById('instructions').style.display = 'none';
+            document.getElementById('phaseIndicator').textContent = 'Memorization Phase';
+            document.getElementById('answerSection').style.display = 'none';
+            document.getElementById('gameOver').classList.add('hidden');
+
+            // Show all cards face-up
+            const cards = document.querySelectorAll('.card');
+            cards.forEach((card, index) => {
+                card.className = 'card face-up';
+                card.innerHTML = `
+                    <div class="card-number">${index + 1}</div>
+                    <div>${gameState.questions[index].question}</div>
+                `;
+                card.style.cursor = 'default';
+            });
+
+            startTimer();
+        }
+
+        // Timer function
+        function startTimer() {
+            updateTimerDisplay();
+            gameState.timerInterval = setInterval(() => {
+                gameState.timer--;
+                updateTimerDisplay();
+
+                if (gameState.timer <= 0) {
+                    clearInterval(gameState.timerInterval);
+                    if (gameState.phase === 'memorization') {
+                        endMemorizationPhase();
+                    } else if (gameState.phase === 'answering') {
+                        // Time's up for answer phase
+                        endGame(true);
+                    }
+                }
+            }, 1000);
+        }
+
+        // Update timer display
+        function updateTimerDisplay() {
+            const minutes = Math.floor(gameState.timer / 60);
+            const seconds = gameState.timer % 60;
+            const timerEl = document.getElementById('timer');
+            timerEl.textContent = `${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
+
+            // Add warning/danger classes based on phase
+            timerEl.classList.remove('warning', 'danger');
+            if (gameState.phase === 'memorization') {
+                // For 2-minute memorization: red background for last 30 seconds
+                if (gameState.timer <= 30) {
+                    timerEl.classList.add('danger');
+                } else if (gameState.timer <= 60) {
+                    timerEl.classList.add('warning');
+                }
+            } else if (gameState.phase === 'answering') {
+                // For 15-minute answer phase: warning at 3 min, red background for last 30 seconds
+                if (gameState.timer <= 30) {
+                    timerEl.classList.add('danger');
+                } else if (gameState.timer <= 180) {
+                    timerEl.classList.add('warning');
+                }
+            }
+        }
+
+        // End memorization phase
+        function endMemorizationPhase() {
+            gameState.phase = 'answering';
+            gameState.timer = 900; // 15 minutes for answer phase
+            document.getElementById('phaseIndicator').textContent = 'Answer Phase';
+            document.getElementById('answerSection').style.display = 'block';
+
+            // Hide all cards
+            const cards = document.querySelectorAll('.card');
+            cards.forEach((card, index) => {
+                if (!gameState.revealedCards.has(index)) {
+                    card.className = 'card face-down';
+                    card.innerHTML = `
+                        <div class="card-number">${index + 1}</div>
+                        <div>?</div>
+                    `;
+                    card.style.cursor = 'not-allowed';
+                    // Prevent clicking on cards
+                    card.onclick = null;
+                }
+            });
+
+            // Start the answer phase timer
+            startTimer();
+        }
+
+        // Select a question
+        function selectQuestion() {
+            const cardNumber = parseInt(document.getElementById('cardNumber').value);
+
+            if (isNaN(cardNumber) || cardNumber < 1 || cardNumber > 25) {
+                alert('Please enter a valid question number between 1 and 25');
+                return;
+            }
+
+            const index = cardNumber - 1;
+
+            if (gameState.revealedCards.has(index)) {
+                alert('This question has already been answered correctly!');
+                return;
+            }
+
+            gameState.currentQuestionIndex = index;
+            // Show only the question number, not the question text - answer from memory only
+            document.getElementById('currentQuestion').style.display = 'block';
+            document.getElementById('questionNumber').textContent = cardNumber;
+            document.getElementById('answerInput').value = '';
+            document.getElementById('answerInput').focus();
+            document.getElementById('feedback').className = 'feedback';
+        }
+
+        // Handle Enter key press for question number input
+        function handleCardNumberKeyPress(event) {
+            if (event.key === 'Enter') {
+                selectQuestion();
+            }
+        }
+
+        // Handle Enter key press for answer input
+        function handleKeyPress(event) {
+            if (event.key === 'Enter') {
+                submitAnswer();
+            }
+        }
+
+        // Submit answer
+        function submitAnswer() {
+            if (gameState.currentQuestionIndex === null) {
+                alert('Please select a question first!');
+                return;
+            }
+
+            const userAnswer = document.getElementById('answerInput').value.trim().toLowerCase();
+            const correctAnswer = gameState.answers[gameState.currentQuestionIndex];
+            const feedbackEl = document.getElementById('feedback');
+
+            if (userAnswer === correctAnswer) {
+                // Correct answer
+                gameState.score += 10;
+                gameState.revealedCards.add(gameState.currentQuestionIndex);
+
+                // Reveal the card
+                const card = document.getElementById(`card-${gameState.currentQuestionIndex}`);
+                card.className = 'card revealed';
+                card.innerHTML = `
+                    <div class="card-number">${gameState.currentQuestionIndex + 1}</div>
+                    <div>${gameState.questions[gameState.currentQuestionIndex].question}</div>
+                `;
+
+                feedbackEl.className = 'feedback correct';
+                feedbackEl.textContent = '✓ Correct! Card revealed!';
+
+                // Clear current question
+                gameState.currentQuestionIndex = null;
+                document.getElementById('currentQuestion').style.display = 'none';
+                document.getElementById('cardNumber').value = '';
+                document.getElementById('answerInput').value = '';
+
+                // Focus on the question number input for next question
+                document.getElementById('cardNumber').focus();
+
+                // Check if game is complete
+                if (gameState.revealedCards.size === 25) {
+                    setTimeout(() => {
+                        endGame();
+                    }, 1000);
+                }
+            } else {
+                // Incorrect answer
+                feedbackEl.className = 'feedback incorrect';
+                feedbackEl.textContent = '✗ Incorrect! Try again.';
+            }
+
+            updateDisplay();
+        }
+
+        // Update display
+        function updateDisplay() {
+            document.getElementById('score').textContent = `Score: ${gameState.score}`;
+            document.getElementById('progress').textContent = `Progress: ${gameState.revealedCards.size}/25`;
+        }
+
+        // End game
+        function endGame(timeUp = false) {
+            document.getElementById('gameOver').classList.remove('hidden');
+            if (timeUp) {
+                document.getElementById('gameOver').innerHTML = `
+                    <h2>⏰ Time's Up!</h2>
+                    <p>Your 15 minutes for answering questions has ended.</p>
+                    <p id="finalScore">Final Score: ${gameState.score} points</p>
+                    <p>Progress: ${gameState.revealedCards.size}/25 cards revealed</p>
+                `;
+            } else {
+                document.getElementById('gameOver').innerHTML = `
+                    <h2>🎉 Congratulations!</h2>
+                    <p>You've completed the game!</p>
+                    <p id="finalScore">Final Score: ${gameState.score} points</p>
+                `;
+            }
+            document.getElementById('answerSection').style.display = 'none';
+        }
+
+
+        // Initialize on page load
+        initGame();
+    </script>
+</body>
+
+</html>
