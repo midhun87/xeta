@@ -3,52 +3,24 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    
-     <link rel="icon" type="image/png" sizes="32x32" href="https://res.cloudinary.com/dpz44zf0z/image/upload/v1760704788/XETA_SOLUTIONS_LOGO_bcsbwh.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="https://res.cloudinary.com/dpz44zf0z/image/upload/v1760704788/XETA_SOLUTIONS_LOGO_bcsbwh.png">
-    <link rel="apple-touch-icon" sizes="180x180" href="https://res.cloudinary.com/dpz44zf0z/image/upload/v1760704788/XETA_SOLUTIONS_LOGO_bcsbwh.png">
-    <link rel="shortcut icon" href="https://res.cloudinary.com/dpz44zf0z/image/upload/v1760704788/XETA_SOLUTIONS_LOGO_bcsbwh.png">
-    
-    <!-- Primary Meta Tags -->
-    <title>Xeta Solutions | AI-Powered Recruitment, Secure Proctoring & Assessment Ecosystem</title>
-    <meta name="title" content="Xeta Solutions | AI-Powered Recruitment, Secure Proctoring & Assessment Ecosystem">
-    <meta name="description" content="Streamline hiring with Xeta Solutions. Our integrated suite (HireWithUS, Testify, QuizCom) delivers end-to-end recruitment automation, secure lockdown browser assessments, AI proctoring, and campus placement solutions.">
-    <meta name="keywords" content="Xeta Solutions, AI recruitment, secure online testing, proctored exams, lockdown browser, campus hiring platform, HireWithUS, Testify Secure Test, Testify LAC, QuizCom, coding assessment, automated resume screening, recruitment software India">
-    <meta name="author" content="Xeta Solutions">
-    <meta name="robots" content="index, follow">
-
-    <!-- Open Graph / Facebook -->
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://www.testify-lac.com/">
-    <meta property="og:title" content="Xeta Solutions | The Future of Talent Assessment">
-    <meta property="og:description" content="Empowering corporates and colleges with secure AI-driven hiring, 100% integrity proctored testing, and real-world mock interview ecosystems.">
-    <meta property="og:image" content="https://res.cloudinary.com/dpz44zf0z/image/upload/v1760704788/XETA_SOLUTIONS_LOGO_bcsbwh.png">
-
-    <!-- Twitter -->
-    <meta property="twitter:card" content="summary_large_image">
-    <meta property="twitter:url" content="https://www.testify-lac.com/">
-    <meta property="twitter:title" content="Xeta Solutions | Secure Recruitment & Learning Platforms">
-    <meta property="twitter:description" content="From campus to corporate, we automate integrity. Explore our suite: HireWithUS, Testify Secure Test, and QuizCom.">
-    <meta property="twitter:image" content="https://res.cloudinary.com/dpz44zf0z/image/upload/v1760704788/XETA_SOLUTIONS_LOGO_bcsbwh.png">
-
-    <!-- Canonical URL -->
-    <link rel="canonical" href="https://www.testify-lac.com/">
-    
-    <!-- Fonts: Inter & Plus Jakarta Sans -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
+    <title>Xeta Solutions | Enterprise Software & Custom Engineering</title>
+    <meta name="description" content="Scalable software products and bespoke engineering solutions designed for global enterprises.">
     
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind Configuration -->
     <script>
         tailwind.config = {
             theme: {
                 extend: {
                     fontFamily: {
                         sans: ['Inter', 'sans-serif'],
-                        display: ['Plus Jakarta Sans', 'sans-serif'],
                     },
                     colors: {
                         brand: {
@@ -59,23 +31,30 @@
                             700: '#1d4ed8',
                             900: '#1e3a8a',
                         },
-                        accent: {
-                            500: '#6366f1', // Indigo
-                            600: '#4f46e5',
+                        dark: {
+                            900: '#0f172a',
+                            800: '#1e293b',
                         }
                     },
                     animation: {
-                        'float': 'float 6s ease-in-out infinite',
-                        'fade-up': 'fadeUp 0.8s ease-out forwards',
+                        'fade-in-up': 'fadeInUp 0.8s ease-out forwards',
+                        'blob': 'blob 7s infinite',
+                        'scale-in': 'scaleIn 0.3s ease-out forwards',
                     },
                     keyframes: {
-                        float: {
-                            '0%, 100%': { transform: 'translateY(0)' },
-                            '50%': { transform: 'translateY(-20px)' },
-                        },
-                        fadeUp: {
+                        fadeInUp: {
                             '0%': { opacity: '0', transform: 'translateY(20px)' },
                             '100%': { opacity: '1', transform: 'translateY(0)' },
+                        },
+                        scaleIn: {
+                            '0%': { opacity: '0', transform: 'scale(0.9)' },
+                            '100%': { opacity: '1', transform: 'scale(1)' },
+                        },
+                        blob: {
+                            '0%': { transform: 'translate(0px, 0px) scale(1)' },
+                            '33%': { transform: 'translate(30px, -50px) scale(1.1)' },
+                            '66%': { transform: 'translate(-20px, 20px) scale(0.9)' },
+                            '100%': { transform: 'translate(0px, 0px) scale(1)' },
                         }
                     }
                 }
@@ -83,63 +62,86 @@
         }
     </script>
 
-    <!-- Custom Styles -->
     <style>
-        /* Glassmorphism Utilities */
-        .glass {
-            background: rgba(255, 255, 255, 0.7);
+        /* Custom Utilities */
+        .glass-nav {
+            background: rgba(255, 255, 255, 0.9);
             backdrop-filter: blur(12px);
             -webkit-backdrop-filter: blur(12px);
+        }
+        
+        .glass-card {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(8px);
             border: 1px solid rgba(255, 255, 255, 0.5);
         }
-        
-        /* Gradient Mesh Background */
-        .mesh-bg {
+
+        .mesh-gradient-bg {
             background-color: #f8fafc;
             background-image: 
-                radial-gradient(at 0% 0%, hsla(253,16%,7%,0) 0, transparent 50%), 
-                radial-gradient(at 50% 0%, hsla(225,39%,30%,0) 0, transparent 50%), 
-                radial-gradient(at 100% 0%, hsla(339,49%,30%,0) 0, transparent 50%);
-        }
-        
-        .hero-mesh {
-            position: absolute;
-            top: 0; left: 0; right: 0; bottom: 0;
-            overflow: hidden;
-            z-index: -1;
-        }
-        
-        .blob {
-            position: absolute;
-            filter: blur(80px);
-            opacity: 0.4;
-            animation: float 10s infinite ease-in-out;
-        }
-        .blob-1 { top: -10%; left: -10%; width: 500px; height: 500px; background: #3b82f6; animation-delay: 0s; }
-        .blob-2 { top: 20%; right: -10%; width: 400px; height: 400px; background: #6366f1; animation-delay: 2s; }
-        .blob-3 { bottom: -10%; left: 20%; width: 600px; height: 600px; background: #ec4899; opacity: 0.2; animation-delay: 4s; }
-
-        /* Smooth Reveal Animation Class */
-        .reveal {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: all 0.8s cubic-bezier(0.5, 0, 0, 1);
-        }
-        .reveal.active {
-            opacity: 1;
-            transform: translateY(0);
+                radial-gradient(at 0% 0%, hsla(217,91%,95%,1) 0, transparent 50%), 
+                radial-gradient(at 50% 0%, hsla(225,100%,96%,1) 0, transparent 50%), 
+                radial-gradient(at 100% 0%, hsla(217,91%,95%,1) 0, transparent 50%);
         }
 
-        /* Card Hover Effects */
-        .feature-card {
-            transition: all 0.3s ease;
+        .dot-pattern {
+            background-image: radial-gradient(#cbd5e1 1px, transparent 1px);
+            background-size: 24px 24px;
         }
-        .feature-card:hover {
+
+        /* Hover Effects */
+        .card-hover-effect {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .card-hover-effect:hover {
             transform: translateY(-5px);
-            box-shadow: 0 20px 40px -5px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 20px 40px -15px rgba(30, 58, 138, 0.12);
+            border-color: #bfdbfe;
         }
 
-        /* Custom Scrollbar */
+        /* Form Styling */
+        .form-input {
+            width: 100%;
+            padding: 0.75rem 1rem;
+            border-radius: 0.5rem;
+            border: 1px solid #e2e8f0;
+            background-color: #f8fafc;
+            transition: all 0.2s;
+            outline: none;
+        }
+        .form-input:focus {
+            border-color: #3b82f6;
+            background-color: #ffffff;
+            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+        }
+        .form-label {
+            display: block;
+            font-size: 0.875rem;
+            font-weight: 500;
+            color: #475569;
+            margin-bottom: 0.375rem;
+        }
+
+        /* Watermark Animation */
+        .logo-watermark {
+            position: absolute;
+            bottom: -20px;
+            right: -20px;
+            width: 140px;
+            height: 140px;
+            opacity: 0.03;
+            filter: grayscale(100%);
+            transform: rotate(-15deg);
+            transition: all 0.5s ease;
+            pointer-events: none;
+            z-index: 0;
+        }
+        .group:hover .logo-watermark {
+            opacity: 0.08;
+            transform: scale(1.1) rotate(0deg);
+        }
+
+        /* Scrollbar Styling */
         ::-webkit-scrollbar {
             width: 8px;
         }
@@ -153,809 +155,1042 @@
         ::-webkit-scrollbar-thumb:hover {
             background: #94a3b8;
         }
+
+        body.overflow-hidden {
+            overflow: hidden;
+        }
         
-        .logo-gradient {
-            background: linear-gradient(135deg, #2563eb, #4f46e5);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease-out;
+        }
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Success Animation Checkmark */
+        .checkmark-circle {
+            width: 80px;
+            height: 80px;
+            position: relative;
+            display: inline-block;
+            vertical-align: top;
+            margin: 0 auto;
+        }
+        .checkmark-circle .background {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background: #10b981;
+            position: absolute;
+        }
+        .checkmark-circle .checkmark {
+            border-radius: 5px;
+        }
+        .checkmark-circle .checkmark.draw:after {
+            animation-delay: 100ms;
+            animation-duration: 1s;
+            animation-timing-function: ease;
+            animation-name: checkmark;
+            transform: scaleX(-1) rotate(135deg);
+            animation-fill-mode: forwards;
+        }
+        .checkmark-circle .checkmark:after {
+            opacity: 1;
+            height: 40px;
+            width: 20px;
+            transform-origin: left top;
+            border-right: 4px solid white;
+            border-top: 4px solid white;
+            content: '';
+            left: 20px;
+            top: 40px;
+            position: absolute;
+        }
+        @keyframes checkmark {
+            0% { height: 0; width: 0; opacity: 1; }
+            20% { height: 0; width: 20px; opacity: 1; }
+            40% { height: 40px; width: 20px; opacity: 1; }
+            100% { height: 40px; width: 20px; opacity: 1; transform: scaleX(-1) rotate(135deg); }
         }
     </style>
-    
-    <!-- Structured Data (JSON-LD) for SEO -->
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "SoftwareApplication",
-      "name": "Xeta Solutions Ecosystem",
-      "applicationCategory": "BusinessApplication",
-      "operatingSystem": "Web, Windows, macOS",
-      "offers": {
-        "@type": "Offer",
-        "price": "0",
-        "priceCurrency": "USD"
-      },
-      "description": "Integrated recruitment and assessment suite including HireWithUS, Testify Secure Test, and QuizCom.",
-      "author": {
-          "@type": "Organization",
-          "name": "Xeta Solutions",
-          "url": "https://www.testify-lac.com/"
-      }
-    }
-    </script>
 </head>
-<body class="font-sans text-slate-600 bg-slate-50 antialiased overflow-x-hidden selection:bg-brand-100 selection:text-brand-900">
+<body class="text-slate-800 bg-slate-50 antialiased selection:bg-brand-100 selection:text-brand-900">
 
-    <!-- Navbar -->
-    <header id="navbar" class="fixed top-0 w-full z-50 transition-all duration-300">
-        <div class="absolute inset-0 bg-white/0 backdrop-blur-none border-b border-transparent transition-all duration-300" id="navbar-bg"></div>
-        <div class="container mx-auto px-6 h-20 flex items-center justify-between relative z-10">
-            <!-- Logo -->
-            <a href="#" class="flex items-center gap-2 group">
-                <div class="w-8 h-8 rounded-lg flex items-center justify-center shadow-lg group-hover:shadow-brand-500/30 transition-shadow">
-                    <img src="https://res.cloudinary.com/dpz44zf0z/image/upload/v1760704788/XETA_SOLUTIONS_LOGO_bcsbwh.png"
-                         alt="Xeta Solutions Logo"
-                         class="w-full h-full object-contain" />
+    <!-- Navigation -->
+    <nav class="fixed w-full top-0 z-50 glass-nav border-b border-slate-200/60 transition-all duration-300" id="navbar">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <!-- Logo -->
+                <div class="flex-shrink-0 cursor-pointer z-50" onclick="showHome()">
+                    <img src="https://res.cloudinary.com/dpz44zf0z/image/upload/v1760704788/XETA_SOLUTIONS_LOGO_bcsbwh.png" 
+                         alt="Xeta Solutions Logo" 
+                         class="h-9 w-auto md:h-10 transition-transform hover:scale-105">
                 </div>
-                <span class="font-display font-bold text-xl text-slate-900 tracking-tight group-hover:text-brand-700 transition-colors">
-                    Xeta<span class="text-brand-600">Solutions</span>
-                </span>
-            </a>
 
-            <!-- Desktop Nav -->
-            <nav class="hidden lg:flex items-center space-x-8">
-                <a href="#products" class="text-sm font-medium text-slate-600 hover:text-brand-600 transition-colors">Products</a>
-                <a href="#services" class="text-sm font-medium text-slate-600 hover:text-brand-600 transition-colors">Services</a>
-                <a href="#ecosystem" class="text-sm font-medium text-slate-600 hover:text-brand-600 transition-colors">Ecosystem</a>
-                <a href="#mock-interviews" class="text-sm font-medium text-slate-600 hover:text-brand-600 transition-colors">Mock Interviews</a>
-                <a href="#about" class="text-sm font-medium text-slate-600 hover:text-brand-600 transition-colors">About</a>
-            </nav>
-
-            <!-- CTA Buttons -->
-            <div class="hidden lg:flex items-center gap-4">
-                <button onclick="openModal('login-modal')" class="text-sm font-medium text-slate-900 hover:text-brand-600 transition-colors">Login</button>
-                <button onclick="openModal('request-demo-modal')" class="bg-slate-900 text-white px-5 py-2.5 rounded-full text-sm font-medium hover:bg-brand-600 transition-all shadow-lg shadow-slate-900/20 hover:shadow-brand-600/30 hover:-translate-y-0.5">
-                    Book a Demo
-                </button>
-            </div>
-
-            <!-- Mobile Menu Toggle -->
-            <button id="mobile-menu-btn" class="lg:hidden text-slate-900 focus:outline-none" aria-label="Toggle Menu">
-                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
-            </button>
-        </div>
-
-        <!-- Mobile Menu -->
-        <div id="mobile-menu" class="fixed inset-0 bg-white z-40 transform translate-x-full transition-transform duration-300 lg:hidden flex flex-col pt-24 px-6 pb-6">
-            <a href="#products" class="text-xl font-medium text-slate-900 py-4 border-b border-slate-100 mobile-link">Products</a>
-            <a href="#services" class="text-xl font-medium text-slate-900 py-4 border-b border-slate-100 mobile-link">Services</a>
-            <a href="#ecosystem" class="text-xl font-medium text-slate-900 py-4 border-b border-slate-100 mobile-link">Ecosystem</a>
-            <a href="#mock-interviews" class="text-xl font-medium text-slate-900 py-4 border-b border-slate-100 mobile-link">Mock Interviews</a>
-            <a href="#about" class="text-xl font-medium text-slate-900 py-4 border-b border-slate-100 mobile-link">About</a>
-            <div class="mt-auto">
-                <button onclick="openModal('request-demo-modal')" class="w-full bg-brand-600 text-white px-6 py-4 rounded-xl text-lg font-bold shadow-xl shadow-brand-600/30">
-                    Book a Demo
-                </button>
-            </div>
-        </div>
-    </header>
-
-    <!-- Hero Section -->
-    <section class="relative min-h-screen flex items-center pt-20 overflow-hidden">
-        <!-- Dynamic Background -->
-        <div class="hero-mesh">
-            <div class="blob blob-1"></div>
-            <div class="blob blob-2"></div>
-            <div class="blob blob-3"></div>
-        </div>
-
-        <div class="container mx-auto px-6 relative z-10 grid lg:grid-cols-2 gap-12 items-center">
-            <!-- Text Content -->
-            <div class="text-center lg:text-left pt-10 lg:pt-0">
-                <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-brand-50 border border-brand-100 mb-6 animate-fade-up">
-                    <span class="flex h-2 w-2 rounded-full bg-brand-600"></span>
-                    <span class="text-xs font-semibold text-brand-700 tracking-wide uppercase">AI-Powered Recruitment</span>
-                </div>
-                
-                <h1 class="font-display text-4xl lg:text-7xl font-bold text-slate-900 leading-tight mb-6 animate-fade-up" style="animation-delay: 0.1s;">
-                    The Future of <br>
-                    <span class="logo-gradient">Talent Assessment.</span>
-                </h1>
-                
-                <p class="text-lg lg:text-xl text-slate-600 mb-8 max-w-xl mx-auto lg:mx-0 leading-relaxed animate-fade-up" style="animation-delay: 0.2s;">
-                    Empowering organizations with secure AI-driven hiring, proctored testing, and real-world mock interview ecosystems. 
-                    <span class="hidden lg:inline">From campus to corporate, we automate integrity.</span>
-                </p>
-                
-                <div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start animate-fade-up" style="animation-delay: 0.3s;">
-                    <button onclick="openModal('request-demo-modal')" class="px-8 py-4 bg-slate-900 text-white rounded-full font-semibold hover:bg-brand-600 transition-all shadow-xl hover:shadow-brand-600/40 hover:-translate-y-1">
-                        Start Hiring Smarter
-                    </button>
-                    <a href="#products" class="px-8 py-4 bg-white text-slate-700 border border-slate-200 rounded-full font-semibold hover:border-brand-300 hover:text-brand-600 transition-all hover:bg-brand-50">
-                        Explore Ecosystem
+                <!-- Desktop Menu -->
+                <div class="hidden md:flex items-center space-x-8" id="desktop-menu">
+                    <a href="#who-we-are" class="text-sm font-medium text-slate-600 hover:text-brand-600 transition-colors relative group">
+                        About
+                        <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-brand-600 transition-all group-hover:w-full"></span>
                     </a>
+                    <a href="#what-we-build" class="text-sm font-medium text-slate-600 hover:text-brand-600 transition-colors relative group">
+                        Solutions
+                        <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-brand-600 transition-all group-hover:w-full"></span>
+                    </a>
+                    <a href="#platforms" class="text-sm font-medium text-slate-600 hover:text-brand-600 transition-colors relative group">
+                        Products
+                        <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-brand-600 transition-all group-hover:w-full"></span>
+                    </a>
+                    <a href="https://xetasolutions.in/careers" target="_blank" class="text-sm font-medium text-slate-600 hover:text-brand-600 transition-colors relative group">
+                        Careers
+                        <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-brand-600 transition-all group-hover:w-full"></span>
+                    </a>
+                    <button onclick="openContactModal()" class="bg-dark-900 text-white px-6 py-2.5 rounded-full text-sm font-semibold hover:bg-brand-600 hover:shadow-lg hover:shadow-brand-500/30 transition-all transform hover:-translate-y-0.5">
+                        Talk to Us
+                    </button>
                 </div>
 
-                <!-- Trusted Badge -->
-                <div class="mt-12 pt-8 border-t border-slate-200/60 flex flex-col lg:flex-row items-center gap-4 animate-fade-up" style="animation-delay: 0.4s;">
-                    <p class="text-sm text-slate-500 font-medium">Trusted by leading institutions for:</p>
-                    <div class="flex gap-4">
-                        <span class="px-3 py-1 rounded bg-green-100 text-green-700 text-xs font-bold">100% Integrity</span>
-                        <span class="px-3 py-1 rounded bg-blue-100 text-blue-700 text-xs font-bold">AI Screening</span>
-                        <span class="px-3 py-1 rounded bg-purple-100 text-purple-700 text-xs font-bold">Lockdown Browser</span>
-                    </div>
+                <!-- Mobile Menu Button -->
+                <div class="md:hidden flex items-center z-50">
+                    <button onclick="toggleMobileMenu()" class="text-slate-600 hover:text-brand-600 focus:outline-none p-2" aria-label="Toggle menu">
+                        <svg id="menu-icon" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                        </svg>
+                        <svg id="close-icon" class="h-6 w-6 hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                        </svg>
+                    </button>
                 </div>
             </div>
+        </div>
 
-            <!-- Visual Graphic -->
-            <div class="relative lg:h-[600px] flex items-center justify-center animate-fade-up" style="animation-delay: 0.5s;">
-                <!-- Main Dashboard Card -->
-                <div class="relative w-full max-w-lg bg-white/80 backdrop-blur-xl rounded-2xl border border-white/50 shadow-2xl p-6 z-20 animate-float">
-                    <!-- Fake UI Header -->
-                    <div class="flex items-center justify-between mb-6">
-                        <div class="flex gap-2">
-                            <div class="w-3 h-3 rounded-full bg-red-400"></div>
-                            <div class="w-3 h-3 rounded-full bg-yellow-400"></div>
-                            <div class="w-3 h-3 rounded-full bg-green-400"></div>
-                        </div>
-                        <div class="h-2 w-20 bg-slate-200 rounded-full"></div>
-                    </div>
-                    <!-- Fake Charts -->
-                    <div class="space-y-4">
-                        <div class="flex gap-4">
-                            <div class="w-1/3 h-24 bg-brand-50 rounded-xl border border-brand-100 flex flex-col justify-center items-center">
-                                <span class="text-2xl font-bold text-brand-600">98%</span>
-                                <span class="text-xs text-slate-500">Auto-Pass</span>
-                            </div>
-                            <div class="w-2/3 h-24 bg-slate-50 rounded-xl border border-slate-100 relative overflow-hidden">
-                                <div class="absolute bottom-0 left-0 right-0 h-16 bg-gradient-to-t from-brand-100/50 to-transparent"></div>
-                                <svg class="w-full h-full text-brand-500" viewBox="0 0 100 40" preserveAspectRatio="none">
-                                    <path d="M0 40 Q 25 10 50 30 T 100 20 V 40 H 0" fill="currentColor" opacity="0.2"/>
-                                    <path d="M0 40 Q 25 10 50 30 T 100 20" stroke="currentColor" stroke-width="2" fill="none"/>
-                                </svg>
-                            </div>
-                        </div>
-                        <div class="h-32 bg-slate-900 rounded-xl p-4 flex items-center gap-4">
-                            <div class="h-10 w-10 rounded-full bg-green-500 flex items-center justify-center text-white">
-                                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
-                            </div>
-                            <div>
-                                <div class="text-white font-semibold">Candidate Verified</div>
-                                <div class="text-slate-400 text-xs">AI Proctoring Active • No Violations</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+        <!-- Mobile Menu Overlay (New Design) -->
+        <div id="mobile-menu" class="fixed inset-0 bg-white/95 backdrop-blur-xl z-40 transform translate-x-full transition-transform duration-300 md:hidden flex flex-col justify-start pt-28 px-6 pb-6">
+            <!-- Background Decoration -->
+            <div class="absolute inset-0 overflow-hidden pointer-events-none">
+                 <div class="absolute top-0 right-0 w-64 h-64 bg-brand-100 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-blob"></div>
+                 <div class="absolute bottom-0 left-0 w-64 h-64 bg-purple-100 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-blob animation-delay-2000"></div>
+            </div>
 
-                <!-- Floating Elements -->
-                <div class="absolute top-20 right-0 lg:-right-10 bg-white p-4 rounded-xl shadow-xl z-30 animate-float" style="animation-delay: 2s;">
-                    <div class="flex items-center gap-3">
-                        <div class="bg-purple-100 p-2 rounded-lg text-purple-600">
-                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path></svg>
-                        </div>
-                        <div>
-                            <div class="text-sm font-bold text-slate-800">Testify LAC</div>
-                            <div class="text-xs text-slate-500">Learning Active</div>
-                        </div>
-                    </div>
-                </div>
+            <div class="flex flex-col space-y-6 text-center relative z-10 w-full px-4">
+                <a href="#who-we-are" onclick="toggleMobileMenu()" class="text-2xl font-semibold text-slate-800 hover:text-brand-600 transition-colors py-2 border-b border-transparent hover:border-slate-100">About</a>
+                <a href="#what-we-build" onclick="toggleMobileMenu()" class="text-2xl font-semibold text-slate-800 hover:text-brand-600 transition-colors py-2 border-b border-transparent hover:border-slate-100">Solutions</a>
+                <a href="#platforms" onclick="toggleMobileMenu()" class="text-2xl font-semibold text-slate-800 hover:text-brand-600 transition-colors py-2 border-b border-transparent hover:border-slate-100">Products</a>
+                <a href="https://xetasolutions.in/careers" target="_blank" class="text-2xl font-semibold text-slate-800 hover:text-brand-600 transition-colors py-2 border-b border-transparent hover:border-slate-100">Careers</a>
                 
-                <div class="absolute bottom-20 left-0 lg:-left-10 bg-white p-4 rounded-xl shadow-xl z-30 animate-float" style="animation-delay: 1s;">
-                    <div class="flex items-center gap-3">
-                        <div class="bg-blue-100 p-2 rounded-lg text-blue-600">
-                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path></svg>
-                        </div>
-                        <div>
-                            <div class="text-sm font-bold text-slate-800">HireWithUS</div>
-                            <div class="text-xs text-slate-500">12 New Applicants</div>
-                        </div>
-                    </div>
+                <div class="pt-6">
+                    <button onclick="toggleMobileMenu(); openContactModal();" class="w-full bg-slate-900 text-white px-8 py-4 rounded-2xl text-lg font-bold shadow-xl shadow-slate-200 hover:bg-brand-600 transition-all active:scale-95 flex items-center justify-center">
+                        Talk to Us
+                        <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+                    </button>
                 </div>
+            </div>
+            
+            <!-- Decorative bottom element for mobile menu -->
+            <div class="absolute bottom-8 left-0 right-0 opacity-20 flex justify-center pointer-events-none">
+                <img src="https://res.cloudinary.com/dpz44zf0z/image/upload/v1760704788/XETA_SOLUTIONS_LOGO_bcsbwh.png" alt="watermark" class="h-10 grayscale">
             </div>
         </div>
-    </section>
+    </nav>
 
-    <!-- Key Numbers Section -->
-    <section class="py-10 border-y border-slate-200 bg-white/50 backdrop-blur-sm">
-        <div class="container mx-auto px-6">
-            <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center divide-x divide-slate-200/50">
-                <div class="reveal">
-                    <p class="text-3xl font-display font-bold text-brand-600">50+</p>
-                    <p class="text-sm text-slate-500 mt-1">Colleges Partnered</p>
-                </div>
-                <div class="reveal">
-                    <p class="text-3xl font-display font-bold text-brand-600">10k+</p>
-                    <p class="text-sm text-slate-500 mt-1">Assessments Conducted</p>
-                </div>
-                <div class="reveal">
-                    <p class="text-3xl font-display font-bold text-brand-600">Zero</p>
-                    <p class="text-sm text-slate-500 mt-1">Malpractice Incidents</p>
-                </div>
-                <div class="reveal">
-                    <p class="text-3xl font-display font-bold text-brand-600">100%</p>
-                    <p class="text-sm text-slate-500 mt-1">Placement Focus</p>
-                </div>
-            </div>
-        </div>
-    </section>
+    <!-- Main View -->
+    <main id="home-view" class="transition-opacity duration-300 ease-in-out">
+        
+        <!-- Hero Section -->
+        <header class="relative pt-32 pb-20 md:pt-48 md:pb-32 overflow-hidden mesh-gradient-bg">
+            <!-- Animated Blob Backgrounds -->
+            <div class="absolute top-0 -left-4 w-72 h-72 bg-purple-300 rounded-full mix-blend-multiply filter blur-xl opacity-30 animate-blob"></div>
+            <div class="absolute top-0 -right-4 w-72 h-72 bg-brand-300 rounded-full mix-blend-multiply filter blur-xl opacity-30 animate-blob animation-delay-2000"></div>
+            <div class="absolute -bottom-8 left-20 w-72 h-72 bg-pink-300 rounded-full mix-blend-multiply filter blur-xl opacity-30 animate-blob animation-delay-4000"></div>
 
-    <!-- Product Suite Section (Grid Layout) -->
-    <section id="products" class="py-24 bg-white relative">
-        <div class="container mx-auto px-6">
-            <div class="text-center max-w-3xl mx-auto mb-16 reveal">
-                <h2 class="font-display text-3xl md:text-4xl font-bold text-slate-900 mb-4">Our Integrated Ecosystem</h2>
-                <p class="text-lg text-slate-600">One platform connecting recruitment, assessment, and continuous learning. Designed for accuracy, security, and scale.</p>
-            </div>
-
-            <!-- Bento Grid -->
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                <!-- HireWithUS (Large Card) -->
-                <div class="md:col-span-2 bg-gradient-to-br from-brand-50 to-white rounded-3xl p-8 border border-brand-100 shadow-sm feature-card reveal group">
-                    <div class="flex justify-between items-start mb-6">
-                        <div class="bg-brand-600 text-white p-3 rounded-xl shadow-lg shadow-brand-500/30">
-                           <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
-                        </div>
-                        <span class="bg-white text-brand-700 text-xs font-bold px-3 py-1 rounded-full border border-brand-100">Flagship</span>
-                    </div>
-                    <h3 class="text-2xl font-bold text-slate-900 mb-3 group-hover:text-brand-600 transition-colors">HireWithUS</h3>
-                    <p class="text-slate-600 mb-6">End-to-end recruitment automation. From job posting and AI screening to interview scheduling and final offer.</p>
-                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                        <div class="flex items-center gap-2 text-sm text-slate-700">
-                            <svg class="w-4 h-4 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
-                            AI Resume Scoring
-                        </div>
-                        <div class="flex items-center gap-2 text-sm text-slate-700">
-                            <svg class="w-4 h-4 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
-                            College Portals
-                        </div>
-                        <div class="flex items-center gap-2 text-sm text-slate-700">
-                            <svg class="w-4 h-4 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
-                            Automated Emails
-                        </div>
-                        <div class="flex items-center gap-2 text-sm text-slate-700">
-                            <svg class="w-4 h-4 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
-                            Analytics Dashboard
-                        </div>
+            <div class="relative max-w-7xl mx-auto px-6 flex flex-col items-center text-center z-10">
+                <div class="animate-fade-in-up">
+                    <span class="inline-flex items-center gap-2 px-4 py-1.5 mb-8 text-xs font-bold tracking-widest uppercase bg-white/50 backdrop-blur border border-brand-100 text-brand-700 rounded-full shadow-sm">
+                        <span class="w-2 h-2 rounded-full bg-brand-500 animate-pulse"></span>
+                        Enterprise Technology Partner
+                    </span>
+                    <h1 class="text-5xl md:text-7xl lg:text-8xl font-extrabold tracking-tight text-slate-900 mb-8 max-w-5xl leading-[1.1]">
+                        Engineering the <span class="text-transparent bg-clip-text bg-gradient-to-r from-brand-600 to-purple-600">Future</span> of Enterprise Tech
+                    </h1>
+                    <p class="text-lg md:text-xl text-slate-600 mb-10 max-w-2xl mx-auto leading-relaxed">
+                        Scalable software products and bespoke engineering solutions designed to propel global enterprises and academic institutions forward.
+                    </p>
+                    <div class="flex flex-col sm:flex-row gap-4 justify-center w-full sm:w-auto">
+                        <a href="#what-we-build" class="bg-brand-600 text-white px-8 py-4 rounded-xl font-semibold hover:bg-brand-700 shadow-lg shadow-brand-500/30 transition-all transform hover:-translate-y-1 w-full sm:w-auto">
+                            Explore Solutions
+                        </a>
+                        <button onclick="openContactModal()" class="bg-white text-slate-900 border border-slate-200 px-8 py-4 rounded-xl font-semibold hover:bg-slate-50 hover:border-slate-300 transition-all w-full sm:w-auto">
+                            Consult Expert
+                        </button>
                     </div>
                 </div>
+            </div>
+        </header>
 
-                <!-- Testify Secure (Tall Card) -->
-                <div class="row-span-2 bg-slate-900 rounded-3xl p-8 shadow-xl feature-card reveal relative overflow-hidden group">
-                    <!-- Background Glow -->
-                    <div class="absolute top-0 right-0 w-64 h-64 bg-brand-600 rounded-full mix-blend-multiply filter blur-3xl opacity-20 -translate-y-10 translate-x-10"></div>
-                    
-                    <div class="relative z-10 h-full flex flex-col">
-                        <div class="bg-red-500 text-white p-3 rounded-xl w-12 h-12 flex items-center justify-center mb-6 shadow-lg shadow-red-500/30">
-                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path></svg>
-                        </div>
-                        <h3 class="text-2xl font-bold text-white mb-3">Testify <span class="text-slate-400 font-normal text-lg block">Secure Test</span></h3>
-                        <p class="text-slate-300 mb-6 text-sm leading-relaxed">A desktop lockdown client ensuring 100% integrity. We block screen switching, virtualization, and unauthorized aids.</p>
+        <!-- Who We Are -->
+        <section id="who-we-are" class="py-20 md:py-32 bg-white relative">
+            <div class="absolute inset-0 dot-pattern opacity-30 pointer-events-none"></div>
+            <div class="max-w-7xl mx-auto px-6 relative z-10">
+                <div class="grid md:grid-cols-2 gap-12 lg:gap-20 items-center reveal">
+                    <div>
+                        <h2 class="text-3xl md:text-4xl font-bold mb-6 text-slate-900 tracking-tight">Built for Reliability, <br>Scaled for Growth</h2>
+                        <div class="h-1.5 w-24 bg-gradient-to-r from-brand-500 to-purple-500 rounded-full mb-8"></div>
+                        <p class="text-lg text-slate-600 leading-relaxed mb-6">
+                            Xeta Solutions is more than a vendor; we are an enterprise technology partner specializing in high-performance software development. 
+                        </p>
+                        <p class="text-lg text-slate-600 leading-relaxed">
+                            We maintain a unique dual focus: developing a proprietary ecosystem of cutting-edge talent and learning platforms while engineering robust, custom-built applications tailored to specific client requirements.
+                        </p>
+                    </div>
+                    <div class="relative">
+                        <div class="absolute -inset-4 bg-gradient-to-r from-brand-100 to-purple-100 rounded-[2rem] transform rotate-3 opacity-50"></div>
+                        <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=800&q=80" alt="Team collaboration" class="relative rounded-[1.5rem] shadow-2xl border border-slate-100 w-full object-cover h-80 md:h-96">
                         
-                        <ul class="space-y-4 mb-8 flex-grow">
-                            <li class="flex items-start gap-3 text-slate-300 text-sm">
-                                <span class="bg-red-500/20 text-red-400 p-1 rounded mt-0.5"><svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg></span>
-                                Lockdown Environment
+                        <!-- Floater Card -->
+                        <div class="absolute -bottom-6 -left-6 bg-white p-6 rounded-2xl shadow-xl border border-slate-100 hidden md:block">
+                            <div class="flex items-center gap-4">
+                                <div class="bg-green-100 p-3 rounded-full text-green-600">
+                                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                                </div>
+                                <div>
+                                    <div class="text-2xl font-bold text-slate-900">99.9%</div>
+                                    <div class="text-sm text-slate-500 font-medium">Uptime Guarantee</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Core Capabilities -->
+        <section id="what-we-build" class="py-20 md:py-32 bg-slate-50">
+            <div class="max-w-7xl mx-auto px-6">
+                <div class="mb-16 md:mb-24 text-center max-w-3xl mx-auto reveal">
+                    <span class="text-brand-600 font-bold tracking-wider uppercase text-sm">Our Expertise</span>
+                    <h2 class="text-3xl md:text-5xl font-bold mt-3 mb-6 text-slate-900 tracking-tight">Core Capabilities</h2>
+                    <p class="text-lg text-slate-600">Comprehensive technology services across the entire software lifecycle, from ideation to enterprise scale.</p>
+                </div>
+
+                <div class="grid md:grid-cols-2 gap-8 lg:gap-12">
+                    <!-- Products Column -->
+                    <div class="bg-white p-8 md:p-12 rounded-[2rem] border border-slate-200 shadow-sm hover:shadow-xl transition-shadow duration-300 reveal">
+                        <div class="w-12 h-12 bg-blue-100 rounded-2xl flex items-center justify-center text-blue-600 mb-8">
+                            <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" /></svg>
+                        </div>
+                        <h3 class="text-2xl md:text-3xl font-bold mb-2 text-slate-900">Proprietary Products</h3>
+                        <p class="text-brand-600 font-medium mb-8">Integrated Talent & Learning Ecosystems</p>
+                        
+                        <ul class="space-y-8">
+                            <li class="flex gap-5 group">
+                                <div class="mt-1">
+                                    <div class="w-8 h-8 rounded-full bg-blue-50 text-blue-600 flex items-center justify-center group-hover:bg-blue-600 group-hover:text-white transition-colors">
+                                        <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" /></svg>
+                                    </div>
+                                </div>
+                                <div>
+                                    <span class="font-bold text-slate-900 block text-lg mb-1">Recruitment Portals</span>
+                                    <span class="text-slate-500 text-sm leading-relaxed">Automated interview panels and end-to-end hiring workflows designed for efficiency.</span>
+                                </div>
                             </li>
-                            <li class="flex items-start gap-3 text-slate-300 text-sm">
-                                <span class="bg-red-500/20 text-red-400 p-1 rounded mt-0.5"><svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg></span>
-                                AI Face Detection
+                            <!-- More list items (same as before) -->
+                            <li class="flex gap-5 group">
+                                <div class="mt-1">
+                                    <div class="w-8 h-8 rounded-full bg-blue-50 text-blue-600 flex items-center justify-center group-hover:bg-blue-600 group-hover:text-white transition-colors">
+                                        <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4" /></svg>
+                                    </div>
+                                </div>
+                                <div>
+                                    <span class="font-bold text-slate-900 block text-lg mb-1">Assessment Platforms</span>
+                                    <span class="text-slate-500 text-sm leading-relaxed">Proctored testing with real-time grading, fraud detection, and deep analytics.</span>
+                                </div>
                             </li>
-                            <li class="flex items-start gap-3 text-slate-300 text-sm">
-                                <span class="bg-red-500/20 text-red-400 p-1 rounded mt-0.5"><svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg></span>
-                                Screen & Audio Logs
+                             <li class="flex gap-5 group">
+                                <div class="mt-1">
+                                    <div class="w-8 h-8 rounded-full bg-blue-50 text-blue-600 flex items-center justify-center group-hover:bg-blue-600 group-hover:text-white transition-colors">
+                                        <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" /></svg>
+                                    </div>
+                                </div>
+                                <div>
+                                    <span class="font-bold text-slate-900 block text-lg mb-1">Training & Fluency</span>
+                                    <span class="text-slate-500 text-sm leading-relaxed">LMS solutions and automated AI-driven language assessment tools.</span>
+                                </div>
                             </li>
                         </ul>
+                    </div>
+
+                    <!-- Custom Solutions Column -->
+                    <div class="bg-white p-8 md:p-12 rounded-[2rem] border border-slate-200 shadow-sm hover:shadow-xl transition-shadow duration-300 reveal">
+                        <div class="w-12 h-12 bg-purple-100 rounded-2xl flex items-center justify-center text-purple-600 mb-8">
+                            <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" /></svg>
+                        </div>
+                        <h3 class="text-2xl md:text-3xl font-bold mb-2 text-slate-900">Custom Solutions</h3>
+                        <p class="text-purple-600 font-medium mb-8">Bespoke Engineering & Digital Transformation</p>
                         
-                        <a href="https://www.testify-lac.com/beta-version" class="block w-full py-3 rounded-xl bg-white/10 text-white text-sm font-semibold hover:bg-white/20 transition-colors border border-white/10 text-center">
-                            Download Client
-                        </a>
-                    </div>
-                </div>
-
-                <!-- Testify LAC -->
-                <div class="bg-white rounded-3xl p-8 border border-slate-100 shadow-sm feature-card reveal">
-                    <div class="bg-purple-100 text-purple-600 p-3 rounded-xl w-12 h-12 flex items-center justify-center mb-6">
-                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path></svg>
-                    </div>
-                    <h3 class="text-xl font-bold text-slate-900 mb-2">Testify LAC</h3>
-                    <p class="text-sm text-slate-600 mb-4">Learn, Assess, Code. A unified platform for upskilling, live classes, and SQL/Coding practice.</p>
-                    <a href="#" class="text-purple-600 font-semibold text-sm hover:underline">View Features &rarr;</a>
-                </div>
-
-                <!-- QuizCom -->
-                <div class="bg-white rounded-3xl p-8 border border-slate-100 shadow-sm feature-card reveal">
-                    <div class="bg-teal-100 text-teal-600 p-3 rounded-xl w-12 h-12 flex items-center justify-center mb-6">
-                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
-                    </div>
-                    <h3 class="text-xl font-bold text-slate-900 mb-2">QuizCom</h3>
-                    <p class="text-sm text-slate-600 mb-4">Live, gamified interactive quizzes with real-time leaderboards for classroom engagement.</p>
-                    <a href="#" class="text-teal-600 font-semibold text-sm hover:underline">Learn More &rarr;</a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Custom Services Section (New Addition) -->
-    <section id="services" class="py-20 bg-slate-50 border-t border-slate-200">
-        <div class="container mx-auto px-6">
-            <div class="flex flex-col md:flex-row items-center gap-12">
-                <div class="md:w-1/2 reveal">
-                    <span class="text-brand-600 font-bold tracking-wider uppercase text-xs">Custom Development</span>
-                    <h2 class="font-display text-3xl font-bold text-slate-900 mt-2 mb-4">Tailored Software & Enterprise Solutions</h2>
-                    <p class="text-slate-600 mb-6 leading-relaxed">
-                        Beyond our core products, Xeta Solutions specializes in building bespoke digital infrastructure. 
-                        Whether you need a complex Enterprise Resource Planning (ERP) system, a high-performance website, 
-                        or custom automation software, our engineering team delivers precision and scalability based on your unique requirements.
-                    </p>
-                    <div class="flex flex-wrap gap-3">
-                        <span class="px-4 py-2 bg-white border border-slate-200 rounded-lg text-sm font-semibold text-slate-700 shadow-sm">Custom Software</span>
-                        <span class="px-4 py-2 bg-white border border-slate-200 rounded-lg text-sm font-semibold text-slate-700 shadow-sm">Enterprise Apps</span>
-                        <span class="px-4 py-2 bg-white border border-slate-200 rounded-lg text-sm font-semibold text-slate-700 shadow-sm">Web Development</span>
-                    </div>
-                </div>
-                <div class="md:w-1/2 reveal">
-                     <div class="bg-slate-900 rounded-2xl p-6 shadow-2xl transform rotate-1 hover:rotate-0 transition-transform duration-500 border border-slate-800">
-                        <div class="flex items-center gap-2 mb-4">
-                            <div class="w-3 h-3 rounded-full bg-red-500"></div>
-                            <div class="w-3 h-3 rounded-full bg-yellow-500"></div>
-                            <div class="w-3 h-3 rounded-full bg-green-500"></div>
-                        </div>
-                        <div class="space-y-3 font-mono text-sm">
-                            <div class="flex gap-4">
-                                <span class="text-purple-400">const</span>
-                                <span class="text-blue-400">solution</span>
-                                <span class="text-slate-400">=</span>
-                                <span class="text-yellow-300">new</span>
-                                <span class="text-green-400">CustomBuild</span><span class="text-slate-400">({</span>
+                        <div class="space-y-4">
+                            <!-- Service Items -->
+                            <div onclick="showDetail('web-apps')" class="group p-4 rounded-xl border border-slate-100 hover:border-purple-200 hover:bg-purple-50 cursor-pointer transition-all flex justify-between items-center">
+                                <span class="font-semibold text-slate-700 group-hover:text-purple-700">Custom Web Applications</span>
+                                <svg class="w-5 h-5 text-slate-400 group-hover:text-purple-600 transform group-hover:translate-x-1 transition-all" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
                             </div>
-                            <div class="pl-8 text-slate-300">type: <span class="text-orange-400">'Enterprise_ERP'</span>,</div>
-                            <div class="pl-8 text-slate-300">security: <span class="text-blue-400">true</span>,</div>
-                            <div class="pl-8 text-slate-300">scale: <span class="text-purple-400">'Global'</span>,</div>
-                             <div class="pl-8 text-slate-300">platform: <span class="text-orange-400">'Web & Mobile'</span></div>
-                            <div class="text-slate-400">});</div>
-                            <div class="text-slate-500 pt-2 border-t border-slate-800 mt-2">// Ready to deploy tailored solutions</div>
-                        </div>
-                     </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- How It Works (Timeline) -->
-    <section id="ecosystem" class="py-24 bg-white relative overflow-hidden">
-        <!-- Background Pattern -->
-        <div class="absolute inset-0 opacity-[0.03] bg-[radial-gradient(#4f46e5_1px,transparent_1px)] [background-size:16px_16px]"></div>
-
-        <div class="container mx-auto px-6 relative z-10">
-            <div class="text-center max-w-3xl mx-auto mb-16 reveal">
-                <span class="text-brand-600 font-bold tracking-wider uppercase text-xs">Workflow</span>
-                <h2 class="font-display text-3xl md:text-4xl font-bold text-slate-900 mt-2">The Xeta Advantage</h2>
-                <p class="text-slate-600 mt-4">We replace fragmented tools with one cohesive timeline.</p>
-            </div>
-
-            <!-- Steps Grid -->
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-6 gap-6">
-                <!-- Step 1 -->
-                <div class="relative p-6 bg-white rounded-2xl border border-slate-100 shadow-sm hover:border-brand-300 transition-colors reveal">
-                    <div class="absolute -top-4 -left-4 w-10 h-10 bg-slate-900 text-white rounded-lg flex items-center justify-center font-bold shadow-lg">1</div>
-                    <h3 class="mt-4 text-lg font-bold text-slate-900">Job Posting</h3>
-                    <p class="text-sm text-slate-500 mt-2">Target specific colleges or open pools. Custom job descriptions.</p>
-                </div>
-
-                <!-- Step 2 -->
-                <div class="relative p-6 bg-white rounded-2xl border border-slate-100 shadow-sm hover:border-brand-300 transition-colors reveal" style="transition-delay: 100ms;">
-                    <div class="absolute -top-4 -left-4 w-10 h-10 bg-brand-600 text-white rounded-lg flex items-center justify-center font-bold shadow-lg shadow-brand-500/30">2</div>
-                    <h3 class="mt-4 text-lg font-bold text-slate-900">AI Screening</h3>
-                    <p class="text-sm text-slate-500 mt-2">Auto-verify docs, ID checks, and resume scoring against JD.</p>
-                </div>
-
-                <!-- Step 3 -->
-                <div class="relative p-6 bg-white rounded-2xl border border-slate-100 shadow-sm hover:border-brand-300 transition-colors reveal" style="transition-delay: 200ms;">
-                      <div class="absolute -top-4 -left-4 w-10 h-10 bg-teal-500 text-white rounded-lg flex items-center justify-center font-bold shadow-lg shadow-teal-500/30">3</div>
-                    <h3 class="mt-4 text-lg font-bold text-slate-900">Test Assign</h3>
-                    <p class="text-sm text-slate-500 mt-2">Admins shortlist candidates & assign coding/aptitude tests.</p>
-                </div>
-
-                <!-- Step 4 -->
-                <div class="relative p-6 bg-white rounded-2xl border border-slate-100 shadow-sm hover:border-brand-300 transition-colors reveal" style="transition-delay: 300ms;">
-                    <div class="absolute -top-4 -left-4 w-10 h-10 bg-red-500 text-white rounded-lg flex items-center justify-center font-bold shadow-lg shadow-red-500/30">4</div>
-                    <h3 class="mt-4 text-lg font-bold text-slate-900">Secure Test</h3>
-                    <p class="text-sm text-slate-500 mt-2">Candidates take tests on Testify Lockdown Client. 100% Proctored.</p>
-                </div>
-
-                <!-- Step 5 -->
-                <div class="relative p-6 bg-white rounded-2xl border border-slate-100 shadow-sm hover:border-brand-300 transition-colors reveal" style="transition-delay: 400ms;">
-                    <div class="absolute -top-4 -left-4 w-10 h-10 bg-pink-500 text-white rounded-lg flex items-center justify-center font-bold shadow-lg shadow-pink-500/30">5</div>
-                    <h3 class="mt-4 text-lg font-bold text-slate-900">Interview</h3>
-                    <p class="text-sm text-slate-500 mt-2">Auto-schedule and conduct in-person or online interviews.</p>
-                </div>
-
-                <!-- Step 6 -->
-                <div class="relative p-6 bg-white rounded-2xl border border-slate-100 shadow-sm hover:border-brand-300 transition-colors reveal" style="transition-delay: 500ms;">
-                    <div class="absolute -top-4 -left-4 w-10 h-10 bg-green-500 text-white rounded-lg flex items-center justify-center font-bold shadow-lg shadow-green-500/30">6</div>
-                    <h3 class="mt-4 text-lg font-bold text-slate-900">Selection</h3>
-                    <p class="text-sm text-slate-500 mt-2">Analyze feedback and analytics for final hiring.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Mock Interviews (Featured Vertical) -->
-    <section id="mock-interviews" class="py-24 bg-slate-900 text-white relative overflow-hidden">
-        <!-- Decoration -->
-        <div class="absolute top-0 right-0 w-[600px] h-[600px] bg-brand-600 rounded-full mix-blend-screen filter blur-[100px] opacity-10"></div>
-        <div class="absolute bottom-0 left-0 w-[400px] h-[400px] bg-purple-600 rounded-full mix-blend-screen filter blur-[100px] opacity-10"></div>
-
-        <div class="container mx-auto px-6 relative z-10 flex flex-col lg:flex-row items-center gap-16">
-            <div class="lg:w-1/2 reveal">
-                <span class="text-brand-400 font-bold tracking-wider uppercase text-xs">Bridge Campus to Corporate</span>
-                <h2 class="font-display text-4xl lg:text-5xl font-bold mt-4 mb-6 leading-tight">Mock Interviews by Industry Experts</h2>
-                <p class="text-slate-300 text-lg mb-8 leading-relaxed">
-                    We simulate the <strong>entire recruitment lifecycle</strong>. Students don't just "practice speaking"—they undergo the full rigorous process of a top-tier company, evaluated by professionals from leading MNCs.
-                </p>
-                
-                <!-- Process Steps Visual -->
-                <div class="mb-10 space-y-2">
-                    <p class="text-sm font-semibold text-slate-400 uppercase tracking-wide mb-4">The Simulated Workflow:</p>
-                    <div class="flex flex-col md:flex-row gap-4">
-                        <div class="flex-1 bg-white/5 border border-white/10 p-3 rounded-lg text-center">
-                            <div class="text-brand-400 font-bold text-sm">Step 1</div>
-                            <div class="text-white text-sm">Job Application</div>
-                        </div>
-                        <div class="flex items-center justify-center text-slate-500 transform rotate-90 md:rotate-0">→</div>
-                        <div class="flex-1 bg-white/5 border border-white/10 p-3 rounded-lg text-center">
-                            <div class="text-brand-400 font-bold text-sm">Step 2</div>
-                            <div class="text-white text-sm">AI Screening</div>
-                        </div>
-                        <div class="flex items-center justify-center text-slate-500 transform rotate-90 md:rotate-0">→</div>
-                        <div class="flex-1 bg-white/5 border border-white/10 p-3 rounded-lg text-center">
-                            <div class="text-brand-400 font-bold text-sm">Step 3</div>
-                            <div class="text-white text-sm">Secure Test</div>
-                        </div>
-                         <div class="flex items-center justify-center text-slate-500 transform rotate-90 md:rotate-0">→</div>
-                        <div class="flex-1 bg-brand-600/20 border border-brand-500/50 p-3 rounded-lg text-center shadow-[0_0_15px_rgba(59,130,246,0.2)]">
-                            <div class="text-brand-400 font-bold text-sm">Step 4</div>
-                            <div class="text-white text-sm font-semibold">Expert Interview</div>
+                            <!-- ... other service items ... -->
+                             <div onclick="showDetail('enterprise')" class="group p-4 rounded-xl border border-slate-100 hover:border-purple-200 hover:bg-purple-50 cursor-pointer transition-all flex justify-between items-center">
+                                <span class="font-semibold text-slate-700 group-hover:text-purple-700">Enterprise Software Development</span>
+                                <svg class="w-5 h-5 text-slate-400 group-hover:text-purple-600 transform group-hover:translate-x-1 transition-all" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+                            </div>
+                            <div onclick="showDetail('cloud')" class="group p-4 rounded-xl border border-slate-100 hover:border-purple-200 hover:bg-purple-50 cursor-pointer transition-all flex justify-between items-center">
+                                <span class="font-semibold text-slate-700 group-hover:text-purple-700">Cloud-based Systems</span>
+                                <svg class="w-5 h-5 text-slate-400 group-hover:text-purple-600 transform group-hover:translate-x-1 transition-all" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+                            </div>
+                            <div onclick="showDetail('ai')" class="group p-4 rounded-xl border border-slate-100 hover:border-purple-200 hover:bg-purple-50 cursor-pointer transition-all flex justify-between items-center">
+                                <span class="font-semibold text-slate-700 group-hover:text-purple-700">AI-enabled Platforms</span>
+                                <svg class="w-5 h-5 text-slate-400 group-hover:text-purple-600 transform group-hover:translate-x-1 transition-all" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+                            </div>
+                            <div onclick="showDetail('security')" class="group p-4 rounded-xl border border-slate-100 hover:border-purple-200 hover:bg-purple-50 cursor-pointer transition-all flex justify-between items-center">
+                                <span class="font-semibold text-slate-700 group-hover:text-purple-700">Scalable & Secure Architectures</span>
+                                <svg class="w-5 h-5 text-slate-400 group-hover:text-purple-600 transform group-hover:translate-x-1 transition-all" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+                            </div>
                         </div>
                     </div>
                 </div>
-
-                <ul class="space-y-4 mb-10">
-                    <li class="flex items-center gap-4">
-                        <div class="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center text-green-400">
-                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-                        </div>
-                        <span class="text-slate-200"><strong>Industry Panels:</strong> Interviews conducted by real experts from top MNCs.</span>
-                    </li>
-                    <li class="flex items-center gap-4">
-                        <div class="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center text-green-400">
-                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path></svg>
-                        </div>
-                        <span class="text-slate-200"><strong>Detailed Report:</strong> Strengths, weaknesses, & score on Tech/Aptitude/Comm.</span>
-                    </li>
-                </ul>
-                
-                <button onclick="openModal('get-started-modal')" class="bg-brand-600 text-white px-8 py-4 rounded-full font-semibold hover:bg-brand-500 transition-all shadow-lg shadow-brand-600/30">
-                    Schedule a Mock Drive
-                </button>
             </div>
+        </section>
+
+        <!-- Flagship Platforms -->
+        <section id="platforms" class="py-24 bg-white relative overflow-hidden">
+            <div class="absolute inset-0 mesh-gradient-bg opacity-50"></div>
             
-            <div class="lg:w-1/2 reveal">
-                <div class="bg-white/5 backdrop-blur-md rounded-2xl border border-white/10 p-2 shadow-2xl transform rotate-3 hover:rotate-0 transition-transform duration-500">
-                    <img src="https://res.cloudinary.com/dpz44zf0z/image/upload/v1764834186/Screenshot_2025-12-04_131143_yjcjov.png" alt="Professional Interview" class="rounded-xl w-full object-cover h-[400px]">
-                    <div class="p-6">
-                        <div class="flex items-center justify-between mb-2">
-                            <h4 class="text-white font-bold text-lg">Detailed Performance Report</h4>
-                            <span class="text-green-400 font-mono text-sm">Score: 8.5/10</span>
+            <div class="max-w-7xl mx-auto px-6 relative z-10">
+                <div class="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6 reveal">
+                    <div class="max-w-2xl">
+                        <span class="text-brand-600 font-bold tracking-wider uppercase text-sm">Our Products</span>
+                        <h2 class="text-3xl md:text-5xl font-bold mt-3 text-slate-900 tracking-tight">Flagship Platforms</h2>
+                        <p class="text-lg text-slate-500 mt-4">Ready-to-deploy enterprise tools tailored for performance and real-world results.</p>
+                    </div>
+                    <div class="hidden md:block">
+                        <button onclick="showAllProducts()" class="text-brand-600 font-semibold hover:text-brand-800 transition flex items-center cursor-pointer">
+                            View all products <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- Platforms Grid -->
+                <div class="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-6 reveal">
+                    <!-- Xeta Hire -->
+                    <a href="https://xetasolutions.in/hirewithus" target="_blank" class="glass-card card-hover-effect p-8 rounded-[1.5rem] relative group overflow-hidden block h-full">
+                        <img src="https://res.cloudinary.com/dpz44zf0z/image/upload/v1760086493/HireWithUS_wtn0pc.png" class="logo-watermark" alt="">
+                        <div class="h-14 mb-6 flex items-center">
+                            <img src="https://res.cloudinary.com/dpz44zf0z/image/upload/v1760086493/HireWithUS_wtn0pc.png" alt="Xeta Hire" class="h-full w-auto object-contain">
                         </div>
-                        <div class="w-full bg-white/10 rounded-full h-2 mb-2">
-                            <div class="bg-gradient-to-r from-brand-500 to-purple-500 h-2 rounded-full w-[85%]"></div>
+                        <h4 class="text-xl font-bold mb-2 text-slate-900 group-hover:text-brand-600 transition">Xeta Hire</h4>
+                        <p class="text-sm text-slate-500 mb-6 leading-relaxed">A comprehensive recruitment engine centralizing tracking and evaluation.</p>
+                        <div class="text-xs font-bold text-brand-600 uppercase tracking-widest flex items-center mt-auto">
+                            Explore <svg class="w-3 h-3 ml-1 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
                         </div>
-                        <p class="text-xs text-slate-400">Feedback provided by Senior Engineer @ Top MNC</p>
+                    </a>
+                    <!-- Mock Interviews -->
+                    <a href="xeta-mock.html" target="_blank" class="glass-card card-hover-effect p-8 rounded-[1.5rem] relative group overflow-hidden block h-full">
+                        <img src="https://res.cloudinary.com/dpz44zf0z/image/upload/v1762319046/MOCK_INTERVIEWS_tlno45.png" class="logo-watermark" alt="">
+                        <div class="h-14 mb-6 flex items-center">
+                            <img src="https://res.cloudinary.com/dpz44zf0z/image/upload/v1762319046/MOCK_INTERVIEWS_tlno45.png" alt="Mock Interviews" class="h-full w-auto object-contain">
+                        </div>
+                        <h4 class="text-xl font-bold mb-2 text-slate-900 group-hover:text-brand-600 transition">Mock Interviews</h4>
+                        <p class="text-sm text-slate-500 mb-6 leading-relaxed">Sophisticated simulation for technical and behavioral interview prep.</p>
+                         <div class="text-xs font-bold text-brand-600 uppercase tracking-widest flex items-center mt-auto">
+                            Explore <svg class="w-3 h-3 ml-1 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+                        </div>
+                    </a>
+                    <!-- Inview -->
+                    <a href="https://inview.xetasolutions.in/" target="_blank" class="glass-card card-hover-effect p-8 rounded-[1.5rem] relative group overflow-hidden block h-full">
+                        <img src="https://res.cloudinary.com/dpz44zf0z/image/upload/v1766073096/INVIEW_ct336y.png" class="logo-watermark" alt="">
+                         <div class="h-14 mb-6 flex items-center">
+                            <img src="https://res.cloudinary.com/dpz44zf0z/image/upload/v1766073096/INVIEW_ct336y.png" alt="Inview" class="h-full w-auto object-contain">
+                        </div>
+                        <h4 class="text-xl font-bold mb-2 text-slate-900 group-hover:text-brand-600 transition">Inview</h4>
+                        <p class="text-sm text-slate-500 mb-6 leading-relaxed">Smart Technical Recruitment Platform with automated interview panels.</p>
+                        <div class="text-xs font-bold text-brand-600 uppercase tracking-widest flex items-center mt-auto">
+                            Explore <svg class="w-3 h-3 ml-1 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+                        </div>
+                    </a>
+                    <!-- Testify -->
+                    <a href="https://testify-lac.com" target="_blank" class="glass-card card-hover-effect p-8 rounded-[1.5rem] relative group overflow-hidden block h-full">
+                        <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAMAAABEpIrGAAAAclBMVEX///+93Nzi8PDv8POfmrsAhZAAlJRysrOPkLIAAGAAAHIAjpY9mJfl5+bs6+s0OIC5us0AAGVUlJr5+fmZmJiVlp3NzdC4ub3d3uDExci+v8I4PH2ysr6enp1+f4jW1tmjpKp6fKYAAFPCwsstMX2oqcJMpBy7AAAAZklEQVR4Ae3ERQLCQAAEwYbFibt7/v9E5ATRa7RGmKHd4cgYcTpfrgy73R9PSVYYpGq6YVrCtB3Xcb3v+wH/wkgQxwqunKQJbpB5gcy/vCizOAYTxVQwTROTBrMq7NhjTB2ZzNvuDYlNBdEWwbxBAAAAAElFTkSuQmCC" class="logo-watermark" alt="">
+                         <div class="h-14 mb-6 flex items-center">
+                            <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAMAAABEpIrGAAAAclBMVEX///+93Nzi8PDv8POfmrsAhZAAlJRysrOPkLIAAGAAAHIAjpY9mJfl5+bs6+s0OIC5us0AAGVUlJr5+fmZmJiVlp3NzdC4ub3d3uDExci+v8I4PH2ysr6enp1+f4jW1tmjpKp6fKYAAFPCwsstMX2oqcJMpBy7AAAAZklEQVR4Ae3ERQLCQAAEwYbFibt7/v9E5ATRa7RGmKHd4cgYcTpfrgy73R9PSVYYpGq6YVrCtB3Xcb3v+wH/wkgQxwqunKQJbpB5gcy/vCizOAYTxVQwTROTBrMq7NhjTB2ZzNvuDYlNBdEWwbxBAAAAAElFTkSuQmCC" alt="Testify" class="h-10 w-auto object-contain">
+                        </div>
+                        <h4 class="text-xl font-bold mb-2 text-slate-900 group-hover:text-brand-600 transition">Testify</h4>
+                        <p class="text-sm text-slate-500 mb-6 leading-relaxed">Centralized hub for curriculum delivery and certification tracking.</p>
+                        <div class="text-xs font-bold text-brand-600 uppercase tracking-widest flex items-center mt-auto">
+                            Explore <svg class="w-3 h-3 ml-1 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+                        </div>
+                    </a>
+                    <!-- Voxelyt -->
+                    <div onclick="showDetail('voxelyt')" class="glass-card card-hover-effect p-8 rounded-[1.5rem] relative group overflow-hidden cursor-pointer block h-full border-brand-200 bg-brand-50/30">
+                        <img src="https://res.cloudinary.com/dpz44zf0z/image/upload/v1768062552/Voxylet_kyk0hm.png" class="logo-watermark" alt="">
+                        <div class="h-14 mb-6 flex items-center">
+                            <img src="https://res.cloudinary.com/dpz44zf0z/image/upload/v1768062552/Voxylet_kyk0hm.png" alt="Voxelyt" class="h-full w-auto object-contain">
+                        </div>
+                        <h4 class="text-xl font-bold mb-2 text-slate-900 group-hover:text-brand-600 transition">Voxelyt</h4>
+                        <p class="text-sm text-slate-500 mb-6 leading-relaxed">Automated language assessment platform focused on professional fluency.</p>
+                        <div class="text-xs font-bold text-brand-600 uppercase tracking-widest flex items-center mt-auto">
+                            View Details <svg class="w-3 h-3 ml-1 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- Careers / About -->
-    <section id="careers" class="py-24 bg-white">
-        <div class="container mx-auto px-6 text-center">
-            <h2 class="font-display text-3xl font-bold text-slate-900 mb-6">Join the Xeta Mission</h2>
-            <p class="text-slate-600 max-w-2xl mx-auto mb-10">We are always looking for passionate individuals to help us build the future of talent technology. Check our open roles.</p>
-            <div class="flex justify-center gap-4">
-                <a href="https://www.testify-lac.com/careers" class="px-8 py-3 rounded-full border-2 border-slate-900 text-slate-900 font-semibold hover:bg-slate-900 hover:text-white transition-colors inline-block">
-                    View Open Positions
-                </a>
+        <!-- Why Xeta Solutions (Dark Section) -->
+        <section id="why-xeta" class="bg-dark-900 text-white py-24 md:py-32 relative overflow-hidden">
+            <!-- Decorative Elements -->
+            <div class="absolute top-0 right-0 w-1/3 h-full bg-gradient-to-l from-brand-900 to-transparent opacity-20"></div>
+            <div class="absolute bottom-0 left-0 w-64 h-64 bg-purple-900 rounded-full mix-blend-screen filter blur-3xl opacity-20"></div>
+
+            <div class="max-w-7xl mx-auto px-6 relative z-10">
+                <div class="grid lg:grid-cols-3 gap-16 reveal">
+                    <div class="lg:col-span-1">
+                        <h2 class="text-4xl md:text-5xl font-bold leading-tight mb-6">Why Industry Leaders Choose Xeta</h2>
+                        <p class="text-slate-400 text-lg leading-relaxed">We deliver security, scale, and specific industry expertise that off-the-shelf software cannot match.</p>
+                        
+                        <div class="mt-12 p-6 bg-white/5 rounded-2xl border border-white/10 backdrop-blur-sm">
+                            <div class="text-3xl font-bold text-white mb-1">50+</div>
+                            <div class="text-sm text-slate-400">Enterprise Clients Globally</div>
+                        </div>
+                    </div>
+                    <div class="lg:col-span-2 grid sm:grid-cols-2 gap-x-12 gap-y-12">
+                        <div class="group">
+                            <div class="w-12 h-12 bg-slate-800 rounded-lg flex items-center justify-center mb-6 group-hover:bg-brand-600 transition-colors duration-300">
+                                <svg class="w-6 h-6 text-slate-300 group-hover:text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" /></svg>
+                            </div>
+                            <h4 class="text-xl font-semibold mb-3">Enterprise-Grade Security</h4>
+                            <p class="text-slate-400 text-sm leading-relaxed">Built to exceed stringent security requirements for global corporations and government bodies with Zero Trust architecture.</p>
+                        </div>
+                         <div class="group">
+                            <div class="w-12 h-12 bg-slate-800 rounded-lg flex items-center justify-center mb-6 group-hover:bg-brand-600 transition-colors duration-300">
+                                <svg class="w-6 h-6 text-slate-300 group-hover:text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" /></svg>
+                            </div>
+                            <h4 class="text-xl font-semibold mb-3">End-to-End Ownership</h4>
+                            <p class="text-slate-400 text-sm leading-relaxed">From architectural design to deployment and maintenance, we own the technology lifecycle so you can focus on business.</p>
+                        </div>
+                        <div class="group">
+                            <div class="w-12 h-12 bg-slate-800 rounded-lg flex items-center justify-center mb-6 group-hover:bg-brand-600 transition-colors duration-300">
+                                <svg class="w-6 h-6 text-slate-300 group-hover:text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 7v10c0 2.21 3.582 4 8 4s8-1.79 8-4V7M4 7c0 2.21 3.582 4 8 4s8-1.79 8-4M4 7c0-2.21 3.582-4 8-4s8 1.79 8 4m0 5c0 2.21-3.582 4-8 4s-8-1.79-8-4" /></svg>
+                            </div>
+                            <h4 class="text-xl font-semibold mb-3">Dual Expertise</h4>
+                            <p class="text-slate-400 text-sm leading-relaxed">Leverage proven product components to accelerate custom software engineering projects, reducing time-to-market.</p>
+                        </div>
+                        <div class="group">
+                            <div class="w-12 h-12 bg-slate-800 rounded-lg flex items-center justify-center mb-6 group-hover:bg-brand-600 transition-colors duration-300">
+                                <svg class="w-6 h-6 text-slate-300 group-hover:text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" /></svg>
+                            </div>
+                            <h4 class="text-xl font-semibold mb-3">Focus on Outcomes</h4>
+                            <p class="text-slate-400 text-sm leading-relaxed">Prioritizing metrics that matter: hiring efficiency, placement rates, and system uptime. We deliver ROI, not just code.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- System Reliability (Trust Banner) -->
+        <section class="bg-white border-b border-slate-100 py-16">
+            <div class="max-w-4xl mx-auto text-center px-6 reveal">
+                <div class="w-16 h-16 bg-brand-50 text-brand-600 rounded-full flex items-center justify-center mx-auto mb-6">
+                    <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path></svg>
+                </div>
+                <h2 class="text-3xl font-bold mb-4 text-slate-900">System Reliability & Integrity</h2>
+                <p class="text-slate-600 text-lg leading-relaxed">
+                    Xeta Solutions operates on a foundation of trust. Our cloud-native architectures are designed for <span class="text-brand-600 font-bold">99.9% uptime</span>, utilizing encrypted data protocols and rigorous privacy standards compliant with international regulations.
+                </p>
+            </div>
+        </section>
+
+        <!-- CTA Section -->
+        <section id="contact" class="py-24 max-w-7xl mx-auto px-6">
+            <div class="bg-gradient-to-br from-brand-600 to-brand-800 rounded-[2.5rem] p-12 md:p-24 text-center text-white relative overflow-hidden shadow-2xl reveal">
+                <!-- Abstract BG -->
+                <div class="absolute top-0 right-0 -mr-20 -mt-20 w-80 h-80 bg-white opacity-10 rounded-full blur-3xl"></div>
+                <div class="absolute bottom-0 left-0 -ml-20 -mb-20 w-80 h-80 bg-purple-500 opacity-20 rounded-full blur-3xl"></div>
+                
+                <h2 class="text-4xl md:text-5xl font-bold mb-6 relative z-10 tracking-tight">Build for the Future with Xeta</h2>
+                <p class="text-brand-100 mb-10 text-lg md:text-xl max-w-2xl mx-auto relative z-10 font-light">
+                    Whether you require a flagship product or a custom engineering partner, our team is ready to deliver excellence.
+                </p>
+                <div class="flex justify-center relative z-10">
+                    <button onclick="openContactModal()" class="bg-white text-brand-700 px-10 py-4 rounded-xl font-bold hover:bg-brand-50 transition-all shadow-xl transform hover:-translate-y-1">
+                        Let’s Discuss Your Requirements
+                    </button>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- CONTACT FORM MODAL -->
+    <div id="contact-modal" class="fixed inset-0 z-[70] hidden">
+        <div class="absolute inset-0 bg-slate-900/60 backdrop-blur-sm transition-opacity" onclick="closeContactModal()"></div>
+        <div class="absolute inset-0 flex items-center justify-center p-4">
+            <div class="bg-white rounded-[2rem] w-full max-w-2xl shadow-2xl transform transition-all scale-95 opacity-0 animate-scale-in overflow-hidden flex flex-col max-h-[90vh]">
+                
+                <!-- Modal Header -->
+                <div class="bg-gradient-to-r from-brand-600 to-brand-800 p-8 text-white relative flex-shrink-0">
+                    <button onclick="closeContactModal()" class="absolute top-6 right-6 text-white/70 hover:text-white transition-colors">
+                        <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" /></svg>
+                    </button>
+                    <h3 class="text-2xl font-bold mb-2">Get in Touch</h3>
+                    <p class="text-brand-100 text-sm">Fill out the form below and our team will get back to you shortly.</p>
+                </div>
+
+                <!-- Form Content -->
+                <div class="p-8 overflow-y-auto">
+                    <!-- Success Message (Hidden by default) -->
+                    <div id="form-success" class="hidden flex-col items-center justify-center py-12 text-center">
+                        <div class="checkmark-circle mb-6">
+                            <div class="background"></div>
+                            <div class="checkmark draw"></div>
+                        </div>
+                        <h4 class="text-2xl font-bold text-slate-900 mb-2">Thank You!</h4>
+                        <p class="text-slate-600 mb-8 max-w-xs mx-auto">Your message has been received. We will contact you at the email provided shortly.</p>
+                        <button onclick="closeContactModal()" class="bg-brand-600 text-white px-8 py-3 rounded-lg font-semibold hover:bg-brand-700 transition">
+                            Close
+                        </button>
+                    </div>
+
+                    <!-- Actual Form -->
+                    <form id="contact-form" action="https://formspree.io/f/mqeezyje" method="POST" class="space-y-5">
+                        <div class="grid md:grid-cols-2 gap-5">
+                            <div>
+                                <label for="name" class="form-label">Full Name</label>
+                                <input type="text" id="name" name="name" required class="form-input" placeholder="John Doe">
+                            </div>
+                            <div>
+                                <label for="org" class="form-label">Organization</label>
+                                <input type="text" id="org" name="organization" required class="form-input" placeholder="Company Name">
+                            </div>
+                        </div>
+                        
+                        <div class="grid md:grid-cols-2 gap-5">
+                            <div>
+                                <label for="email" class="form-label">Email Address</label>
+                                <input type="email" id="email" name="email" required class="form-input" placeholder="john@company.com">
+                            </div>
+                            <div>
+                                <label for="mobile" class="form-label">Mobile Number</label>
+                                <input type="tel" id="mobile" name="mobile" class="form-input" placeholder="+91 98765 43210">
+                            </div>
+                        </div>
+
+                        <div>
+                            <label for="website" class="form-label">Website URL</label>
+                            <input type="url" id="website" name="website" class="form-input" placeholder="https://">
+                        </div>
+
+                        <div>
+                            <label for="message" class="form-label">How can we help you?</label>
+                            <textarea id="message" name="message" rows="4" required class="form-input" placeholder="Tell us about your project requirements..."></textarea>
+                        </div>
+
+                        <button type="submit" id="submit-btn" class="w-full bg-slate-900 text-white py-4 rounded-xl font-bold hover:bg-brand-600 transition-colors shadow-lg shadow-slate-200 mt-2 flex justify-center items-center">
+                            <span>Send Message</span>
+                            <svg id="loading-spinner" class="animate-spin ml-3 h-5 w-5 text-white hidden" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                                <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                                <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                            </svg>
+                        </button>
+                        <p id="form-error" class="text-red-500 text-sm text-center hidden mt-2">Something went wrong. Please try again.</p>
+                    </form>
+                </div>
             </div>
         </div>
-    </section>
+    </div>
+
+    <!-- Detail View Wrapper (Modern Slide/Modal Style) -->
+    <div id="detail-view" class="fixed inset-0 z-[60] hidden bg-white overflow-y-auto">
+        <!-- Sticky Detail Header -->
+        <div class="sticky top-0 bg-white/90 backdrop-blur-md border-b border-slate-200 z-10 px-6 py-4 flex justify-between items-center max-w-5xl mx-auto w-full">
+            <button onclick="showHome()" class="flex items-center text-slate-600 font-semibold hover:text-brand-600 transition-colors group">
+                <div class="w-8 h-8 rounded-full bg-slate-100 flex items-center justify-center mr-3 group-hover:bg-brand-100 group-hover:text-brand-600 transition-colors">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path></svg>
+                </div>
+                Back to Solutions
+            </button>
+            <img src="https://res.cloudinary.com/dpz44zf0z/image/upload/v1760704788/XETA_SOLUTIONS_LOGO_bcsbwh.png" class="h-6 w-auto opacity-50">
+        </div>
+
+        <div id="detail-container" class="max-w-5xl mx-auto px-6 py-12 md:py-16 min-h-screen">
+            <div id="detail-content">
+                <!-- Content injected via JS -->
+            </div>
+        </div>
+    </div>
 
     <!-- Footer -->
-    <footer class="bg-slate-50 border-t border-slate-200 pt-16 pb-8">
-        <div class="container mx-auto px-6">
-            <div class="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
+    <footer class="bg-white pt-16 pb-8 border-t border-slate-200">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="grid md:grid-cols-4 gap-12 mb-12">
                 <div class="col-span-1 md:col-span-1">
-                    <div class="flex items-center gap-2 mb-4">
-                        <div class="w-8 h-8 flex items-center justify-center">
-                            <img src="https://res.cloudinary.com/dpz44zf0z/image/upload/v1760704788/XETA_SOLUTIONS_LOGO_bcsbwh.png"
-                                 alt="Xeta Solutions Logo"
-                                 class="w-full h-full object-contain" />
-                        </div>
-                        <span class="font-display font-bold text-xl text-slate-900">XetaSolutions</span>
-                    </div>
+                    <img src="https://res.cloudinary.com/dpz44zf0z/image/upload/v1760704788/XETA_SOLUTIONS_LOGO_bcsbwh.png" 
+                         alt="Xeta Solutions Logo" 
+                         class="h-8 w-auto mb-6">
                     <p class="text-slate-500 text-sm leading-relaxed">
-                        Transforming Recruitment, Learning, and Assessment through the power of AI and Secure Tech.
+                        Engineering the next generation of enterprise technology. Reliable, scalable, and secure.
                     </p>
                 </div>
-                
                 <div>
-                    <h4 class="font-bold text-slate-900 mb-4">Products</h4>
-                    <ul class="space-y-2 text-sm text-slate-600">
-                        <li><a href="#" class="hover:text-brand-600">HireWithUS</a></li>
-                        <li><a href="#" class="hover:text-brand-600">Testify Secure</a></li>
-                        <li><a href="#" class="hover:text-brand-600">Testify LAC</a></li>
-                        <li><a href="#" class="hover:text-brand-600">QuizCom</a></li>
+                    <h5 class="font-bold text-slate-900 mb-4">Company</h5>
+                    <ul class="space-y-3 text-sm text-slate-600">
+                        <li><a href="#who-we-are" class="hover:text-brand-600 transition">About Us</a></li>
+                        <li><a href="https://xetasolutions.in/careers" target="_blank" class="hover:text-brand-600 transition">Careers</a></li>
+                        <li><button onclick="openContactModal()" class="hover:text-brand-600 transition">Contact</button></li>
                     </ul>
                 </div>
-                
                 <div>
-                    <h4 class="font-bold text-slate-900 mb-4">Company</h4>
-                    <ul class="space-y-2 text-sm text-slate-600">
-                        <li><a href="#about" class="hover:text-brand-600">About Us</a></li>
-                        <li><a href="#careers" class="hover:text-brand-600">Careers</a></li>
-                        <li><button onclick="openModal('partner-with-us-modal')" class="hover:text-brand-600 text-left">Partners</button></li>
+                    <h5 class="font-bold text-slate-900 mb-4">Solutions</h5>
+                    <ul class="space-y-3 text-sm text-slate-600">
+                        <li><a href="#" onclick="showDetail('enterprise'); return false;" class="hover:text-brand-600 transition">Enterprise Software</a></li>
+                        <li><a href="#" onclick="showDetail('cloud'); return false;" class="hover:text-brand-600 transition">Cloud Architecture</a></li>
+                        <li><a href="#" onclick="showDetail('ai'); return false;" class="hover:text-brand-600 transition">AI Platforms</a></li>
                     </ul>
                 </div>
-                
                 <div>
-                    <h4 class="font-bold text-slate-900 mb-4">Contact</h4>
-                    <ul class="space-y-2 text-sm text-slate-600">
-                        <li>support@xetasolutions.in</li>
-                        <li>sales@xetasolutions.in</li>
-                        <li>+91 9010408899</li>
+                    <h5 class="font-bold text-slate-900 mb-4">Legal</h5>
+                    <ul class="space-y-3 text-sm text-slate-600">
+                        <li><button onclick="showLegal('privacy')" class="hover:text-brand-600 transition text-left">Privacy Policy</button></li>
+                        <li><button onclick="showLegal('terms')" class="hover:text-brand-600 transition text-left">Terms of Service</button></li>
                     </ul>
                 </div>
             </div>
-            
-            <div class="border-t border-slate-200 pt-8 flex flex-col md:flex-row justify-between items-center">
-                <p class="text-sm text-slate-500">&copy; <span id="year"></span> Xeta Solutions. All rights reserved.</p>
-                <div class="flex space-x-4 mt-4 md:mt-0">
-                    <a href="https://www.linkedin.com/company/xetasolutions" class="text-slate-400 hover:text-brand-600 transition-colors" aria-label="LinkedIn">
-                        <span class="sr-only">LinkedIn</span>
-                        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
-                    </a>
+            <div class="border-t border-slate-100 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
+                <div class="text-xs text-slate-400">
+                    © 2026 Xeta Solutions. All rights reserved.
+                </div>
+                <div class="flex space-x-6">
+                    <a href="#" class="text-slate-400 hover:text-brand-600 transition"><span class="sr-only">LinkedIn</span><svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg></a>
+                    <a href="#" class="text-slate-400 hover:text-brand-600 transition"><span class="sr-only">Twitter</span><svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-1.29 2.213-.669 5.108 1.523 6.574-.806-.026-1.566-.247-2.229-.616-.054 2.281 1.581 4.415 3.949 4.89-.693.188-1.452.232-2.224.084.626 1.956 2.444 3.379 4.6 3.419-2.07 1.623-4.678 2.348-7.29 2.04 2.179 1.397 4.768 2.212 7.548 2.212 9.142 0 14.307-7.721 13.995-14.646.962-.695 1.797-1.562 2.457-2.549z"/></svg></a>
                 </div>
             </div>
         </div>
     </footer>
 
-    <!-- MODALS -->
-    
-    <!-- Modal Backdrop -->
-    <div id="modal-backdrop" class="fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-[60] hidden transition-opacity opacity-0" aria-hidden="true"></div>
-
-    <!-- Request Demo Modal -->
-    <div id="request-demo-modal" class="fixed inset-0 z-[70] hidden justify-center items-center p-4 pointer-events-none">
-        <div class="bg-white rounded-2xl shadow-2xl w-full max-w-lg overflow-hidden transform scale-95 opacity-0 transition-all duration-300 pointer-events-auto modal-panel">
-            <div class="p-6 border-b border-slate-100 flex justify-between items-center bg-slate-50">
-                <h3 class="text-xl font-bold text-slate-900">Book a Demo</h3>
-                <button onclick="closeModal('request-demo-modal')" class="text-slate-400 hover:text-slate-600">&times;</button>
-            </div>
-            <div class="p-6">
-                <form action="https://formspree.io/f/xyzbelvz" method="POST" class="space-y-4">
-                    <input type="hidden" name="_subject" value="New Demo Request">
-                    <div class="grid grid-cols-2 gap-4">
-                        <input type="text" name="name" placeholder="Full Name" required class="w-full px-4 py-3 rounded-lg border border-slate-200 focus:border-brand-500 focus:ring-1 focus:ring-brand-500 outline-none transition-colors">
-                        <input type="tel" name="phone" placeholder="Mobile Number" required class="w-full px-4 py-3 rounded-lg border border-slate-200 focus:border-brand-500 focus:ring-1 focus:ring-brand-500 outline-none transition-colors">
-                    </div>
-                    <div class="grid grid-cols-2 gap-4">
-                        <input type="text" name="company" placeholder="Organization" required class="w-full px-4 py-3 rounded-lg border border-slate-200 focus:border-brand-500 focus:ring-1 focus:ring-brand-500 outline-none transition-colors">
-                        <input type="text" name="designation" placeholder="Designation" required class="w-full px-4 py-3 rounded-lg border border-slate-200 focus:border-brand-500 focus:ring-1 focus:ring-brand-500 outline-none transition-colors">
-                    </div>
-                    <input type="email" name="email" placeholder="Email Address" required class="w-full px-4 py-3 rounded-lg border border-slate-200 focus:border-brand-500 focus:ring-1 focus:ring-brand-500 outline-none transition-colors">
-                    <textarea name="message" rows="3" placeholder="Requirements/Message" required class="w-full px-4 py-3 rounded-lg border border-slate-200 focus:border-brand-500 focus:ring-1 focus:ring-brand-500 outline-none transition-colors"></textarea>
-                    <button type="submit" class="w-full bg-brand-600 text-white py-3 rounded-lg font-bold hover:bg-brand-700 transition-colors shadow-lg shadow-brand-500/30">Submit Request</button>
-                </form>
-            </div>
-        </div>
-    </div>
-
-    <!-- Get Started Modal -->
-    <div id="get-started-modal" class="fixed inset-0 z-[70] hidden justify-center items-center p-4 pointer-events-none">
-        <div class="bg-white rounded-2xl shadow-2xl w-full max-w-lg overflow-hidden transform scale-95 opacity-0 transition-all duration-300 pointer-events-auto modal-panel">
-            <div class="p-6 border-b border-slate-100 flex justify-between items-center bg-slate-50">
-                <h3 class="text-xl font-bold text-slate-900">Get Started</h3>
-                <button onclick="closeModal('get-started-modal')" class="text-slate-400 hover:text-slate-600">&times;</button>
-            </div>
-            <div class="p-6">
-                <form action="https://formspree.io/f/xyzbelvz" method="POST" class="space-y-4">
-                    <input type="hidden" name="_subject" value="Get Started Inquiry">
-                    <div class="grid grid-cols-2 gap-4">
-                        <input type="text" name="name" placeholder="Full Name" required class="w-full px-4 py-3 rounded-lg border border-slate-200 focus:border-brand-500 outline-none">
-                        <input type="tel" name="phone" placeholder="Mobile Number" required class="w-full px-4 py-3 rounded-lg border border-slate-200 focus:border-brand-500 outline-none">
-                    </div>
-                    <div class="grid grid-cols-2 gap-4">
-                        <input type="text" name="company" placeholder="Organization" required class="w-full px-4 py-3 rounded-lg border border-slate-200 focus:border-brand-500 outline-none">
-                        <input type="text" name="designation" placeholder="Designation" required class="w-full px-4 py-3 rounded-lg border border-slate-200 focus:border-brand-500 outline-none">
-                    </div>
-                    <input type="email" name="email" placeholder="Email Address" required class="w-full px-4 py-3 rounded-lg border border-slate-200 focus:border-brand-500 outline-none">
-                    <textarea name="message" rows="3" placeholder="Requirements/Message" required class="w-full px-4 py-3 rounded-lg border border-slate-200 focus:border-brand-500 outline-none"></textarea>
-                    <button type="submit" class="w-full bg-brand-600 text-white py-3 rounded-lg font-bold hover:bg-brand-700 transition-colors">Let's Go</button>
-                </form>
-            </div>
-        </div>
-    </div>
-
-    <!-- Partner With Us Modal -->
-    <div id="partner-with-us-modal" class="fixed inset-0 z-[70] hidden justify-center items-center p-4 pointer-events-none">
-        <div class="bg-white rounded-2xl shadow-2xl w-full max-w-lg overflow-hidden transform scale-95 opacity-0 transition-all duration-300 pointer-events-auto modal-panel">
-            <div class="p-6 border-b border-slate-100 flex justify-between items-center bg-slate-50">
-                <h3 class="text-xl font-bold text-slate-900">Partner With Us</h3>
-                <button onclick="closeModal('partner-with-us-modal')" class="text-slate-400 hover:text-slate-600">&times;</button>
-            </div>
-            <div class="p-6">
-                <form action="https://formspree.io/f/xyzbelvz" method="POST" class="space-y-4">
-                    <input type="hidden" name="_subject" value="Partnership Inquiry">
-                    <div class="grid grid-cols-2 gap-4">
-                        <input type="text" name="name" placeholder="Full Name" required class="w-full px-4 py-3 rounded-lg border border-slate-200 focus:border-brand-500 outline-none">
-                        <input type="tel" name="phone" placeholder="Mobile Number" required class="w-full px-4 py-3 rounded-lg border border-slate-200 focus:border-brand-500 outline-none">
-                    </div>
-                    <div class="grid grid-cols-2 gap-4">
-                        <input type="text" name="company" placeholder="Organization" required class="w-full px-4 py-3 rounded-lg border border-slate-200 focus:border-brand-500 outline-none">
-                        <input type="text" name="designation" placeholder="Designation" required class="w-full px-4 py-3 rounded-lg border border-slate-200 focus:border-brand-500 outline-none">
-                    </div>
-                    <input type="email" name="email" placeholder="Email Address" required class="w-full px-4 py-3 rounded-lg border border-slate-200 focus:border-brand-500 outline-none">
-                    <textarea name="message" rows="3" placeholder="Requirements/Message" required class="w-full px-4 py-3 rounded-lg border border-slate-200 focus:border-brand-500 outline-none"></textarea>
-                    <button type="submit" class="w-full bg-brand-600 text-white py-3 rounded-lg font-bold hover:bg-brand-700 transition-colors">Send Inquiry</button>
-                </form>
-            </div>
-        </div>
-    </div>
-
-    <!-- Apply Modal -->
-    <div id="apply-modal" class="fixed inset-0 z-[70] hidden justify-center items-center p-4 pointer-events-none">
-        <div class="bg-white rounded-2xl shadow-2xl w-full max-w-2xl overflow-y-auto max-h-[90vh] transform scale-95 opacity-0 transition-all duration-300 pointer-events-auto modal-panel">
-            <div class="p-6 border-b border-slate-100 flex justify-between items-center bg-slate-50 sticky top-0 z-10">
-                <h3 class="text-xl font-bold text-slate-900">Join the Team</h3>
-                <button onclick="closeModal('apply-modal')" class="text-slate-400 hover:text-slate-600">&times;</button>
-            </div>
-            <div class="p-6">
-                <form action="https://formspree.io/f/xkgpleag" method="POST" class="space-y-4">
-                     <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                        <input type="text" name="first_name" placeholder="First Name" required class="input-field w-full px-4 py-3 border border-slate-200 rounded-lg">
-                        <input type="text" name="last_name" placeholder="Last Name" required class="input-field w-full px-4 py-3 border border-slate-200 rounded-lg">
-                    </div>
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                         <input type="email" name="email" placeholder="Email" required class="input-field w-full px-4 py-3 border border-slate-200 rounded-lg">
-                         <input type="tel" name="mobile" placeholder="Mobile" required class="input-field w-full px-4 py-3 border border-slate-200 rounded-lg">
-                    </div>
-                    <textarea name="skills" placeholder="Key Skills" rows="3" class="input-field w-full px-4 py-3 border border-slate-200 rounded-lg"></textarea>
-                    <input type="url" name="resume_link" placeholder="Resume Link (GDrive/Dropbox)" required class="input-field w-full px-4 py-3 border border-slate-200 rounded-lg">
-                    
-                    <button type="submit" class="w-full bg-slate-900 text-white py-3 rounded-lg font-bold hover:bg-slate-800 transition-colors">Submit Application</button>
-                </form>
-            </div>
-        </div>
-    </div>
-    
-     <!-- Login Modal -->
-    <div id="login-modal" class="fixed inset-0 z-[70] hidden justify-center items-center p-4 pointer-events-none">
-        <div class="bg-white rounded-2xl shadow-2xl w-full max-w-sm overflow-hidden transform scale-95 opacity-0 transition-all duration-300 pointer-events-auto modal-panel">
-            <div class="p-6 text-center">
-                <div class="w-12 h-12 bg-brand-100 text-brand-600 rounded-full flex items-center justify-center mx-auto mb-4">
-                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 16l-4-4m0 0l4-4m-4 4h14m-5 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h7a3 3 0 013 3v1"></path></svg>
-                </div>
-                <h3 class="text-xl font-bold text-slate-900 mb-2">Login to Platform</h3>
-                <p class="text-slate-500 mb-6 text-sm">Select your portal to continue</p>
-                
-                <div class="space-y-3">
-                    <a href="https://www.testify-lac.com/HireWithUS.html" class="block w-full py-3 px-4 rounded-lg border border-slate-200 hover:border-brand-500 hover:bg-brand-50 text-slate-700 font-medium transition-all">Corporate Login</a>
-                    <a href="https://testify-lac.com" class="block w-full py-3 px-4 rounded-lg border border-slate-200 hover:border-brand-500 hover:bg-brand-50 text-slate-700 font-medium transition-all">Student / College Login</a>
-                </div>
-                
-                <button onclick="closeModal('login-modal')" class="mt-6 text-sm text-slate-400 hover:text-slate-600">Close</button>
-            </div>
-        </div>
-    </div>
-
-
     <script>
-        // Update Year
-        document.getElementById('year').textContent = new Date().getFullYear();
-
-        // Navbar Scroll Effect
-        window.addEventListener('scroll', () => {
-            const navbarBg = document.getElementById('navbar-bg');
-            if (window.scrollY > 20) {
-                navbarBg.classList.add('bg-white/90', 'backdrop-blur-md', 'shadow-sm', 'border-slate-200');
-                navbarBg.classList.remove('bg-white/0', 'border-transparent');
-            } else {
-                navbarBg.classList.remove('bg-white/90', 'backdrop-blur-md', 'shadow-sm', 'border-slate-200');
-                navbarBg.classList.add('bg-white/0', 'border-transparent');
+        // --- Data ---
+        const services = {
+            'web-apps': {
+                title: 'Custom Web Applications',
+                tagline: 'Modern, high-performance web experiences built for scale.',
+                description: 'We design and develop bespoke web applications that combine stunning UI/UX with robust technical architectures. Our solutions are built using the latest technology stacks like React, Node.js, and TypeScript, ensuring your application is fast, secure, and ready for global traffic.',
+                features: ['Progressive Web Apps (PWA)', 'Real-time Dashboards', 'API-first Development', 'Single Page Applications (SPA)']
+            },
+            'enterprise': {
+                title: 'Enterprise Software Development',
+                tagline: 'Complex software for complex organizational needs.',
+                description: 'We specialize in engineering mission-critical software that streamlines enterprise workflows. From sophisticated ERP and CRM systems to custom internal tools, our enterprise solutions are built to integrate seamlessly with your legacy systems while providing modern performance and security.',
+                features: ['Workflow Automation', 'Legacy System Integration', 'Custom ERP/CRM', 'Data Warehouse Solutions']
+            },
+            'cloud': {
+                title: 'Cloud-based Systems',
+                tagline: 'Scalable cloud architectures for modern digital assets.',
+                description: 'Harness the full potential of cloud computing with our architecture and migration services. We build cloud-native applications on AWS, Azure, and GCP, focusing on high availability, auto-scaling, and cost-optimization through serverless and containerized deployments.',
+                features: ['Cloud Migration', 'Microservices Architecture', 'Serverless Computing', 'DevOps & CI/CD Pipelines']
+            },
+            'ai': {
+                title: 'AI-enabled Platforms',
+                tagline: 'Intelligent systems powered by Machine Learning.',
+                description: 'Future-proof your business by integrating artificial intelligence into your product ecosystem. We build AI-enabled platforms that leverage predictive analytics, natural language processing (NLP), and automated decision-making to provide smarter user experiences and operational efficiency.',
+                features: ['Predictive Analytics', 'Natural Language Processing', 'Machine Learning Integration', 'AI Chatbots & Virtual Assistants']
+            },
+            'security': {
+                title: 'Scalable & Secure Architectures',
+                tagline: 'Foundational security for enterprise-grade growth.',
+                description: 'Security and scalability are not afterthoughts; they are the foundation of every line of code we write. We design system architectures that can handle massive user growth while maintaining the highest levels of data integrity and protection against modern cyber threats.',
+                features: ['Zero Trust Architecture', 'Penetration Testing & Audits', 'High Availability Design', 'End-to-End Encryption']
+            },
+            'voxelyt': {
+                isProduct: true,
+                title: 'Voxelyt',
+                tagline: 'AI-powered communication and language assessment platform.',
+                description: `Voxelyt is designed to evaluate, analyze, and improve spoken and written communication with precision and consistency. Built for institutions, enterprises, and assessment providers, Voxelyt delivers structured language evaluations aligned with professional, academic, and corporate standards. 
+                <br><br>
+                The platform combines intelligent automation with well-defined assessment frameworks to ensure objective scoring, actionable insights, and scalable deployment. Voxelyt supports communication skill assessments, competitive language exam preparation, and corporate communication evaluations, offering detailed performance analytics across fluency, clarity, coherence, pronunciation, and response structure. AI-driven scoring and reporting enable faster evaluations while maintaining reliability and fairness.`,
+                features: [
+                    { name: 'Fluency & Clarity', desc: 'Real-time analysis of speech flow and enunciation.' },
+                    { name: 'Coherence & Response', desc: 'Evaluates logical structuring of spoken and written answers.' },
+                    { name: 'Objective AI Scoring', desc: 'Bias-free evaluation based on global linguistic standards.' },
+                    { name: 'Enterprise Scalability', desc: 'Built to handle high-volume testing with zero downtime.' }
+                ]
             }
-        });
-
-        // Mobile Menu
-        const mobileBtn = document.getElementById('mobile-menu-btn');
-        const mobileMenu = document.getElementById('mobile-menu');
-        let isMenuOpen = false;
-
-        mobileBtn.addEventListener('click', () => {
-            isMenuOpen = !isMenuOpen;
-            if (isMenuOpen) {
-                mobileMenu.classList.remove('translate-x-full');
-            } else {
-                mobileMenu.classList.add('translate-x-full');
-            }
-        });
-
-        document.querySelectorAll('.mobile-link').forEach(link => {
-            link.addEventListener('click', () => {
-                isMenuOpen = false;
-                mobileMenu.classList.add('translate-x-full');
-            });
-        });
-
-        // Scroll Reveal Animation
-        const revealElements = document.querySelectorAll('.reveal');
-        
-        const revealOnScroll = () => {
-            const windowHeight = window.innerHeight;
-            const elementVisible = 150;
-
-            revealElements.forEach((reveal) => {
-                const elementTop = reveal.getBoundingClientRect().top;
-                if (elementTop < windowHeight - elementVisible) {
-                    reveal.classList.add('active');
-                }
-            });
         };
+        
+        // Data for "View All Products"
+        const allProducts = [
+            {
+                title: "Xeta Hire",
+                desc: "A comprehensive recruitment engine centralizing tracking and evaluation.",
+                img: "https://res.cloudinary.com/dpz44zf0z/image/upload/v1760086493/HireWithUS_wtn0pc.png",
+                link: "https://xetasolutions.in/hirewithus"
+            },
+            {
+                title: "Mock Interviews",
+                desc: "Sophisticated simulation for technical and behavioral interview prep.",
+                img: "https://res.cloudinary.com/dpz44zf0z/image/upload/v1762319046/MOCK_INTERVIEWS_tlno45.png",
+                link: "xeta-mock.html"
+            },
+            {
+                title: "Inview",
+                desc: "Smart Technical Recruitment Platform with automated interview panels.",
+                img: "https://res.cloudinary.com/dpz44zf0z/image/upload/v1766073096/INVIEW_ct336y.png",
+                link: "https://inview.xetasolutions.in/"
+            },
+            {
+                title: "Testify",
+                desc: "Centralized hub for curriculum delivery and certification tracking.",
+                img: "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAMAAABEpIrGAAAAclBMVEX///+93Nzi8PDv8POfmrsAhZAAlJRysrOPkLIAAGAAAHIAjpY9mJfl5+bs6+s0OIC5us0AAGVUlJr5+fmZmJiVlp3NzdC4ub3d3uDExci+v8I4PH2ysr6enp1+f4jW1tmjpKp6fKYAAFPCwsstMX2oqcJMpBy7AAAAZklEQVR4Ae3ERQLCQAAEwYbFibt7/v9E5ATRa7RGmKHd4cgYcTpfrgy73R9PSVYYpGq6YVrCtB3Xcb3v+wH/wkgQxwqunKQJbpB5gcy/vCizOAYTxVQwTROTBrMq7NhjTB2ZzNvuDYlNBdEWwbxBAAAAAElFTkSuQmCC",
+                link: "https://testify-lac.com"
+            },
+            {
+                title: "Voxelyt",
+                desc: "Automated language assessment platform focused on professional fluency.",
+                img: "https://res.cloudinary.com/dpz44zf0z/image/upload/v1768062552/Voxylet_kyk0hm.png",
+                isInternal: true,
+                id: "voxelyt"
+            }
+        ];
 
-        window.addEventListener('scroll', revealOnScroll);
-        // Trigger once on load
-        revealOnScroll();
+        // --- Logic ---
 
-        // Modal Logic
-        function openModal(modalId) {
-            const backdrop = document.getElementById('modal-backdrop');
-            const modal = document.getElementById(modalId);
-            
-            backdrop.classList.remove('hidden');
-            modal.classList.remove('hidden', 'pointer-events-none');
-            
-            // Small timeout to allow transition
-            setTimeout(() => {
-                backdrop.classList.remove('opacity-0');
-                modal.querySelector('.modal-panel').classList.remove('scale-95', 'opacity-0');
-                modal.querySelector('.modal-panel').classList.add('scale-100', 'opacity-100');
-            }, 10);
-            
-            document.body.style.overflow = 'hidden';
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobile-menu');
+            const menuIcon = document.getElementById('menu-icon');
+            const closeIcon = document.getElementById('close-icon');
+            const body = document.body;
+
+            if (menu.classList.contains('translate-x-full')) {
+                // Open menu
+                menu.classList.remove('translate-x-full');
+                menuIcon.classList.add('hidden');
+                closeIcon.classList.remove('hidden');
+                body.classList.add('overflow-hidden');
+            } else {
+                // Close menu
+                menu.classList.add('translate-x-full');
+                menuIcon.classList.remove('hidden');
+                closeIcon.classList.add('hidden');
+                body.classList.remove('overflow-hidden');
+            }
+        }
+        
+        // --- Modal Logic ---
+        function openContactModal() {
+            const modal = document.getElementById('contact-modal');
+            modal.classList.remove('hidden');
+            document.body.classList.add('overflow-hidden');
+            // Animate
+            setTimeout(() => modal.querySelector('div.transform').classList.remove('opacity-0', 'scale-95'), 10);
         }
 
-        function closeModal(modalId) {
-            const backdrop = document.getElementById('modal-backdrop');
-            const modal = document.getElementById(modalId);
-            const panel = modal.querySelector('.modal-panel');
-            
-            backdrop.classList.add('opacity-0');
-            panel.classList.remove('scale-100', 'opacity-100');
-            panel.classList.add('scale-95', 'opacity-0');
-            
+        function closeContactModal() {
+            const modal = document.getElementById('contact-modal');
+            modal.querySelector('div.transform').classList.add('opacity-0', 'scale-95');
             setTimeout(() => {
-                backdrop.classList.add('hidden');
-                modal.classList.add('hidden', 'pointer-events-none');
-                document.body.style.overflow = '';
+                modal.classList.add('hidden');
+                document.body.classList.remove('overflow-hidden');
             }, 300);
         }
 
-        // Close on backdrop click
-        document.getElementById('modal-backdrop').addEventListener('click', () => {
-            document.querySelectorAll('[id$="-modal"]').forEach(modal => {
-                if (!modal.classList.contains('hidden')) {
-                    closeModal(modal.id);
+        // --- Form Handling ---
+        const form = document.getElementById("contact-form");
+        
+        async function handleSubmit(event) {
+            event.preventDefault();
+            const btn = document.getElementById("submit-btn");
+            const spinner = document.getElementById("loading-spinner");
+            const btnText = btn.querySelector("span");
+            const errorMsg = document.getElementById("form-error");
+            const successDiv = document.getElementById("form-success");
+            const formDiv = document.getElementById("contact-form");
+
+            // Loading state
+            btn.disabled = true;
+            btnText.textContent = "Sending...";
+            spinner.classList.remove("hidden");
+            errorMsg.classList.add("hidden");
+
+            const data = new FormData(event.target);
+            
+            try {
+                const response = await fetch(event.target.action, {
+                    method: form.method,
+                    body: data,
+                    headers: {
+                        'Accept': 'application/json'
+                    }
+                });
+                
+                if (response.ok) {
+                    // Success
+                    form.reset();
+                    formDiv.classList.add("hidden");
+                    successDiv.classList.remove("hidden");
+                    successDiv.classList.add("flex");
+                } else {
+                    // Error from server
+                    const data = await response.json();
+                    if (Object.hasOwn(data, 'errors')) {
+                        errorMsg.textContent = data["errors"].map(error => error["message"]).join(", ");
+                    } else {
+                        errorMsg.textContent = "Oops! There was a problem submitting your form";
+                    }
+                    errorMsg.classList.remove("hidden");
+                }
+            } catch (error) {
+                // Network error
+                errorMsg.textContent = "Oops! There was a problem submitting your form";
+                errorMsg.classList.remove("hidden");
+            } finally {
+                // Reset button state
+                btn.disabled = false;
+                btnText.textContent = "Send Message";
+                spinner.classList.add("hidden");
+            }
+        }
+        
+        form.addEventListener("submit", handleSubmit);
+
+
+        // --- Detail Views ---
+
+        function showDetail(id) {
+            const service = services[id];
+            const detailView = document.getElementById('detail-view');
+            const detailContent = document.getElementById('detail-content');
+            const homeView = document.getElementById('home-view');
+            const body = document.body;
+
+            // Generate Content
+            if (service.isProduct) {
+                // Voxelyt Product Layout
+                detailContent.innerHTML = `
+                    <div class="animate-fade-in-up">
+                        <div class="flex flex-col md:flex-row md:items-center mb-10 gap-6">
+                            <img src="https://res.cloudinary.com/dpz44zf0z/image/upload/v1768062552/Voxylet_kyk0hm.png" alt="Voxelyt Logo" class="h-20 w-auto object-contain">
+                            <div>
+                                <h1 class="text-4xl md:text-5xl font-extrabold text-slate-900">${service.title}</h1>
+                                <span class="inline-block px-3 py-1 bg-brand-100 text-brand-700 text-xs font-bold uppercase tracking-wide rounded-full mt-2">Enterprise Product</span>
+                            </div>
+                        </div>
+                        
+                        <div class="prose prose-lg text-slate-600 max-w-none mb-12">
+                            <p class="text-2xl text-emerald-600 font-medium leading-relaxed">${service.tagline}</p>
+                            <div class="h-1.5 w-24 bg-emerald-500 my-8 rounded-full"></div>
+                            <div class="grid lg:grid-cols-3 gap-12">
+                                <div class="lg:col-span-2">
+                                    <p class="leading-relaxed text-lg">${service.description}</p>
+                                </div>
+                                <div>
+                                    <div class="bg-slate-900 text-white p-8 rounded-2xl shadow-xl">
+                                        <h4 class="text-lg font-bold mb-6 flex items-center">
+                                            <svg class="w-5 h-5 mr-2 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                                            Designed For
+                                        </h4>
+                                        <ul class="space-y-4 text-slate-300">
+                                            <li class="flex items-center"><span class="w-2 h-2 bg-emerald-500 rounded-full mr-3"></span> Academic Institutions</li>
+                                            <li class="flex items-center"><span class="w-2 h-2 bg-emerald-500 rounded-full mr-3"></span> Enterprises</li>
+                                            <li class="flex items-center"><span class="w-2 h-2 bg-emerald-500 rounded-full mr-3"></span> Exam Providers</li>
+                                            <li class="flex items-center"><span class="w-2 h-2 bg-emerald-500 rounded-full mr-3"></span> Skill Centers</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <h3 class="text-3xl font-bold mb-10 text-slate-900">Core Assessment Framework</h3>
+                        <div class="grid md:grid-cols-2 gap-6 mb-16">
+                            ${service.features.map(f => `
+                                <div class="p-6 border border-slate-200 rounded-2xl bg-white hover:border-emerald-200 hover:shadow-lg hover:bg-emerald-50/30 transition-all duration-300">
+                                    <div class="flex items-start">
+                                        <div class="flex-shrink-0 mt-1">
+                                            <div class="w-8 h-8 rounded-full bg-emerald-100 flex items-center justify-center text-emerald-600">
+                                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                                            </div>
+                                        </div>
+                                        <div class="ml-4">
+                                            <h4 class="text-lg font-bold text-slate-900 mb-1">${f.name}</h4>
+                                            <p class="text-slate-600 text-sm leading-relaxed">${f.desc}</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            `).join('')}
+                        </div>
+
+                        <div class="bg-gradient-to-r from-emerald-50 to-teal-50 rounded-[2rem] p-10 text-center border border-emerald-100">
+                            <h4 class="text-2xl font-bold text-emerald-900 mb-3">Ready to Measure What Matters?</h4>
+                            <p class="text-emerald-700 mb-8 max-w-xl mx-auto">Experience the most precise language assessment platform on the market.</p>
+                            <a href="voxelyt.html" class="inline-flex items-center bg-emerald-600 text-white px-8 py-3 rounded-lg font-bold hover:bg-emerald-700 transition shadow-lg shadow-emerald-200">
+                                Visit Platform Website
+                                <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+                            </a>
+                        </div>
+                    </div>
+                `;
+            } else {
+                // Custom Service Layout
+                detailContent.innerHTML = `
+                    <div class="animate-fade-in-up">
+                        <span class="text-brand-600 font-bold tracking-wider uppercase text-sm">Services</span>
+                        <h1 class="text-4xl md:text-6xl font-extrabold text-slate-900 mt-2 mb-6 tracking-tight">${service.title}</h1>
+                        <p class="text-2xl text-slate-500 font-light mb-12">${service.tagline}</p>
+                        
+                        <div class="bg-slate-50 border border-slate-200 rounded-2xl p-8 md:p-12 mb-12">
+                            <p class="text-xl text-slate-700 leading-relaxed">${service.description}</p>
+                        </div>
+                        
+                        <h3 class="text-2xl font-bold mb-8 flex items-center">
+                            <span class="w-8 h-1 bg-brand-600 mr-4 rounded-full"></span>
+                            Key Capabilities
+                        </h3>
+                        <div class="grid sm:grid-cols-2 gap-6 mb-16">
+                            ${service.features.map(f => `
+                                <div class="flex items-center p-5 bg-white rounded-xl border border-slate-100 shadow-sm hover:shadow-md transition-shadow">
+                                    <svg class="w-6 h-6 text-brand-500 mr-4 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                                    <span class="font-semibold text-slate-700 text-lg">${f}</span>
+                                </div>
+                            `).join('')}
+                        </div>
+
+                        <div class="bg-slate-900 text-white rounded-3xl p-10 md:p-16 text-center">
+                            <h4 class="text-2xl font-bold mb-4">Interested in this solution?</h4>
+                            <p class="text-slate-400 mb-8 max-w-2xl mx-auto">Let's discuss how we can tailor this technology to your specific requirements and integrate it into your existing ecosystem.</p>
+                            <button onclick="showHome(); setTimeout(openContactModal, 300)" class="inline-block bg-white text-slate-900 px-8 py-4 rounded-xl font-bold hover:bg-brand-50 transition transform hover:scale-105">Schedule a Consultation</button>
+                        </div>
+                    </div>
+                `;
+            }
+
+            // Show detail
+            detailView.classList.remove('hidden');
+            body.classList.add('overflow-hidden'); // Prevent background scrolling
+        }
+        
+        function showAllProducts() {
+            const detailView = document.getElementById('detail-view');
+            const detailContent = document.getElementById('detail-content');
+            
+            let gridHTML = allProducts.map(product => {
+                let action = product.isInternal 
+                    ? `onclick="showDetail('${product.id}')"` 
+                    : `href="${product.link}" target="_blank"`;
+                
+                let wrapper = product.isInternal ? 'div' : 'a';
+                let cursor = product.isInternal ? 'cursor-pointer' : '';
+
+                return `
+                <${wrapper} ${action} class="glass-card bg-white card-hover-effect p-8 rounded-[1.5rem] relative group overflow-hidden block h-full ${cursor} border border-slate-200">
+                    <div class="h-16 mb-6 flex items-center">
+                        <img src="${product.img}" alt="${product.title}" class="h-full w-auto object-contain">
+                    </div>
+                    <h4 class="text-xl font-bold mb-2 text-slate-900 group-hover:text-brand-600 transition">${product.title}</h4>
+                    <p class="text-sm text-slate-500 mb-6 leading-relaxed">${product.desc}</p>
+                    <div class="text-xs font-bold text-brand-600 uppercase tracking-widest flex items-center mt-auto">
+                        Explore <svg class="w-3 h-3 ml-1 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+                    </div>
+                </${wrapper}>
+                `;
+            }).join('');
+
+            detailContent.innerHTML = `
+                <div class="animate-fade-in-up">
+                    <span class="text-brand-600 font-bold tracking-wider uppercase text-sm">Product Catalogue</span>
+                    <h1 class="text-4xl md:text-5xl font-extrabold text-slate-900 mt-2 mb-6">All Products & Platforms</h1>
+                    <p class="text-xl text-slate-500 font-light mb-12">Explore our complete suite of enterprise-grade tools designed for recruitment, assessment, and productivity.</p>
+                    
+                    <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-8 pb-12">
+                        ${gridHTML}
+                    </div>
+                    
+                    <div class="bg-brand-50 rounded-3xl p-10 text-center border border-brand-100">
+                        <h4 class="text-xl font-bold text-brand-900 mb-2">Need a Custom Solution?</h4>
+                        <p class="text-brand-700 mb-6">We can engineer a bespoke platform tailored to your organization.</p>
+                        <button onclick="showHome(); setTimeout(openContactModal, 300)" class="bg-brand-600 text-white px-6 py-3 rounded-lg font-bold hover:bg-brand-700 transition">Contact Engineering Team</button>
+                    </div>
+                </div>
+            `;
+
+            detailView.classList.remove('hidden');
+            document.body.classList.add('overflow-hidden');
+        }
+
+        function showLegal(type) {
+            const detailView = document.getElementById('detail-view');
+            const detailContent = document.getElementById('detail-content');
+            
+            let title, content;
+            if (type === 'privacy') {
+                title = "Privacy Policy";
+                content = `
+                    <p class="mb-4">At Xeta Solutions, we prioritize the privacy and security of your data. This Privacy Policy outlines how we collect, use, and protect your information when you use our website and services.</p>
+                    <h4 class="text-lg font-bold mt-6 mb-2">1. Information Collection</h4>
+                    <p class="mb-4">We collect information you provide directly to us, such as when you fill out a contact form, request a demo, or communicate with us. This may include your name, email address, phone number, and organization details.</p>
+                    <h4 class="text-lg font-bold mt-6 mb-2">2. Use of Information</h4>
+                    <p class="mb-4">We use the information we collect to providing and improving our services, communicating with you, and ensuring the security of our platforms.</p>
+                    <h4 class="text-lg font-bold mt-6 mb-2">3. Data Security</h4>
+                    <p class="mb-4">We implement industry-standard security measures to protect your data from unauthorized access, disclosure, or misuse.</p>
+                `;
+            } else {
+                title = "Terms of Service";
+                content = `
+                    <p class="mb-4">By accessing or using Xeta Solutions' website and services, you agree to be bound by these Terms of Service.</p>
+                    <h4 class="text-lg font-bold mt-6 mb-2">1. Acceptance of Terms</h4>
+                    <p class="mb-4">By using our services, you agree to comply with all applicable laws and regulations.</p>
+                    <h4 class="text-lg font-bold mt-6 mb-2">2. Intellectual Property</h4>
+                    <p class="mb-4">All content, trademarks, and technology on this site are the property of Xeta Solutions and are protected by intellectual property laws.</p>
+                    <h4 class="text-lg font-bold mt-6 mb-2">3. Limitation of Liability</h4>
+                    <p class="mb-4">Xeta Solutions shall not be liable for any indirect, incidental, or consequential damages arising from the use of our services.</p>
+                `;
+            }
+
+            detailContent.innerHTML = `
+                <div class="animate-fade-in-up max-w-3xl mx-auto">
+                    <h1 class="text-3xl md:text-4xl font-bold text-slate-900 mb-8">${title}</h1>
+                    <div class="prose prose-slate text-slate-600 leading-relaxed">
+                        ${content}
+                        <div class="mt-12 pt-8 border-t border-slate-200 text-sm text-slate-400">
+                            Last Updated: January 2026
+                        </div>
+                    </div>
+                </div>
+            `;
+            
+            detailView.classList.remove('hidden');
+            document.body.classList.add('overflow-hidden');
+        }
+
+        function showHome() {
+            const detailView = document.getElementById('detail-view');
+            const body = document.body;
+
+            detailView.classList.add('hidden');
+            body.classList.remove('overflow-hidden');
+        }
+
+        // --- Intersection Observer for Scroll Animations ---
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: "0px 0px -50px 0px"
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
                 }
             });
+        }, observerOptions);
+
+        document.querySelectorAll('.reveal').forEach(el => {
+            observer.observe(el);
         });
+
     </script>
 </body>
+</html>
