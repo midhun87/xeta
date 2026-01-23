@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>Payment Request</title>
+<title>Payment Successful</title>
 
 <style>
   * {
@@ -25,86 +25,70 @@
     background: #ffffff;
     border-radius: 14px;
     box-shadow: 0 12px 30px rgba(0,0,0,0.1);
-    overflow: hidden;
-  }
-
-  .header {
-    background: #2d7ff9;
-    color: #fff;
-    padding: 26px;
     text-align: center;
+    padding: 40px 30px;
   }
 
-  .header h1 {
-    margin: 0;
-    font-size: 22px;
-    font-weight: 600;
-  }
-
-  .header p {
-    margin-top: 6px;
-    font-size: 13px;
-    opacity: 0.9;
-  }
-
-  .amount {
-    margin-top: 14px;
-    font-size: 34px;
-    font-weight: 700;
-    letter-spacing: 0.5px;
-  }
-
-  .content {
-    padding: 26px;
-  }
-
-  .row {
+  .icon {
+    width: 70px;
+    height: 70px;
+    background: #e9f7ef;
+    color: #27ae60;
+    border-radius: 50%;
     display: flex;
-    justify-content: space-between;
-    margin-bottom: 16px;
+    align-items: center;
+    justify-content: center;
+    font-size: 34px;
+    margin: 0 auto 20px;
+  }
+
+  h1 {
+    margin: 0;
+    font-size: 24px;
+    color: #2d7ff9;
+  }
+
+  p {
+    margin: 12px 0;
     font-size: 14px;
+    color: #555;
+    line-height: 1.6;
   }
 
-  .label {
-    color: #777;
-  }
-
-  .value {
-    font-weight: 600;
-    color: #222;
-    text-align: right;
-    max-width: 230px;
-  }
-
-  .divider {
-    height: 1px;
-    background: #eee;
-    margin: 22px 0;
-  }
-
-  .pay-btn {
-    display: block;
-    text-align: center;
-    background: #2d7ff9;
-    color: #fff;
-    padding: 15px;
-    border-radius: 10px;
-    text-decoration: none;
-    font-weight: 600;
+  .details {
     margin-top: 24px;
-    transition: all 0.3s ease;
+    font-size: 14px;
+    color: #333;
   }
 
-  .pay-btn:hover {
-    background: #1f65da;
-    transform: translateY(-1px);
+  .details div {
+    margin-bottom: 8px;
+  }
+
+  .highlight {
+    font-weight: 600;
   }
 
   .footer {
-    text-align: center;
+    margin-top: 28px;
     font-size: 12px;
     color: #999;
-    padding: 16px;
+  }
+
+  .btn {
+    display: inline-block;
+    margin-top: 22px;
+    background: #2d7ff9;
+    color: #fff;
+    padding: 12px 22px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: 0.3s;
+  }
+
+  .btn:hover {
+    background: #1f65da;
   }
 </style>
 </head>
@@ -113,48 +97,28 @@
 
 <div class="card">
 
-  <div class="header">
-    <h1>Payment Request</h1>
-    <p>Domain Registration Services</p>
-    <div class="amount">₹ 554.50</div>
+  <div class="icon">✔</div>
+
+  <h1>Payment Successful</h1>
+
+  <p>
+    Thank you for completing the payment.  
+    Your transaction has been processed successfully.
+  </p>
+
+  <div class="details">
+    <div>
+      <span class="highlight">Amount Paid:</span> ₹ 554.50
+    </div>
+    <div>
+      <span class="highlight">Service:</span> Domain name purchase & registration
+    </div>
+    <div>
+      <span class="highlight">Customer:</span> UNNAM SWETHA
+    </div>
   </div>
 
-  <div class="content">
-
-    <div class="row">
-      <span class="label">Customer</span>
-      <span class="value">UNNAM SWETHA</span>
-    </div>
-
-    <div class="row">
-      <span class="label">Email</span>
-      <span class="value">binduswarupavemulapallii@gmail.com</span>
-    </div>
-
-    <div class="row">
-      <span class="label">Mobile</span>
-      <span class="value">9052094905</span>
-    </div>
-
-    <div class="row">
-      <span class="label">Reference ID</span>
-      <span class="value">XetaPaymentsunnamswetha060</span>
-    </div>
-
-    <div class="divider"></div>
-
-    <div class="row">
-      <span class="label">Payment For</span>
-      <span class="value">
-        Payment towards domain name purchase and registration services
-      </span>
-    </div>
-
-    <a href="https://phon.pe/486sfymk" target="_blank" class="pay-btn">
-      Pay via PhonePe
-    </a>
-
-  </div>
+  <a href="#" class="btn">Go to Home</a>
 
   <div class="footer">
     🔒 Secure payment powered by PhonePe
