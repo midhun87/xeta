@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Xeta Solutions | Enterprise Engineering & AI</title>
     <meta name="description" content="Scalable software products and bespoke engineering solutions designed for global enterprises.">
-    
+     <link rel="icon" type="image/png" href="https://res.cloudinary.com/dpz44zf0z/image/upload/v1760704788/XETA_SOLUTIONS_LOGO_bcsbwh.png">
     <!-- SEO & Social Media Meta Tags -->
     <meta name="keywords" content="Enterprise Software, Custom Engineering, AI Development, Cloud Architecture, Recruitment Technology, SaaS Products, Xeta Solutions">
     <meta name="author" content="Xeta Solutions">
@@ -15,6 +15,7 @@
     <!-- Open Graph / Facebook / LinkedIn -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://xetasolutions.in/">
+    <link rel="icon" type="image/png" href="https://res.cloudinary.com/dpz44zf0z/image/upload/v1760704788/XETA_SOLUTIONS_LOGO_bcsbwh.png">
     <meta property="og:title" content="Xeta Solutions | Enterprise Engineering & AI">
     <meta property="og:description" content="Partner with Xeta for scalable software products and bespoke engineering solutions designed for global enterprises.">
     <meta property="og:image" content="https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=1200&q=80">
@@ -22,6 +23,7 @@
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image">
     <meta property="twitter:url" content="https://xetasolutions.in/">
+    <link rel="icon" type="image/png" href="https://res.cloudinary.com/dpz44zf0z/image/upload/v1760704788/XETA_SOLUTIONS_LOGO_bcsbwh.png">
     <meta property="twitter:title" content="Xeta Solutions | Enterprise Engineering & AI">
     <meta property="twitter:description" content="Scalable software products and bespoke engineering solutions designed for global enterprises.">
     <meta property="twitter:image" content="https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=1200&q=80">
@@ -32,6 +34,7 @@
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="icon" type="image/png" href="https://res.cloudinary.com/dpz44zf0z/image/upload/v1760704788/XETA_SOLUTIONS_LOGO_bcsbwh.png">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Outfit:wght@400;500;700;800&display=swap" rel="stylesheet">
     
     <!-- Tailwind Configuration -->
@@ -58,11 +61,16 @@
                         'fade-in-up': 'fadeInUp 0.8s ease-out forwards',
                         'blob': 'blob 7s infinite',
                         'pulse-glow': 'pulseGlow 2s infinite',
+                        'slide-in-right': 'slideInRight 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards',
                     },
                     keyframes: {
                         fadeInUp: {
                             '0%': { opacity: '0', transform: 'translateY(20px)' },
                             '100%': { opacity: '1', transform: 'translateY(0)' },
+                        },
+                        slideInRight: {
+                            '0%': { transform: 'translateX(100%)' },
+                            '100%': { transform: 'translateX(0)' },
                         },
                         blob: {
                             '0%': { transform: 'translate(0px, 0px) scale(1)' },
@@ -131,21 +139,50 @@
             border-color: rgba(255, 255, 255, 0.8);
         }
 
-        /* === MOBILE MENU === */
-        .mobile-menu-overlay {
+        /* === MOBILE MENU UPGRADED === */
+        #mobile-menu {
             position: fixed;
             inset: 0;
-            background-color: rgba(255, 255, 255, 0.98); /* Solid background with slight transparency */
-            backdrop-filter: blur(10px);
-            z-index: 9999; /* Super high Z-index to cover everything */
-            transform: translateX(100%);
-            transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            width: 100%;
+            height: 100%;
+            z-index: 9999; /* Higher than everything */
+            pointer-events: none; /* Let clicks pass through when closed */
+        }
+
+        #mobile-menu-backdrop {
+            position: absolute;
+            inset: 0;
+            background-color: rgba(15, 23, 42, 0.6); /* Dark dimming */
+            backdrop-filter: blur(4px);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        #mobile-menu-panel {
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            width: 100%;
+            max-width: 100%;
+            background-color: #ffffff;
             display: flex;
             flex-direction: column;
-            padding: 2rem;
+            transform: translateX(100%);
+            transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            box-shadow: -10px 0 30px rgba(0,0,0,0.1);
+        }
+
+        /* Open State */
+        #mobile-menu.open {
+            pointer-events: auto;
         }
         
-        .mobile-menu-overlay.open {
+        #mobile-menu.open #mobile-menu-backdrop {
+            opacity: 1;
+        }
+
+        #mobile-menu.open #mobile-menu-panel {
             transform: translateX(0);
         }
 
@@ -211,6 +248,7 @@
             background-color: #ffffff;
             box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
         }
+        
 
         body.loading {
             overflow: hidden;
@@ -221,7 +259,6 @@
 
     <!-- 1. CINEMATIC INTRO LOADER -->
     <div id="intro-loader">
-        <!-- Added playsinline and webkit-playsinline for iOS support -->
         <video id="intro-video" muted playsinline autoplay webkit-playsinline>
             <source src="https://res.cloudinary.com/djdwpjm7x/video/upload/v1770550594/Xeta_Tech_Solutions_nidand.mp4" type="video/mp4">
         </video>
@@ -254,42 +291,55 @@
                 <!-- Mobile Menu Button -->
                 <div class="md:hidden flex items-center z-[49]">
                     <button onclick="toggleMobileMenu()" id="menu-btn" class="text-slate-900 focus:outline-none p-2 transition-transform duration-300">
-                        <!-- Default Hamburger -->
-                        <svg class="h-7 w-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" /></svg>
+                        <!-- Hamburger Icon -->
+                        <svg class="h-8 w-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" /></svg>
                     </button>
                 </div>
             </div>
         </div>
-        
-        <!-- FULL SCREEN MOBILE MENU -->
-        <div id="mobile-menu" class="mobile-menu-overlay md:hidden">
+    </nav>
+
+    <!-- RESTRUCTURED MOBILE MENU (Moved outside Nav to fix Z-Index Issue) -->
+    <div id="mobile-menu">
+        <div id="mobile-menu-backdrop" onclick="toggleMobileMenu()"></div>
+        <div id="mobile-menu-panel">
             <!-- Header for Mobile Menu -->
-            <div class="absolute top-0 left-0 w-full p-6 flex justify-between items-center border-b border-slate-100 bg-white/50 backdrop-blur-sm">
+            <div class="w-full p-6 flex justify-between items-center border-b border-slate-100 bg-white">
                  <img src="https://res.cloudinary.com/dpz44zf0z/image/upload/v1760704788/XETA_SOLUTIONS_LOGO_bcsbwh.png" alt="Logo" class="h-8 w-auto">
-                 <button onclick="toggleMobileMenu()" class="text-slate-500 hover:text-brand-600 p-2">
-                     <svg class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" /></svg>
+                 <button onclick="toggleMobileMenu()" class="text-slate-500 hover:text-brand-600 p-2 bg-slate-50 rounded-full">
+                     <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" /></svg>
                  </button>
             </div>
 
             <!-- Links -->
-            <div class="flex flex-col space-y-6 text-center mt-24">
-                <a href="#what-we-build" onclick="toggleMobileMenu()" class="text-3xl font-display font-bold text-slate-900 hover:text-brand-600 transition-colors">Solutions</a>
-                <a href="#platforms" onclick="toggleMobileMenu()" class="text-3xl font-display font-bold text-slate-900 hover:text-brand-600 transition-colors">Products</a>
-                <a href="#why-xeta" onclick="toggleMobileMenu()" class="text-3xl font-display font-bold text-slate-900 hover:text-brand-600 transition-colors">Why Xeta</a>
-                <a href="https://xetasolutions.in/careers" target="_blank" class="text-2xl font-medium text-slate-500 hover:text-brand-600 transition-colors">Careers</a>
+            <div class="flex flex-col p-8 space-y-8 flex-grow overflow-y-auto">
+                <a href="#what-we-build" onclick="toggleMobileMenu()" class="flex items-center justify-between group border-b border-slate-50 pb-4">
+                    <span class="text-2xl font-display font-bold text-slate-900 group-hover:text-brand-600 transition-colors">Solutions</span>
+                    <svg class="w-6 h-6 text-slate-300 group-hover:text-brand-600 transform group-hover:translate-x-1 transition-all" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" /></svg>
+                </a>
+                <a href="#platforms" onclick="toggleMobileMenu()" class="flex items-center justify-between group border-b border-slate-50 pb-4">
+                    <span class="text-2xl font-display font-bold text-slate-900 group-hover:text-brand-600 transition-colors">Products</span>
+                    <svg class="w-6 h-6 text-slate-300 group-hover:text-brand-600 transform group-hover:translate-x-1 transition-all" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" /></svg>
+                </a>
+                <a href="#why-xeta" onclick="toggleMobileMenu()" class="flex items-center justify-between group border-b border-slate-50 pb-4">
+                    <span class="text-2xl font-display font-bold text-slate-900 group-hover:text-brand-600 transition-colors">Why Xeta</span>
+                    <svg class="w-6 h-6 text-slate-300 group-hover:text-brand-600 transform group-hover:translate-x-1 transition-all" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" /></svg>
+                </a>
+                <a href="https://xetasolutions.in/careers" target="_blank" class="flex items-center justify-between group border-b border-slate-50 pb-4">
+                    <span class="text-2xl font-display font-bold text-slate-500 group-hover:text-brand-600 transition-colors">Careers</span>
+                    <svg class="w-6 h-6 text-slate-300 group-hover:text-brand-600 transform group-hover:translate-x-1 transition-all" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" /></svg>
+                </a>
             </div>
 
             <!-- CTA -->
-            <div class="mt-auto w-full px-6 mb-8">
-                <button onclick="toggleMobileMenu(); openContactModal();" class="w-full bg-brand-600 text-white py-4 rounded-xl font-bold text-lg shadow-xl shadow-brand-200">Start Project</button>
-            </div>
-            
-            <!-- Deco -->
-            <div class="text-center pb-8">
-                <p class="text-xs text-slate-400">© 2026 Xeta Solutions</p>
+            <div class="w-full p-6 bg-slate-50 border-t border-slate-100">
+                <button onclick="toggleMobileMenu(); openContactModal();" class="w-full bg-brand-600 text-white py-4 rounded-xl font-bold text-lg shadow-lg shadow-brand-500/30 active:scale-95 transition-transform">Start Project</button>
+                <div class="text-center mt-6">
+                    <p class="text-xs text-slate-400">© 2026 Xeta Solutions</p>
+                </div>
             </div>
         </div>
-    </nav>
+    </div>
 
     <!-- Main View -->
     <main id="home-view" class="transition-opacity duration-300 opacity-0">
@@ -752,8 +802,10 @@
             const menu = document.getElementById('mobile-menu');
             if(menu.classList.contains('open')) {
                 menu.classList.remove('open');
+                document.body.style.overflow = '';
             } else {
                 menu.classList.add('open');
+                document.body.style.overflow = 'hidden'; // Prevent scrolling when menu is open
             }
         }
 
