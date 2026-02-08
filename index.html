@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="en" class="scroll-smooth">
 <head>
-  ad>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Xeta Solutions | Enterprise Engineering & AI</title>
@@ -30,7 +29,7 @@
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     
-    <!-- Google Fonts: 'Outfit' for headings (Modern/Tech), 'Inter' for body (Readability) -->
+    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Outfit:wght@400;500;700;800&display=swap" rel="stylesheet">
@@ -42,7 +41,7 @@
                 extend: {
                     fontFamily: {
                         sans: ['Inter', 'sans-serif'],
-                        display: ['Outfit', 'sans-serif'], // New Heading Font
+                        display: ['Outfit', 'sans-serif'],
                     },
                     colors: {
                         brand: {
@@ -52,7 +51,7 @@
                             600: '#2563eb',
                             700: '#1d4ed8',
                             900: '#1e3a8a',
-                            dark: '#0B1120' // Deep dark blue for contrast
+                            dark: '#0B1120'
                         },
                     },
                     animation: {
@@ -97,29 +96,56 @@
         #intro-video {
             width: 100%;
             height: 100%;
-            object-fit: cover; /* Ensures video fills screen like a movie */
-            max-width: 100vw;
-            max-height: 100vh;
+            object-fit: cover; /* Default for Desktop */
+        }
+
+        /* Mobile Optimization: Ensure logo/text isn't cut off on portrait screens */
+        @media (max-width: 768px) {
+             #intro-video {
+                object-fit: contain; 
+            }
         }
 
         .skip-btn {
             position: absolute;
-            bottom: 2rem;
-            right: 2rem;
+            bottom: 3rem;
+            left: 50%;
+            transform: translateX(-50%);
             color: white;
-            opacity: 0.6;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            backdrop-filter: blur(4px);
             font-size: 0.9rem;
-            padding: 8px 16px;
-            border: 1px solid rgba(255,255,255,0.3);
-            border-radius: 20px;
+            padding: 10px 24px;
+            border-radius: 30px;
             cursor: pointer;
             z-index: 10000;
             font-family: 'Inter', sans-serif;
             transition: all 0.3s;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: 600;
         }
         .skip-btn:hover {
-            background: rgba(255,255,255,0.1);
-            opacity: 1;
+            background: rgba(255, 255, 255, 0.25);
+            border-color: rgba(255, 255, 255, 0.8);
+        }
+
+        /* === MOBILE MENU === */
+        .mobile-menu-overlay {
+            position: fixed;
+            inset: 0;
+            background-color: #ffffff;
+            z-index: 5000;
+            transform: translateX(100%);
+            transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            display: flex;
+            flex-direction: column;
+            padding: 2rem;
+        }
+        
+        .mobile-menu-overlay.open {
+            transform: translateX(0);
         }
 
         /* === PREMIUM UI UTILITIES === */
@@ -130,7 +156,6 @@
             border-bottom: 1px solid rgba(255, 255, 255, 0.3);
         }
         
-        /* Crystal Card Effect: Sharper, more premium than standard glass */
         .crystal-card {
             background: rgba(255, 255, 255, 0.7);
             backdrop-filter: blur(12px);
@@ -142,11 +167,10 @@
         .crystal-card:hover {
             transform: translateY(-5px) scale(1.01);
             background: rgba(255, 255, 255, 0.9);
-            border-color: rgba(37, 99, 235, 0.3); /* Brand color border on hover */
+            border-color: rgba(37, 99, 235, 0.3);
             box-shadow: 0 20px 40px -15px rgba(30, 58, 138, 0.15);
         }
 
-        /* Hero Mesh Background */
         .premium-mesh-bg {
             background-color: #f8fafc;
             background-image: 
@@ -155,7 +179,6 @@
                 radial-gradient(at 50% 100%, hsla(220, 100%, 98%, 1) 0, transparent 50%);
         }
 
-        /* Text Gradient */
         .text-gradient-primary {
             background: linear-gradient(135deg, #0f172a 0%, #2563eb 100%);
             -webkit-background-clip: text;
@@ -172,7 +195,6 @@
             transform: translateY(0);
         }
         
-        /* Form Inputs */
         .form-input {
             width: 100%;
             padding: 0.75rem 1rem;
@@ -189,7 +211,6 @@
             box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
         }
 
-        /* Hide scrollbar for intro */
         body.loading {
             overflow: hidden;
         }
@@ -199,10 +220,11 @@
 
     <!-- 1. CINEMATIC INTRO LOADER -->
     <div id="intro-loader">
-        <video id="intro-video" muted playsinline autoplay>
+        <!-- Added playsinline and webkit-playsinline for iOS support -->
+        <video id="intro-video" muted playsinline autoplay webkit-playsinline>
             <source src="https://res.cloudinary.com/djdwpjm7x/video/upload/v1770550594/Xeta_Tech_Solutions_nidand.mp4" type="video/mp4">
         </video>
-        <div class="skip-btn" onclick="endIntro()">Skip Intro</div>
+        <button class="skip-btn" onclick="endIntro()">Enter Site</button>
     </div>
 
     <!-- Navigation -->
@@ -229,31 +251,49 @@
                 </div>
 
                 <!-- Mobile Menu Button -->
-                <div class="md:hidden flex items-center z-50">
-                    <button onclick="toggleMobileMenu()" class="text-slate-900 focus:outline-none p-2">
-                        <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 8h16M4 16h16" /></svg>
+                <div class="md:hidden flex items-center z-[5001]">
+                    <button onclick="toggleMobileMenu()" id="menu-btn" class="text-slate-900 focus:outline-none p-2 transition-transform duration-300">
+                        <!-- Default Hamburger -->
+                        <svg class="h-7 w-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" /></svg>
                     </button>
                 </div>
             </div>
         </div>
         
-        <!-- Mobile Menu -->
-        <div id="mobile-menu" class="hidden fixed inset-0 bg-white z-40 pt-24 px-6 transition-transform transform translate-x-full">
-             <div class="flex flex-col space-y-6">
-                <a href="#what-we-build" onclick="toggleMobileMenu()" class="text-2xl font-display font-medium text-slate-900">Solutions</a>
-                <a href="#platforms" onclick="toggleMobileMenu()" class="text-2xl font-display font-medium text-slate-900">Products</a>
-                <a href="#why-xeta" onclick="toggleMobileMenu()" class="text-2xl font-display font-medium text-slate-900">Why Xeta</a>
-                <button onclick="toggleMobileMenu(); openContactModal();" class="bg-brand-600 text-white py-4 rounded-xl font-bold text-lg mt-4">Start Project</button>
-             </div>
+        <!-- FULL SCREEN MOBILE MENU -->
+        <div id="mobile-menu" class="mobile-menu-overlay md:hidden">
+            <!-- Header for Mobile Menu -->
+            <div class="absolute top-0 left-0 w-full p-6 flex justify-between items-center border-b border-slate-100">
+                 <img src="https://res.cloudinary.com/dpz44zf0z/image/upload/v1760704788/XETA_SOLUTIONS_LOGO_bcsbwh.png" alt="Logo" class="h-8 w-auto">
+                 <button onclick="toggleMobileMenu()" class="text-slate-500 hover:text-brand-600 p-2">
+                     <svg class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" /></svg>
+                 </button>
+            </div>
+
+            <!-- Links -->
+            <div class="flex flex-col space-y-6 text-center mt-10">
+                <a href="#what-we-build" onclick="toggleMobileMenu()" class="text-3xl font-display font-bold text-slate-900 hover:text-brand-600 transition-colors">Solutions</a>
+                <a href="#platforms" onclick="toggleMobileMenu()" class="text-3xl font-display font-bold text-slate-900 hover:text-brand-600 transition-colors">Products</a>
+                <a href="#why-xeta" onclick="toggleMobileMenu()" class="text-3xl font-display font-bold text-slate-900 hover:text-brand-600 transition-colors">Why Xeta</a>
+                <a href="https://xetasolutions.in/careers" target="_blank" class="text-2xl font-medium text-slate-500 hover:text-brand-600 transition-colors">Careers</a>
+            </div>
+
+            <!-- CTA -->
+            <div class="mt-12 w-full px-6">
+                <button onclick="toggleMobileMenu(); openContactModal();" class="w-full bg-brand-600 text-white py-4 rounded-xl font-bold text-lg shadow-xl shadow-brand-200">Start Project</button>
+            </div>
+            
+            <!-- Deco -->
+            <div class="absolute bottom-0 left-0 w-full p-6 text-center">
+                <p class="text-xs text-slate-400">© 2026 Xeta Solutions</p>
+            </div>
         </div>
     </nav>
 
     <!-- Main View -->
     <main id="home-view" class="transition-opacity duration-300 opacity-0">
-        
-        <!-- HERO SECTION: The "Authority" Statement -->
+        <!-- HERO SECTION -->
         <header class="relative pt-32 pb-24 md:pt-48 md:pb-40 overflow-hidden premium-mesh-bg">
-            <!-- Dynamic Background Blobs -->
             <div class="absolute top-0 right-0 -mr-20 -mt-20 w-96 h-96 bg-brand-200 rounded-full mix-blend-multiply filter blur-3xl opacity-40 animate-blob"></div>
             <div class="absolute bottom-0 left-0 -ml-20 -mb-20 w-96 h-96 bg-purple-200 rounded-full mix-blend-multiply filter blur-3xl opacity-40 animate-blob animation-delay-2000"></div>
 
@@ -281,7 +321,7 @@
             </div>
         </header>
 
-        <!-- WHO WE ARE: Clean & Trustworthy -->
+        <!-- WHO WE ARE -->
         <section id="who-we-are" class="py-20 md:py-32 bg-white relative border-y border-slate-100">
             <div class="max-w-7xl mx-auto px-6 relative z-10">
                 <div class="grid md:grid-cols-2 gap-12 lg:gap-20 items-center reveal">
@@ -296,11 +336,9 @@
                         </p>
                     </div>
                     <div class="relative">
-                        <!-- Abstract decoration -->
                         <div class="absolute -inset-4 bg-gradient-to-r from-brand-50 to-purple-50 rounded-[2rem] transform rotate-3 opacity-70"></div>
                         <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=800&q=80" alt="Team collaboration" class="relative rounded-[1.5rem] shadow-2xl border border-white w-full object-cover h-80 md:h-96">
                         
-                        <!-- Floating Stat Card -->
                         <div class="absolute -bottom-6 -left-6 bg-white p-6 rounded-2xl shadow-xl border border-slate-100 hidden md:block">
                             <div class="flex items-center gap-4">
                                 <div class="bg-green-100 p-3 rounded-full text-green-600">
@@ -327,16 +365,13 @@
                 </div>
 
                 <div class="grid md:grid-cols-2 gap-8 lg:gap-12">
-                    <!-- Products Column -->
                     <div class="crystal-card p-8 md:p-12 rounded-[2rem] reveal">
                         <div class="w-14 h-14 bg-blue-50 rounded-2xl flex items-center justify-center text-blue-600 mb-8 border border-blue-100">
                             <svg class="w-7 h-7" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" /></svg>
                         </div>
                         <h3 class="text-2xl md:text-3xl font-display font-bold mb-2 text-slate-900">Proprietary Products</h3>
                         <p class="text-brand-600 font-medium mb-8">Integrated Talent & Learning Ecosystems</p>
-                        
                         <ul class="space-y-8">
-                            <!-- List Items -->
                             <li class="flex gap-5 group">
                                 <div class="mt-1">
                                     <div class="w-8 h-8 rounded-full bg-blue-50 text-blue-600 flex items-center justify-center group-hover:bg-blue-600 group-hover:text-white transition-colors">
@@ -362,16 +397,13 @@
                         </ul>
                     </div>
 
-                    <!-- Custom Solutions Column -->
                     <div class="crystal-card p-8 md:p-12 rounded-[2rem] reveal">
                         <div class="w-14 h-14 bg-purple-50 rounded-2xl flex items-center justify-center text-purple-600 mb-8 border border-purple-100">
                             <svg class="w-7 h-7" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" /></svg>
                         </div>
                         <h3 class="text-2xl md:text-3xl font-display font-bold mb-2 text-slate-900">Custom Engineering</h3>
                         <p class="text-purple-600 font-medium mb-8">Bespoke Digital Transformation</p>
-                        
                         <div class="space-y-4">
-                            <!-- Clickable Services -->
                             <div onclick="showDetail('enterprise')" class="group p-5 rounded-xl border border-slate-100 hover:border-purple-200 hover:bg-purple-50 cursor-pointer transition-all flex justify-between items-center">
                                 <span class="font-semibold text-slate-700 group-hover:text-purple-700">Enterprise Software Development</span>
                                 <svg class="w-5 h-5 text-slate-400 group-hover:text-purple-600 transform group-hover:translate-x-1 transition-all" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
@@ -392,9 +424,7 @@
 
         <!-- FLAGSHIP PLATFORMS -->
         <section id="platforms" class="py-24 bg-white relative overflow-hidden">
-            <!-- Background Decoration -->
             <div class="absolute inset-0 bg-[radial-gradient(#e5e7eb_1px,transparent_1px)] [background-size:24px_24px] opacity-30"></div>
-            
             <div class="max-w-7xl mx-auto px-6 relative z-10">
                 <div class="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6 reveal">
                     <div class="max-w-2xl">
@@ -409,9 +439,7 @@
                     </div>
                 </div>
                 
-                <!-- Platforms Grid -->
                 <div class="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-6 reveal">
-                    <!-- Xeta Hire -->
                     <a href="https://xetasolutions.in/hirewithus" target="_blank" class="crystal-card p-8 rounded-[1.5rem] relative group block h-full">
                         <div class="h-14 mb-6 flex items-center">
                             <img src="https://res.cloudinary.com/dpz44zf0z/image/upload/v1760086493/HireWithUS_wtn0pc.png" alt="Xeta Hire" class="h-full w-auto object-contain">
@@ -423,7 +451,6 @@
                         </div>
                     </a>
                     
-                    <!-- Voxelyt -->
                     <div onclick="showDetail('voxelyt')" class="crystal-card p-8 rounded-[1.5rem] relative group cursor-pointer block h-full border-brand-200 bg-brand-50/50">
                         <div class="h-14 mb-6 flex items-center">
                             <img src="https://res.cloudinary.com/dpz44zf0z/image/upload/v1768062552/Voxylet_kyk0hm.png" alt="Voxelyt" class="h-full w-auto object-contain">
@@ -435,7 +462,6 @@
                         </div>
                     </div>
 
-                    <!-- Mock Interviews -->
                     <a href="xeta-mock.html" target="_blank" class="crystal-card p-8 rounded-[1.5rem] relative group block h-full">
                         <div class="h-14 mb-6 flex items-center">
                             <img src="https://res.cloudinary.com/dpz44zf0z/image/upload/v1762319046/MOCK_INTERVIEWS_tlno45.png" alt="Mock" class="h-full w-auto object-contain">
@@ -447,7 +473,6 @@
                         </div>
                     </a>
 
-                    <!-- Inview -->
                     <a href="https://inview.xetasolutions.in/" target="_blank" class="crystal-card p-8 rounded-[1.5rem] relative group block h-full">
                          <div class="h-14 mb-6 flex items-center">
                             <img src="https://res.cloudinary.com/dpz44zf0z/image/upload/v1766073096/INVIEW_ct336y.png" alt="Inview" class="h-full w-auto object-contain">
@@ -459,7 +484,6 @@
                         </div>
                     </a>
 
-                    <!-- Testify -->
                     <a href="https://testify-lac.com" target="_blank" class="crystal-card p-8 rounded-[1.5rem] relative group block h-full">
                          <div class="h-14 mb-6 flex items-center">
                             <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAMAAABEpIrGAAAAclBMVEX///+93Nzi8PDv8POfmrsAhZAAlJRysrOPkLIAAGAAAHIAjpY9mJfl5+bs6+s0OIC5us0AAGVUlJr5+fmZmJiVlp3NzdC4ub3d3uDExci+v8I4PH2ysr6enp1+f4jW1tmjpKp6fKYAAFPCwsstMX2oqcJMpBy7AAAAZklEQVR4Ae3ERQLCQAAEwYbFibt7/v9E5ATRa7RGmKHd4cgYcTpfrgy73R9PSVYYpGq6YVrCtB3Xcb3v+wH/wkgQxwqunKQJbpB5gcy/vCizOAYTxVQwTROTBrMq7NhjTB2ZzNvuDYlNBdEWwbxBAAAAAElFTkSuQmCC" alt="Testify" class="h-10 w-auto object-contain">
@@ -474,9 +498,8 @@
             </div>
         </section>
 
-        <!-- WHY XETA (High Contrast Section) -->
+        <!-- WHY XETA -->
         <section id="why-xeta" class="bg-brand-dark text-white py-24 md:py-32 relative overflow-hidden">
-            <!-- Decorative Elements -->
             <div class="absolute top-0 right-0 w-1/3 h-full bg-gradient-to-l from-brand-900 to-transparent opacity-30"></div>
             <div class="absolute bottom-0 left-0 w-64 h-64 bg-purple-900 rounded-full mix-blend-screen filter blur-3xl opacity-30"></div>
 
@@ -529,7 +552,6 @@
         <!-- CTA SECTION -->
         <section id="contact" class="py-24 max-w-7xl mx-auto px-6">
             <div class="bg-gradient-to-br from-brand-600 to-brand-900 rounded-[2.5rem] p-12 md:p-24 text-center text-white relative overflow-hidden shadow-2xl reveal">
-                <!-- Abstract BG -->
                 <div class="absolute top-0 right-0 -mr-20 -mt-20 w-80 h-80 bg-white opacity-10 rounded-full blur-3xl"></div>
                 <div class="absolute bottom-0 left-0 -ml-20 -mb-20 w-80 h-80 bg-purple-500 opacity-20 rounded-full blur-3xl"></div>
                 
@@ -561,7 +583,6 @@
                 </div>
 
                 <div class="p-8 overflow-y-auto">
-                    <!-- Success Message -->
                     <div id="form-success" class="hidden flex-col items-center justify-center py-12 text-center">
                         <div class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center text-green-600 mb-4">
                             <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
@@ -571,7 +592,6 @@
                         <button onclick="closeContactModal()" class="bg-slate-900 text-white px-8 py-3 rounded-lg font-semibold hover:bg-slate-800 transition">Close</button>
                     </div>
 
-                    <!-- Form -->
                     <form id="contact-form" action="https://formspree.io/f/mqeezyje" method="POST" class="space-y-5">
                         <div class="grid md:grid-cols-2 gap-5">
                             <div>
@@ -602,7 +622,6 @@
 
                         <button type="submit" id="submit-btn" class="w-full bg-brand-600 text-white py-4 rounded-xl font-bold hover:bg-brand-700 transition-colors shadow-lg shadow-brand-200 mt-2 flex justify-center items-center">
                             <span>Send Message</span>
-                            <!-- Spinner omitted for brevity -->
                         </button>
                     </form>
                 </div>
@@ -671,27 +690,20 @@
 
         function endIntro() {
             loader.style.opacity = '0';
-            loader.style.visibility = 'hidden'; // Ensure it doesn't block clicks
+            loader.style.visibility = 'hidden'; 
             
-            // Show Main Site
             mainView.style.opacity = '1';
             body.classList.remove('loading');
             
-            // Trigger Navbar animation
             document.getElementById('navbar').classList.remove('-translate-y-full');
-            
-            // Stop video to save resources
             setTimeout(() => { video.pause(); }, 1000);
         }
 
-        // Auto-end when video finishes
         video.addEventListener('ended', endIntro);
         
-        // Fallback: If video takes too long to load or play
         setTimeout(() => {
             if(video.paused && video.currentTime === 0) {
                  video.play().catch(() => {
-                     // If autoplay blocked, just show the site
                      endIntro();
                  });
             }
@@ -699,7 +711,6 @@
 
         // --- 2. DATA & INTERACTIVITY ---
         
-        // (Re-using your existing data structure for content injection)
         const services = {
             'enterprise': {
                 title: 'Enterprise Software',
@@ -738,12 +749,10 @@
 
         function toggleMobileMenu() {
             const menu = document.getElementById('mobile-menu');
-            if(menu.classList.contains('hidden')) {
-                menu.classList.remove('hidden');
-                setTimeout(() => menu.classList.remove('translate-x-full'), 10);
+            if(menu.classList.contains('open')) {
+                menu.classList.remove('open');
             } else {
-                menu.classList.add('translate-x-full');
-                setTimeout(() => menu.classList.add('hidden'), 300);
+                menu.classList.add('open');
             }
         }
 
@@ -821,7 +830,6 @@
             document.body.classList.remove('overflow-hidden');
         }
 
-        // --- SCROLL REVEAL ---
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) entry.target.classList.add('active');
@@ -829,7 +837,6 @@
         }, { threshold: 0.1 });
         document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
         
-        // Form Submission
         document.getElementById('contact-form').addEventListener('submit', async (e) => {
             e.preventDefault();
             const btn = document.getElementById('submit-btn');
@@ -837,7 +844,6 @@
             btn.innerHTML = 'Sending...';
             btn.disabled = true;
             
-            // Simulate API call or use fetch
             try {
                 const response = await fetch(e.target.action, {
                     method: 'POST',
@@ -862,4 +868,3 @@
     </script>
 </body>
 </html>
-
