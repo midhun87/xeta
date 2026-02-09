@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Feedback - Xeta Tech Solutions</title>
+    <!-- Tailwind CSS for rapid, responsive styling -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome for Icons -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        /* Internal CSS */
+        body {
+            font-family: 'Inter', sans-serif;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* Video Intro Transitions */
+        #intro-overlay {
+            transition: opacity 1s ease-out, visibility 1s ease-out;
+        }
+        
+        .fade-out {
+            opacity: 0;
+            visibility: hidden;
+            pointer-events: none;
+        }
+
+        /* Main Content Transitions */
+        #main-content {
+            opacity: 0;
+            transition: opacity 1.5s ease-in;
+            display: none; /* Initially hidden to prevent scroll */
+        }
+        
+        .content-visible {
+            opacity: 1 !important;
+            display: flex !important;
+        }
+
+        /* Star Rating Styles */
+        .star-rating i {
+            transition: all 0.2s;
+            cursor: pointer;
+        }
+        
+        .star-rating:hover i {
+            color: #cbd5e1; /* gray-300 - Reset on hover container */
+        }
+
+        .star-rating i:hover,
+        .star-rating i:hover ~ i {
+            color: #fbbf24; /* amber-400 - Light up on hover */
+        }
+
+        /* Apply active color to stars */
+        .star-rating i.active {
+            color: #fbbf24; 
+        }
+
+        /* Fix for the hover effect logic in CSS vs JS: 
+           We will handle the hover visual logic primarily via CSS hover states 
+           and use JS to set the permanent 'active' class 
+        */
+        .star-group {
+            display: flex;
+            flex-direction: row-reverse; /* Reverse for CSS sibling selector trick if needed, but we'll use simple JS for this specific requirement to be robust */
+            justify-content: flex-end;
+            gap: 0.5rem;
+        }
+        
+        .star-btn {
+            background: none;
+            border: none;
+            padding: 0;
+            cursor: pointer;
+            font-size: 1.5rem;
+            color: #cbd5e1;
+            transition: color 0.2s;
+        }
+        
+        .star-btn.selected {
+            color: #fbbf24;
+        }
+        
+        /* Spinner */
+        .loader {
+            border: 3px solid #f3f3f3;
+            border-radius: 50%;
+            border-top: 3px solid #3b82f6;
+            width: 20px;
+            height: 20px;
+            -webkit-animation: spin 1s linear infinite; /* Safari */
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800 min-h-screen">
+
+    <!-- 1. Video Intro Overlay -->
+    <div id="intro-overlay" class="fixed inset-0 z-50 bg-black flex flex-col items-center justify-center">
+        <video id="intro-video" class="absolute inset-0 w-full h-full object-cover" playsinline>
+            <source src="https://res.cloudinary.com/djdwpjm7x/video/upload/v1770550594/Xeta_Tech_Solutions_nidand.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+        
+        <!-- Overlay Gradient for better text visibility if needed -->
+        <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent pointer-events-none"></div>
+
+        <!-- Skip Button -->
+        <div class="absolute bottom-10 right-6 sm:right-10 z-20 pointer-events-auto">
+            <button onclick="endIntro()" class="group flex items-center gap-3 bg-white/10 hover:bg-white/20 backdrop-blur-md border border-white/20 text-white px-6 py-3 rounded-full font-medium transition-all transform hover:scale-105 active:scale-95 shadow-lg">
+                <span>Enter Site</span> 
+                <i class="fas fa-arrow-right group-hover:translate-x-1 transition-transform"></i>
+            </button>
+        </div>
+    </div>
+
+    <!-- 2. Main Content (Hidden Initially) -->
+    <div id="main-content" class="min-h-screen flex-col relative">
+        
+        <!-- Navigation -->
+        <nav class="bg-white sticky top-0 z-40 shadow-sm border-b border-slate-100">
+            <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="flex justify-between items-center h-20">
+                    <div class="flex items-center gap-3">
+                        <img src="https://res.cloudinary.com/dpz44zf0z/image/upload/v1760704788/XETA_SOLUTIONS_LOGO_bcsbwh.png" alt="Xeta Solutions Logo" class="h-12 w-auto object-contain">
+                        <span class="font-bold text-xl tracking-tight text-slate-800 hidden sm:block">Xeta Tech Solutions</span>
+                    </div>
+                    <div class="flex items-center gap-4">
+                        <span class="px-4 py-1.5 rounded-full bg-blue-50 text-blue-600 text-sm font-semibold border border-blue-100">
+                            Feedback Portal
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </nav>
+
+        <!-- Main Form Section -->
+        <main class="flex-grow flex items-center justify-center p-4 sm:p-8">
+            <div class="w-full max-w-2xl">
+                
+                <div class="text-center mb-10">
+                    <h1 class="text-3xl sm:text-4xl font-extrabold text-slate-900 mb-4 tracking-tight">We Value Your Experience</h1>
+                    <p class="text-lg text-slate-500 max-w-lg mx-auto">Help us improve the college website. Your detailed feedback shapes our future updates.</p>
+                </div>
+
+                <!-- Card -->
+                <div class="bg-white rounded-2xl shadow-xl overflow-hidden border border-slate-100">
+                    <div class="h-1.5 bg-gradient-to-r from-blue-500 via-indigo-500 to-purple-500"></div>
+                    
+                    <div class="p-6 sm:p-10">
+                        
+                        <!-- Success Message (Hidden by default) -->
+                        <div id="success-message" class="hidden flex-col items-center justify-center py-10 text-center animate-pulse-fade">
+                            <div class="w-20 h-20 bg-green-100 rounded-full flex items-center justify-center mb-6">
+                                <i class="fas fa-check text-3xl text-green-600"></i>
+                            </div>
+                            <h3 class="text-2xl font-bold text-slate-800 mb-2">Thank You!</h3>
+                            <p class="text-slate-500">Your feedback has been successfully sent to our team.</p>
+                            <button onclick="resetForm()" class="mt-8 text-blue-600 hover:text-blue-800 font-medium underline">Send another response</button>
+                        </div>
+
+                        <!-- Error Message (Hidden by default) -->
+                        <div id="error-message" class="hidden bg-red-50 border-l-4 border-red-500 p-4 mb-6 rounded-r">
+                            <div class="flex">
+                                <div class="flex-shrink-0">
+                                    <i class="fas fa-exclamation-circle text-red-500"></i>
+                                </div>
+                                <div class="ml-3">
+                                    <p class="text-sm text-red-700">Oops! Something went wrong. Please try again later.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- The Form -->
+                        <form id="feedback-form" class="space-y-6" action="https://formspree.io/f/mlgwdjog" method="POST">
+                            
+                            <!-- Name & Email Grid -->
+                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                                <div>
+                                    <label for="name" class="block text-sm font-semibold text-slate-700 mb-2">Full Name</label>
+                                    <div class="relative">
+                                        <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                                            <i class="fas fa-user text-slate-400"></i>
+                                        </div>
+                                        <input type="text" name="name" id="name" required class="block w-full pl-10 pr-3 py-3 border border-slate-200 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 bg-slate-50 hover:bg-white transition-colors" placeholder="John Doe">
+                                    </div>
+                                </div>
+                                
+                                <div>
+                                    <label for="email" class="block text-sm font-semibold text-slate-700 mb-2">Email Address</label>
+                                    <div class="relative">
+                                        <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                                            <i class="fas fa-envelope text-slate-400"></i>
+                                        </div>
+                                        <input type="email" name="email" id="email" required class="block w-full pl-10 pr-3 py-3 border border-slate-200 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 bg-slate-50 hover:bg-white transition-colors" placeholder="john@college.edu">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Role Dropdown -->
+                            <div>
+                                <label for="role" class="block text-sm font-semibold text-slate-700 mb-2">I am a...</label>
+                                <div class="relative">
+                                    <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                                        <i class="fas fa-university text-slate-400"></i>
+                                    </div>
+                                    <select id="role" name="role" class="block w-full pl-10 pr-10 py-3 border border-slate-200 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 bg-slate-50 hover:bg-white transition-colors appearance-none text-slate-600">
+                                        <option value="Student">Student</option>
+                                        <option value="Faculty">Faculty Member</option>
+                                        <option value="Alumni">Alumni</option>
+                                        <option value="Parent">Parent</option>
+                                        <option value="Other">Other</option>
+                                    </select>
+                                    <div class="absolute inset-y-0 right-0 pr-3 flex items-center pointer-events-none">
+                                        <i class="fas fa-chevron-down text-slate-400 text-xs"></i>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Star Rating -->
+                            <div>
+                                <label class="block text-sm font-semibold text-slate-700 mb-2">Overall Experience</label>
+                                <div class="flex items-center gap-1" id="star-container">
+                                    <!-- Hidden input to store value -->
+                                    <input type="hidden" name="rating" id="rating-value" value="5">
+                                    
+                                    <button type="button" class="star-btn selected" data-value="1"><i class="fas fa-star"></i></button>
+                                    <button type="button" class="star-btn selected" data-value="2"><i class="fas fa-star"></i></button>
+                                    <button type="button" class="star-btn selected" data-value="3"><i class="fas fa-star"></i></button>
+                                    <button type="button" class="star-btn selected" data-value="4"><i class="fas fa-star"></i></button>
+                                    <button type="button" class="star-btn selected" data-value="5"><i class="fas fa-star"></i></button>
+                                    <span class="ml-3 text-sm text-slate-500 font-medium" id="rating-text">Excellent</span>
+                                </div>
+                            </div>
+
+                            <!-- Message -->
+                            <div>
+                                <label for="message" class="block text-sm font-semibold text-slate-700 mb-2">Your Feedback</label>
+                                <div class="relative">
+                                    <textarea id="message" name="message" rows="4" required class="block w-full p-3 border border-slate-200 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 bg-slate-50 hover:bg-white transition-colors" placeholder="What did you like? What can we improve?"></textarea>
+                                </div>
+                            </div>
+
+                            <!-- Submit Button -->
+                            <button type="submit" id="submit-btn" class="w-full flex justify-center items-center py-3.5 px-4 border border-transparent rounded-lg shadow-sm text-sm font-bold text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition-all transform hover:-translate-y-0.5">
+                                <span>Submit Feedback</span>
+                                <i class="fas fa-paper-plane ml-2"></i>
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <!-- Footer -->
+        <footer class="py-8 text-center">
+            <p class="text-sm text-slate-400">&copy; <span id="year"></span> Xeta Tech Solutions. All rights reserved.</p>
+        </footer>
+    </div>
+
+    <!-- JavaScript Logic -->
+    <script>
+        // --- 1. Video Intro Logic ---
+        const introOverlay = document.getElementById('intro-overlay');
+        const mainContent = document.getElementById('main-content');
+        const video = document.getElementById('intro-video');
+
+        // Set current year
+        document.getElementById('year').innerText = new Date().getFullYear();
+
+        function endIntro() {
+            // Fade out overlay
+            introOverlay.classList.add('fade-out');
+            
+            // Show main content
+            mainContent.style.display = 'flex';
+            // Slight delay to allow display:flex to apply before opacity transition
+            setTimeout(() => {
+                mainContent.classList.add('content-visible');
+            }, 50);
+
+            // Remove overlay from DOM after transition to save resources
+            setTimeout(() => {
+                introOverlay.style.display = 'none';
+                video.pause(); // Ensure video stops
+            }, 1000);
+        }
+
+        // Auto-play handling
+        window.addEventListener('load', () => {
+            video.muted = true; // Required for most browser autoplay policies
+            video.play().catch(e => console.log("Autoplay prevented:", e));
+            
+            // Auto-end when video finishes
+            video.addEventListener('ended', endIntro);
+        });
+
+
+        // --- 2. Star Rating Logic ---
+        const starBtns = document.querySelectorAll('.star-btn');
+        const ratingInput = document.getElementById('rating-value');
+        const ratingText = document.getElementById('rating-text');
+        const ratingLabels = {
+            1: "Poor",
+            2: "Fair",
+            3: "Good",
+            4: "Very Good",
+            5: "Excellent"
+        };
+
+        starBtns.forEach(btn => {
+            // Hover effects
+            btn.addEventListener('mouseenter', () => {
+                const val = parseInt(btn.dataset.value);
+                updateStars(val, false); // Visual only
+            });
+
+            // Click to set
+            btn.addEventListener('click', () => {
+                const val = parseInt(btn.dataset.value);
+                ratingInput.value = val;
+                updateStars(val, true); // Commit value
+            });
+        });
+
+        document.getElementById('star-container').addEventListener('mouseleave', () => {
+            // Reset to saved value on mouse leave
+            updateStars(parseInt(ratingInput.value), true);
+        });
+
+        function updateStars(value, isCommit) {
+            starBtns.forEach(btn => {
+                const btnVal = parseInt(btn.dataset.value);
+                if (btnVal <= value) {
+                    btn.classList.add('selected');
+                } else {
+                    btn.classList.remove('selected');
+                }
+            });
+            if (isCommit) {
+                ratingText.innerText = ratingLabels[value] || "";
+            }
+        }
+
+
+        // --- 3. Form Submission Logic (AJAX) ---
+        const form = document.getElementById("feedback-form");
+        const submitBtn = document.getElementById("submit-btn");
+        const successMsg = document.getElementById("success-message");
+        const errorMsg = document.getElementById("error-message");
+
+        async function handleSubmit(event) {
+            event.preventDefault();
+            
+            // UI Loading State
+            const originalBtnContent = submitBtn.innerHTML;
+            submitBtn.disabled = true;
+            submitBtn.innerHTML = '<div class="loader"></div>';
+            submitBtn.classList.add('opacity-75', 'cursor-not-allowed');
+            errorMsg.classList.add('hidden');
+
+            const data = new FormData(event.target);
+
+            try {
+                const response = await fetch(event.target.action, {
+                    method: form.method,
+                    body: data,
+                    headers: {
+                        'Accept': 'application/json'
+                    }
+                });
+
+                if (response.ok) {
+                    // Success
+                    form.classList.add('hidden');
+                    successMsg.classList.remove('hidden');
+                    successMsg.classList.add('flex'); // Ensure flex display
+                } else {
+                    // Error from server
+                    throw new Error('Form submission failed');
+                }
+            } catch (error) {
+                // Network or other error
+                errorMsg.classList.remove('hidden');
+                submitBtn.disabled = false;
+                submitBtn.innerHTML = originalBtnContent;
+                submitBtn.classList.remove('opacity-75', 'cursor-not-allowed');
+            }
+        }
+
+        form.addEventListener("submit", handleSubmit);
+
+        function resetForm() {
+            form.reset();
+            // Reset stars
+            updateStars(5, true);
+            ratingInput.value = 5;
+            
+            // Show form again
+            successMsg.classList.add('hidden');
+            successMsg.classList.remove('flex');
+            form.classList.remove('hidden');
+            
+            // Reset button
+            submitBtn.disabled = false;
+            submitBtn.innerHTML = '<span>Submit Feedback</span><i class="fas fa-paper-plane ml-2"></i>';
+            submitBtn.classList.remove('opacity-75', 'cursor-not-allowed');
+        }
+    </script>
+</body>
+</html>
