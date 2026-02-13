@@ -3,232 +3,105 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Invoice - Xeta Tech Solutions</title>
+    <title>Invoice Verification - Xeta Tech Solutions</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
-
-        body {
-            font-family: 'Inter', sans-serif;
-            background-color: #f3f4f6;
-            -webkit-print-color-adjust: exact;
-        }
-
-        /* A4 Paper Dimensions */
-        .page {
-            width: 210mm;
-            min-height: 297mm;
-            padding: 15mm;
-            margin: 20px auto;
-            background: white;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        }
-
-        /* Editable fields highlight on hover for UI, removed in print */
-        [contenteditable="true"]:hover {
-            background-color: #f0f9ff;
-            cursor: text;
-            outline: 1px dashed #3b82f6;
-            border-radius: 2px;
-        }
-
-        /* Print Styles */
-        @media print {
-            body {
-                background: white;
-            }
-            .page {
-                margin: 0;
-                box-shadow: none;
-                width: 100%;
-                height: auto;
-                padding: 10mm; 
-            }
-            .no-print {
-                display: none !important;
-            }
-            [contenteditable="true"]:hover {
-                background-color: transparent;
-                outline: none;
-            }
-        }
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap');
+        body { font-family: 'Inter', sans-serif; }
+        .verified-glow { box-shadow: 0 0 20px rgba(34, 197, 94, 0.2); }
     </style>
 </head>
-<body>
+<body class="bg-slate-50 min-h-screen flex items-center justify-center p-4">
 
-    <!-- Toolbar -->
-    <div class="no-print fixed top-0 left-0 w-full bg-gray-800 text-white p-4 shadow-lg z-50 flex justify-between items-center">
-        <div>
-            <h1 class="font-bold text-lg">Xeta Tech Invoice Generator</h1>
-            <p class="text-xs text-gray-400">Click on dates to edit them before printing.</p>
-        </div>
-        <button onclick="window.print()" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-6 rounded shadow flex items-center gap-2">
-            <i class="fas fa-print"></i> Download / Print PDF
-        </button>
-    </div>
-
-    <!-- Spacer for fixed header -->
-    <div class="h-24 no-print"></div>
-
-    <!-- Invoice Page -->
-    <div class="page relative">
-        
-        <!-- Header Image -->
-        <div class="w-full mb-6 border-b-2 border-gray-100 pb-4">
-            <img src="https://res.cloudinary.com/djdwpjm7x/image/upload/v1771001520/Xeta_Header_wfw12w.png" 
-                 alt="Xeta Tech Solutions" 
-                 class="h-24 object-contain"
-                 onerror="this.style.display='none'; document.getElementById('text-header').style.display='block'">
-            
-            <!-- Fallback Text Header if Image Fails -->
-            <div id="text-header" style="display:none;" class="mt-4">
-                <h1 class="text-3xl font-bold text-blue-900">XETA TECH SOLUTIONS</h1>
-                <p class="text-gray-500">Innovating the Future</p>
+    <div class="max-w-md w-full bg-white rounded-3xl shadow-2xl overflow-hidden border border-slate-100">
+        <!-- Status Header -->
+        <div class="bg-green-500 p-8 text-center relative">
+            <div class="absolute top-4 right-4 text-white/20 text-4xl italic font-black uppercase tracking-tighter select-none">AUTHENTIC</div>
+            <div class="inline-flex items-center justify-center w-20 h-20 bg-white rounded-full mb-4 verified-glow">
+                <i class="fas fa-check-circle text-green-500 text-5xl"></i>
             </div>
+            <h1 class="text-white text-2xl font-bold tracking-tight">Invoice Verified</h1>
+            <p class="text-green-100 text-sm opacity-90">Digital Trust Certificate</p>
         </div>
 
-        <!-- Invoice Info Header -->
-        <div class="flex justify-between items-start mb-8">
-            <div>
-                <span class="bg-blue-100 text-blue-800 text-xs font-semibold px-2.5 py-0.5 rounded">MSME REGISTERED</span>
-                <h2 class="text-4xl font-bold text-gray-800 mt-2">INVOICE</h2>
-                <p class="text-gray-500 text-sm mt-1">Original Recipient Copy</p>
-            </div>
-            <div class="text-right">
-                <div class="mb-2">
-                    <span class="text-gray-500 text-sm block">Invoice Number:</span>
-                    <span class="font-bold text-lg" contenteditable="true">INV-2024-001</span>
-                </div>
-                <div class="mb-2">
-                    <span class="text-gray-500 text-sm block">Invoice Date:</span>
-                    <span class="font-medium" contenteditable="true" id="currentDate">DD/MM/YYYY</span>
-                </div>
-            </div>
-        </div>
-
-        <!-- From / To Section -->
-        <div class="flex flex-wrap -mx-4 mb-8">
-            <!-- From -->
-            <div class="w-1/2 px-4">
-                <h3 class="text-gray-500 text-xs font-bold uppercase tracking-wider mb-2">Billed By (Service Provider)</h3>
-                <div class="text-gray-800">
-                    <p class="font-bold text-lg">Xeta Tech Solutions</p>
-                    <p class="text-sm">Gachibowli</p>
-                    <p class="text-sm">Hyderabad, Telangana, India</p>
-                    <p class="text-sm mt-2"><span class="font-semibold">Website:</span> xetasolutions.in</p>
-                    <p class="text-sm"><span class="font-semibold">UDYAM Reg:</span> UDYAM-AP-20-0084487</p>
-                </div>
+        <!-- Verification Details -->
+        <div class="p-6 space-y-6">
+            <div class="flex justify-between items-center border-b border-slate-50 pb-4">
+                <span class="text-slate-400 text-xs font-bold uppercase tracking-widest">Verification ID</span>
+                <span class="text-slate-800 font-mono text-xs bg-slate-100 px-2 py-1 rounded">XETA-771-V892-001</span>
             </div>
 
-            <!-- To -->
-            <div class="w-1/2 px-4 text-right">
-                <h3 class="text-gray-500 text-xs font-bold uppercase tracking-wider mb-2">Billed To (Client)</h3>
-                <div class="text-gray-800">
-                    <p class="font-bold text-lg">Lakireddy Bali Reddy College of Engineering</p>
-                    <p class="text-sm" contenteditable="true">(LBRCE), Mylavaram</p>
-                    <p class="text-sm" contenteditable="true">Krishna District, Andhra Pradesh</p>
-                </div>
-            </div>
-        </div>
-
-        <!-- Line Items Table -->
-        <div class="w-full mb-8">
-            <table class="w-full border-collapse">
-                <thead>
-                    <tr class="bg-gray-800 text-white">
-                        <th class="p-3 text-left text-sm font-semibold rounded-tl-lg">#</th>
-                        <th class="p-3 text-left text-sm font-semibold w-1/2">Description of Services</th>
-                        <th class="p-3 text-right text-sm font-semibold">Rate</th>
-                        <th class="p-3 text-right text-sm font-semibold">Qty</th>
-                        <th class="p-3 text-right text-sm font-semibold rounded-tr-lg">Amount (INR)</th>
-                    </tr>
-                </thead>
-                <tbody class="text-gray-700">
-                    <tr class="border-b border-gray-200">
-                        <td class="p-3 text-sm">1</td>
-                        <td class="p-3">
-                            <p class="font-bold text-gray-800">Lakshya 2K26 Website</p>
-                            <p class="text-xs text-gray-500 mt-1">Design, Development, Deployment, and Server Maintenance charges.</p>
-                        </td>
-                        <td class="p-3 text-right text-sm">15,000.00</td>
-                        <td class="p-3 text-right text-sm">1</td>
-                        <td class="p-3 text-right font-bold text-gray-800">15,000.00</td>
-                    </tr>
-                    <!-- Add more rows here if needed -->
-                </tbody>
-            </table>
-        </div>
-
-        <!-- Totals & Bank Details -->
-        <div class="flex flex-wrap -mx-4">
-            
-            <!-- Terms (Left Side) -->
-            <div class="w-2/3 px-4 flex flex-col justify-end">
-                <!-- Terms -->
-                <div class="mt-6 mb-4">
-                    <h4 class="text-xs font-bold text-gray-500 uppercase">Terms & Conditions</h4>
-                    <ul class="list-disc list-inside text-xs text-gray-500 mt-1">
-                        <li>Payment is due within 15 days of invoice date.</li>
-                        <li>This is a generated invoice for services rendered.</li>
-                        <li>Subject to Hyderabad Jurisdiction.</li>
-                    </ul>
-                </div>
-            </div>
-
-            <!-- Calculations (Right Side) -->
-            <div class="w-1/3 px-4">
-                <div class="bg-gray-50 p-4 rounded-lg">
-                    <div class="flex justify-between mb-2 text-sm">
-                        <span class="text-gray-600">Subtotal</span>
-                        <span class="font-semibold">₹15,000.00</span>
+            <div class="space-y-4">
+                <div class="flex items-start gap-4">
+                    <div class="w-10 h-10 rounded-xl bg-blue-50 flex items-center justify-center shrink-0">
+                        <i class="fas fa-file-invoice text-blue-600"></i>
                     </div>
-                    <div class="flex justify-between mb-2 text-sm">
-                        <span class="text-gray-600">GST (0%)</span>
-                        <span class="text-gray-400">₹0.00</span>
+                    <div>
+                        <p class="text-slate-400 text-[10px] font-bold uppercase tracking-wider">Invoice Info</p>
+                        <p class="text-slate-800 font-bold">INV-2026-001</p>
+                        <p class="text-slate-500 text-xs">Issued on 14 Feb 2026</p>
                     </div>
-                    <div class="border-t border-gray-300 my-2"></div>
-                    <div class="flex justify-between items-center">
-                        <span class="font-bold text-gray-800">Total Due</span>
-                        <span class="font-bold text-xl text-blue-600">₹15,000.00</span>
+                </div>
+
+                <div class="flex items-start gap-4">
+                    <div class="w-10 h-10 rounded-xl bg-indigo-50 flex items-center justify-center shrink-0">
+                        <i class="fas fa-university text-indigo-600"></i>
                     </div>
+                    <div>
+                        <p class="text-slate-400 text-[10px] font-bold uppercase tracking-wider">Issued To</p>
+                        <p class="text-slate-800 font-bold">LBRCE, Mylavaram</p>
+                        <p class="text-slate-500 text-xs">NTR District, Andhra Pradesh</p>
+                    </div>
+                </div>
+
+                <div class="flex items-start gap-4">
+                    <div class="w-10 h-10 rounded-xl bg-emerald-50 flex items-center justify-center shrink-0">
+                        <i class="fas fa-receipt text-emerald-600"></i>
+                    </div>
+                    <div>
+                        <p class="text-slate-400 text-[10px] font-bold uppercase tracking-wider">Total Amount</p>
+                        <p class="text-2xl font-extrabold text-slate-900">₹15,000.00</p>
+                        <p class="text-emerald-600 text-[10px] font-bold uppercase">Payment Status: Confirmed</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Issuer Signature Meta -->
+            <div class="bg-slate-900 rounded-2xl p-4 text-white">
+                <div class="flex items-center gap-3 mb-3">
+                    <!-- Updated Logo Handling with Fallback -->
+                    <img src="https://res.cloudinary.com/djdwpjm7x/image/upload/v1771001520/Xeta_Header_wfw12w.png" 
+                         alt="Xeta Tech" 
+                         class="h-8 object-contain"
+                         id="issuer-logo"
+                         onerror="this.style.display='none'; document.getElementById('issuer-text-logo').style.display='block'">
                     
-                    <div class="mt-4 text-right">
-                        <p class="text-xs text-gray-500 font-medium">Amount in Words:</p>
-                        <p class="text-xs font-bold italic text-gray-700">Fifteen Thousand Rupees Only</p>
+                    <div id="issuer-text-logo" style="display:none;">
+                        <span class="text-lg font-black tracking-tighter">XETA <span class="text-blue-400">TECH</span></span>
                     </div>
                 </div>
-                
-                <!-- Signature -->
-                <div class="mt-8 text-center">
-                    <!-- Digital Signature Image -->
-                    <div class="h-20 flex items-center justify-center mb-1">
-                        <img src="https://res.cloudinary.com/djdwpjm7x/image/upload/v1771002032/midhun_okdp0w.png" 
-                             alt="Authorized Signature" 
-                             class="h-full object-contain">
+                <div class="flex justify-between items-center text-[10px]">
+                    <div>
+                        <p class="text-slate-400 uppercase font-bold tracking-tighter">Verified By</p>
+                        <p class="text-white font-medium">Xeta Security Compliance</p>
                     </div>
-                    <div class="border-t border-gray-400 w-3/4 mx-auto"></div>
-                    <p class="text-xs font-bold text-gray-600 mt-2">Authorized Signatory</p>
-                    <p class="text-xs text-gray-500">For Xeta Tech Solutions</p>
+                    <div class="text-right">
+                        <p class="text-slate-400 uppercase font-bold tracking-tighter">Timestamp</p>
+                        <p class="text-white font-medium">Feb 14, 2026 • 23:25 IST</p>
+                    </div>
                 </div>
             </div>
         </div>
 
         <!-- Footer -->
-        <div class="absolute bottom-10 left-0 w-full text-center">
-            <p class="text-gray-400 text-xs">Thank you for your business!</p>
+        <div class="p-6 bg-slate-50 text-center border-t border-slate-100">
+            <p class="text-slate-400 text-[10px] uppercase font-bold tracking-widest leading-relaxed">
+                This verification is cryptographically signed.<br>
+                © 2026 Xeta Tech Solutions. All Rights Reserved.
+            </p>
         </div>
-
     </div>
 
-    <script>
-        // Set today's date automatically
-        document.addEventListener('DOMContentLoaded', () => {
-            const dateElement = document.getElementById('currentDate');
-            const today = new Date();
-            const options = { day: 'numeric', month: 'short', year: 'numeric' };
-            dateElement.innerText = today.toLocaleDateString('en-IN', options);
-        });
-    </script>
 </body>
 </html>
