@@ -4,37 +4,144 @@
         xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
         http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
         
-    <!-- Main Enterprise Landing Page -->
-    <!-- This page contains the keywords: Xeta, Xeta Solutions, Xeta Tech Solutions, and Proctorix -->
+    <!-- ========================================== -->
+    <!-- 1. CORE ENTERPRISE PAGES (Highest Priority)-->
+    <!-- ========================================== -->
+    
     <url>
         <loc>https://xetasolutions.in/</loc>
-        <lastmod>2026-03-08</lastmod>
+        <lastmod>2026-03-20</lastmod>
         <changefreq>weekly</changefreq>
         <priority>1.0</priority> 
     </url>
 
-    <!-- Corporate Careers Page -->
+    <!-- ========================================== -->
+    <!-- 2. PROPRIETARY PRODUCTS & PLATFORMS        -->
+    <!-- Crucial for Product-led SEO & Rich Snippets-->
+    <!-- ========================================== -->
+
+    <!-- Flagship: Proctorix -->
     <url>
-        <loc>https://xetasolutions.in/careers</loc>
-        <lastmod>2026-03-08</lastmod>
-        <changefreq>daily</changefreq>
+        <loc>https://xetasolutions.in/products/proctorix</loc>
+        <lastmod>2026-03-20</lastmod>
+        <changefreq>weekly</changefreq>
         <priority>0.9</priority>
     </url>
 
-    <!-- Flagship Product: Xeta Hire -->
+    <!-- Xeta Hire (From your original map) -->
     <url>
         <loc>https://xetasolutions.in/hirewithus</loc>
-        <lastmod>2026-03-08</lastmod>
+        <lastmod>2026-03-20</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.9</priority>
+    </url>
+
+    <!-- Mock Interviews (From your original map) -->
+    <url>
+        <loc>https://xetasolutions.in/mockinterview</loc>
+        <lastmod>2026-03-20</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.9</priority>
+    </url>
+
+    <!-- Voxelyt: AI Language Assessment -->
+    <url>
+        <loc>https://xetasolutions.in/products/voxelyt</loc>
+        <lastmod>2026-03-20</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.9</priority>
+    </url>
+
+    <!-- Testify: Enterprise Certification -->
+    <url>
+        <loc>https://xetasolutions.in/products/testify</loc>
+        <lastmod>2026-03-20</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.9</priority>
+    </url>
+
+    <!-- Inview: Interview Panel Scheduling -->
+    <url>
+        <loc>https://xetasolutions.in/products/inview</loc>
+        <lastmod>2026-03-20</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.9</priority>
+    </url>
+
+    <!-- ========================================== -->
+    <!-- 3. ENGINEERING SERVICES (High Intent B2B)  -->
+    <!-- ========================================== -->
+
+    <url>
+        <loc>https://xetasolutions.in/services/enterprise-infrastructure</loc>
+        <lastmod>2026-03-20</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
     </url>
 
-    <!-- Flagship Product: Mock Interviews -->
     <url>
-        <loc>https://xetasolutions.in/mockinterview</loc>
-        <lastmod>2026-03-08</lastmod>
+        <loc>https://xetasolutions.in/services/ai-ml-systems</loc>
+        <lastmod>2026-03-20</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
+    </url>
+
+    <url>
+        <loc>https://xetasolutions.in/services/software-engineering</loc>
+        <lastmod>2026-03-20</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+
+    <!-- ========================================== -->
+    <!-- 4. CORPORATE & CONVERSION PAGES            -->
+    <!-- ========================================== -->
+
+    <!-- Founder & CEO Profile -->
+    <url>
+        <loc>https://xetasolutions.in/midhun</loc>
+        <lastmod>2026-03-20</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.9</priority>
+    </url>
+
+    <url>
+        <loc>https://xetasolutions.in/about</loc>
+        <lastmod>2026-03-20</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+
+    <url>
+        <loc>https://xetasolutions.in/careers</loc>
+        <lastmod>2026-03-20</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>0.8</priority>
+    </url>
+
+    <url>
+        <loc>https://xetasolutions.in/contact</loc>
+        <lastmod>2026-03-20</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+
+    <!-- ========================================== -->
+    <!-- 5. LEGAL (Required for Trust, Low Priority)-->
+    <!-- ========================================== -->
+
+    <url>
+        <loc>https://xetasolutions.in/privacy-policy</loc>
+        <lastmod>2026-03-20</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.3</priority>
+    </url>
+
+    <url>
+        <loc>https://xetasolutions.in/terms</loc>
+        <lastmod>2026-03-20</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.3</priority>
     </url>
 
 </urlset>
