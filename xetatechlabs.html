@@ -1,14 +1,9 @@
 <!DOCTYPE html>
-<html lang="en" class="scroll-smooth bg-slate-50">
+<html lang="en" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Xeta Tech Labs | Forged in Production</title>
-    
-    <!-- Fonts: Space Grotesk for headings, Inter for body -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Space+Grotesk:wght@400;600;700&display=swap" rel="stylesheet">
     
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -16,40 +11,34 @@
     <!-- Lucide Icons -->
     <script src="https://unpkg.com/lucide@latest"></script>
 
-    <!-- Tailwind Config -->
+    <!-- Tailwind Config for Custom Colors -->
     <script>
         tailwind.config = {
             theme: {
                 extend: {
-                    fontFamily: {
-                        sans: ['Inter', 'sans-serif'],
-                        display: ['Space Grotesk', 'sans-serif'],
-                    },
                     colors: {
                         xeta: {
-                            base: '#f8fafc', // slate-50
-                            surface: '#ffffff', // white
-                            border: '#e2e8f0', // slate-200
-                            primary: '#2563eb', // blue-600
-                            accent: '#0ea5e9', // sky-500
-                            glow: 'rgba(37, 99, 235, 0.1)'
+                            light: '#f8fafc',
+                            nav: '#ffffff',
+                            card: '#ffffff',
+                            primary: '#2563eb',
+                            accent: '#0ea5e9',
+                            glow: '#3b82f6'
                         }
                     },
+                    fontFamily: {
+                        sans: ['Inter', 'system-ui', 'sans-serif'],
+                        mono: ['JetBrains Mono', 'Menlo', 'monospace'],
+                    },
                     animation: {
-                        'scrolling-text': 'scroll 30s linear infinite',
-                        'blob': 'blob 7s infinite',
+                        'float': 'float 6s ease-in-out infinite',
                         'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                        'typing': 'typing 2s steps(20, end), blink .5s step-end infinite alternate',
                     },
                     keyframes: {
-                        scroll: {
-                            '0%': { transform: 'translateX(0)' },
-                            '100%': { transform: 'translateX(-50%)' },
-                        },
-                        blob: {
-                            '0%': { transform: 'translate(0px, 0px) scale(1)' },
-                            '33%': { transform: 'translate(30px, -50px) scale(1.1)' },
-                            '66%': { transform: 'translate(-20px, 20px) scale(0.9)' },
-                            '100%': { transform: 'translate(0px, 0px) scale(1)' },
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-20px)' },
                         }
                     }
                 }
@@ -58,421 +47,437 @@
     </script>
 
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;700&display=swap');
+
         body {
-            color: #0f172a; /* slate-900 */
+            background-color: #ffffff;
+            color: #475569;
+            font-family: 'Inter', sans-serif;
             overflow-x: hidden;
         }
 
-        /* --- Dynamic Background Grid (Light Theme) --- */
-        .bg-grid {
-            background-size: 40px 40px;
-            background-image: linear-gradient(to right, rgba(0, 0, 0, 0.05) 1px, transparent 1px),
-                              linear-gradient(to bottom, rgba(0, 0, 0, 0.05) 1px, transparent 1px);
-            mask-image: radial-gradient(circle at center, black, transparent 80%);
-            -webkit-mask-image: radial-gradient(circle at center, black, transparent 80%);
+        /* Sophisticated Gradients */
+        .bg-mesh {
+            background-color: #ffffff;
+            background-image: 
+                radial-gradient(at 0% 0%, rgba(37, 99, 235, 0.04) 0px, transparent 50%),
+                radial-gradient(at 100% 0%, rgba(6, 182, 212, 0.04) 0px, transparent 50%),
+                radial-gradient(at 100% 100%, rgba(37, 99, 235, 0.04) 0px, transparent 50%);
         }
 
-        /* --- Text Gradients --- */
-        .text-gradient {
-            background: linear-gradient(135deg, #0f172a 0%, #334155 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-        .text-gradient-blue {
-            background: linear-gradient(135deg, #0284c7 0%, #2563eb 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
+        /* Glass & Cards */
+        .glass-nav {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
         }
 
-        /* --- Premium Mouse-Tracking Spotlight Cards (Light Theme) --- */
-        .spotlight-wrapper {
-            position: relative;
+        .premium-card {
             background: #ffffff;
-            border-radius: 1rem;
-            border: 1px solid #e2e8f0;
-            overflow: hidden;
+            border: 1px solid rgba(0, 0, 0, 0.08);
             box-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.03);
-            transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
-        }
-        .spotlight-wrapper::before {
-            content: "";
-            position: absolute;
-            top: 0; left: 0; right: 0; bottom: 0;
-            background: radial-gradient(800px circle at var(--mouse-x) var(--mouse-y), rgba(37, 99, 235, 0.04), transparent 40%);
-            z-index: 0;
-            opacity: 0;
-            transition: opacity 0.5s;
-        }
-        .spotlight-wrapper:hover::before {
-            opacity: 1;
-        }
-        .spotlight-wrapper:hover {
-            transform: translateY(-4px);
-            border-color: #cbd5e1;
-            box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.08);
-        }
-        .spotlight-content {
-            position: relative;
-            z-index: 1;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
-        /* --- Scroll Reveal Classes --- */
+        .premium-card:hover {
+            border-color: rgba(37, 99, 235, 0.3);
+            box-shadow: 0 20px 40px -10px rgba(37, 99, 235, 0.1);
+            transform: translateY(-4px);
+        }
+
+        .text-gradient {
+            background: linear-gradient(to right, #0284c7, #2563eb);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #f8fafc; }
+        ::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #94a3b8; }
+
+        /* Scroll Reveal Animations */
         .reveal {
             opacity: 0;
-            transform: translateY(30px);
-            transition: all 0.8s cubic-bezier(0.5, 0, 0, 1);
+            transform: translateY(40px);
+            transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
         }
         .reveal.active {
             opacity: 1;
             transform: translateY(0);
         }
-        .reveal-delay-1 { transition-delay: 0.1s; }
-        .reveal-delay-2 { transition-delay: 0.2s; }
-        .reveal-delay-3 { transition-delay: 0.3s; }
-
-        /* --- Glowing Orbs (Light Theme) --- */
-        .orb-1 {
-            position: absolute; top: -10%; left: -10%;
-            width: 50vw; height: 50vw;
-            background: radial-gradient(circle, rgba(37,99,235,0.08) 0%, rgba(248,250,252,0) 70%);
-            filter: blur(60px); z-index: -1;
-        }
-        .orb-2 {
-            position: absolute; top: 40%; right: -10%;
-            width: 40vw; height: 40vw;
-            background: radial-gradient(circle, rgba(14,165,233,0.06) 0%, rgba(248,250,252,0) 70%);
-            filter: blur(60px); z-index: -1;
-        }
-
-        /* Nav Blur */
-        .nav-scrolled {
-            background: rgba(255, 255, 255, 0.85);
-            backdrop-filter: blur(16px);
-            border-bottom: 1px solid #e2e8f0;
-        }
-
-        /* Ticker Fade */
-        .ticker-mask {
-            mask-image: linear-gradient(to right, transparent, white 10%, white 90%, transparent);
-            -webkit-mask-image: linear-gradient(to right, transparent, white 10%, white 90%, transparent);
+        .delay-100 { transition-delay: 100ms; }
+        .delay-200 { transition-delay: 200ms; }
+        .delay-300 { transition-delay: 300ms; }
+        
+        /* Bento Grid Specific */
+        .bento-hover:hover .bento-icon {
+            transform: scale(1.1) rotate(-5deg);
+            color: #ffffff;
         }
     </style>
 </head>
-<body class="antialiased selection:bg-xeta-primary selection:text-white relative">
-
-    <!-- Background Elements -->
-    <div class="fixed inset-0 z-[-2] bg-xeta-base"></div>
-    <div class="fixed inset-0 z-[-1] bg-grid opacity-60 pointer-events-none"></div>
-    <div class="orb-1 animate-blob pointer-events-none"></div>
-    <div class="orb-2 animate-blob pointer-events-none animation-delay-2000"></div>
+<body class="antialiased selection:bg-xeta-primary selection:text-white bg-mesh relative">
 
     <!-- Navigation -->
-    <nav class="fixed w-full z-50 transition-all duration-300 border-b border-transparent" id="navbar">
+    <nav class="fixed w-full z-50 glass-nav transition-all duration-300" id="navbar">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center h-20">
-                
                 <!-- Logo -->
-                <div class="flex items-center gap-3 cursor-pointer group" onclick="window.scrollTo(0,0)">
-                    <div class="w-10 h-10 rounded-lg bg-gradient-to-br from-xeta-primary to-xeta-accent flex items-center justify-center font-display font-bold text-xl text-white shadow-md group-hover:shadow-lg transition-all">
-                        X
+                <div class="flex items-center gap-4 cursor-pointer group" onclick="window.scrollTo(0,0)">
+                    <div class="relative w-10 h-10 flex items-center justify-center">
+                        <div class="absolute inset-0 bg-gradient-to-br from-xeta-primary to-xeta-accent rounded-lg blur-sm opacity-30 group-hover:opacity-70 transition-opacity duration-300"></div>
+                        <div class="relative w-full h-full bg-white rounded-lg border border-slate-200 flex items-center justify-center overflow-hidden">
+                            <span class="text-transparent bg-clip-text bg-gradient-to-br from-slate-900 to-slate-600 font-extrabold text-xl tracking-tighter">X</span>
+                        </div>
                     </div>
                     <div class="flex flex-col">
-                        <span class="text-xl font-display font-bold text-slate-900 tracking-wide leading-tight">XETA TECH LABS</span>
-                        <span class="text-[9px] text-slate-500 tracking-[0.2em] uppercase font-semibold">By Xeta Tech Solutions</span>
+                        <span class="text-xl font-bold text-slate-900 tracking-tight leading-none mb-1">XETA TECH LABS</span>
+                        <span class="text-[9px] text-xeta-primary tracking-[0.2em] uppercase font-bold flex items-center gap-1">
+                            <i data-lucide="shield-check" class="w-3 h-3"></i> By Xeta Tech Solutions
+                        </span>
                     </div>
                 </div>
 
                 <!-- Desktop Menu -->
-                <div class="hidden md:flex items-center space-x-8">
-                    <a href="#about" class="text-sm font-medium text-slate-600 hover:text-xeta-primary transition-colors">Philosophy</a>
-                    <a href="#approach" class="text-sm font-medium text-slate-600 hover:text-xeta-primary transition-colors">Pipeline</a>
-                    <a href="#programs" class="text-sm font-medium text-slate-600 hover:text-xeta-primary transition-colors">Engineering Tracks</a>
-                    <a href="#internship" class="text-sm font-medium text-slate-600 hover:text-xeta-primary transition-colors">Careers</a>
-                    <a href="#apply" class="relative group px-6 py-2">
-                        <div class="absolute inset-0 bg-gradient-to-r from-xeta-primary to-xeta-accent rounded-md opacity-0 group-hover:opacity-100 transition-opacity"></div>
-                        <div class="relative bg-slate-900 group-hover:bg-transparent text-white px-6 py-2 rounded-md text-sm font-bold transition-all flex items-center gap-2 border border-transparent group-hover:border-white/20">
-                            Apply Now <i data-lucide="arrow-right" class="w-4 h-4"></i>
-                        </div>
+                <div class="hidden md:flex items-center space-x-1">
+                    <a href="#about" class="px-4 py-2 text-sm font-semibold text-slate-600 hover:text-slate-900 hover:bg-slate-100 rounded-md transition-all">About</a>
+                    <a href="#approach" class="px-4 py-2 text-sm font-semibold text-slate-600 hover:text-slate-900 hover:bg-slate-100 rounded-md transition-all">Pipeline</a>
+                    <a href="#programs" class="px-4 py-2 text-sm font-semibold text-slate-600 hover:text-slate-900 hover:bg-slate-100 rounded-md transition-all">Tracks</a>
+                    <a href="#internship" class="px-4 py-2 text-sm font-semibold text-slate-600 hover:text-slate-900 hover:bg-slate-100 rounded-md transition-all">Internships</a>
+                    <div class="w-px h-4 bg-slate-200 mx-4"></div>
+                    <a href="#apply" class="relative inline-flex items-center justify-center px-6 py-2 text-sm font-bold text-white transition-all duration-200 bg-xeta-primary border border-transparent rounded-lg hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-xeta-primary shadow-[0_4px_14px_rgba(37,99,235,0.25)] hover:shadow-[0_6px_20px_rgba(37,99,235,0.35)]">
+                        Apply Now
                     </a>
                 </div>
 
                 <!-- Mobile Menu Button -->
                 <div class="md:hidden flex items-center">
                     <button id="mobile-menu-btn" class="text-slate-600 hover:text-slate-900 p-2">
-                        <i data-lucide="menu"></i>
+                        <i data-lucide="menu" class="w-6 h-6"></i>
                     </button>
                 </div>
             </div>
         </div>
 
         <!-- Mobile Menu -->
-        <div id="mobile-menu" class="hidden md:hidden bg-white/95 backdrop-blur-xl border-t border-slate-200 absolute w-full shadow-2xl">
-            <div class="px-4 pt-2 pb-6 space-y-2">
-                <a href="#about" class="block px-3 py-3 text-base font-medium text-slate-600 hover:text-slate-900 hover:bg-slate-50 rounded-lg">Philosophy</a>
-                <a href="#approach" class="block px-3 py-3 text-base font-medium text-slate-600 hover:text-slate-900 hover:bg-slate-50 rounded-lg">Pipeline</a>
-                <a href="#programs" class="block px-3 py-3 text-base font-medium text-slate-600 hover:text-slate-900 hover:bg-slate-50 rounded-lg">Engineering Tracks</a>
-                <a href="#internship" class="block px-3 py-3 text-base font-medium text-slate-600 hover:text-slate-900 hover:bg-slate-50 rounded-lg">Careers</a>
-                <a href="#apply" class="block px-3 py-3 text-base font-bold text-xeta-primary mt-4">Apply Now -></a>
+        <div id="mobile-menu" class="hidden md:hidden glass-nav border-t border-slate-100 absolute w-full backdrop-blur-xl bg-white/95">
+            <div class="px-4 pt-4 pb-8 space-y-2 shadow-lg">
+                <a href="#about" class="block px-4 py-3 text-base font-semibold text-slate-600 hover:text-slate-900 hover:bg-slate-50 rounded-lg">About</a>
+                <a href="#approach" class="block px-4 py-3 text-base font-semibold text-slate-600 hover:text-slate-900 hover:bg-slate-50 rounded-lg">Pipeline</a>
+                <a href="#programs" class="block px-4 py-3 text-base font-semibold text-slate-600 hover:text-slate-900 hover:bg-slate-50 rounded-lg">Tracks</a>
+                <a href="#internship" class="block px-4 py-3 text-base font-semibold text-slate-600 hover:text-slate-900 hover:bg-slate-50 rounded-lg">Internships</a>
+                <a href="#apply" class="block px-4 py-3 text-base font-bold text-center text-white bg-xeta-primary rounded-lg mt-4 shadow-[0_4px_14px_rgba(37,99,235,0.25)]">Apply Now</a>
             </div>
         </div>
     </nav>
 
-    <!-- Hero Section -->
-    <section class="relative min-h-screen flex items-center pt-20 overflow-hidden">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full grid lg:grid-cols-2 gap-12 items-center">
-            
-            <!-- Hero Content -->
-            <div class="text-left reveal">
-                <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white border border-slate-200 shadow-sm mb-8">
-                    <span class="flex h-2 w-2 rounded-full bg-green-500 animate-pulse"></span>
-                    <span class="text-[11px] font-semibold text-slate-600 uppercase tracking-widest">Cohort 0 Registrations Open</span>
-                </div>
+    <!-- Dynamic Hero Section -->
+    <section class="relative pt-32 pb-20 lg:pt-48 lg:pb-32 overflow-hidden min-h-[90vh] flex items-center">
+        <!-- Abstract Tech Elements -->
+        <div class="absolute top-1/4 right-10 w-64 h-64 bg-xeta-primary/10 rounded-full blur-[80px] animate-pulse-slow"></div>
+        <div class="absolute bottom-1/4 left-10 w-96 h-96 bg-xeta-accent/5 rounded-full blur-[100px] animate-pulse-slow delay-1000"></div>
+        
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full">
+            <div class="grid lg:grid-cols-2 gap-12 lg:gap-8 items-center">
                 
-                <h1 class="text-5xl sm:text-6xl lg:text-7xl font-display font-bold text-slate-900 tracking-tight mb-6 leading-[1.1]">
-                    Forged in <span class="text-gradient-blue block mt-2">Production.</span>
-                </h1>
-                
-                <p class="text-lg md:text-xl text-slate-600 mb-10 max-w-xl font-light leading-relaxed">
-                    Stop watching tutorials. Start building scalable systems. Xeta Tech Labs is the ultimate engineering pipeline turning students into deployable developers through real-world execution.
-                </p>
-                
-                <div class="flex flex-col sm:flex-row gap-4">
-                    <a href="#programs" class="bg-slate-900 text-white px-8 py-4 rounded-lg font-bold text-lg hover:bg-slate-800 shadow-lg hover:shadow-xl transition-all flex items-center justify-center gap-2 group">
-                        Explore Tracks 
-                        <i data-lucide="chevron-right" class="w-5 h-5 group-hover:translate-x-1 transition-transform"></i>
-                    </a>
-                    <a href="#about" class="bg-white border border-slate-200 hover:border-slate-300 hover:bg-slate-50 text-slate-700 px-8 py-4 rounded-lg font-medium text-lg transition-all flex items-center justify-center gap-2 shadow-sm">
-                        <i data-lucide="terminal" class="w-5 h-5 text-xeta-primary"></i> View Architecture
-                    </a>
-                </div>
-            </div>
-
-            <!-- Hero Visual (Terminal / Code Block) - Kept Dark for High Contrast! -->
-            <div class="hidden lg:block relative reveal reveal-delay-2">
-                <div class="absolute inset-0 bg-gradient-to-tr from-xeta-primary/20 to-transparent rounded-2xl blur-2xl"></div>
-                <!-- Dark terminal window to stand out on light background -->
-                <div class="relative bg-[#0d1117] border border-slate-800 rounded-2xl overflow-hidden shadow-2xl p-1 transform rotate-1 hover:rotate-0 transition-transform duration-500">
-                    <div class="bg-[#161b22] rounded-xl overflow-hidden spotlight-content">
-                        <!-- Terminal Header -->
-                        <div class="flex items-center gap-2 px-4 py-3 border-b border-slate-800 bg-[#0d1117]">
-                            <div class="w-3 h-3 rounded-full bg-red-500/80"></div>
-                            <div class="w-3 h-3 rounded-full bg-yellow-500/80"></div>
-                            <div class="w-3 h-3 rounded-full bg-green-500/80"></div>
-                            <span class="ml-4 text-xs font-mono text-slate-500">production_deploy.sh</span>
-                        </div>
-                        <!-- Terminal Content -->
-                        <div class="p-6 font-mono text-sm leading-relaxed text-slate-300">
-                            <p><span class="text-xeta-accent">xeta-cli</span> init --project "RealWorldApp"</p>
-                            <p class="text-slate-500 mt-2">> Initializing environments...</p>
-                            <p class="text-slate-500">> Fetching AWS configurations...</p>
-                            <p class="mt-4"><span class="text-green-400">✔</span> Logic Foundations Built</p>
-                            <p><span class="text-green-400">✔</span> APIs Constructed & Tested</p>
-                            <p><span class="text-green-400">✔</span> CI/CD Pipeline Active</p>
-                            <p class="mt-4 animate-pulse-slow"><span class="text-xeta-primary">deploying to global edge network...</span></p>
-                            <p class="mt-4 text-white font-bold border-l-2 border-xeta-accent pl-3">STATUS: Student Ready for Production</p>
-                        </div>
+                <!-- Hero Text -->
+                <div class="text-center lg:text-left reveal">
+                    <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full premium-card mb-8">
+                        <span class="flex h-2 w-2 rounded-full bg-green-500 animate-pulse"></span>
+                        <span class="text-xs font-bold text-slate-700 tracking-wider">COHORT 0 APPLICATIONS OPEN</span>
                     </div>
-                </div>
-            </div>
-
-        </div>
-    </section>
-
-    <!-- Tech Stack Ticker -->
-    <div class="w-full border-y border-slate-200 bg-white/50 backdrop-blur-sm py-6 overflow-hidden ticker-mask relative z-20">
-        <div class="flex w-[200%] animate-scrolling-text">
-            <!-- Ticker Items (Duplicated for seamless loop) -->
-            <div class="flex-1 flex justify-around items-center opacity-40 hover:opacity-80 grayscale hover:grayscale-0 transition-all duration-500">
-                <span class="text-lg font-display font-bold text-slate-800 tracking-widest uppercase">AWS</span>
-                <span class="text-lg font-display font-bold text-slate-800 tracking-widest uppercase">React.js</span>
-                <span class="text-lg font-display font-bold text-slate-800 tracking-widest uppercase">Docker</span>
-                <span class="text-lg font-display font-bold text-slate-800 tracking-widest uppercase">Node.js</span>
-                <span class="text-lg font-display font-bold text-slate-800 tracking-widest uppercase">Python AI</span>
-                <span class="text-lg font-display font-bold text-slate-800 tracking-widest uppercase">MongoDB</span>
-                <span class="text-lg font-display font-bold text-slate-800 tracking-widest uppercase">CI/CD</span>
-            </div>
-            <div class="flex-1 flex justify-around items-center opacity-40 hover:opacity-80 grayscale hover:grayscale-0 transition-all duration-500">
-                <span class="text-lg font-display font-bold text-slate-800 tracking-widest uppercase">AWS</span>
-                <span class="text-lg font-display font-bold text-slate-800 tracking-widest uppercase">React.js</span>
-                <span class="text-lg font-display font-bold text-slate-800 tracking-widest uppercase">Docker</span>
-                <span class="text-lg font-display font-bold text-slate-800 tracking-widest uppercase">Node.js</span>
-                <span class="text-lg font-display font-bold text-slate-800 tracking-widest uppercase">Python AI</span>
-                <span class="text-lg font-display font-bold text-slate-800 tracking-widest uppercase">MongoDB</span>
-                <span class="text-lg font-display font-bold text-slate-800 tracking-widest uppercase">CI/CD</span>
-            </div>
-        </div>
-    </div>
-
-    <!-- Parent Company Authority Section -->
-    <section class="py-24 relative z-20 bg-gradient-to-b from-slate-50 to-white">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 reveal">
-            <div class="spotlight-wrapper rounded-3xl p-1 bg-gradient-to-b from-slate-200 to-transparent">
-                <div class="bg-white spotlight-content rounded-[23px] p-8 md:p-14 relative overflow-hidden flex flex-col md:flex-row items-center gap-12 border border-slate-100 shadow-sm">
                     
-                    <!-- Background Logo Watermark -->
-                    <div class="absolute -right-20 -bottom-20 text-[250px] font-display font-black text-slate-50 leading-none pointer-events-none select-none">
-                        XETA
-                    </div>
-
-                    <div class="flex-1 z-10">
-                        <div class="inline-flex items-center gap-2 mb-6">
-                            <span class="px-3 py-1 bg-blue-50 border border-blue-100 rounded text-xeta-primary text-xs font-bold tracking-widest uppercase">Enterprise Backed</span>
-                        </div>
-                        <h2 class="text-3xl md:text-4xl font-display font-bold text-slate-900 mb-4">
-                            An Initiative by <br/>
-                            <span class="text-gradient-blue">Xeta Tech Solutions</span>
-                        </h2>
-                        <p class="text-slate-600 text-lg leading-relaxed mb-8 max-w-2xl">
-                            We don't just teach technology; we engineer it. Xeta Tech Solutions is a powerhouse in enterprise software engineering, building highly scalable cloud systems, AI integrations, and high-load platforms serving thousands of concurrent users globally. 
-                        </p>
-                        
-                        <div class="grid grid-cols-2 gap-6 mb-8">
-                            <div class="border-l-2 border-xeta-primary pl-4">
-                                <div class="text-2xl font-bold text-slate-900">Scale</div>
-                                <div class="text-sm text-slate-500">Zero-downtime architecture</div>
-                            </div>
-                            <div class="border-l-2 border-xeta-accent pl-4">
-                                <div class="text-2xl font-bold text-slate-900">Products</div>
-                                <div class="text-sm text-slate-500">Proctorix, Testify, Voxelyt</div>
-                            </div>
-                        </div>
-
-                        <a href="https://xetasolutions.in/" target="_blank" class="inline-flex items-center gap-2 text-sm font-bold text-slate-700 bg-slate-50 hover:bg-slate-100 border border-slate-200 px-5 py-2.5 rounded-md transition-all shadow-sm">
-                            Visit Parent Company <i data-lucide="external-link" class="w-4 h-4 text-xeta-primary"></i>
+                    <h1 class="text-5xl md:text-6xl lg:text-7xl font-extrabold text-slate-900 tracking-tight leading-[1.1] mb-6">
+                        Forged in <br/>
+                        <span class="text-transparent bg-clip-text bg-gradient-to-r from-xeta-primary to-xeta-accent">Production.</span>
+                    </h1>
+                    
+                    <p class="text-lg md:text-xl text-slate-600 max-w-2xl mx-auto lg:mx-0 leading-relaxed mb-10">
+                        Stop watching tutorials. At Xeta Tech Labs, you build real applications, deploy on AWS, and earn paid internships working on our enterprise systems.
+                    </p>
+                    
+                    <div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
+                        <a href="#programs" class="group relative px-8 py-4 bg-slate-900 text-white rounded-lg font-bold text-lg transition-all hover:bg-slate-800 flex items-center justify-center gap-2 shadow-lg shadow-slate-900/20">
+                            <span class="relative z-10 flex items-center gap-2">Explore Tracks <i data-lucide="arrow-right" class="w-5 h-5 group-hover:translate-x-1 transition-transform"></i></span>
+                        </a>
+                        <a href="#about" class="px-8 py-4 bg-white text-slate-900 rounded-lg font-bold text-lg transition-all hover:bg-slate-50 flex items-center justify-center border border-slate-200 shadow-sm">
+                            See How We Build
                         </a>
                     </div>
+                </div>
 
-                    <!-- Visual Tech Graphic -->
-                    <div class="hidden lg:flex w-72 h-72 relative z-10 items-center justify-center">
-                        <div class="absolute inset-0 border border-slate-200 rounded-full animate-[spin_10s_linear_infinite] border-dashed"></div>
-                        <div class="absolute inset-4 border border-blue-200 rounded-full animate-[spin_15s_linear_infinite_reverse]"></div>
-                        <div class="absolute inset-8 bg-gradient-to-tr from-blue-50 to-sky-50 rounded-full backdrop-blur-md flex items-center justify-center border border-white shadow-[0_0_50px_rgba(37,99,235,0.1)]">
-                            <i data-lucide="cpu" class="w-16 h-16 text-xeta-primary drop-shadow-sm"></i>
+                <!-- Hero Visual - Animated Terminal UI (Kept Dark for Contrast) -->
+                <div class="relative lg:ml-auto w-full max-w-lg mx-auto lg:max-w-none animate-float reveal delay-200">
+                    <div class="absolute -inset-1 bg-gradient-to-r from-xeta-primary to-xeta-accent rounded-2xl blur opacity-20"></div>
+                    <div class="relative rounded-2xl bg-[#090D16] border border-slate-800 overflow-hidden shadow-[0_20px_50px_-12px_rgba(0,0,0,0.5)]">
+                        <!-- Terminal Header -->
+                        <div class="flex items-center px-4 py-3 bg-[#0B1221] border-b border-slate-800">
+                            <div class="flex gap-2">
+                                <div class="w-3 h-3 rounded-full bg-red-500/80"></div>
+                                <div class="w-3 h-3 rounded-full bg-yellow-500/80"></div>
+                                <div class="w-3 h-3 rounded-full bg-green-500/80"></div>
+                            </div>
+                            <div class="mx-auto text-xs font-mono text-slate-500">production-deploy.sh</div>
+                        </div>
+                        <!-- Terminal Body -->
+                        <div class="p-6 font-mono text-sm sm:text-base space-y-3 h-[300px] flex flex-col justify-end text-left">
+                            <div class="text-slate-400 flex items-center gap-2">
+                                <span class="text-xeta-primary">➜</span> 
+                                <span>~/xeta-labs/projects</span>
+                            </div>
+                            <div class="text-slate-300 flex items-center gap-2">
+                                <span class="text-xeta-accent">$</span> 
+                                <span>git push origin main</span>
+                            </div>
+                            <div class="text-slate-400">Enumerating objects: 15, done.</div>
+                            <div class="text-slate-400">Counting objects: 100% (15/15), done.</div>
+                            <div class="text-xeta-accent flex items-center gap-2 mt-4">
+                                <span class="text-xeta-primary">$</span> 
+                                <span>xeta-cli deploy --env=production</span>
+                            </div>
+                            <div class="text-yellow-400 flex items-center gap-2">
+                                <i data-lucide="loader" class="w-4 h-4 animate-spin"></i> Provisioning AWS EC2 & RDS...
+                            </div>
+                            <div class="text-green-400 font-bold flex items-center gap-2 mt-2">
+                                <i data-lucide="check-circle" class="w-5 h-5"></i> Deployment Successful!
+                            </div>
+                            <div class="text-slate-300 text-xs mt-2 p-2 bg-white/5 rounded border border-white/10">
+                                Live URL: <a href="#" class="text-xeta-accent hover:underline">https://your-project.xetalabs.dev</a>
+                            </div>
                         </div>
                     </div>
+                </div>
 
+            </div>
+        </div>
+    </section>
+
+    <!-- Enterprise Trust Banner -->
+    <section class="relative z-20 border-y border-slate-200 bg-slate-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 lg:py-10">
+            <div class="flex flex-col lg:flex-row items-center justify-between gap-8 reveal">
+                <div class="flex-1">
+                    <div class="flex items-center gap-3 mb-2">
+                        <div class="p-2 rounded bg-xeta-primary/10 border border-xeta-primary/20">
+                            <i data-lucide="building-2" class="text-xeta-primary w-5 h-5"></i>
+                        </div>
+                        <h3 class="text-sm font-extrabold text-slate-500 uppercase tracking-widest">Industry Backed Initiative</h3>
+                    </div>
+                    <p class="text-slate-600 max-w-3xl mt-2 font-medium">
+                        Powered by <strong class="text-slate-900">Xeta Tech Solutions</strong> — an enterprise software engineering company building scalable cloud systems, AI platforms, and high-load architectures handling 6K+ concurrent users. We train you exactly how we build for our clients.
+                    </p>
+                </div>
+                <div class="flex-shrink-0">
+                    <a href="https://xetasolutions.in/" target="_blank" class="premium-card px-6 py-3 rounded-lg inline-flex items-center gap-2 text-slate-700 hover:text-xeta-primary transition-colors font-bold text-sm group shadow-sm">
+                        Visit Xeta Tech Solutions <i data-lucide="arrow-up-right" class="w-4 h-4 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform"></i>
+                    </a>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Mission & Approach (Bento Grid) -->
-    <section id="about" class="py-24 relative bg-white border-y border-slate-100">
+    <!-- Mission / Core Philosophy -->
+    <section id="about" class="py-24 lg:py-32 relative">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-16 reveal">
-                <h2 class="text-3xl md:text-5xl font-display font-bold text-slate-900 mb-6">
-                    Learn the Stack. Build the Product. <br/>
-                    <span class="text-gradient-blue">Earn the Internship.</span>
-                </h2>
-                <p class="text-slate-600 max-w-2xl mx-auto text-lg">
-                    Traditional education gives you a certificate. We give you a production-ready portfolio, live AWS deployments, and a direct pipeline into enterprise engineering teams.
-                </p>
+            <div class="text-center mb-20 reveal">
+                <h2 class="text-4xl md:text-5xl font-black text-slate-900 mb-6 tracking-tight">Learn the Stack. Build the Product. <br/><span class="text-transparent bg-clip-text bg-gradient-to-r from-xeta-primary to-xeta-accent">Earn the Internship.</span></h2>
+                <p class="text-lg text-slate-600 max-w-2xl mx-auto">We bridge the gap between academic theory and industry reality. Here is how our ecosystem is different from generic courses.</p>
             </div>
 
-            <div class="grid md:grid-cols-3 gap-6 max-w-5xl mx-auto">
-                <!-- Bento Box 1 -->
-                <div class="spotlight-wrapper p-8 rounded-2xl md:col-span-2 reveal reveal-delay-1 flex flex-col justify-between min-h-[250px]">
-                    <div class="spotlight-content">
-                        <div class="w-12 h-12 rounded-xl bg-blue-50 flex items-center justify-center mb-6 border border-blue-100">
-                            <i data-lucide="code" class="text-xeta-primary w-6 h-6"></i>
-                        </div>
-                        <h3 class="text-2xl font-display font-bold text-slate-900 mb-3">Real-Time Build Sessions</h3>
-                        <p class="text-slate-600 leading-relaxed max-w-md">No pre-recorded slideshows. We code live. We debug live. You learn how to architect and build applications exactly how enterprise teams do it.</p>
+            <div class="grid md:grid-cols-3 gap-6 lg:gap-8">
+                <!-- Philosophy 1 -->
+                <div class="premium-card p-8 rounded-2xl reveal delay-100 group bento-hover">
+                    <div class="w-14 h-14 rounded-xl bg-slate-50 border border-slate-200 flex items-center justify-center mb-6 shadow-sm transition-transform duration-300 bento-icon">
+                        <i data-lucide="code-xml" class="text-slate-700 w-7 h-7"></i>
                     </div>
+                    <h3 class="text-2xl font-bold text-slate-900 mb-4">Real-Time Development</h3>
+                    <p class="text-slate-600 leading-relaxed font-medium">No recorded PPTs. Learn through daily live build sessions, strict code reviews, and weekly project sprints.</p>
                 </div>
-
-                <!-- Bento Box 2 -->
-                <div class="spotlight-wrapper p-8 rounded-2xl reveal reveal-delay-2 flex flex-col justify-between min-h-[250px] bg-slate-50">
-                    <div class="spotlight-content">
-                        <div class="w-12 h-12 rounded-xl bg-emerald-50 flex items-center justify-center mb-6 border border-emerald-100">
-                            <i data-lucide="rocket" class="text-emerald-600 w-6 h-6"></i>
-                        </div>
-                        <h3 class="text-xl font-display font-bold text-slate-900 mb-3">Live AWS Deployment</h3>
-                        <p class="text-slate-600 text-sm leading-relaxed">Every project hits a real server. Prove your skills with live URLs, real databases, and functional global applications.</p>
+                <!-- Philosophy 2 -->
+                <div class="premium-card p-8 rounded-2xl reveal delay-200 group bento-hover">
+                    <div class="w-14 h-14 rounded-xl bg-slate-50 border border-slate-200 flex items-center justify-center mb-6 shadow-sm transition-transform duration-300 bento-icon">
+                        <i data-lucide="cloud-upload" class="text-slate-700 w-7 h-7"></i>
                     </div>
+                    <h3 class="text-2xl font-bold text-slate-900 mb-4">Production Deployment</h3>
+                    <p class="text-slate-600 leading-relaxed font-medium">Localhost isn't enough. Every project you build is hosted on AWS, made publicly accessible, and designed to handle real users.</p>
                 </div>
-
-                <!-- Bento Box 3 -->
-                <div class="spotlight-wrapper p-8 rounded-2xl reveal reveal-delay-3 flex flex-col justify-between min-h-[250px] bg-slate-50">
-                    <div class="spotlight-content">
-                        <div class="inline-flex px-3 py-1 bg-amber-50 text-amber-700 border border-amber-100 text-[10px] font-bold rounded uppercase tracking-wider mb-6">Performance Based</div>
-                        <h3 class="text-xl font-display font-bold text-slate-900 mb-3">Paid Internships</h3>
-                        <p class="text-slate-600 text-sm leading-relaxed">Top 10% of the cohort don't just graduate; they get hired. Work directly on Xeta Tech Solutions products and real client deliverables.</p>
+                <!-- Philosophy 3 -->
+                <div class="premium-card p-8 rounded-2xl reveal delay-300 group bento-hover relative overflow-hidden">
+                    <div class="absolute top-0 right-0 w-32 h-32 bg-xeta-primary/10 blur-[50px]"></div>
+                    <div class="w-14 h-14 rounded-xl bg-blue-50 border border-blue-100 flex items-center justify-center mb-6 shadow-sm transition-transform duration-300 bento-icon relative z-10">
+                        <i data-lucide="briefcase" class="text-xeta-primary w-7 h-7"></i>
                     </div>
+                    <h3 class="text-2xl font-bold text-slate-900 mb-4 relative z-10">Paid Internships</h3>
+                    <p class="text-slate-600 leading-relaxed font-medium relative z-10">Perform well and get selected to work on our real startup products (Proctorix, Testify) and live client projects with a stipend.</p>
                 </div>
+            </div>
+        </div>
+    </section>
 
-                <!-- Bento Box 4 -->
-                <div class="spotlight-wrapper p-8 rounded-2xl md:col-span-2 reveal reveal-delay-1 flex flex-col justify-between min-h-[250px]">
-                    <div class="spotlight-content relative">
-                        <div class="w-12 h-12 rounded-xl bg-purple-50 flex items-center justify-center mb-6 border border-purple-100">
-                            <i data-lucide="git-merge" class="text-purple-600 w-6 h-6"></i>
+    <!-- Pipeline (Modern Vertical Timeline) -->
+    <section id="approach" class="py-24 lg:py-32 bg-slate-50 relative border-y border-slate-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="mb-20 text-center reveal">
+                <h2 class="text-4xl md:text-5xl font-black text-slate-900 mb-4 tracking-tight">The Engineering <span class="text-xeta-primary">Pipeline</span></h2>
+                <p class="text-lg text-slate-600 max-w-2xl mx-auto">From writing your first logic loop to deploying a scalable architecture.</p>
+            </div>
+
+            <!-- Sleek Timeline -->
+            <div class="relative max-w-4xl mx-auto">
+                <!-- Glowing Center Line -->
+                <div class="absolute left-4 md:left-1/2 top-0 bottom-0 w-px bg-gradient-to-b from-xeta-primary via-xeta-accent to-green-500 opacity-30 transform md:-translate-x-1/2"></div>
+
+                <div class="space-y-12">
+                    <!-- Step 1 -->
+                    <div class="relative flex flex-col md:flex-row items-start md:items-center justify-between group reveal">
+                        <div class="absolute left-4 md:left-1/2 w-4 h-4 rounded-full bg-white border-2 border-xeta-primary transform -translate-x-1.5 md:-translate-x-2 mt-6 md:mt-0 shadow-[0_0_10px_rgba(37,99,235,0.3)] z-10"></div>
+                        <div class="ml-12 md:ml-0 md:w-[45%] text-left md:text-right pr-0 md:pr-8">
+                            <span class="text-xeta-primary font-bold tracking-wider text-sm uppercase">Stage 1</span>
+                            <h3 class="text-2xl font-bold text-slate-900 mt-1 mb-2">Foundations</h3>
+                            <p class="text-slate-600 text-sm">C, Python, Java. Core focus on problem solving, logic building, memory thinking, and Git/GitHub version control.</p>
                         </div>
-                        <h3 class="text-2xl font-display font-bold text-slate-900 mb-3">Industry-Standard Workflows</h3>
-                        <p class="text-slate-600 leading-relaxed max-w-md">Master Git branching, Pull Requests, Agile sprints, and CI/CD pipelines. We treat you like a Junior Engineer from Day 1.</p>
-                        
-                        <i data-lucide="git-branch-plus" class="absolute right-4 bottom-4 w-32 h-32 text-slate-100 pointer-events-none"></i>
+                        <div class="hidden md:block md:w-[45%]"></div>
+                    </div>
+
+                    <!-- Step 2 -->
+                    <div class="relative flex flex-col md:flex-row items-start md:items-center justify-between group reveal delay-100">
+                        <div class="absolute left-4 md:left-1/2 w-4 h-4 rounded-full bg-white border-2 border-xeta-primary transform -translate-x-1.5 md:-translate-x-2 mt-6 md:mt-0 shadow-[0_0_10px_rgba(37,99,235,0.3)] z-10"></div>
+                        <div class="hidden md:block md:w-[45%]"></div>
+                        <div class="ml-12 md:ml-0 md:w-[45%] text-left pl-0 md:pl-8">
+                            <span class="text-xeta-primary font-bold tracking-wider text-sm uppercase">Stage 2</span>
+                            <h3 class="text-2xl font-bold text-slate-900 mt-1 mb-2">Application Dev</h3>
+                            <p class="text-slate-600 text-sm">Full frontend & backend integration. REST APIs, database architecture, CRUD web apps, and secure authentication.</p>
+                        </div>
+                    </div>
+
+                    <!-- Step 3 -->
+                    <div class="relative flex flex-col md:flex-row items-start md:items-center justify-between group reveal delay-200">
+                        <div class="absolute left-4 md:left-1/2 w-4 h-4 rounded-full bg-white border-2 border-xeta-accent transform -translate-x-1.5 md:-translate-x-2 mt-6 md:mt-0 shadow-[0_0_10px_rgba(6,182,212,0.3)] z-10"></div>
+                        <div class="ml-12 md:ml-0 md:w-[45%] text-left md:text-right pr-0 md:pr-8">
+                            <span class="text-xeta-accent font-bold tracking-wider text-sm uppercase">Stage 3</span>
+                            <h3 class="text-2xl font-bold text-slate-900 mt-1 mb-2">Industry Engineering</h3>
+                            <p class="text-slate-600 text-sm">Scalable system design, advanced AI tools, backend performance optimization, and real-world implementation.</p>
+                        </div>
+                        <div class="hidden md:block md:w-[45%]"></div>
+                    </div>
+
+                    <!-- Step 4 -->
+                    <div class="relative flex flex-col md:flex-row items-start md:items-center justify-between group reveal delay-300">
+                        <div class="absolute left-4 md:left-1/2 w-4 h-4 rounded-full bg-white border-2 border-xeta-accent transform -translate-x-1.5 md:-translate-x-2 mt-6 md:mt-0 shadow-[0_0_10px_rgba(6,182,212,0.3)] z-10"></div>
+                        <div class="hidden md:block md:w-[45%]"></div>
+                        <div class="ml-12 md:ml-0 md:w-[45%] text-left pl-0 md:pl-8">
+                            <span class="text-xeta-accent font-bold tracking-wider text-sm uppercase">Stage 4</span>
+                            <h3 class="text-2xl font-bold text-slate-900 mt-1 mb-2">Production Deployment</h3>
+                            <p class="text-slate-600 text-sm">Hosting live applications on AWS. Managing real users, continuous monitoring, and live environment debugging.</p>
+                        </div>
+                    </div>
+
+                    <!-- Step 5 (Highlight) -->
+                    <div class="relative flex flex-col md:flex-row items-start md:items-center justify-between group reveal delay-400">
+                        <div class="absolute left-4 md:left-1/2 w-6 h-6 rounded-full bg-green-500 border-4 border-white transform -translate-x-2.5 md:-translate-x-3 mt-6 md:mt-0 shadow-[0_0_15px_rgba(34,197,94,0.4)] z-10 flex items-center justify-center">
+                            <i data-lucide="check" class="w-3 h-3 text-white"></i>
+                        </div>
+                        <div class="ml-12 md:ml-0 md:w-[45%] text-left md:text-right pr-0 md:pr-8">
+                            <div class="inline-block px-2 py-1 bg-green-100 border border-green-200 text-green-700 text-[10px] font-bold rounded mb-2">PERFORMANCE BASED</div>
+                            <h3 class="text-2xl font-bold text-slate-900 mt-1 mb-2">Paid Internship</h3>
+                            <p class="text-slate-600 text-sm">Top performers are integrated into Xeta Tech Solutions. Work on real products (Testify, Proctorix) and get paid.</p>
+                        </div>
+                        <div class="hidden md:block md:w-[45%]"></div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- The Pipeline (Glowing Roadmap) -->
-    <section id="approach" class="py-24 bg-slate-50 relative">
-        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 reveal">
-            <div class="text-center mb-20">
-                <h2 class="text-3xl md:text-5xl font-display font-bold text-slate-900 mb-4">The Engineering <span class="text-gradient">Pipeline</span></h2>
-                <p class="text-slate-600">Our structured path from basic syntax to enterprise production.</p>
+    <!-- Bento Grid Programs -->
+    <section id="programs" class="py-24 lg:py-32 relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="mb-16 reveal">
+                <h2 class="text-4xl md:text-5xl font-black text-slate-900 mb-4 tracking-tight">Specialized <span class="text-xeta-primary">Tracks</span></h2>
+                <p class="text-lg text-slate-600 max-w-2xl">Master a specific domain through rigorous project-building.</p>
             </div>
 
-            <div class="relative space-y-12 before:absolute before:inset-0 before:ml-6 before:-translate-x-px md:before:mx-auto md:before:translate-x-0 before:h-full before:w-1 before:bg-gradient-to-b before:from-xeta-primary before:via-xeta-accent before:to-transparent">
+            <!-- Bento Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 auto-rows-[minmax(300px,_auto)]">
                 
-                <!-- Stage 1 -->
-                <div class="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group bg-transparent border-none">
-                    <div class="flex items-center justify-center w-12 h-12 rounded-full bg-white border-4 border-xeta-primary text-xeta-primary font-bold text-xl shadow-[0_0_15px_rgba(37,99,235,0.2)] shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2 z-10">
-                        1
+                <!-- Full Stack (Spans 2 columns on lg) -->
+                <div class="premium-card p-8 rounded-3xl lg:col-span-2 group bento-hover reveal">
+                    <div class="flex justify-between items-start mb-8">
+                        <div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-blue-500 to-blue-700 flex items-center justify-center shadow-md bento-icon transition-transform duration-300">
+                            <i data-lucide="layers" class="text-white w-7 h-7"></i>
+                        </div>
+                        <span class="text-xs font-bold px-3 py-1 bg-slate-100 border border-slate-200 rounded-full text-slate-600">CORE PROGRAM</span>
                     </div>
-                    <div class="w-[calc(100%-4rem)] md:w-[calc(50%-3rem)] bg-white border border-slate-200 p-6 rounded-2xl shadow-sm hover:shadow-md hover:border-xeta-primary/50 transition-all">
-                        <h3 class="text-xl font-display font-bold text-slate-900 mb-2">Foundations & Logic</h3>
-                        <p class="text-slate-600 text-sm">C, Python, Java. We break down the theory and focus purely on problem-solving, algorithm optimization, and version control (Git).</p>
-                    </div>
-                </div>
-
-                <!-- Stage 2 -->
-                <div class="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group bg-transparent border-none">
-                    <div class="flex items-center justify-center w-12 h-12 rounded-full bg-white border-4 border-xeta-primary text-xeta-primary font-bold text-xl shadow-[0_0_15px_rgba(37,99,235,0.2)] shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2 z-10">
-                        2
-                    </div>
-                    <div class="w-[calc(100%-4rem)] md:w-[calc(50%-3rem)] bg-white border border-slate-200 p-6 rounded-2xl shadow-sm hover:shadow-md hover:border-xeta-primary/50 transition-all">
-                        <h3 class="text-xl font-display font-bold text-slate-900 mb-2">Application Architecture</h3>
-                        <p class="text-slate-600 text-sm">Moving beyond console apps. Building full-stack web applications, creating robust REST APIs, and integrating scalable databases.</p>
+                    <h3 class="text-3xl font-bold text-slate-900 mb-3">Full Stack Engineering</h3>
+                    <p class="text-slate-600 mb-8 max-w-xl">Build complete, scalable web applications from end-to-end. Master the integration of modern frontends with robust backend architectures.</p>
+                    <div class="grid sm:grid-cols-2 gap-4 mt-auto">
+                        <div class="flex items-center gap-3 text-sm font-medium text-slate-700"><i data-lucide="check-circle-2" class="w-5 h-5 text-xeta-primary"></i> React.js & Node.js/Express</div>
+                        <div class="flex items-center gap-3 text-sm font-medium text-slate-700"><i data-lucide="check-circle-2" class="w-5 h-5 text-xeta-primary"></i> MongoDB & REST APIs</div>
+                        <div class="flex items-center gap-3 text-sm font-medium text-slate-700"><i data-lucide="check-circle-2" class="w-5 h-5 text-xeta-primary"></i> Auth & Security</div>
+                        <div class="flex items-center gap-3 text-sm font-medium text-slate-700"><i data-lucide="check-circle-2" class="w-5 h-5 text-xeta-primary"></i> AWS Cloud Deployment</div>
                     </div>
                 </div>
 
-                <!-- Stage 3 -->
-                <div class="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group bg-transparent border-none">
-                    <div class="flex items-center justify-center w-12 h-12 rounded-full bg-white border-4 border-xeta-accent text-xeta-accent font-bold text-xl shadow-[0_0_15px_rgba(14,165,233,0.2)] shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2 z-10">
-                        3
+                <!-- Cloud & DevOps -->
+                <div class="premium-card p-8 rounded-3xl group bento-hover reveal delay-100 flex flex-col">
+                    <div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-cyan-400 to-cyan-600 flex items-center justify-center shadow-md bento-icon transition-transform duration-300 mb-6">
+                        <i data-lucide="cloud-cog" class="text-white w-7 h-7"></i>
                     </div>
-                    <div class="w-[calc(100%-4rem)] md:w-[calc(50%-3rem)] bg-white border border-sky-200 p-6 rounded-2xl shadow-sm relative overflow-hidden">
-                        <div class="absolute inset-0 bg-sky-50/50 pointer-events-none"></div>
-                        <h3 class="text-xl font-display font-bold text-slate-900 mb-2 relative z-10">Industry-Oriented Systems</h3>
-                        <p class="text-slate-600 text-sm relative z-10">System design, microservices, and AWS Cloud deployment. Optimizing performance for high-load platforms.</p>
+                    <h3 class="text-2xl font-bold text-slate-900 mb-3">Cloud & DevOps</h3>
+                    <p class="text-slate-600 mb-8 text-sm flex-grow">Deploy, manage, and scale high-availability applications using modern cloud infrastructure.</p>
+                    <div class="space-y-3 mt-auto">
+                        <div class="flex items-center gap-3 text-sm font-medium text-slate-700"><i data-lucide="check-circle-2" class="w-5 h-5 text-xeta-accent"></i> AWS (EC2, S3, IAM)</div>
+                        <div class="flex items-center gap-3 text-sm font-medium text-slate-700"><i data-lucide="check-circle-2" class="w-5 h-5 text-xeta-accent"></i> Docker Containerization</div>
+                        <div class="flex items-center gap-3 text-sm font-medium text-slate-700"><i data-lucide="check-circle-2" class="w-5 h-5 text-xeta-accent"></i> CI/CD Pipelines</div>
                     </div>
                 </div>
 
-                <!-- Stage 4 -->
-                <div class="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group bg-transparent border-none">
-                    <div class="flex items-center justify-center w-12 h-12 rounded-full bg-white border-4 border-emerald-500 text-emerald-500 font-bold text-xl shadow-[0_0_20px_rgba(16,185,129,0.2)] shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2 z-10">
-                        <i data-lucide="check-circle-2"></i>
+                <!-- AI / ML / GenAI -->
+                <div class="premium-card p-8 rounded-3xl group bento-hover reveal delay-200 flex flex-col">
+                    <div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-purple-500 to-purple-700 flex items-center justify-center shadow-md bento-icon transition-transform duration-300 mb-6">
+                        <i data-lucide="bot" class="text-white w-7 h-7"></i>
                     </div>
-                    <div class="w-[calc(100%-4rem)] md:w-[calc(50%-3rem)] bg-white border border-emerald-200 p-6 rounded-2xl shadow-sm relative overflow-hidden">
-                        <div class="absolute inset-0 bg-emerald-50/50 pointer-events-none"></div>
-                        <div class="relative z-10 inline-block px-2 py-1 bg-emerald-100 text-emerald-700 text-[10px] font-bold rounded mb-3 uppercase tracking-wider border border-emerald-200">The Ultimate Goal</div>
-                        <h3 class="text-xl font-display font-bold text-slate-900 mb-2 relative z-10">Paid Internship Opportunity</h3>
-                        <p class="text-slate-600 text-sm relative z-10">Top performers bypass traditional hiring and get directly inducted to work on Xeta Tech products and client projects.</p>
+                    <h3 class="text-2xl font-bold text-slate-900 mb-3">AI / ML / GenAI</h3>
+                    <p class="text-slate-600 mb-8 text-sm flex-grow">Build intelligent systems, prediction models, and integrate modern Generative AI into applications.</p>
+                    <div class="space-y-3 mt-auto">
+                        <div class="flex items-center gap-3 text-sm font-medium text-slate-700"><i data-lucide="check-circle-2" class="w-5 h-5 text-purple-500"></i> Python AI Algorithms</div>
+                        <div class="flex items-center gap-3 text-sm font-medium text-slate-700"><i data-lucide="check-circle-2" class="w-5 h-5 text-purple-500"></i> NLP & Deep Learning</div>
+                        <div class="flex items-center gap-3 text-sm font-medium text-slate-700"><i data-lucide="check-circle-2" class="w-5 h-5 text-purple-500"></i> GenAI Integrations</div>
+                    </div>
+                </div>
+
+                <!-- Backend Engineering -->
+                <div class="premium-card p-8 rounded-3xl group bento-hover reveal delay-300 flex flex-col">
+                    <div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-emerald-500 to-emerald-700 flex items-center justify-center shadow-md bento-icon transition-transform duration-300 mb-6">
+                        <i data-lucide="database" class="text-white w-7 h-7"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-slate-900 mb-3">Backend Systems</h3>
+                    <p class="text-slate-600 mb-8 text-sm flex-grow">Design scalable architectures, efficient APIs, and optimized databases for high-load environments.</p>
+                    <div class="space-y-3 mt-auto">
+                        <div class="flex items-center gap-3 text-sm font-medium text-slate-700"><i data-lucide="check-circle-2" class="w-5 h-5 text-emerald-500"></i> Java / Node.js APIs</div>
+                        <div class="flex items-center gap-3 text-sm font-medium text-slate-700"><i data-lucide="check-circle-2" class="w-5 h-5 text-emerald-500"></i> System Architecture</div>
+                        <div class="flex items-center gap-3 text-sm font-medium text-slate-700"><i data-lucide="check-circle-2" class="w-5 h-5 text-emerald-500"></i> Performance Scaling</div>
+                    </div>
+                </div>
+
+                <!-- Programming Foundations -->
+                <div class="premium-card p-8 rounded-3xl group bento-hover reveal delay-400 flex flex-col bg-slate-50/50">
+                    <div class="flex justify-between items-start mb-6">
+                        <div class="w-14 h-14 rounded-2xl bg-slate-100 flex items-center justify-center border border-slate-200 shadow-sm bento-icon transition-transform duration-300">
+                            <i data-lucide="terminal" class="text-slate-600 w-7 h-7"></i>
+                        </div>
+                        <span class="text-[10px] font-bold px-2 py-1 bg-white border border-slate-200 rounded text-slate-500 shadow-sm">BEGINNER</span>
+                    </div>
+                    <h3 class="text-2xl font-bold text-slate-900 mb-3">Foundations</h3>
+                    <p class="text-slate-600 mb-8 text-sm flex-grow">A rigorous entry point to build indestructible logic, memory thinking, and core syntax skills.</p>
+                    <div class="space-y-3 mt-auto">
+                        <div class="flex items-center gap-3 text-sm font-medium text-slate-700"><i data-lucide="check-circle-2" class="w-5 h-5 text-slate-400"></i> C (Logic & Memory)</div>
+                        <div class="flex items-center gap-3 text-sm font-medium text-slate-700"><i data-lucide="check-circle-2" class="w-5 h-5 text-slate-400"></i> Python (Automation)</div>
+                        <div class="flex items-center gap-3 text-sm font-medium text-slate-700"><i data-lucide="check-circle-2" class="w-5 h-5 text-slate-400"></i> Java (DSA Basics)</div>
                     </div>
                 </div>
 
@@ -480,149 +485,92 @@
         </div>
     </section>
 
-    <!-- Engineering Tracks -->
-    <section id="programs" class="py-24 relative overflow-hidden bg-white border-y border-slate-100">
+    <!-- Internship & Elite Recognition -->
+    <section id="internship" class="py-24 lg:py-32 relative overflow-hidden border-t border-slate-200">
+        <!-- Background accents -->
+        <div class="absolute top-0 right-0 w-1/2 h-full bg-gradient-to-l from-xeta-primary/5 to-transparent pointer-events-none"></div>
+        
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-            <div class="text-center mb-16 reveal">
-                <h2 class="text-3xl md:text-5xl font-display font-bold text-slate-900 mb-4">Specialized <span class="text-gradient-blue">Engineering Tracks</span></h2>
-                <p class="text-slate-600 max-w-2xl mx-auto text-lg">Master a domain through a project-centric curriculum designed to make you deployable.</p>
-            </div>
-
-            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-                <!-- Track 1 -->
-                <div class="spotlight-wrapper rounded-2xl flex flex-col h-full reveal reveal-delay-1">
-                    <div class="spotlight-content p-8 h-full flex flex-col">
-                        <div class="w-12 h-12 rounded-xl bg-blue-50 flex items-center justify-center border border-blue-100 mb-6">
-                            <i data-lucide="layers" class="text-xeta-primary w-6 h-6"></i>
-                        </div>
-                        <h3 class="text-2xl font-display font-bold text-slate-900 mb-3">Full Stack Engineering</h3>
-                        <p class="text-slate-600 text-sm mb-8 flex-grow">End-to-end web architecture. Build complete applications from interactive frontends to secure, scalable backend services.</p>
-                        <ul class="space-y-3 mb-8">
-                            <li class="flex items-start gap-3 text-sm text-slate-600 font-medium"><i data-lucide="terminal-square" class="w-4 h-4 text-xeta-primary mt-0.5"></i> React.js & Express</li>
-                            <li class="flex items-start gap-3 text-sm text-slate-600 font-medium"><i data-lucide="database" class="w-4 h-4 text-xeta-primary mt-0.5"></i> MongoDB & REST APIs</li>
-                            <li class="flex items-start gap-3 text-sm text-slate-600 font-medium"><i data-lucide="cloud" class="w-4 h-4 text-xeta-primary mt-0.5"></i> AWS Cloud Deployment</li>
-                        </ul>
-                        <div class="pt-4 border-t border-slate-100">
-                            <span class="text-[11px] font-bold text-slate-400 uppercase tracking-widest">Outcome: Full-Fledged Apps</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Track 2 -->
-                <div class="spotlight-wrapper rounded-2xl flex flex-col h-full reveal reveal-delay-2">
-                    <div class="spotlight-content p-8 h-full flex flex-col">
-                        <div class="w-12 h-12 rounded-xl bg-purple-50 flex items-center justify-center border border-purple-100 mb-6">
-                            <i data-lucide="server" class="text-purple-600 w-6 h-6"></i>
-                        </div>
-                        <h3 class="text-2xl font-display font-bold text-slate-900 mb-3">Cloud & DevOps</h3>
-                        <p class="text-slate-600 text-sm mb-8 flex-grow">Master the infrastructure. Learn to deploy, manage, monitor, and scale enterprise applications securely.</p>
-                        <ul class="space-y-3 mb-8">
-                            <li class="flex items-start gap-3 text-sm text-slate-600 font-medium"><i data-lucide="terminal-square" class="w-4 h-4 text-purple-600 mt-0.5"></i> AWS (EC2, S3, IAM, Lambda)</li>
-                            <li class="flex items-start gap-3 text-sm text-slate-600 font-medium"><i data-lucide="box" class="w-4 h-4 text-purple-600 mt-0.5"></i> Docker Containerization</li>
-                            <li class="flex items-start gap-3 text-sm text-slate-600 font-medium"><i data-lucide="git-pull-request" class="w-4 h-4 text-purple-600 mt-0.5"></i> CI/CD Automation Pipelines</li>
-                        </ul>
-                        <div class="pt-4 border-t border-slate-100">
-                            <span class="text-[11px] font-bold text-slate-400 uppercase tracking-widest">Outcome: Scalable Infrastructure</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Track 3 -->
-                <div class="spotlight-wrapper rounded-2xl flex flex-col h-full reveal reveal-delay-3">
-                    <div class="spotlight-content p-8 h-full flex flex-col">
-                        <div class="w-12 h-12 rounded-xl bg-emerald-50 flex items-center justify-center border border-emerald-100 mb-6">
-                            <i data-lucide="cpu" class="text-emerald-600 w-6 h-6"></i>
-                        </div>
-                        <h3 class="text-2xl font-display font-bold text-slate-900 mb-3">AI / ML / GenAI</h3>
-                        <p class="text-slate-600 text-sm mb-8 flex-grow">Engineer the future. Focus on building intelligent systems, training models, and deploying modern AI technologies.</p>
-                        <ul class="space-y-3 mb-8">
-                            <li class="flex items-start gap-3 text-sm text-slate-600 font-medium"><i data-lucide="terminal-square" class="w-4 h-4 text-emerald-600 mt-0.5"></i> Python AI/ML Frameworks</li>
-                            <li class="flex items-start gap-3 text-sm text-slate-600 font-medium"><i data-lucide="network" class="w-4 h-4 text-emerald-600 mt-0.5"></i> Deep Learning & NLP</li>
-                            <li class="flex items-start gap-3 text-sm text-slate-600 font-medium"><i data-lucide="bot" class="w-4 h-4 text-emerald-600 mt-0.5"></i> GenAI Integrations</li>
-                        </ul>
-                        <div class="pt-4 border-t border-slate-100">
-                            <span class="text-[11px] font-bold text-slate-400 uppercase tracking-widest">Outcome: Intelligent Systems</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Internship & Careers -->
-    <section id="internship" class="py-24 relative bg-slate-50">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 reveal">
-            <div class="grid lg:grid-cols-2 gap-16 items-center">
+            <div class="grid lg:grid-cols-5 gap-12 lg:gap-16 items-center">
                 
                 <!-- Info Side -->
-                <div>
-                    <h2 class="text-3xl md:text-5xl font-display font-bold text-slate-900 mb-6">
-                        The ultimate goal is <br/>
-                        <span class="text-gradient">Real Experience.</span>
-                    </h2>
-                    <p class="text-slate-600 text-lg mb-8 leading-relaxed">
-                        We don't operate a placement agency. We operate an engineering firm. Top performers in our cohorts are directly inducted into our teams to build software that matters.
+                <div class="lg:col-span-2 reveal">
+                    <div class="inline-flex items-center gap-2 px-3 py-1 rounded border border-xeta-primary/20 bg-blue-50 mb-6">
+                        <i data-lucide="target" class="w-4 h-4 text-xeta-primary"></i>
+                        <span class="text-xs font-bold text-xeta-primary uppercase tracking-widest">The Ultimate Goal</span>
+                    </div>
+                    <h2 class="text-4xl md:text-5xl font-black text-slate-900 mb-6 leading-tight">Beyond <br/>Certificates.</h2>
+                    <p class="text-lg text-slate-600 mb-8 leading-relaxed">
+                        We don't operate a certificate factory. Our platform is a talent pipeline. Prove your capability in the lab, and you transition to the production floor as a paid intern.
                     </p>
                     
                     <div class="space-y-8">
                         <div class="flex gap-5">
-                            <div class="w-12 h-12 rounded-xl bg-white border border-slate-200 shadow-sm flex items-center justify-center shrink-0">
-                                <i data-lucide="briefcase" class="text-slate-700 w-6 h-6"></i>
+                            <div class="w-12 h-12 rounded-xl bg-slate-50 border border-slate-200 flex items-center justify-center shrink-0">
+                                <i data-lucide="rocket" class="text-slate-700 w-6 h-6"></i>
                             </div>
                             <div>
-                                <h4 class="text-xl font-display font-bold text-slate-900 mb-2">Work on Real Products</h4>
-                                <p class="text-slate-600">Contribute directly to enterprise tools like Proctorix & Testify. Experience agile sprints, code reviews, and live pushes.</p>
+                                <h4 class="text-xl text-slate-900 font-bold mb-2">Build Xeta Products</h4>
+                                <p class="text-slate-600 leading-relaxed">Ship features for real SaaS platforms like Proctorix and Testify. Engage in PR reviews, agile sprints, and live pushes.</p>
                             </div>
                         </div>
                         <div class="flex gap-5">
-                            <div class="w-12 h-12 rounded-xl bg-emerald-50 border border-emerald-100 shadow-sm flex items-center justify-center shrink-0">
-                                <i data-lucide="banknote" class="text-emerald-600 w-6 h-6"></i>
+                            <div class="w-12 h-12 rounded-xl bg-green-50 border border-green-100 flex items-center justify-center shrink-0">
+                                <i data-lucide="coins" class="text-green-600 w-6 h-6"></i>
                             </div>
                             <div>
-                                <h4 class="text-xl font-display font-bold text-slate-900 mb-2">Paid Opportunities</h4>
-                                <p class="text-slate-600">Stop doing unpaid labor for dummy projects. Top interns receive a stipend to work on our client-facing deliverables.</p>
+                                <h4 class="text-xl text-slate-900 font-bold mb-2">Paid Placements</h4>
+                                <p class="text-slate-600 leading-relaxed">Top talent earns a stipend to work on enterprise client requirements, proving immediate ROI on your skills.</p>
                             </div>
                         </div>
                     </div>
                 </div>
 
-                <!-- Premium Cert Card -->
-                <div class="relative">
+                <!-- Credential Card -->
+                <div class="lg:col-span-3 reveal delay-200 relative">
                     <!-- Glow behind card -->
-                    <div class="absolute inset-0 bg-gradient-to-r from-blue-200 to-sky-200 blur-[60px] opacity-50"></div>
+                    <div class="absolute inset-0 bg-gradient-to-r from-xeta-primary to-xeta-accent blur-[60px] opacity-10 rounded-full"></div>
                     
-                    <div class="relative bg-white p-1 rounded-[2rem] border border-slate-200 shadow-xl">
-                        <div class="bg-gradient-to-br from-white to-slate-50 rounded-[1.8rem] p-8 md:p-10 h-full overflow-hidden relative">
-                            
-                            <!-- Internal graphic -->
-                            <div class="absolute top-0 right-0 p-8 opacity-5 pointer-events-none">
-                                <i data-lucide="award" class="w-32 h-32 text-slate-900"></i>
+                    <div class="premium-card p-8 md:p-12 rounded-[2rem] border border-slate-200 relative overflow-hidden backdrop-blur-2xl">
+                        <div class="absolute top-0 right-0 p-8 opacity-5 text-slate-900">
+                            <i data-lucide="award" class="w-40 h-40"></i>
+                        </div>
+                        
+                        <h3 class="text-3xl font-bold text-slate-900 mb-8">Dual Certification Pathway</h3>
+                        
+                        <div class="space-y-6 relative z-10">
+                            <!-- Cert 1 -->
+                            <div class="bg-slate-50 border border-slate-200 p-6 rounded-2xl hover:border-slate-300 transition-colors">
+                                <div class="flex items-center justify-between mb-4">
+                                    <h4 class="text-lg font-bold text-slate-900">Course Completion</h4>
+                                    <span class="bg-white border border-slate-200 text-slate-600 text-[10px] px-2 py-1 rounded font-bold tracking-wider shadow-sm">TIER 1</span>
+                                </div>
+                                <ul class="text-sm text-slate-600 space-y-3 font-medium">
+                                    <li class="flex items-start gap-3"><i data-lucide="check-circle-2" class="w-5 h-5 text-xeta-primary shrink-0"></i> <span>Successfully complete the rigorous curriculum.</span></li>
+                                    <li class="flex items-start gap-3"><i data-lucide="check-circle-2" class="w-5 h-5 text-xeta-primary shrink-0"></i> <span>Submit and deploy all mandated projects.</span></li>
+                                </ul>
                             </div>
 
-                            <h3 class="text-2xl font-display font-bold text-slate-900 mb-8 border-b border-slate-200 pb-4">Dual Certification Protocol</h3>
+                            <!-- Cert 2 -->
+                            <div class="bg-gradient-to-br from-blue-50 to-white border border-blue-100 p-6 rounded-2xl shadow-sm">
+                                <div class="flex items-center justify-between mb-4">
+                                    <h4 class="text-lg font-bold text-slate-900">Internship Completion</h4>
+                                    <span class="bg-xeta-primary text-white text-[10px] px-2 py-1 rounded font-bold tracking-wider shadow-sm">TIER 2 (ELITE)</span>
+                                </div>
+                                <ul class="text-sm text-slate-700 space-y-3 font-medium">
+                                    <li class="flex items-start gap-3"><i data-lucide="check-circle-2" class="w-5 h-5 text-xeta-primary shrink-0"></i> <span>Selected based on outstanding project performance.</span></li>
+                                    <li class="flex items-start gap-3"><i data-lucide="check-circle-2" class="w-5 h-5 text-xeta-primary shrink-0"></i> <span>Contribute validated code to production systems.</span></li>
+                                </ul>
+                            </div>
                             
-                            <div class="space-y-6 relative z-10">
-                                <div>
-                                    <div class="flex items-center gap-2 mb-2">
-                                        <div class="w-2 h-2 rounded-full bg-slate-300"></div>
-                                        <h4 class="text-slate-900 font-bold">1. Program Completion</h4>
-                                    </div>
-                                    <p class="text-sm text-slate-500 pl-4 border-l border-slate-200 ml-1 pb-4">Awarded for successfully architecting, building, and deploying the curriculum's capstone projects.</p>
-                                </div>
-
-                                <div>
-                                    <div class="flex items-center gap-2 mb-2">
-                                        <div class="w-2 h-2 rounded-full bg-xeta-primary shadow-[0_0_10px_rgba(37,99,235,0.4)]"></div>
-                                        <h4 class="text-xeta-primary font-bold">2. Industry Internship Certificate</h4>
-                                    </div>
-                                    <p class="text-sm text-slate-500 pl-4 border-l border-slate-200 ml-1 pb-4">The ultimate proof of work. Awarded exclusively to those who successfully contribute to our production systems.</p>
-                                </div>
-                                
-                                <div class="bg-amber-50 border border-amber-100 p-4 rounded-xl mt-6">
-                                    <p class="text-sm text-amber-900 font-medium flex items-center gap-2">
-                                        <i data-lucide="cloud-lightning" class="w-5 h-5 text-amber-500"></i> Global Cert Sponsorship
-                                    </p>
-                                    <p class="text-xs text-amber-700/70 mt-1">Top performers receive support and sponsorship for official AWS / Cloud certifications.</p>
+                            <!-- Perks -->
+                            <div class="pt-6 border-t border-slate-200">
+                                <div class="flex flex-wrap items-center gap-3">
+                                    <span class="text-sm text-slate-700 font-bold flex items-center gap-2">
+                                        <i data-lucide="zap" class="w-4 h-4 text-yellow-500"></i> Top Performer Perks:
+                                    </span>
+                                    <span class="text-xs font-bold bg-white border border-slate-200 px-3 py-1.5 rounded-md text-slate-700 shadow-sm">AWS Cert Sponsorship</span>
+                                    <span class="text-xs font-bold bg-white border border-slate-200 px-3 py-1.5 rounded-md text-slate-700 shadow-sm">Full-Time Offers</span>
                                 </div>
                             </div>
                         </div>
@@ -633,50 +581,62 @@
         </div>
     </section>
 
-    <!-- Footer - Kept Dark to visually ground the light website -->
-    <footer class="bg-slate-900 pt-20 pb-10">
+    <!-- CTA Section -->
+    <section id="apply" class="py-24 relative overflow-hidden bg-slate-50 border-t border-slate-200">
+        <div class="max-w-4xl mx-auto px-4 relative z-10 text-center reveal">
+            <h2 class="text-4xl md:text-5xl font-black text-slate-900 mb-6">Ready to enter the Lab?</h2>
+            <p class="text-xl text-slate-600 mb-10 max-w-2xl mx-auto">Seats for Cohort 0 are strictly limited. We select candidates based on commitment to build, not just willingness to pay.</p>
+            <button class="px-10 py-5 bg-xeta-primary text-white rounded-xl font-black text-lg hover:bg-blue-700 hover:-translate-y-1 transition-all shadow-[0_10px_25px_rgba(37,99,235,0.3)]">
+                Apply for Cohort 0 Now
+            </button>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-white border-t border-slate-200 pt-20 pb-10">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-16 mb-16">
                 
                 <div class="lg:col-span-2">
                     <div class="flex items-center gap-3 mb-6">
-                        <div class="w-10 h-10 rounded-lg bg-gradient-to-br from-xeta-primary to-xeta-accent flex items-center justify-center font-display font-bold text-xl text-white">
+                        <div class="w-10 h-10 rounded-lg bg-gradient-to-br from-xeta-primary to-xeta-accent flex items-center justify-center font-bold text-white text-xl">
                             X
                         </div>
-                        <span class="text-xl font-display font-bold text-white tracking-wide">XETA TECH LABS</span>
+                        <span class="text-xl font-black text-slate-900 tracking-tight">XETA TECH LABS</span>
                     </div>
-                    <p class="text-slate-400 text-base mb-6 max-w-sm leading-relaxed">
-                        An engineering ecosystem where students learn by building, grow by solving, and succeed by delivering.
+                    <p class="text-slate-600 text-sm mb-6 max-w-md leading-relaxed font-medium">
+                        A real-world engineering ecosystem where students learn by building, grow by solving, and succeed by deploying.
                     </p>
-                    <p class="text-white font-display font-bold tracking-wider">FORGED IN PRODUCTION.</p>
+                    <p class="text-slate-900 font-bold text-sm bg-slate-50 inline-block px-4 py-2 rounded-lg border border-slate-200">Forged in Production.</p>
                 </div>
 
                 <div>
-                    <h4 class="text-white font-display font-bold mb-6 uppercase tracking-wider text-sm">Programs</h4>
-                    <ul class="space-y-3 text-sm text-slate-400">
-                        <li><a href="#" class="hover:text-white transition-colors">Full Stack Engineering</a></li>
-                        <li><a href="#" class="hover:text-white transition-colors">Cloud & DevOps</a></li>
-                        <li><a href="#" class="hover:text-white transition-colors">AI / ML / GenAI</a></li>
-                        <li><a href="#" class="hover:text-white transition-colors">Programming Foundations</a></li>
+                    <h4 class="text-slate-900 font-bold mb-6 tracking-widest text-xs uppercase">Curriculum</h4>
+                    <ul class="space-y-3 text-sm font-medium text-slate-600">
+                        <li><a href="#" class="hover:text-xeta-primary transition-colors">Full Stack Track</a></li>
+                        <li><a href="#" class="hover:text-xeta-primary transition-colors">Cloud & DevOps Track</a></li>
+                        <li><a href="#" class="hover:text-xeta-primary transition-colors">AI & GenAI Track</a></li>
+                        <li><a href="#" class="hover:text-xeta-primary transition-colors">Backend Track</a></li>
                     </ul>
                 </div>
 
                 <div>
-                    <h4 class="text-white font-display font-bold mb-6 uppercase tracking-wider text-sm">Enterprise</h4>
-                    <ul class="space-y-3 text-sm text-slate-400">
-                        <li><a href="#about" class="hover:text-white transition-colors">Our Philosophy</a></li>
-                        <li><a href="#approach" class="hover:text-white transition-colors">Engineering Pipeline</a></li>
-                        <li><a href="https://xetasolutions.in/" target="_blank" class="hover:text-xeta-accent transition-colors flex items-center gap-1">Xeta Tech Solutions <i data-lucide="external-link" class="w-3 h-3"></i></a></li>
+                    <h4 class="text-slate-900 font-bold mb-6 tracking-widest text-xs uppercase">Platform</h4>
+                    <ul class="space-y-3 text-sm font-medium text-slate-600">
+                        <li><a href="#about" class="hover:text-xeta-primary transition-colors">Our Philosophy</a></li>
+                        <li><a href="#approach" class="hover:text-xeta-primary transition-colors">The Pipeline</a></li>
+                        <li><a href="#internship" class="hover:text-xeta-primary transition-colors">Internship Hub</a></li>
+                        <li><a href="https://xetasolutions.in/" target="_blank" class="hover:text-xeta-primary transition-colors flex items-center gap-1">Xeta Tech Solutions <i data-lucide="external-link" class="w-3 h-3"></i></a></li>
                     </ul>
                 </div>
             </div>
 
-            <div class="pt-8 border-t border-slate-800 flex flex-col md:flex-row items-center justify-between gap-6">
-                <p class="text-slate-500 text-sm">© 2026 Xeta Tech Labs. An initiative by Xeta Tech Solutions. All rights reserved.</p>
+            <div class="pt-8 border-t border-slate-200 flex flex-col md:flex-row items-center justify-between gap-4">
+                <p class="text-slate-500 text-sm font-medium">© 2026 Xeta Tech Labs. An initiative by Xeta Tech Solutions.</p>
                 <div class="flex gap-5">
-                    <a href="#" class="text-slate-500 hover:text-white transition-colors"><i data-lucide="linkedin" class="w-5 h-5"></i></a>
-                    <a href="#" class="text-slate-500 hover:text-white transition-colors"><i data-lucide="github" class="w-5 h-5"></i></a>
-                    <a href="#" class="text-slate-500 hover:text-white transition-colors"><i data-lucide="twitter" class="w-5 h-5"></i></a>
+                    <a href="#" class="text-slate-400 hover:text-slate-900 transition-colors"><i data-lucide="linkedin" class="w-5 h-5"></i></a>
+                    <a href="#" class="text-slate-400 hover:text-slate-900 transition-colors"><i data-lucide="github" class="w-5 h-5"></i></a>
+                    <a href="#" class="text-slate-400 hover:text-slate-900 transition-colors"><i data-lucide="twitter" class="w-5 h-5"></i></a>
                 </div>
             </div>
         </div>
@@ -687,63 +647,64 @@
         // Initialize Lucide Icons
         lucide.createIcons();
 
-        // Spotlight Mouse Tracking Effect for Premium Cards
-        const handleMouseMove = (e) => {
-            const target = e.currentTarget;
-            const rect = target.getBoundingClientRect();
-            const x = e.clientX - rect.left;
-            const y = e.clientY - rect.top;
-            target.style.setProperty('--mouse-x', `${x}px`);
-            target.style.setProperty('--mouse-y', `${y}px`);
-        };
-
-        document.querySelectorAll('.spotlight-wrapper').forEach(card => {
-            card.addEventListener('mousemove', handleMouseMove);
-        });
-
-        // Intersection Observer for Scroll Animations (Reveal)
-        const revealOptions = {
-            threshold: 0.1,
-            rootMargin: "0px 0px -50px 0px"
-        };
-
-        const revealOnScroll = new IntersectionObserver(function(entries, observer) {
-            entries.forEach(entry => {
-                if (!entry.isIntersecting) return;
-                entry.target.classList.add('active');
-                observer.unobserve(entry.target);
-            });
-        }, revealOptions);
-
-        document.querySelectorAll('.reveal').forEach(el => {
-            revealOnScroll.observe(el);
-        });
-
         // Navbar Scroll Effect
         window.addEventListener('scroll', () => {
             const nav = document.getElementById('navbar');
             if (window.scrollY > 20) {
-                nav.classList.add('nav-scrolled', 'shadow-sm');
-                nav.classList.remove('border-transparent');
+                nav.classList.add('shadow-sm', 'border-b', 'border-slate-200');
+                nav.style.background = 'rgba(255, 255, 255, 0.9)';
             } else {
-                nav.classList.remove('nav-scrolled', 'shadow-sm');
-                nav.classList.add('border-transparent');
+                nav.classList.remove('shadow-sm', 'border-b', 'border-slate-200');
+                nav.style.background = 'rgba(255, 255, 255, 0.85)';
             }
         });
 
         // Mobile Menu Toggle
         const mobileBtn = document.getElementById('mobile-menu-btn');
         const mobileMenu = document.getElementById('mobile-menu');
+        const menuIcon = mobileBtn.querySelector('i');
 
         mobileBtn.addEventListener('click', () => {
             mobileMenu.classList.toggle('hidden');
+            // Toggle icon
+            if(mobileMenu.classList.contains('hidden')) {
+                menuIcon.setAttribute('data-lucide', 'menu');
+            } else {
+                menuIcon.setAttribute('data-lucide', 'x');
+            }
+            lucide.createIcons();
         });
 
         // Close mobile menu on link click
         document.querySelectorAll('#mobile-menu a').forEach(link => {
             link.addEventListener('click', () => {
                 mobileMenu.classList.add('hidden');
+                menuIcon.setAttribute('data-lucide', 'menu');
+                lucide.createIcons();
             });
+        });
+
+        // Scroll Reveal Animation (Intersection Observer)
+        const revealElements = document.querySelectorAll('.reveal');
+        
+        const revealCallback = (entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                    observer.unobserve(entry.target); // Stop observing once revealed
+                }
+            });
+        };
+
+        const revealOptions = {
+            threshold: 0.15,
+            rootMargin: "0px 0px -50px 0px"
+        };
+
+        const revealObserver = new IntersectionObserver(revealCallback, revealOptions);
+        
+        revealElements.forEach(el => {
+            revealObserver.observe(el);
         });
     </script>
 </body>
