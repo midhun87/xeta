@@ -581,14 +581,98 @@
         </div>
     </section>
 
-    <!-- CTA Section -->
+    <!-- Application Form Section -->
     <section id="apply" class="py-24 relative overflow-hidden bg-slate-50 border-t border-slate-200">
-        <div class="max-w-4xl mx-auto px-4 relative z-10 text-center reveal">
-            <h2 class="text-4xl md:text-5xl font-black text-slate-900 mb-6">Ready to enter the Lab?</h2>
-            <p class="text-xl text-slate-600 mb-10 max-w-2xl mx-auto">Seats for Cohort 0 are strictly limited. We select candidates based on commitment to build, not just willingness to pay.</p>
-            <button class="px-10 py-5 bg-xeta-primary text-white rounded-xl font-black text-lg hover:bg-blue-700 hover:-translate-y-1 transition-all shadow-[0_10px_25px_rgba(37,99,235,0.3)]">
-                Apply for Cohort 0 Now
-            </button>
+        <div class="absolute inset-0 bg-mesh opacity-50"></div>
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 reveal">
+            <div class="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+                
+                <!-- Info Text -->
+                <div>
+                    <h2 class="text-4xl md:text-5xl font-black text-slate-900 mb-6">Ready to enter the Lab?</h2>
+                    <p class="text-lg text-slate-600 mb-6 leading-relaxed">Seats for Cohort 0 are strictly limited. We select candidates based on their commitment to build, not just their willingness to pay.</p>
+                    
+                    <div class="bg-blue-50 border border-blue-100 p-6 rounded-2xl mb-8">
+                        <h4 class="font-bold text-slate-900 mb-3 flex items-center gap-2">
+                            <i data-lucide="info" class="w-5 h-5 text-xeta-primary"></i> Application Process
+                        </h4>
+                        <ol class="text-sm text-slate-700 space-y-3 list-decimal list-inside marker:text-xeta-primary marker:font-bold">
+                            <li>Submit the application form with your details and preferred track.</li>
+                            <li><strong class="text-slate-900">A Test link will be sent to you for Cohort 0.</strong></li>
+                            <li>Based on your test performance, final fee structures and further processing steps will be communicated.</li>
+                        </ol>
+                    </div>
+                </div>
+
+                <!-- Formspree Form -->
+                <div class="premium-card p-8 sm:p-10 rounded-3xl shadow-xl relative overflow-hidden bg-white">
+                    <form id="cohort-form" action="https://formspree.io/f/xaqawpoe" method="POST" class="space-y-5">
+                        <h3 class="text-2xl font-bold text-slate-900 mb-6">Apply for Cohort 0</h3>
+                        
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+                            <div>
+                                <label class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-2">Full Name *</label>
+                                <input type="text" name="name" required class="w-full px-4 py-3 rounded-xl border border-slate-200 bg-slate-50 focus:bg-white focus:border-xeta-primary focus:ring-2 focus:ring-xeta-primary/20 outline-none transition-all text-sm font-medium">
+                            </div>
+                            <div>
+                                <label class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-2">Email Address *</label>
+                                <input type="email" name="email" required class="w-full px-4 py-3 rounded-xl border border-slate-200 bg-slate-50 focus:bg-white focus:border-xeta-primary focus:ring-2 focus:ring-xeta-primary/20 outline-none transition-all text-sm font-medium">
+                            </div>
+                        </div>
+
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+                            <div>
+                                <label class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-2">Phone Number *</label>
+                                <input type="tel" name="phone" required class="w-full px-4 py-3 rounded-xl border border-slate-200 bg-slate-50 focus:bg-white focus:border-xeta-primary focus:ring-2 focus:ring-xeta-primary/20 outline-none transition-all text-sm font-medium">
+                            </div>
+                            <div>
+                                <label class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-2">College / University *</label>
+                                <input type="text" name="college" required class="w-full px-4 py-3 rounded-xl border border-slate-200 bg-slate-50 focus:bg-white focus:border-xeta-primary focus:ring-2 focus:ring-xeta-primary/20 outline-none transition-all text-sm font-medium">
+                            </div>
+                        </div>
+
+                        <div>
+                            <label class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-2">Select Track *</label>
+                            <div class="relative">
+                                <select name="track" required class="w-full px-4 py-3 rounded-xl border border-slate-200 bg-slate-50 focus:bg-white focus:border-xeta-primary focus:ring-2 focus:ring-xeta-primary/20 outline-none transition-all text-sm font-medium text-slate-700 appearance-none cursor-pointer">
+                                    <option value="" disabled selected>Choose your engineering track...</option>
+                                    <option value="Full Stack Engineering">Full Stack Engineering</option>
+                                    <option value="Cloud & DevOps">Cloud & DevOps</option>
+                                    <option value="AI / ML / GenAI">AI / ML / GenAI</option>
+                                    <option value="Backend Systems">Backend Systems</option>
+                                    <option value="Programming Foundations">Programming Foundations (Beginner)</option>
+                                </select>
+                                <i data-lucide="chevron-down" class="absolute right-4 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400 pointer-events-none"></i>
+                            </div>
+                        </div>
+
+                        <div>
+                            <label class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-2">GitHub / LinkedIn URL <span class="text-slate-400 font-normal">(Optional)</span></label>
+                            <input type="url" name="portfolio" placeholder="https://" class="w-full px-4 py-3 rounded-xl border border-slate-200 bg-slate-50 focus:bg-white focus:border-xeta-primary focus:ring-2 focus:ring-xeta-primary/20 outline-none transition-all text-sm font-medium">
+                        </div>
+
+                        <button type="submit" id="form-submit-btn" class="w-full px-6 py-4 bg-xeta-primary text-white rounded-xl font-bold text-base hover:bg-blue-700 transition-all shadow-[0_4px_14px_rgba(37,99,235,0.25)] flex items-center justify-center gap-2 mt-4">
+                            Submit Application <i data-lucide="send" class="w-4 h-4"></i>
+                        </button>
+                    </form>
+
+                    <!-- Success Message (Hidden by default) -->
+                    <div id="form-success" class="hidden absolute inset-0 bg-white/95 backdrop-blur-sm z-10 flex flex-col items-center justify-center text-center p-8 transition-all">
+                        <div class="w-16 h-16 bg-green-100 text-green-600 rounded-full flex items-center justify-center mb-6">
+                            <i data-lucide="check-circle-2" class="w-8 h-8"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold text-slate-900 mb-3">Thanks for applying!</h3>
+                        <p class="text-slate-600 leading-relaxed max-w-sm mb-6 text-sm font-medium">
+                            Your application for Cohort 0 has been successfully received. <br/><br/>
+                            <strong class="text-slate-900">A Test link will be sent to your email shortly.</strong> Based on your performance, fee details and further processes will be communicated.
+                        </p>
+                        <button onclick="resetForm()" class="px-6 py-2 bg-slate-100 text-slate-700 rounded-lg text-sm font-bold hover:bg-slate-200 transition-colors">
+                            Apply for another track
+                        </button>
+                    </div>
+                </div>
+
+            </div>
         </div>
     </section>
 
@@ -706,6 +790,50 @@
         revealElements.forEach(el => {
             revealObserver.observe(el);
         });
+
+        // Formspree AJAX Submission logic
+        const form = document.getElementById('cohort-form');
+        const successMsg = document.getElementById('form-success');
+        const submitBtn = document.getElementById('form-submit-btn');
+
+        form.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            
+            // Save original button state and show loading
+            const originalBtnText = submitBtn.innerHTML;
+            submitBtn.innerHTML = '<i data-lucide="loader-2" class="w-5 h-5 animate-spin"></i> Submitting...';
+            submitBtn.disabled = true;
+            lucide.createIcons(); // Re-initialize the new loader icon
+
+            try {
+                const response = await fetch(form.action, {
+                    method: 'POST',
+                    body: new FormData(form),
+                    headers: {
+                        'Accept': 'application/json'
+                    }
+                });
+                
+                if (response.ok) {
+                    form.reset();
+                    successMsg.classList.remove('hidden');
+                } else {
+                    alert("Oops! There was a problem submitting your form. Please try again.");
+                }
+            } catch (error) {
+                alert("Oops! There was a network error. Please check your connection and try again.");
+            } finally {
+                // Restore button state
+                submitBtn.innerHTML = originalBtnText;
+                submitBtn.disabled = false;
+                lucide.createIcons();
+            }
+        });
+
+        // Function to reset the form and hide the success message
+        window.resetForm = function() {
+            successMsg.classList.add('hidden');
+        }
     </script>
 </body>
 </html>
