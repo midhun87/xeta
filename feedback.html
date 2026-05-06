@@ -2,9 +2,9 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Feedback - Xeta Tech Solutions</title>
-    <!-- Tailwind CSS for rapid, responsive styling -->
+    <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- FontAwesome for Icons -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
@@ -12,17 +12,16 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     
     <style>
-        /* Internal CSS */
         body {
             font-family: 'Inter', sans-serif;
             -webkit-font-smoothing: antialiased;
+            background-color: #f8fafc; /* slate-50 */
         }
 
         /* Video Intro Transitions */
         #intro-overlay {
-            transition: opacity 1s ease-out, visibility 1s ease-out;
+            transition: opacity 0.8s ease-out, visibility 0.8s ease-out;
         }
-        
         .fade-out {
             opacity: 0;
             visibility: hidden;
@@ -32,240 +31,295 @@
         /* Main Content Transitions */
         #main-content {
             opacity: 0;
-            transition: opacity 1.5s ease-in;
-            display: none; /* Initially hidden to prevent scroll */
+            transition: opacity 1s ease-in;
+            display: none;
         }
-        
         .content-visible {
             opacity: 1 !important;
             display: flex !important;
         }
 
+        /* Multi-step Transitions */
+        .step-container {
+            transition: opacity 0.4s ease, transform 0.4s ease;
+        }
+        .hidden-step {
+            opacity: 0;
+            transform: translateX(20px);
+            pointer-events: none;
+            position: absolute;
+            visibility: hidden;
+        }
+        .active-step {
+            opacity: 1;
+            transform: translateX(0);
+            pointer-events: auto;
+            position: relative;
+            visibility: visible;
+        }
+
         /* Star Rating Styles */
-        .star-rating i {
-            transition: all 0.2s;
-            cursor: pointer;
-        }
-        
-        .star-rating:hover i {
-            color: #cbd5e1; /* gray-300 - Reset on hover container */
-        }
-
-        .star-rating i:hover,
-        .star-rating i:hover ~ i {
-            color: #fbbf24; /* amber-400 - Light up on hover */
-        }
-
-        /* Apply active color to stars */
-        .star-rating i.active {
-            color: #fbbf24; 
-        }
-
-        /* Fix for the hover effect logic in CSS vs JS: 
-           We will handle the hover visual logic primarily via CSS hover states 
-           and use JS to set the permanent 'active' class 
-        */
-        .star-group {
-            display: flex;
-            flex-direction: row-reverse; /* Reverse for CSS sibling selector trick if needed, but we'll use simple JS for this specific requirement to be robust */
-            justify-content: flex-end;
-            gap: 0.5rem;
-        }
-        
         .star-btn {
             background: none;
             border: none;
             padding: 0;
             cursor: pointer;
-            font-size: 1.5rem;
-            color: #cbd5e1;
-            transition: color 0.2s;
+            font-size: 1.75rem;
+            color: #cbd5e1; /* slate-300 for a more professional empty look */
+            transition: color 0.2s, transform 0.1s;
         }
-        
+        @media (hover: hover) {
+            .star-btn:hover {
+                transform: scale(1.1);
+            }
+        }
+        .star-btn:active {
+            transform: scale(0.9);
+        }
         .star-btn.selected {
-            color: #fbbf24;
-        }
-        
-        /* Spinner */
-        .loader {
-            border: 3px solid #f3f3f3;
-            border-radius: 50%;
-            border-top: 3px solid #3b82f6;
-            width: 20px;
-            height: 20px;
-            -webkit-animation: spin 1s linear infinite; /* Safari */
-            animation: spin 1s linear infinite;
+            color: #fbbf24; /* amber-400 */
         }
 
+        /* Spinner */
+        .loader {
+            border: 3px solid rgba(255,255,255,0.3);
+            border-radius: 50%;
+            border-top: 3px solid #ffffff;
+            width: 20px;
+            height: 20px;
+            animation: spin 1s linear infinite;
+        }
         @keyframes spin {
             0% { transform: rotate(0deg); }
             100% { transform: rotate(360deg); }
         }
+
+        /* Custom Scrollbar for better mobile feel */
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #cbd5e1;
+            border-radius: 10px;
+        }
+        
+        /* Mobile Input enhancements */
+        input, select, textarea {
+            font-size: 16px !important; /* Prevents iOS zoom */
+        }
     </style>
 </head>
-<body class="bg-slate-50 text-slate-800 min-h-screen">
+<body class="text-slate-800 min-h-screen flex flex-col">
 
     <!-- 1. Video Intro Overlay -->
     <div id="intro-overlay" class="fixed inset-0 z-50 bg-black flex flex-col items-center justify-center">
-        <video id="intro-video" class="absolute inset-0 w-full h-full object-cover" playsinline>
+        <video id="intro-video" class="absolute inset-0 w-full h-full object-cover" playsinline muted>
             <source src="https://res.cloudinary.com/djdwpjm7x/video/upload/v1770550594/Xeta_Tech_Solutions_nidand.mp4" type="video/mp4">
-            Your browser does not support the video tag.
         </video>
-        
-        <!-- Overlay Gradient for better text visibility if needed -->
-        <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent pointer-events-none"></div>
-
-        <!-- Skip Button -->
-        <div class="absolute bottom-10 right-6 sm:right-10 z-20 pointer-events-auto">
-            <button onclick="endIntro()" class="group flex items-center gap-3 bg-white/10 hover:bg-white/20 backdrop-blur-md border border-white/20 text-white px-6 py-3 rounded-full font-medium transition-all transform hover:scale-105 active:scale-95 shadow-lg">
-                <span>Enter Site</span> 
-                <i class="fas fa-arrow-right group-hover:translate-x-1 transition-transform"></i>
+        <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent pointer-events-none"></div>
+        <div class="absolute bottom-8 right-6 z-20 pointer-events-auto">
+            <button onclick="endIntro()" class="flex items-center gap-2 bg-white/20 hover:bg-white/30 backdrop-blur-md border border-white/30 text-white px-5 py-2.5 rounded-full font-medium transition-all active:scale-95 shadow-lg">
+                <span>Enter Portal</span> 
+                <i class="fas fa-arrow-right"></i>
             </button>
         </div>
     </div>
 
-    <!-- 2. Main Content (Hidden Initially) -->
-    <div id="main-content" class="min-h-screen flex-col relative">
+    <!-- 2. Main Content -->
+    <div id="main-content" class="min-h-screen flex-col relative w-full">
         
         <!-- Navigation -->
         <nav class="bg-white sticky top-0 z-40 shadow-sm border-b border-slate-100">
-            <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div class="flex justify-between items-center h-20">
-                    <div class="flex items-center gap-3">
-                        <img src="https://res.cloudinary.com/dpz44zf0z/image/upload/v1760704788/XETA_SOLUTIONS_LOGO_bcsbwh.png" alt="Xeta Solutions Logo" class="h-12 w-auto object-contain">
-                        <span class="font-bold text-xl tracking-tight text-slate-800 hidden sm:block">Xeta Tech Solutions</span>
+            <div class="max-w-4xl mx-auto px-4 sm:px-6">
+                <div class="flex justify-between items-center h-16 sm:h-20">
+                    <div class="flex items-center gap-2 sm:gap-3">
+                        <img src="https://res.cloudinary.com/dpz44zf0z/image/upload/v1760704788/XETA_SOLUTIONS_LOGO_bcsbwh.png" alt="Logo" class="h-10 sm:h-12 w-auto object-contain">
+                        <span class="font-bold text-lg sm:text-xl tracking-tight text-slate-800 hidden sm:block">Xeta Tech Solutions</span>
                     </div>
-                    <div class="flex items-center gap-4">
-                        <span class="px-4 py-1.5 rounded-full bg-blue-50 text-blue-600 text-sm font-semibold border border-blue-100">
-                            Feedback Portal
-                        </span>
-                    </div>
+                    <span class="px-3 py-1 sm:px-4 sm:py-1.5 rounded-full bg-blue-50 text-blue-600 text-xs sm:text-sm font-semibold border border-blue-100">
+                        Feedback Portal
+                    </span>
                 </div>
             </div>
         </nav>
 
         <!-- Main Form Section -->
-        <main class="flex-grow flex items-center justify-center p-4 sm:p-8">
+        <main class="flex-grow flex items-start sm:items-center justify-center p-4 sm:p-8">
             <div class="w-full max-w-2xl">
                 
-                <div class="text-center mb-10">
-                    <h1 class="text-3xl sm:text-4xl font-extrabold text-slate-900 mb-4 tracking-tight">We Value Your Experience</h1>
-                    <p class="text-lg text-slate-500 max-w-lg mx-auto">Help us improve the college website. Your detailed feedback shapes our future updates.</p>
+                <div class="text-center mb-6 sm:mb-8 mt-4 sm:mt-0">
+                    <h1 class="text-2xl sm:text-3xl font-extrabold text-slate-900 mb-2 tracking-tight">Your Feedback Matters</h1>
+                    <p class="text-sm sm:text-base text-slate-500">Help us enhance your digital experience.</p>
                 </div>
 
-                <!-- Card -->
+                <!-- Form Card -->
                 <div class="bg-white rounded-2xl shadow-xl overflow-hidden border border-slate-100">
-                    <div class="h-1.5 bg-gradient-to-r from-blue-500 via-indigo-500 to-purple-500"></div>
+                    <!-- Progress bar visually -->
+                    <div class="flex h-1.5 bg-slate-100">
+                        <div id="progress-bar" class="w-1/2 bg-gradient-to-r from-blue-500 to-indigo-500 transition-all duration-300"></div>
+                    </div>
                     
-                    <div class="p-6 sm:p-10">
+                    <div class="p-5 sm:p-8 relative">
                         
-                        <!-- Success Message (Hidden by default) -->
-                        <div id="success-message" class="hidden flex-col items-center justify-center py-10 text-center animate-pulse-fade">
-                            <div class="w-20 h-20 bg-green-100 rounded-full flex items-center justify-center mb-6">
-                                <i class="fas fa-check text-3xl text-green-600"></i>
+                        <!-- Success Message -->
+                        <div id="success-message" class="hidden flex-col items-center justify-center py-8 text-center">
+                            <div class="w-20 h-20 bg-green-100 rounded-full flex items-center justify-center mb-5 shadow-inner">
+                                <i class="fas fa-check text-4xl text-green-500"></i>
                             </div>
                             <h3 class="text-2xl font-bold text-slate-800 mb-2">Thank You!</h3>
-                            <p class="text-slate-500">Your feedback has been successfully sent to our team.</p>
-                            <button onclick="resetForm()" class="mt-8 text-blue-600 hover:text-blue-800 font-medium underline">Send another response</button>
+                            <p class="text-slate-500 mb-6">Your feedback has been successfully submitted to our team.</p>
+                            <button onclick="resetForm()" class="text-blue-600 font-semibold underline px-4 py-2 rounded-lg hover:bg-blue-50">Submit Another Response</button>
                         </div>
 
-                        <!-- Error Message (Hidden by default) -->
+                        <!-- Error Message -->
                         <div id="error-message" class="hidden bg-red-50 border-l-4 border-red-500 p-4 mb-6 rounded-r">
-                            <div class="flex">
-                                <div class="flex-shrink-0">
-                                    <i class="fas fa-exclamation-circle text-red-500"></i>
-                                </div>
-                                <div class="ml-3">
-                                    <p class="text-sm text-red-700">Oops! Something went wrong. Please try again later.</p>
-                                </div>
+                            <div class="flex items-center">
+                                <i class="fas fa-exclamation-circle text-red-500 mr-3"></i>
+                                <p class="text-sm text-red-700 font-medium">Something went wrong. Please try again.</p>
                             </div>
                         </div>
 
-                        <!-- The Form -->
-                        <form id="feedback-form" class="space-y-6" action="https://formspree.io/f/mlgwdjog" method="POST">
+                        <!-- Form -->
+                        <form id="feedback-form" action="https://formspree.io/f/meozwrwb" method="POST">
                             
-                            <!-- Name & Email Grid -->
-                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                                <div>
-                                    <label for="name" class="block text-sm font-semibold text-slate-700 mb-2">Full Name</label>
-                                    <div class="relative">
-                                        <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                                            <i class="fas fa-user text-slate-400"></i>
-                                        </div>
-                                        <input type="text" name="name" id="name" required class="block w-full pl-10 pr-3 py-3 border border-slate-200 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 bg-slate-50 hover:bg-white transition-colors" placeholder="John Doe">
-                                    </div>
-                                </div>
-                                
-                                <div>
-                                    <label for="email" class="block text-sm font-semibold text-slate-700 mb-2">Email Address</label>
-                                    <div class="relative">
-                                        <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                                            <i class="fas fa-envelope text-slate-400"></i>
-                                        </div>
-                                        <input type="email" name="email" id="email" required class="block w-full pl-10 pr-3 py-3 border border-slate-200 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 bg-slate-50 hover:bg-white transition-colors" placeholder="john@college.edu">
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- Role Dropdown -->
-                            <div>
-                                <label for="role" class="block text-sm font-semibold text-slate-700 mb-2">I am a...</label>
-                                <div class="relative">
-                                    <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                                        <i class="fas fa-university text-slate-400"></i>
-                                    </div>
-                                    <select id="role" name="role" class="block w-full pl-10 pr-10 py-3 border border-slate-200 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 bg-slate-50 hover:bg-white transition-colors appearance-none text-slate-600">
-                                        <option value="Student">Student</option>
-                                        <option value="Faculty">Faculty Member</option>
-                                        <option value="Alumni">Alumni</option>
-                                        <option value="Parent">Parent</option>
-                                        <option value="Other">Other</option>
-                                    </select>
-                                    <div class="absolute inset-y-0 right-0 pr-3 flex items-center pointer-events-none">
-                                        <i class="fas fa-chevron-down text-slate-400 text-xs"></i>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- Star Rating -->
-                            <div>
-                                <label class="block text-sm font-semibold text-slate-700 mb-2">Overall Experience</label>
-                                <div class="flex items-center gap-1" id="star-container">
-                                    <!-- Hidden input to store value -->
-                                    <input type="hidden" name="rating" id="rating-value" value="5">
+                            <!-- STEP 1: Personal Info -->
+                            <div id="step-1" class="step-container active-step">
+                                <h2 class="text-lg font-bold text-slate-800 border-b pb-2 mb-5">1. Personal Details</h2>
+                                <div class="space-y-4 sm:space-y-5">
                                     
-                                    <button type="button" class="star-btn selected" data-value="1"><i class="fas fa-star"></i></button>
-                                    <button type="button" class="star-btn selected" data-value="2"><i class="fas fa-star"></i></button>
-                                    <button type="button" class="star-btn selected" data-value="3"><i class="fas fa-star"></i></button>
-                                    <button type="button" class="star-btn selected" data-value="4"><i class="fas fa-star"></i></button>
-                                    <button type="button" class="star-btn selected" data-value="5"><i class="fas fa-star"></i></button>
-                                    <span class="ml-3 text-sm text-slate-500 font-medium" id="rating-text">Excellent</span>
+                                    <!-- Name -->
+                                    <div>
+                                        <label class="block text-sm font-semibold text-slate-700 mb-1.5">Full Name *</label>
+                                        <input type="text" name="name" required class="w-full px-4 py-3 border border-slate-200 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-blue-500 bg-slate-50 outline-none transition-all" placeholder="Enter your full name">
+                                    </div>
+                                    
+                                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-5">
+                                        <!-- Mobile Number -->
+                                        <div>
+                                            <label class="block text-sm font-semibold text-slate-700 mb-1.5">Mobile Number *</label>
+                                            <input type="tel" name="mobile_number" required pattern="[0-9]{10}" class="w-full px-4 py-3 border border-slate-200 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-blue-500 bg-slate-50 outline-none transition-all" placeholder="10-digit number">
+                                        </div>
+
+                                        <!-- Email -->
+                                        <div>
+                                            <label class="block text-sm font-semibold text-slate-700 mb-1.5">Email Address *</label>
+                                            <input type="email" name="email" required class="w-full px-4 py-3 border border-slate-200 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-blue-500 bg-slate-50 outline-none transition-all" placeholder="your@email.com">
+                                        </div>
+                                    </div>
+
+                                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-5">
+                                        <!-- Roll Number -->
+                                        <div>
+                                            <label class="block text-sm font-semibold text-slate-700 mb-1.5">Roll Number (Optional)</label>
+                                            <input type="text" name="roll_number" class="w-full px-4 py-3 border border-slate-200 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-blue-500 bg-slate-50 outline-none transition-all" placeholder="e.g. 20A81A05XX">
+                                        </div>
+
+                                        <!-- Organization -->
+                                        <div>
+                                            <label class="block text-sm font-semibold text-slate-700 mb-1.5">Organization / College *</label>
+                                            <input type="text" name="organization" required class="w-full px-4 py-3 border border-slate-200 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-blue-500 bg-slate-50 outline-none transition-all" placeholder="Enter organization name">
+                                        </div>
+                                    </div>
+
+                                    <button type="button" onclick="goToStep(2)" class="mt-6 w-full py-3.5 sm:py-4 bg-slate-900 text-white rounded-xl font-bold text-base hover:bg-slate-800 transition-colors flex justify-center items-center gap-2 shadow-md">
+                                        Proceed to Feedback <i class="fas fa-arrow-right"></i>
+                                    </button>
                                 </div>
                             </div>
 
-                            <!-- Message -->
-                            <div>
-                                <label for="message" class="block text-sm font-semibold text-slate-700 mb-2">Your Feedback</label>
-                                <div class="relative">
-                                    <textarea id="message" name="message" rows="4" required class="block w-full p-3 border border-slate-200 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 bg-slate-50 hover:bg-white transition-colors" placeholder="What did you like? What can we improve?"></textarea>
+                            <!-- STEP 2: Feedback Info -->
+                            <div id="step-2" class="step-container hidden-step">
+                                <h2 class="text-lg font-bold text-slate-800 border-b pb-2 mb-5">2. Website Feedback</h2>
+                                <div class="space-y-5 sm:space-y-6">
+                                    
+                                    <!-- Website Select -->
+                                    <div>
+                                        <label class="block text-sm font-semibold text-slate-700 mb-1.5">Which website are you reviewing? *</label>
+                                        <div class="relative">
+                                            <select name="website_reviewed" required class="w-full px-4 py-3 border border-slate-200 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-blue-500 bg-slate-50 outline-none transition-all appearance-none text-slate-700 font-medium">
+                                                <option value="" disabled selected>Select a platform...</option>
+                                                <option value="Lakshya (lakshya.lbrce.ac.in)">Lakshya - lakshya.lbrce.ac.in</option>
+                                                <option value="Events (events-lbrce.in)">Events - events-lbrce.in</option>
+                                                <option value="Alumni (lbrce-alumni.in)">lbrce Alumni - lbrce-alumni.in</option>
+                                                <option value="Digi Adhyapak (digiadhyapak.com)">Digi Adhyapak - digiadhyapak.com</option>
+                                                <option value="Proctorix (proctorix.in)">Proctorix - proctorix.in</option>
+                                                <option value="Testify (testify.xetasolutions.in)">Testify - testify.xetasolutions.in</option>
+                                            </select>
+                                            <div class="absolute inset-y-0 right-0 pr-4 flex items-center pointer-events-none">
+                                                <i class="fas fa-chevron-down text-slate-400 text-sm"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Ratings Grid -->
+                                    <div class="bg-slate-50 p-4 rounded-xl border border-slate-100 space-y-4">
+                                        <!-- UI Rating -->
+                                        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+                                            <label class="text-sm font-semibold text-slate-700">User Interface (UI)</label>
+                                            <div class="rating-group flex items-center gap-1" data-target="ui-rating">
+                                                <input type="hidden" name="Rating_UI" id="ui-rating" value="0">
+                                                <button type="button" class="star-btn" data-value="1"><i class="far fa-star"></i></button>
+                                                <button type="button" class="star-btn" data-value="2"><i class="far fa-star"></i></button>
+                                                <button type="button" class="star-btn" data-value="3"><i class="far fa-star"></i></button>
+                                                <button type="button" class="star-btn" data-value="4"><i class="far fa-star"></i></button>
+                                                <button type="button" class="star-btn" data-value="5"><i class="far fa-star"></i></button>
+                                            </div>
+                                        </div>
+                                        <hr class="border-slate-200">
+                                        <!-- Performance Rating -->
+                                        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+                                            <label class="text-sm font-semibold text-slate-700">Performance & Speed</label>
+                                            <div class="rating-group flex items-center gap-1" data-target="perf-rating">
+                                                <input type="hidden" name="Rating_Performance" id="perf-rating" value="0">
+                                                <button type="button" class="star-btn" data-value="1"><i class="far fa-star"></i></button>
+                                                <button type="button" class="star-btn" data-value="2"><i class="far fa-star"></i></button>
+                                                <button type="button" class="star-btn" data-value="3"><i class="far fa-star"></i></button>
+                                                <button type="button" class="star-btn" data-value="4"><i class="far fa-star"></i></button>
+                                                <button type="button" class="star-btn" data-value="5"><i class="far fa-star"></i></button>
+                                            </div>
+                                        </div>
+                                        <hr class="border-slate-200">
+                                        <!-- Features Rating -->
+                                        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+                                            <label class="text-sm font-semibold text-slate-700">Features & Functionality</label>
+                                            <div class="rating-group flex items-center gap-1" data-target="feat-rating">
+                                                <input type="hidden" name="Rating_Features" id="feat-rating" value="0">
+                                                <button type="button" class="star-btn" data-value="1"><i class="far fa-star"></i></button>
+                                                <button type="button" class="star-btn" data-value="2"><i class="far fa-star"></i></button>
+                                                <button type="button" class="star-btn" data-value="3"><i class="far fa-star"></i></button>
+                                                <button type="button" class="star-btn" data-value="4"><i class="far fa-star"></i></button>
+                                                <button type="button" class="star-btn" data-value="5"><i class="far fa-star"></i></button>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Written Feedback -->
+                                    <div>
+                                        <label class="block text-sm font-semibold text-slate-700 mb-1.5">Detailed Suggestions / Comments *</label>
+                                        <textarea name="detailed_feedback" rows="3" required class="w-full px-4 py-3 border border-slate-200 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-blue-500 bg-slate-50 outline-none transition-all resize-y" placeholder="Tell us what you liked or what could be improved..."></textarea>
+                                    </div>
+
+                                    <!-- Navigation Buttons -->
+                                    <div class="flex gap-3 pt-2">
+                                        <button type="button" onclick="goToStep(1)" class="w-1/3 py-3.5 sm:py-4 bg-slate-100 text-slate-700 rounded-xl font-bold text-base hover:bg-slate-200 transition-colors shadow-sm">
+                                            Back
+                                        </button>
+                                        <button type="submit" id="submit-btn" class="w-2/3 flex justify-center items-center py-3.5 sm:py-4 bg-blue-600 text-white rounded-xl font-bold text-base hover:bg-blue-700 transition-colors shadow-md gap-2">
+                                            <span>Submit Feedback</span>
+                                            <i class="fas fa-paper-plane"></i>
+                                        </button>
+                                    </div>
                                 </div>
                             </div>
 
-                            <!-- Submit Button -->
-                            <button type="submit" id="submit-btn" class="w-full flex justify-center items-center py-3.5 px-4 border border-transparent rounded-lg shadow-sm text-sm font-bold text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition-all transform hover:-translate-y-0.5">
-                                <span>Submit Feedback</span>
-                                <i class="fas fa-paper-plane ml-2"></i>
-                            </button>
                         </form>
                     </div>
                 </div>
             </div>
         </main>
-
-        <!-- Footer -->
-        <footer class="py-8 text-center">
-            <p class="text-sm text-slate-400">&copy; <span id="year"></span> Xeta Tech Solutions. All rights reserved.</p>
-        </footer>
     </div>
 
     <!-- JavaScript Logic -->
@@ -275,94 +329,127 @@
         const mainContent = document.getElementById('main-content');
         const video = document.getElementById('intro-video');
 
-        // Set current year
-        document.getElementById('year').innerText = new Date().getFullYear();
-
         function endIntro() {
-            // Fade out overlay
             introOverlay.classList.add('fade-out');
-            
-            // Show main content
             mainContent.style.display = 'flex';
-            // Slight delay to allow display:flex to apply before opacity transition
             setTimeout(() => {
                 mainContent.classList.add('content-visible');
             }, 50);
-
-            // Remove overlay from DOM after transition to save resources
             setTimeout(() => {
                 introOverlay.style.display = 'none';
-                video.pause(); // Ensure video stops
-            }, 1000);
+                video.pause();
+            }, 800);
         }
 
-        // Auto-play handling
         window.addEventListener('load', () => {
-            video.muted = true; // Required for most browser autoplay policies
-            video.play().catch(e => console.log("Autoplay prevented:", e));
-            
-            // Auto-end when video finishes
+            video.muted = true;
+            video.play().catch(e => console.log("Autoplay prevented"));
             video.addEventListener('ended', endIntro);
         });
 
 
-        // --- 2. Star Rating Logic ---
-        const starBtns = document.querySelectorAll('.star-btn');
-        const ratingInput = document.getElementById('rating-value');
-        const ratingText = document.getElementById('rating-text');
-        const ratingLabels = {
-            1: "Poor",
-            2: "Fair",
-            3: "Good",
-            4: "Very Good",
-            5: "Excellent"
-        };
+        // --- 2. Multi-Step Form Logic ---
+        function goToStep(stepNumber) {
+            const step1 = document.getElementById('step-1');
+            const step2 = document.getElementById('step-2');
+            const progressBar = document.getElementById('progress-bar');
 
-        starBtns.forEach(btn => {
-            // Hover effects
-            btn.addEventListener('mouseenter', () => {
-                const val = parseInt(btn.dataset.value);
-                updateStars(val, false); // Visual only
-            });
-
-            // Click to set
-            btn.addEventListener('click', () => {
-                const val = parseInt(btn.dataset.value);
-                ratingInput.value = val;
-                updateStars(val, true); // Commit value
-            });
-        });
-
-        document.getElementById('star-container').addEventListener('mouseleave', () => {
-            // Reset to saved value on mouse leave
-            updateStars(parseInt(ratingInput.value), true);
-        });
-
-        function updateStars(value, isCommit) {
-            starBtns.forEach(btn => {
-                const btnVal = parseInt(btn.dataset.value);
-                if (btnVal <= value) {
-                    btn.classList.add('selected');
-                } else {
-                    btn.classList.remove('selected');
+            if (stepNumber === 2) {
+                // Validate Step 1 before proceeding
+                const step1Inputs = step1.querySelectorAll('input[required]');
+                let isValid = true;
+                for(let input of step1Inputs) {
+                    if (!input.checkValidity()) {
+                        input.reportValidity(); // Shows native browser tooltip
+                        isValid = false;
+                        break; // Stop at first invalid
+                    }
                 }
-            });
-            if (isCommit) {
-                ratingText.innerText = ratingLabels[value] || "";
+                
+                if (!isValid) return;
+
+                // Move to Step 2
+                step1.classList.remove('active-step');
+                step1.classList.add('hidden-step');
+                
+                setTimeout(() => {
+                    step1.style.display = 'none';
+                    step2.style.display = 'block';
+                    // trigger reflow
+                    void step2.offsetWidth;
+                    step2.classList.remove('hidden-step');
+                    step2.classList.add('active-step');
+                    progressBar.style.width = '100%';
+                }, 300); // Wait for fade out
+                
+            } else if (stepNumber === 1) {
+                // Move back to Step 1
+                step2.classList.remove('active-step');
+                step2.classList.add('hidden-step');
+                
+                setTimeout(() => {
+                    step2.style.display = 'none';
+                    step1.style.display = 'block';
+                    void step1.offsetWidth;
+                    step1.classList.remove('hidden-step');
+                    step1.classList.add('active-step');
+                    progressBar.style.width = '50%';
+                }, 300);
             }
         }
 
+        // --- 3. Multi-Star Rating Logic ---
+        document.querySelectorAll('.rating-group').forEach(group => {
+            const input = group.querySelector('input[type="hidden"]');
+            const btns = group.querySelectorAll('.star-btn');
 
-        // --- 3. Form Submission Logic (AJAX) ---
+            btns.forEach(btn => {
+                // Hover effect
+                btn.addEventListener('mouseenter', () => {
+                    const val = parseInt(btn.dataset.value);
+                    updateStars(btns, val);
+                });
+
+                // Click to set
+                btn.addEventListener('click', () => {
+                    const val = parseInt(btn.dataset.value);
+                    input.value = val;
+                    updateStars(btns, val);
+                });
+            });
+
+            // Reset on mouse leave
+            group.addEventListener('mouseleave', () => {
+                updateStars(btns, parseInt(input.value));
+            });
+        });
+
+        function updateStars(btnNodes, value) {
+            btnNodes.forEach(btn => {
+                const btnVal = parseInt(btn.dataset.value);
+                const icon = btn.querySelector('i');
+                if (btnVal <= value) {
+                    btn.classList.add('selected');
+                    icon.classList.remove('far');
+                    icon.classList.add('fas');
+                } else {
+                    btn.classList.remove('selected');
+                    icon.classList.remove('fas');
+                    icon.classList.add('far');
+                }
+            });
+        }
+
+
+        // --- 4. Form Submission (AJAX) ---
         const form = document.getElementById("feedback-form");
         const submitBtn = document.getElementById("submit-btn");
         const successMsg = document.getElementById("success-message");
         const errorMsg = document.getElementById("error-message");
 
-        async function handleSubmit(event) {
+        form.addEventListener("submit", async function(event) {
             event.preventDefault();
             
-            // UI Loading State
             const originalBtnContent = submitBtn.innerHTML;
             submitBtn.disabled = true;
             submitBtn.innerHTML = '<div class="loader"></div>';
@@ -375,41 +462,55 @@
                 const response = await fetch(event.target.action, {
                     method: form.method,
                     body: data,
-                    headers: {
-                        'Accept': 'application/json'
-                    }
+                    headers: { 'Accept': 'application/json' }
                 });
 
                 if (response.ok) {
-                    // Success
-                    form.classList.add('hidden');
+                    // Success! Hide form, show Thank You message
+                    form.style.display = 'none';
                     successMsg.classList.remove('hidden');
-                    successMsg.classList.add('flex'); // Ensure flex display
+                    successMsg.classList.add('flex');
                 } else {
-                    // Error from server
-                    throw new Error('Form submission failed');
+                    throw new Error('Submission failed');
                 }
             } catch (error) {
-                // Network or other error
                 errorMsg.classList.remove('hidden');
                 submitBtn.disabled = false;
                 submitBtn.innerHTML = originalBtnContent;
                 submitBtn.classList.remove('opacity-75', 'cursor-not-allowed');
             }
-        }
+        });
 
-        form.addEventListener("submit", handleSubmit);
-
+        // --- 5. Reset Form Logic ---
         function resetForm() {
             form.reset();
-            // Reset stars
-            updateStars(5, true);
-            ratingInput.value = 5;
+            
+            // Reset all star groups
+            document.querySelectorAll('.rating-group').forEach(group => {
+                const input = group.querySelector('input[type="hidden"]');
+                input.value = 0;
+                const btns = group.querySelectorAll('.star-btn');
+                updateStars(btns, 0);
+            });
+            
+            // Return to Step 1
+            document.getElementById('progress-bar').style.width = '50%';
+            
+            const step1 = document.getElementById('step-1');
+            const step2 = document.getElementById('step-2');
+            
+            step2.classList.remove('active-step');
+            step2.classList.add('hidden-step');
+            step2.style.display = 'none';
+            
+            step1.style.display = 'block';
+            step1.classList.remove('hidden-step');
+            step1.classList.add('active-step');
             
             // Show form again
             successMsg.classList.add('hidden');
             successMsg.classList.remove('flex');
-            form.classList.remove('hidden');
+            form.style.display = 'block';
             
             // Reset button
             submitBtn.disabled = false;
