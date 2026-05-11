@@ -1,11 +1,28 @@
 <!DOCTYPE html>
-<html lang="en" class="scroll-smooth bg-slate-950 text-slate-300">
+<html lang="en" class="scroll-smooth bg-slate-50 text-slate-600">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Xeta Tech Solutions | Next-Gen Enterprise Engineering & AI</title>
+    <title>Xeta Tech Solutions | Enterprise Engineering & AI Products</title>
     
-    <meta name="description" content="Xeta Tech Solutions delivers scalable software products, AI-driven platforms, and bespoke engineering solutions for global enterprises.">
+    <!-- Comprehensive SEO Meta Tags -->
+    <meta name="description" content="Xeta Tech Solutions is a premier technology enterprise delivering bespoke engineering services and a proprietary ecosystem of AI-driven platforms including Proctorix, Testify, and Xeta Hire.">
+    <meta name="keywords" content="Enterprise Software, AI Platforms, Cognitive Proctoring, Xeta Tech Solutions, Cloud Architecture, EdTech Solutions, Corporate Engineering, Software Services, Xeta Hire, Voxelyt">
+    <meta name="author" content="Xeta Tech Solutions">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Open Graph / Social Media -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Xeta Tech Solutions | Enterprise Engineering & AI">
+    <meta property="og:description" content="Architecting scale for modern enterprises through bespoke services and proprietary AI products.">
+    <meta property="og:image" content="https://res.cloudinary.com/dpz44zf0z/image/upload/v1760704788/XETA_SOLUTIONS_LOGO_bcsbwh.png">
+    <meta property="og:url" content="https://xetasolutions.in">
+    
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Xeta Tech Solutions | Next-Gen Enterprise Engineering">
+    <meta name="twitter:description" content="Architecting scale for modern enterprises through bespoke services and proprietary AI products.">
+
     <link rel="icon" type="image/png" href="https://res.cloudinary.com/dpz44zf0z/image/upload/v1760704788/XETA_SOLUTIONS_LOGO_bcsbwh.png">
 
     <!-- Tailwind CSS -->
@@ -28,27 +45,26 @@
                     colors: {
                         brand: {
                             50: '#eff6ff',
+                            100: '#dbeafe',
                             400: '#60a5fa',
                             500: '#3b82f6',
                             600: '#2563eb', 
+                            700: '#1d4ed8',
                             900: '#1e3a8a',
-                            accent: '#06b6d4', // Cyan
-                            glow: '#8b5cf6'    // Violet
                         }
                     },
                     animation: {
-                        'float': 'float 6s ease-in-out infinite',
-                        'spin-slow': 'spin 12s linear infinite',
-                        'fade-in': 'fadeIn 0.5s ease-out forwards',
+                        'float': 'float 8s ease-in-out infinite',
+                        'fade-in-up': 'fadeInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards',
                     },
                     keyframes: {
                         float: {
                             '0%, 100%': { transform: 'translateY(0)' },
-                            '50%': { transform: 'translateY(-20px)' },
+                            '50%': { transform: 'translateY(-10px)' },
                         },
-                        fadeIn: {
-                            '0%': { opacity: '0' },
-                            '100%': { opacity: '1' },
+                        fadeInUp: {
+                            '0%': { opacity: '0', transform: 'translateY(20px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' },
                         }
                     }
                 }
@@ -57,120 +73,53 @@
     </script>
 
     <style>
-        /* Modern Premium UI Styles */
+        /* MNC Premium Light UI Styles */
         body {
-            background-color: #020617; /* Deep Slate 950 */
-            background-image: 
-                radial-gradient(circle at 15% 50%, rgba(37, 99, 235, 0.08), transparent 25%),
-                radial-gradient(circle at 85% 30%, rgba(139, 92, 246, 0.08), transparent 25%);
-            overflow-x: hidden;
+            background-color: #f8fafc; /* Slate 50 */
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
         }
 
-        /* --- PRELOADER STYLES --- */
-        #intro-loader {
-            position: fixed;
-            inset: 0;
-            background-color: #020617;
-            z-index: 9999;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: opacity 0.8s ease-out, visibility 0.8s ease-out;
-        }
-        
-        #intro-video {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-        @media (max-width: 768px) {
-             #intro-video { object-fit: contain; }
-        }
-
-        .skip-btn {
-            position: absolute;
-            bottom: 3rem;
-            left: 50%;
-            transform: translateX(-50%);
-            color: white;
-            background: rgba(255, 255, 255, 0.1);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            backdrop-filter: blur(8px);
-            font-size: 0.85rem;
-            padding: 12px 32px;
-            border-radius: 9999px;
-            cursor: pointer;
-            z-index: 10000;
-            font-family: 'Plus Jakarta Sans', sans-serif;
-            transition: all 0.3s;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            font-weight: 600;
-        }
-        .skip-btn:hover {
-            background: rgba(255, 255, 255, 0.2);
-            border-color: rgba(255, 255, 255, 0.4);
-            transform: translateX(-50%) scale(1.05);
-        }
-
-        body.loading {
-            overflow: hidden;
-        }
-        /* ------------------------ */
-
-        /* Tech Grid Background */
+        /* Tech Grid Background - Light Version */
         .bg-grid-pattern {
-            background-image: linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
-                              linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
-            background-size: 40px 40px;
-            mask-image: linear-gradient(to bottom, transparent, black 10%, black 90%, transparent);
-            -webkit-mask-image: linear-gradient(to bottom, transparent, black 10%, black 90%, transparent);
+            background-image: 
+                linear-gradient(to right, rgba(15, 23, 42, 0.04) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(15, 23, 42, 0.04) 1px, transparent 1px);
+            background-size: 64px 64px;
+            mask-image: linear-gradient(to bottom, transparent, black 15%, black 85%, transparent);
+            -webkit-mask-image: linear-gradient(to bottom, transparent, black 15%, black 85%, transparent);
         }
 
-        /* Glassmorphism Navigation */
+        /* Light Glassmorphism Navigation */
         .glass-nav {
-            background: rgba(2, 6, 23, 0.7);
+            background: rgba(255, 255, 255, 0.85);
             backdrop-filter: blur(16px);
             -webkit-backdrop-filter: blur(16px);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            border-bottom: 1px solid rgba(15, 23, 42, 0.05);
         }
 
-        /* Bento Box / Card Styles */
+        /* Enterprise Card Styles - Light Mode */
         .glass-card {
-            background: rgba(255, 255, 255, 0.02);
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            backdrop-filter: blur(10px);
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            background: #ffffff;
+            border: 1px solid rgba(15, 23, 42, 0.06);
+            border-radius: 1rem;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.02), 0 2px 4px -2px rgba(0, 0, 0, 0.02);
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
             position: relative;
             overflow: hidden;
         }
-        
-        .glass-card::before {
-            content: '';
-            position: absolute;
-            top: 0; left: -100%; width: 50%; height: 100%;
-            background: linear-gradient(to right, transparent, rgba(255, 255, 255, 0.03), transparent);
-            transform: skewX(-20deg);
-            transition: 0.5s;
-        }
 
         .glass-card:hover {
-            border-color: rgba(255, 255, 255, 0.15);
+            border-color: rgba(37, 99, 235, 0.2);
             transform: translateY(-4px);
-            background: rgba(255, 255, 255, 0.04);
-            box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.5), 0 0 20px rgba(37, 99, 235, 0.1);
-        }
-
-        .glass-card:hover::before {
-            left: 150%;
+            box-shadow: 0 20px 40px -10px rgba(15, 23, 42, 0.08);
         }
 
         /* Reveal Animations */
         .reveal {
             opacity: 0;
-            transform: translateY(40px);
-            transition: all 1s cubic-bezier(0.16, 1, 0.3, 1);
+            transform: translateY(30px);
+            transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
         }
         .reveal.active {
             opacity: 1;
@@ -181,133 +130,176 @@
         .delay-200 { transition-delay: 200ms; }
         .delay-300 { transition-delay: 300ms; }
 
-        /* Custom Scrollbar */
+        /* Custom Scrollbar - Light Mode */
         ::-webkit-scrollbar { width: 8px; }
-        ::-webkit-scrollbar-track { background: #020617; }
-        ::-webkit-scrollbar-thumb { background: #1e293b; border-radius: 4px; }
-        ::-webkit-scrollbar-thumb:hover { background: #334155; }
+        ::-webkit-scrollbar-track { background: #f1f5f9; }
+        ::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 10px; }
+        ::-webkit-scrollbar-thumb:hover { background: #94a3b8; }
 
-        /* Forms */
+        /* Forms - Light Mode */
         .form-input {
             width: 100%;
             padding: 0.875rem 1.25rem;
             border-radius: 0.5rem;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            background-color: rgba(255, 255, 255, 0.03);
-            color: white;
-            transition: all 0.3s ease;
+            border: 1px solid #e2e8f0;
+            background-color: #f8fafc;
+            color: #0f172a;
+            transition: all 0.2s ease;
             outline: none;
             font-family: 'Inter', sans-serif;
+            font-size: 0.875rem;
         }
         .form-input:focus {
-            border-color: #3b82f6;
-            background-color: rgba(255, 255, 255, 0.05);
-            box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.1);
+            border-color: #2563eb;
+            background-color: #ffffff;
+            box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.1);
         }
         
-        /* Modals */
+        /* Modals - Light Mode */
         .modal-glass {
-            background: rgba(15, 23, 42, 0.8);
-            backdrop-filter: blur(20px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
+            background: #ffffff;
+            border: 1px solid #e2e8f0;
+            box-shadow: 0 25px 50px -12px rgba(15, 23, 42, 0.15);
         }
 
         /* Gradient Text */
-        .text-gradient {
-            background: linear-gradient(135deg, #ffffff 0%, #94a3b8 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
         .text-gradient-brand {
-            background: linear-gradient(135deg, #60a5fa 0%, #a78bfa 100%);
+            background: linear-gradient(135deg, #1d4ed8 0%, #3b82f6 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
         }
 
-        .image-container-white {
-            background: rgba(255,255,255,0.9);
-            padding: 0.5rem;
-            border-radius: 0.5rem;
-            display: inline-flex;
-        }
-
-        /* Modal Content Styling */
+        /* Modal Content Typography */
         .modal-body-content h4 {
-            color: white;
+            color: #0f172a;
             font-family: 'Plus Jakarta Sans', sans-serif;
             font-weight: 700;
             font-size: 1.125rem;
-            margin-top: 1.5rem;
-            margin-bottom: 0.75rem;
-            border-bottom: 1px solid rgba(255,255,255,0.1);
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+            letter-spacing: -0.025em;
+            border-bottom: 1px solid #e2e8f0;
             padding-bottom: 0.5rem;
         }
         .modal-body-content p {
-            margin-bottom: 1rem;
+            margin-bottom: 1.25rem;
             line-height: 1.7;
+            color: #475569;
         }
         .modal-body-content ul {
-            list-style-type: disc;
-            padding-left: 1.5rem;
-            margin-bottom: 1.5rem;
+            list-style-type: none;
+            padding-left: 0;
+            margin-bottom: 2rem;
         }
         .modal-body-content li {
-            margin-bottom: 0.5rem;
+            margin-bottom: 0.75rem;
+            padding-left: 1.5rem;
+            position: relative;
+            color: #475569;
         }
+        .modal-body-content li::before {
+            content: "→";
+            position: absolute;
+            left: 0;
+            color: #2563eb;
+            font-weight: bold;
+        }
+        .image-container-white {
+            background: #ffffff;
+            padding: 0.5rem;
+            border-radius: 0.5rem;
+            display: inline-flex;
+            border: 1px solid #e2e8f0;
+        }
+
+        /* --- PRELOADER --- */
+        #intro-loader {
+            position: fixed;
+            inset: 0;
+            background-color: #ffffff;
+            z-index: 9999;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: opacity 0.8s ease-out, visibility 0.8s ease-out;
+        }
+        #intro-video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        @media (max-width: 768px) { #intro-video { object-fit: contain; } }
+        .skip-btn {
+            position: absolute;
+            bottom: 3rem;
+            left: 50%;
+            transform: translateX(-50%);
+            color: #0f172a;
+            background: rgba(255, 255, 255, 0.9);
+            border: 1px solid #e2e8f0;
+            backdrop-filter: blur(12px);
+            font-size: 0.75rem;
+            padding: 10px 28px;
+            border-radius: 9999px;
+            cursor: pointer;
+            z-index: 10000;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1);
+        }
+        body.loading { overflow: hidden; }
     </style>
 </head>
-<body class="antialiased selection:bg-brand-500 selection:text-white loading">
+<body class="selection:bg-brand-500 selection:text-white loading">
 
-    <!-- CINEMATIC INTRO LOADER -->
+    <!-- PRELOADER -->
     <div id="intro-loader">
         <video id="intro-video" muted playsinline autoplay webkit-playsinline>
             <source src="https://res.cloudinary.com/djdwpjm7x/video/upload/v1770550594/Xeta_Tech_Solutions_nidand.mp4" type="video/mp4">
         </video>
-        <button class="skip-btn" onclick="endIntro()">Enter Site</button>
+        <button class="skip-btn" onclick="endIntro()">Skip Intro</button>
     </div>
 
-    <!-- Navigation -->
+    <!-- NAVIGATION -->
     <nav class="fixed w-full top-0 z-40 glass-nav transition-all duration-300" id="navbar">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center h-20">
                 <!-- Logo -->
                 <div class="flex-shrink-0 cursor-pointer z-50 flex items-center gap-3 group" onclick="window.scrollTo(0,0)">
-                    <div class="bg-white/10 p-1.5 rounded-lg border border-white/10 group-hover:bg-white/20 transition-all duration-300">
+                    <!-- Dark background pill ensures white logo is always visible on light theme -->
+                    <div class="bg-slate-900 p-2 rounded-lg shadow-sm group-hover:bg-brand-600 transition-colors duration-300">
                         <img src="https://res.cloudinary.com/dpz44zf0z/image/upload/v1760704788/XETA_SOLUTIONS_LOGO_bcsbwh.png" 
                              alt="Xeta Tech Logo" 
-                             class="h-7 md:h-8 w-auto">
+                             class="h-6 md:h-7 w-auto">
                     </div>
-                    <span class="text-white font-display font-bold text-lg md:text-xl tracking-tight hidden sm:block">XETA TECH</span>
+                    <span class="text-slate-900 font-display font-bold text-lg md:text-xl tracking-tight hidden sm:block">XETA TECH</span>
                 </div>
 
                 <!-- Desktop Menu -->
                 <div class="hidden lg:flex items-center space-x-8">
-                    <a href="#about" class="text-sm font-medium text-slate-400 hover:text-white transition-colors">Architecture</a>
-                    <a href="#methodology" class="text-sm font-medium text-slate-400 hover:text-white transition-colors">Methodology</a>
-                    <a href="#proctorix" class="text-sm font-medium text-slate-400 hover:text-white transition-colors">Proctorix</a>
-                    <a href="#products" class="text-sm font-medium text-slate-400 hover:text-white transition-colors">Ecosystem</a>
+                    <a href="#overview" class="text-sm font-semibold text-slate-500 hover:text-brand-600 transition-colors">Overview</a>
+                    <a href="#services" class="text-sm font-semibold text-slate-500 hover:text-brand-600 transition-colors">Services</a>
+                    <a href="#ecosystem" class="text-sm font-semibold text-slate-500 hover:text-brand-600 transition-colors">Product Ecosystem</a>
                     
-                    <div class="h-4 w-px bg-white/10 mx-2"></div>
+                    <div class="h-4 w-px bg-slate-300 mx-2"></div>
                     
-                    <a href="https://xetasolutions.in/ems.login.html" target="_blank" class="text-sm font-medium text-brand-400 hover:text-brand-300 transition-colors flex items-center gap-1 group">
+                    <a href="https://xetasolutions.in/ems.login.html" target="_blank" class="text-sm font-bold text-brand-600 hover:text-brand-700 transition-colors flex items-center gap-1 group">
                         EMS Login
                         <svg class="w-3.5 h-3.5 transform group-hover:translate-x-0.5 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
                     </a>
                     
-                    <button onclick="openModal('contact-modal')" class="bg-white text-black px-5 py-2.5 rounded-full text-sm font-semibold hover:bg-slate-200 transition-all hover:scale-105 shadow-[0_0_20px_rgba(255,255,255,0.15)]">
+                    <button onclick="openModal('contact-modal')" class="bg-slate-900 text-white px-5 py-2.5 rounded-full text-sm font-semibold hover:bg-brand-600 transition-all shadow-md hover:shadow-lg">
                         Engage Sales
                     </button>
                 </div>
 
                 <!-- Mobile Menu Button -->
                 <div class="lg:hidden flex items-center z-[50]">
-                    <button onclick="toggleMobileMenu()" id="mobile-menu-btn" class="text-white focus:outline-none bg-white/5 rounded-md border border-white/10 relative w-10 h-10 hover:bg-white/10 transition-colors">
-                        <!-- Hamburger Icon -->
-                        <svg id="icon-menu" class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-5 h-5 transition-opacity duration-300 opacity-100" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" /></svg>
-                        <!-- Close Icon -->
-                        <svg id="icon-close" class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-5 h-5 transition-opacity duration-300 opacity-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" /></svg>
+                    <button onclick="toggleMobileMenu()" id="mobile-menu-btn" class="text-slate-900 focus:outline-none relative w-10 h-10 hover:text-brand-600 transition-colors">
+                        <svg id="icon-menu" class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-6 h-6 transition-opacity duration-300 opacity-100" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" /></svg>
+                        <svg id="icon-close" class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-6 h-6 transition-opacity duration-300 opacity-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" /></svg>
                     </button>
                 </div>
             </div>
@@ -315,310 +307,307 @@
     </nav>
 
     <!-- Mobile Menu -->
-    <div id="mobile-menu" class="fixed inset-0 bg-slate-950/95 backdrop-blur-xl z-[45] transform translate-x-full transition-transform duration-500 flex flex-col pt-24 px-8 pb-8 overflow-y-auto">
-        <div class="flex justify-between items-center mb-8 border-b border-white/10 pb-4">
-            <span class="text-white font-display font-bold uppercase tracking-widest text-xs">Menu Navigation</span>
-            <button onclick="toggleMobileMenu()" class="text-slate-400 hover:text-white text-sm flex items-center gap-1 font-semibold">
-                Close
-            </button>
-        </div>
-        
-        <div class="flex flex-col space-y-8 flex-grow">
-            <a href="#about" onclick="toggleMobileMenu()" class="text-3xl font-display font-bold text-white hover:text-brand-400 transition-colors">Architecture</a>
-            <a href="#methodology" onclick="toggleMobileMenu()" class="text-3xl font-display font-bold text-white hover:text-brand-400 transition-colors">Methodology</a>
-            <a href="#proctorix" onclick="toggleMobileMenu()" class="text-3xl font-display font-bold text-white hover:text-brand-400 transition-colors">Proctorix</a>
-            <a href="#products" onclick="toggleMobileMenu()" class="text-3xl font-display font-bold text-white hover:text-brand-400 transition-colors">Ecosystem</a>
+    <div id="mobile-menu" class="fixed inset-0 bg-white/95 backdrop-blur-2xl z-[45] transform translate-x-full transition-transform duration-500 flex flex-col pt-24 px-8 pb-8 overflow-y-auto border-l border-slate-200">
+        <div class="flex flex-col space-y-6 flex-grow mt-4">
+            <a href="#overview" onclick="toggleMobileMenu()" class="text-2xl font-display font-bold text-slate-900 hover:text-brand-600 transition-colors">Company Overview</a>
+            <a href="#services" onclick="toggleMobileMenu()" class="text-2xl font-display font-bold text-slate-900 hover:text-brand-600 transition-colors">Engineering Services</a>
+            <a href="#ecosystem" onclick="toggleMobileMenu()" class="text-2xl font-display font-bold text-slate-900 hover:text-brand-600 transition-colors">Product Ecosystem</a>
             
-            <div class="w-full h-px bg-white/10 my-2"></div>
+            <div class="w-full h-px bg-slate-200 my-4"></div>
             
-            <a href="https://xetasolutions.in/ems.login.html" target="_blank" onclick="toggleMobileMenu()" class="text-xl font-display font-medium text-brand-400 flex items-center justify-between group">
+            <a href="https://xetasolutions.in/ems.login.html" target="_blank" onclick="toggleMobileMenu()" class="text-lg font-display font-bold text-brand-600 flex items-center justify-between group">
                 EMS Portal Login
                 <svg class="w-5 h-5 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
             </a>
-            <button onclick="toggleMobileMenu(); openModal('content-privacy');" class="text-lg font-display text-slate-400 text-left">Privacy Policy</button>
-            <button onclick="toggleMobileMenu(); openModal('content-terms');" class="text-lg font-display text-slate-400 text-left">Terms & Conditions</button>
+            <button onclick="toggleMobileMenu(); openModal('content-privacy');" class="text-base font-display font-medium text-slate-500 text-left">Privacy Policy</button>
+            <button onclick="toggleMobileMenu(); openModal('content-terms');" class="text-base font-display font-medium text-slate-500 text-left">Terms & Conditions</button>
         </div>
         
-        <button onclick="toggleMobileMenu(); openModal('contact-modal');" class="w-full bg-white text-black py-4 rounded-xl font-bold text-lg mt-8 shadow-lg shadow-white/10">Contact Sales</button>
+        <button onclick="toggleMobileMenu(); openModal('contact-modal');" class="w-full bg-slate-900 text-white py-4 rounded-xl font-bold text-lg mt-8 shadow-lg">Contact Sales</button>
     </div>
 
-    <!-- Main Content -->
+    <!-- MAIN CONTENT -->
     <main class="pt-20">
         
         <!-- HERO SECTION -->
-        <section class="relative min-h-[90vh] flex flex-col items-center justify-center overflow-hidden">
-            <!-- Background Grid & Orbs -->
-            <div class="absolute inset-0 bg-grid-pattern opacity-50 z-0"></div>
-            <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-brand-600/20 rounded-full blur-[120px] mix-blend-screen z-0"></div>
-            <div class="absolute top-1/3 left-1/3 w-[400px] h-[400px] bg-purple-600/20 rounded-full blur-[100px] mix-blend-screen z-0 animate-float delay-100"></div>
+        <section class="relative min-h-[90vh] flex flex-col items-center justify-center overflow-hidden bg-white">
+            <!-- Subtle Background Grids & Elements -->
+            <div class="absolute inset-0 bg-grid-pattern opacity-60 z-0 pointer-events-none"></div>
+            <div class="absolute top-0 right-0 w-[800px] h-[800px] bg-brand-50 rounded-full blur-[100px] z-0 pointer-events-none transform translate-x-1/3 -translate-y-1/3"></div>
             
-            <div class="relative max-w-7xl mx-auto px-6 z-10 flex flex-col items-center text-center mt-10 flex-grow justify-center py-16">
+            <div class="relative max-w-5xl mx-auto px-6 z-10 flex flex-col items-center text-center mt-10 flex-grow justify-center py-20">
                 
-                <div class="reveal inline-flex items-center gap-2 px-4 py-1.5 mb-8 text-xs font-semibold tracking-widest uppercase bg-brand-500/10 border border-brand-500/20 text-brand-400 rounded-full backdrop-blur-md">
+                <div class="reveal inline-flex items-center gap-2 px-4 py-1.5 mb-8 text-[11px] font-bold tracking-widest uppercase bg-slate-100 border border-slate-200 text-slate-600 rounded-full">
                     <span class="relative flex h-2 w-2">
                       <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-brand-400 opacity-75"></span>
                       <span class="relative inline-flex rounded-full h-2 w-2 bg-brand-500"></span>
                     </span>
-                    Next-Gen AI & Engineering
+                    Dual-Force Technology Enterprise
                 </div>
                 
-                <h1 class="reveal delay-100 text-5xl md:text-7xl lg:text-8xl font-display font-bold tracking-tight text-white mb-8 leading-[1.05] max-w-5xl">
-                    Architecting Scale for <br/>
-                    <span class="text-gradient-brand">Modern Enterprises</span>
+                <h1 class="reveal delay-100 text-5xl md:text-7xl lg:text-[5rem] font-display font-extrabold tracking-tight text-slate-900 mb-6 leading-[1.05]">
+                    Engineering Scale for <br/>
+                    <span class="text-gradient-brand">Global Innovators</span>
                 </h1>
                 
-                <p class="reveal delay-200 text-lg md:text-xl text-slate-400 mb-12 max-w-2xl leading-relaxed font-light">
-                    Xeta Tech Solutions delivers resilient software infrastructure, AI-driven evaluation platforms, and bespoke engineering to transform the world's leading organizations.
+                <p class="reveal delay-200 text-lg md:text-xl text-slate-500 mb-10 max-w-3xl leading-relaxed">
+                    Xeta Tech Solutions accelerates enterprise transformation through highly bespoke software architecture services and a powerful, proprietary ecosystem of AI-driven platforms.
                 </p>
                 
-                <div class="reveal delay-300 flex flex-col sm:flex-row gap-5 w-full sm:w-auto">
-                    <a href="#products" class="bg-white text-black px-8 py-4 rounded-full font-semibold hover:bg-slate-200 transition-all text-center flex items-center justify-center gap-2">
-                        Explore Ecosystem
+                <div class="reveal delay-300 flex flex-col sm:flex-row gap-4 w-full sm:w-auto">
+                    <a href="#overview" class="bg-brand-600 text-white px-8 py-3.5 rounded-full font-bold hover:bg-brand-700 transition-all text-center flex items-center justify-center gap-2 shadow-lg shadow-brand-500/30">
+                        Company Overview
                         <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path></svg>
                     </a>
-                    <button onclick="openModal('contact-modal')" class="glass-card text-white px-8 py-4 rounded-full font-semibold hover:bg-white/5 transition-all text-center">
-                        Engage Engineering
-                    </button>
+                    <a href="#ecosystem" class="bg-white text-slate-900 border border-slate-200 px-8 py-3.5 rounded-full font-bold hover:bg-slate-50 transition-all text-center shadow-sm">
+                        Explore Ecosystem
+                    </a>
                 </div>
             </div>
 
-            <!-- Proven Scale & Real-World Impact Bar (RESPONSIVE) -->
-            <div class="relative z-20 w-full bg-slate-900/50 border-y border-white/10 backdrop-blur-xl mt-auto">
-                <div class="max-w-7xl mx-auto px-4 sm:px-6 py-6 lg:py-5">
-                    <div class="flex flex-col lg:flex-row justify-between items-center gap-8 lg:gap-12">
-                        
-                        <!-- Startup Scale Metrics -->
-                        <div class="grid grid-cols-3 gap-4 sm:gap-8 items-center w-full lg:w-auto lg:border-r border-white/10 lg:pr-12">
+            <!-- Proven Scale Bar -->
+            <div class="relative z-20 w-full bg-white border-y border-slate-200 shadow-sm mt-auto">
+                <div class="max-w-7xl mx-auto px-6 py-6 lg:py-5">
+                    <div class="flex flex-wrap justify-between items-center gap-8">
+                        <div class="flex items-center gap-8 md:gap-16 w-full lg:w-auto justify-center lg:justify-start">
                             <div class="text-center lg:text-left reveal delay-100">
-                                <div class="text-xl sm:text-3xl md:text-4xl font-display font-bold text-white mb-1">3 Lakh+</div>
-                                <div class="text-[9px] sm:text-[10px] text-brand-400 font-bold uppercase tracking-widest leading-tight">Transactions<br class="block lg:hidden"/> Processed</div>
+                                <div class="text-2xl md:text-3xl font-display font-bold text-slate-900 mb-1">3 Lakh+</div>
+                                <div class="text-[10px] text-slate-500 font-bold uppercase tracking-widest leading-tight">Transactions<br>Processed</div>
                             </div>
                             <div class="text-center lg:text-left reveal delay-200">
-                                <div class="text-xl sm:text-3xl md:text-4xl font-display font-bold text-white mb-1">6,000+</div>
-                                <div class="text-[9px] sm:text-[10px] text-brand-400 font-bold uppercase tracking-widest leading-tight">Concurrent<br class="block lg:hidden"/> Users</div>
+                                <div class="text-2xl md:text-3xl font-display font-bold text-slate-900 mb-1">6,000+</div>
+                                <div class="text-[10px] text-slate-500 font-bold uppercase tracking-widest leading-tight">Concurrent<br>Users Target</div>
                             </div>
                             <div class="text-center lg:text-left reveal delay-300">
-                                <div class="text-xl sm:text-3xl md:text-4xl font-display font-bold text-white mb-1">Zero</div>
-                                <div class="text-[9px] sm:text-[10px] text-brand-400 font-bold uppercase tracking-widest leading-tight">Downtime<br class="block lg:hidden"/> Achieved</div>
+                                <div class="text-2xl md:text-3xl font-display font-bold text-slate-900 mb-1">99.99%</div>
+                                <div class="text-[10px] text-slate-500 font-bold uppercase tracking-widest leading-tight">Uptime<br>SLA Guarantee</div>
                             </div>
                         </div>
-
-                        <!-- Recent Flagship Deployments -->
-                        <div class="w-full lg:w-auto flex flex-col sm:flex-row items-center justify-center lg:justify-end gap-4 sm:gap-6 reveal delay-400">
-                            <span class="text-[10px] text-slate-500 font-bold uppercase tracking-widest hidden lg:block">Proven At Scale:</span>
-                            <div class="flex flex-col sm:flex-row gap-3 sm:gap-4 w-full sm:w-auto justify-center">
-                                <!-- Logo 1 -->
-                                <a href="https://lakshya.lbrce.ac.in" target="_blank" class="flex-1 sm:flex-none group flex items-center gap-3 sm:gap-4 hover:bg-white/10 transition-colors bg-white/5 px-4 py-3 rounded-xl border border-white/10 shadow-lg">
-                                    <div class="bg-white p-1.5 rounded-md shrink-0">
-                                        <img src="https://res.cloudinary.com/dpz44zf0z/image/upload/v1764605760/logo_oeso2m.png" alt="Lakshya" class="h-6 sm:h-8 w-auto object-contain">
-                                    </div>
-                                    <div class="flex flex-col text-left">
-                                        <span class="text-sm sm:text-base font-bold text-white leading-tight group-hover:text-brand-400 transition-colors">Lakshya 2k26</span>
-                                        <span class="text-[9px] sm:text-[10px] text-slate-400 uppercase tracking-wide">LBRCE Flagship</span>
-                                    </div>
-                                </a>
-                                <!-- Logo 2 -->
-                                <a href="https://events-lbrce.in" target="_blank" class="flex-1 sm:flex-none group flex items-center gap-3 sm:gap-4 hover:bg-white/10 transition-colors bg-white/5 px-4 py-3 rounded-xl border border-white/10 shadow-lg">
-                                    <div class="bg-white p-1.5 rounded-md shrink-0">
-                                        <img src="https://res.cloudinary.com/djdwpjm7x/image/upload/v1769925973/events_lbrce_logo_sefvzr.png" alt="Events LBRCE" class="h-6 sm:h-8 w-auto object-contain">
-                                    </div>
-                                    <div class="flex flex-col text-left">
-                                        <span class="text-sm sm:text-base font-bold text-white leading-tight group-hover:text-brand-400 transition-colors">Events Portal</span>
-                                        <span class="text-[9px] sm:text-[10px] text-slate-400 uppercase tracking-wide">Multi-Event Engine</span>
-                                    </div>
-                                </a>
-                            </div>
+                        
+                        <div class="w-full lg:w-auto text-center lg:text-right text-xs font-mono text-slate-500 font-semibold reveal delay-400">
+                            <span class="text-brand-600">SOC-2</span> Compliant Architecture • <span class="text-brand-600">ISO</span> Standard Deployments
                         </div>
-
                     </div>
                 </div>
             </div>
-            
-            <!-- Bottom Fade -->
-            <div class="absolute bottom-0 left-0 w-full h-32 bg-gradient-to-t from-slate-950 to-transparent z-0 pointer-events-none"></div>
         </section>
 
-        <!-- WHO WE ARE / BENTO ARCHITECTURE -->
-        <section id="about" class="py-24 relative z-20">
+        <!-- DETAILED COMPANY OVERVIEW (The Xeta DNA) -->
+        <section id="overview" class="py-24 relative bg-slate-50 border-b border-slate-200">
+            <div class="max-w-7xl mx-auto px-6">
+                <div class="grid lg:grid-cols-2 gap-16 items-start">
+                    <div class="reveal">
+                        <span class="text-brand-600 font-bold tracking-widest uppercase text-xs">The Xeta DNA</span>
+                        <h2 class="text-3xl md:text-4xl font-display font-bold mt-2 text-slate-900 tracking-tight mb-6">A Dual-Force Technology Enterprise.</h2>
+                        <p class="text-slate-600 leading-relaxed mb-6">
+                            Established with a singular focus on eliminating technological friction, Xeta Tech Solutions operates at the intersection of <strong>bespoke software architecture</strong> and <strong>proprietary AI product development</strong>. We don't just build websites; we engineer mission-critical pipelines capable of absorbing massive concurrent traffic without yielding.
+                        </p>
+                        <p class="text-slate-600 leading-relaxed mb-8">
+                            Whether we are developing cognitive anti-cheat systems for global assessments, or executing zero-downtime cloud migrations for institutional clients, our mandate remains identical: <strong>Performance without compromise.</strong>
+                        </p>
+                        
+                        <div class="flex flex-col gap-4">
+                            <div class="flex items-start gap-4 p-4 rounded-xl bg-white border border-slate-200 shadow-sm">
+                                <div class="w-10 h-10 shrink-0 bg-brand-50 rounded-lg flex items-center justify-center text-brand-600">
+                                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"></path></svg>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-slate-900">Engineering Services Division</h4>
+                                    <p class="text-sm text-slate-500 mt-1">Dedicated to transitioning legacy monolithic systems into resilient, microservices-based cloud environments (AWS/Azure).</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start gap-4 p-4 rounded-xl bg-white border border-slate-200 shadow-sm">
+                                <div class="w-10 h-10 shrink-0 bg-purple-50 rounded-lg flex items-center justify-center text-purple-600">
+                                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 10l-2 1m0 0l-2-1m2 1v2.5M20 7l-2 1m2-1l-2-1m2 1v2.5M14 4l-2-1-2 1M4 7l2-1M4 7l2 1M4 7v2.5M12 21l-2-1m2 1l2-1m-2 1v-2.5M6 18l-2-1v-2.5M18 18l2-1v-2.5"></path></svg>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-slate-900">Proprietary Ecosystem</h4>
+                                    <p class="text-sm text-slate-500 mt-1">An internal R&D incubator that has birthed industry-leading SaaS platforms like Proctorix, Xeta Hire, and Voxelyt.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Visual Representation / Stats -->
+                    <div class="relative reveal delay-200">
+                        <div class="glass-card p-8 bg-white border-slate-200">
+                            <h3 class="font-display font-bold text-xl text-slate-900 mb-6 border-b border-slate-100 pb-4">Infrastructure Capabilities</h3>
+                            <ul class="space-y-6">
+                                <li>
+                                    <div class="flex justify-between items-end mb-2">
+                                        <span class="font-bold text-slate-700 text-sm">Cloud Agnostic Deployments</span>
+                                        <span class="text-xs text-slate-500 font-mono">100%</span>
+                                    </div>
+                                    <div class="w-full bg-slate-100 h-2 rounded-full overflow-hidden"><div class="bg-brand-500 h-full w-full"></div></div>
+                                </li>
+                                <li>
+                                    <div class="flex justify-between items-end mb-2">
+                                        <span class="font-bold text-slate-700 text-sm">Container Orchestration (K8s/Docker)</span>
+                                        <span class="text-xs text-slate-500 font-mono">100%</span>
+                                    </div>
+                                    <div class="w-full bg-slate-100 h-2 rounded-full overflow-hidden"><div class="bg-indigo-500 h-full w-full"></div></div>
+                                </li>
+                                <li>
+                                    <div class="flex justify-between items-end mb-2">
+                                        <span class="font-bold text-slate-700 text-sm">Zero-Trust Security Implementation</span>
+                                        <span class="text-xs text-slate-500 font-mono">Military Grade</span>
+                                    </div>
+                                    <div class="w-full bg-slate-100 h-2 rounded-full overflow-hidden"><div class="bg-emerald-500 h-full w-full"></div></div>
+                                </li>
+                            </ul>
+                            
+                            <div class="mt-8 pt-6 border-t border-slate-100 flex gap-4">
+                                <div class="flex-1 text-center">
+                                    <div class="text-2xl font-bold text-slate-900 font-display">SOC-2</div>
+                                    <div class="text-[10px] uppercase tracking-wider text-slate-500 font-semibold mt-1">Compliant</div>
+                                </div>
+                                <div class="w-px bg-slate-200"></div>
+                                <div class="flex-1 text-center">
+                                    <div class="text-2xl font-bold text-slate-900 font-display">AES-256</div>
+                                    <div class="text-[10px] uppercase tracking-wider text-slate-500 font-semibold mt-1">Encryption</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SERVICES / CLIENT DEPLOYMENTS -->
+        <section id="services" class="py-24 relative z-20 bg-white border-b border-slate-200">
             <div class="max-w-7xl mx-auto px-6">
                 <div class="mb-16 md:text-center reveal">
-                    <h2 class="text-3xl md:text-5xl font-display font-bold mt-2 text-white tracking-tight">Engineering Excellence</h2>
-                    <p class="text-slate-400 mt-4 max-w-2xl mx-auto text-lg">We bridge the gap between complex business challenges and cutting-edge digital infrastructure.</p>
-                </div>
-
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                    <!-- High Availability -->
-                    <div class="glass-card rounded-2xl p-8 md:col-span-2 reveal flex flex-col justify-center relative overflow-hidden group">
-                        <div class="absolute -right-10 -bottom-10 opacity-10 group-hover:opacity-20 transition-opacity">
-                            <svg width="200" height="200" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><path d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9"/></svg>
-                        </div>
-                        <h3 class="text-2xl font-display font-bold text-white mb-4">Enterprise Infrastructure</h3>
-                        <p class="text-slate-400 leading-relaxed max-w-lg mb-8">We architect robust, secure, and highly available systems. From developing proprietary AI assessment tools to executing zero-downtime cloud migrations, our mandate is performance without compromise.</p>
-                        
-                        <div class="flex gap-8">
-                            <div>
-                                <div class="text-4xl font-display font-bold text-white mb-1">Zero</div>
-                                <div class="text-xs font-semibold tracking-wider text-brand-400 uppercase">Downtime Goal</div>
-                            </div>
-                            <div>
-                                <div class="text-4xl font-display font-bold text-white mb-1">SOC-2</div>
-                                <div class="text-xs font-semibold tracking-wider text-brand-400 uppercase">Compliant</div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Cloud -->
-                    <div class="glass-card rounded-2xl p-8 reveal delay-100 flex flex-col relative overflow-hidden">
-                        <div class="w-12 h-12 bg-white/5 rounded-xl border border-white/10 flex items-center justify-center mb-6 text-brand-400">
-                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 15a4 4 0 004 4h9a5 5 0 10-.1-9.999 5.002 5.002 0 10-9.78 2.096A4.001 4.001 0 003 15z"></path></svg>
-                        </div>
-                        <h3 class="text-xl font-bold text-white mb-3">Cloud Architecture</h3>
-                        <p class="text-slate-400 text-sm leading-relaxed mb-6">Transition legacy systems to robust environments (AWS, Azure) for high availability and disaster recovery.</p>
-                        <button onclick="openModal('content-cloud')" class="mt-auto text-sm font-semibold text-white flex items-center hover:text-brand-400 transition-colors group w-fit">
-                            Explore Capability <svg class="w-4 h-4 ml-1 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
-                        </button>
-                    </div>
-
-                    <!-- AI Systems -->
-                    <div class="glass-card rounded-2xl p-8 reveal flex flex-col relative overflow-hidden">
-                        <div class="w-12 h-12 bg-white/5 rounded-xl border border-white/10 flex items-center justify-center mb-6 text-brand-400">
-                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
-                        </div>
-                        <h3 class="text-xl font-bold text-white mb-3">AI & ML Systems</h3>
-                        <p class="text-slate-400 text-sm leading-relaxed mb-6">Integrating predictive analytics, NLP, and automation into complex business workflows.</p>
-                        <button onclick="openModal('content-ai')" class="mt-auto text-sm font-semibold text-white flex items-center hover:text-brand-400 transition-colors group w-fit">
-                            Explore Capability <svg class="w-4 h-4 ml-1 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
-                        </button>
-                    </div>
-
-                    <!-- Custom Software -->
-                    <div class="glass-card rounded-2xl p-8 md:col-span-2 reveal delay-100 flex flex-col justify-center relative overflow-hidden">
-                         <div class="w-12 h-12 bg-white/5 rounded-xl border border-white/10 flex items-center justify-center mb-6 text-brand-400">
-                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"></path></svg>
-                        </div>
-                        <h3 class="text-2xl font-display font-bold text-white mb-3">Enterprise Software Engineering</h3>
-                        <p class="text-slate-400 leading-relaxed mb-6 max-w-2xl">Full-cycle development of secure, scalable, and tailored software systems designed to solve complex operations, removing dependencies on restrictive off-the-shelf software.</p>
-                        <button onclick="openModal('content-enterprise')" class="mt-auto text-sm font-semibold text-white flex items-center hover:text-brand-400 transition-colors group w-fit bg-white/5 px-4 py-2 rounded-lg border border-white/10">
-                            View Tech Stack <svg class="w-4 h-4 ml-1 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
-                        </button>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- DELIVERY METHODOLOGY -->
-        <section id="methodology" class="py-24 relative z-20 border-t border-white/5 bg-slate-900/30">
-            <div class="max-w-7xl mx-auto px-6">
-                <div class="mb-16 reveal">
-                    <span class="text-purple-400 font-bold tracking-widest uppercase text-xs">How We Build</span>
-                    <h2 class="text-3xl md:text-5xl font-display font-bold mt-2 text-white tracking-tight">Our Engineering Process</h2>
+                    <span class="text-brand-600 font-bold tracking-widest uppercase text-xs">Division I: Engineering Services</span>
+                    <h2 class="text-3xl md:text-4xl font-display font-bold mt-2 text-slate-900 tracking-tight">Client Solutions & Managed Deployments</h2>
+                    <p class="text-slate-500 mt-4 max-w-2xl mx-auto text-base">We architect robust, secure, and highly available systems for institutions and enterprises. We manage the entire lifecycle from blueprinting to live load-balancing.</p>
                 </div>
 
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-                    <!-- Step 1 -->
-                    <div class="glass-card p-8 rounded-2xl reveal delay-100 border-t-2 border-t-slate-600 flex flex-col h-full">
-                        <div class="text-5xl font-display font-bold text-white/10 mb-6">01</div>
-                        <h4 class="text-xl font-bold text-white mb-3">Requirements & Load Profiling</h4>
-                        <p class="text-sm text-slate-400 leading-relaxed flex-grow">We dive deep into expected traffic surges, concurrent user targets (like our recent 6k+ live user benchmark), and transaction volumes to draft a resilient, fail-proof blueprint.</p>
-                    </div>
-                    <!-- Step 2 -->
-                    <div class="glass-card p-8 rounded-2xl reveal delay-200 border-t-2 border-t-brand-600 flex flex-col h-full">
-                        <div class="text-5xl font-display font-bold text-white/10 mb-6">02</div>
-                        <h4 class="text-xl font-bold text-white mb-3">Distributed Architecture</h4>
-                        <p class="text-sm text-slate-400 leading-relaxed flex-grow">We design highly decoupled microservices utilizing dynamic load balancers, memory caching layers (Redis), and distributed databases to entirely eliminate single points of failure.</p>
-                    </div>
-                    <!-- Step 3 -->
-                    <div class="glass-card p-8 rounded-2xl reveal delay-300 border-t-2 border-t-purple-600 flex flex-col h-full">
-                        <div class="text-5xl font-display font-bold text-white/10 mb-6">03</div>
-                        <h4 class="text-xl font-bold text-white mb-3">Stress Testing & CI/CD</h4>
-                        <p class="text-sm text-slate-400 leading-relaxed flex-grow">Before going live, we simulate massive traffic spikes (handling up to 3 Lakh+ requests) through automated pipelines to guarantee absolute stability and zero downtime under extreme pressure.</p>
-                    </div>
-                    <!-- Step 4 -->
-                    <div class="glass-card p-8 rounded-2xl reveal delay-400 border-t-2 border-t-cyan-500 flex flex-col h-full">
-                        <div class="text-5xl font-display font-bold text-white/10 mb-6">04</div>
-                        <h4 class="text-xl font-bold text-white mb-3">Real-Time Observability</h4>
-                        <p class="text-sm text-slate-400 leading-relaxed flex-grow">Post-deployment, our custom telemetry dashboards provide live, granular insights into server health, allowing auto-scaling server groups to instantly match and absorb user demand dynamically.</p>
-                    </div>
+                    <!-- Service 1 -->
+                    <a href="https://lakshya.lbrce.ac.in" target="_blank" class="glass-card p-6 reveal group flex flex-col justify-between h-full hover:border-brand-300 hover:shadow-xl transition-all">
+                        <div class="mb-6 flex justify-between items-start">
+                            <div class="image-container-white w-14 h-14 flex items-center justify-center p-2">
+                                <img src="https://res.cloudinary.com/dpz44zf0z/image/upload/v1764605760/logo_oeso2m.png" alt="Lakshya" class="max-w-full max-h-full object-contain">
+                            </div>
+                            <svg class="w-5 h-5 text-slate-400 group-hover:text-brand-600 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
+                        </div>
+                        <div>
+                            <h4 class="text-lg font-bold text-slate-900 mb-2 group-hover:text-brand-600 transition-colors">Lakshya 2k26</h4>
+                            <p class="text-sm text-slate-500 leading-relaxed">High-concurrency technical symposium management system for LBRCE, handling thousands of real-time event registrations.</p>
+                        </div>
+                    </a>
+
+                    <!-- Service 2 -->
+                    <a href="https://events-lbrce.in" target="_blank" class="glass-card p-6 reveal delay-100 group flex flex-col justify-between h-full hover:border-brand-300 hover:shadow-xl transition-all">
+                        <div class="mb-6 flex justify-between items-start">
+                            <div class="image-container-white w-14 h-14 flex items-center justify-center p-2">
+                                <img src="https://res.cloudinary.com/djdwpjm7x/image/upload/v1769925973/events_lbrce_logo_sefvzr.png" alt="Events LBRCE" class="max-w-full max-h-full object-contain">
+                            </div>
+                            <svg class="w-5 h-5 text-slate-400 group-hover:text-brand-600 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
+                        </div>
+                        <div>
+                            <h4 class="text-lg font-bold text-slate-900 mb-2 group-hover:text-brand-600 transition-colors">Events LBRCE</h4>
+                            <p class="text-sm text-slate-500 leading-relaxed">Centralized institutional event registration and ticketing architecture, deployed on distributed cloud servers.</p>
+                        </div>
+                    </a>
+
+                    <!-- Service 3 -->
+                    <a href="https://digiadhyapak.com" target="_blank" class="glass-card p-6 reveal delay-200 group flex flex-col justify-between h-full hover:border-brand-300 hover:shadow-xl transition-all">
+                        <div class="mb-6 flex justify-between items-start">
+                            <div class="w-14 h-14 rounded-lg bg-indigo-50 border border-indigo-100 flex items-center justify-center text-indigo-600">
+                                <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path></svg>
+                            </div>
+                            <svg class="w-5 h-5 text-slate-400 group-hover:text-brand-600 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
+                        </div>
+                        <div>
+                            <h4 class="text-lg font-bold text-slate-900 mb-2 group-hover:text-brand-600 transition-colors">DigiAdhyapak</h4>
+                            <p class="text-sm text-slate-500 leading-relaxed">Bespoke educational platform tailored for modern digital pedagogy, featuring custom content delivery networks (CDNs).</p>
+                        </div>
+                    </a>
+
+                    <!-- Service 4 -->
+                    <a href="https://lbrcealumni.in" target="_blank" class="glass-card p-6 reveal delay-300 group flex flex-col justify-between h-full hover:border-brand-300 hover:shadow-xl transition-all">
+                        <div class="mb-6 flex justify-between items-start">
+                            <div class="w-14 h-14 rounded-lg bg-emerald-50 border border-emerald-100 flex items-center justify-center text-emerald-600">
+                                <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path></svg>
+                            </div>
+                            <svg class="w-5 h-5 text-slate-400 group-hover:text-brand-600 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
+                        </div>
+                        <div>
+                            <h4 class="text-lg font-bold text-slate-900 mb-2 group-hover:text-brand-600 transition-colors">LBRCE Alumni</h4>
+                            <p class="text-sm text-slate-500 leading-relaxed">Highly secure networking and engagement portal engineered for global alumni connectivity and data privacy.</p>
+                        </div>
+                    </a>
                 </div>
             </div>
         </section>
 
-        <!-- FLAGSHIP: PROCTORIX -->
-        <section id="proctorix" class="py-32 relative border-y border-white/5 overflow-hidden">
-            <div class="absolute inset-0 bg-gradient-to-br from-brand-900/20 to-purple-900/20 z-0"></div>
+        <!-- FLAGSHIP: PROCTORIX (Light Theme Adaptation) -->
+        <section id="proctorix" class="py-32 relative bg-brand-50 border-b border-brand-100 overflow-hidden">
+            <!-- Decorative circle -->
+            <div class="absolute top-1/2 right-0 transform translate-x-1/3 -translate-y-1/2 w-[600px] h-[600px] bg-brand-100 rounded-full blur-[80px] z-0 pointer-events-none"></div>
             
             <div class="max-w-7xl mx-auto px-6 relative z-10">
                 <div class="grid lg:grid-cols-2 gap-16 items-center">
                     <div class="reveal">
-                        <div class="inline-flex items-center gap-2 px-3 py-1 mb-6 text-xs font-bold tracking-widest uppercase bg-white/10 border border-white/20 text-white rounded-full">
-                            Flagship Platform
+                        <div class="inline-flex items-center gap-2 px-3 py-1 mb-6 text-xs font-bold tracking-widest uppercase bg-white border border-brand-200 text-brand-700 rounded-full shadow-sm">
+                            Flagship Product Showcase
                         </div>
                         
-                        <h2 class="text-5xl md:text-7xl font-display font-bold mb-6 tracking-tight text-white">Proctorix.</h2>
-                        <p class="text-xl text-slate-300 mb-8 font-light leading-relaxed">
-                            A next-generation, AI-driven proctoring and assessment ecosystem designed to secure academic and corporate integrity globally.
+                        <h2 class="text-4xl md:text-6xl font-display font-extrabold mb-6 tracking-tight text-slate-900">Proctorix.</h2>
+                        <p class="text-lg text-slate-600 mb-8 font-medium leading-relaxed">
+                            A next-generation, AI-driven proctoring and assessment ecosystem designed to secure academic and corporate integrity globally. Built internally by Xeta Labs.
                         </p>
                         
                         <div class="grid sm:grid-cols-2 gap-4 mb-10">
-                            <!-- Feature 1 -->
-                            <div class="flex flex-col gap-3 p-5 rounded-xl bg-black/20 border border-white/5 hover:bg-white/5 transition-colors group">
-                                <div class="w-10 h-10 flex items-center justify-center bg-brand-500/20 rounded-lg text-brand-400 group-hover:scale-110 transition-transform"><svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path></svg></div>
-                                <div><h4 class="text-white font-bold text-sm mb-1">Cognitive AI Monitoring</h4><p class="text-slate-400 text-xs leading-relaxed">Advanced behavioral analysis, eye-tracking, and 360-degree environment scanning.</p></div>
+                            <div class="bg-white rounded-xl border border-brand-100 shadow-sm p-5 group hover:border-brand-400 hover:shadow-md transition-all">
+                                <h4 class="text-slate-900 font-bold text-sm mb-2 flex items-center gap-2">
+                                    <div class="p-1.5 bg-brand-50 rounded text-brand-600">
+                                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path></svg>
+                                    </div>
+                                    Cognitive AI
+                                </h4>
+                                <p class="text-slate-500 text-xs leading-relaxed">Advanced behavioral analysis, eye-tracking algorithms, and 360-degree environment scanning.</p>
                             </div>
-                            <!-- Feature 2 -->
-                            <div class="flex flex-col gap-3 p-5 rounded-xl bg-black/20 border border-white/5 hover:bg-white/5 transition-colors group">
-                                <div class="w-10 h-10 flex items-center justify-center bg-purple-500/20 rounded-lg text-purple-400 group-hover:scale-110 transition-transform"><svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"></path></svg></div>
-                                <div><h4 class="text-white font-bold text-sm mb-1">Massive Concurrency</h4><p class="text-slate-400 text-xs leading-relaxed">Built on auto-scaling server groups to process thousands of live video feeds simultaneously.</p></div>
-                            </div>
-                            <!-- Feature 3 -->
-                            <div class="flex flex-col gap-3 p-5 rounded-xl bg-black/20 border border-white/5 hover:bg-white/5 transition-colors group">
-                                <div class="w-10 h-10 flex items-center justify-center bg-cyan-500/20 rounded-lg text-cyan-400 group-hover:scale-110 transition-transform"><svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path></svg></div>
-                                <div><h4 class="text-white font-bold text-sm mb-1">Secure Browser Lockdown</h4><p class="text-slate-400 text-xs leading-relaxed">Restricts tab switching, screen sharing, keyboard shortcuts, and unauthorized external displays.</p></div>
-                            </div>
-                            <!-- Feature 4 -->
-                            <div class="flex flex-col gap-3 p-5 rounded-xl bg-black/20 border border-white/5 hover:bg-white/5 transition-colors group">
-                                <div class="w-10 h-10 flex items-center justify-center bg-emerald-500/20 rounded-lg text-emerald-400 group-hover:scale-110 transition-transform"><svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg></div>
-                                <div><h4 class="text-white font-bold text-sm mb-1">Live Telemetry Dashboard</h4><p class="text-slate-400 text-xs leading-relaxed">Real-time alerts and flagging system for human proctors to review suspicious activities instantly.</p></div>
+                            <div class="bg-white rounded-xl border border-brand-100 shadow-sm p-5 group hover:border-brand-400 hover:shadow-md transition-all">
+                                <h4 class="text-slate-900 font-bold text-sm mb-2 flex items-center gap-2">
+                                    <div class="p-1.5 bg-purple-50 rounded text-purple-600">
+                                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"></path></svg>
+                                    </div>
+                                    Massive Concurrency
+                                </h4>
+                                <p class="text-slate-500 text-xs leading-relaxed">Auto-scaling infrastructure to process thousands of live audio/video feeds simultaneously without lag.</p>
                             </div>
                         </div>
                         
                         <div class="flex flex-wrap gap-4">
-                            <a href="https://proctorix.in" target="_blank" class="bg-white text-black px-8 py-4 rounded-full font-bold hover:bg-slate-200 transition-colors flex items-center gap-2">
-                                Visit Proctorix.in
+                            <a href="https://proctorix.in" target="_blank" class="bg-slate-900 text-white px-8 py-3.5 rounded-full font-bold hover:bg-slate-800 transition-colors flex items-center gap-2 shadow-lg shadow-slate-900/20">
+                                Open Proctorix Portal
                                 <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
-                            </a>
-                            <a href="https://jobs.proctorix.in" target="_blank" class="glass-card text-white px-8 py-4 rounded-full font-bold hover:bg-white/5 transition-colors text-center">
-                                View Open Roles
                             </a>
                         </div>
                     </div>
                     
-                    <div class="relative hidden lg:block reveal delay-200 perspective-1000">
-                        <!-- Abstract Interface -->
-                        <div class="glass-card rounded-2xl p-4 transform rotate-y-[-10deg] rotate-x-[5deg] hover:rotate-y-0 hover:rotate-x-0 transition-transform duration-700">
-                            <div class="bg-slate-900 rounded-xl border border-white/10 h-[500px] w-full p-6 flex flex-col relative overflow-hidden">
-                                <!-- Top bar -->
-                                <div class="flex justify-between items-center border-b border-white/10 pb-4 mb-4">
-                                    <div class="flex gap-2"><div class="w-3 h-3 rounded-full bg-slate-700"></div><div class="w-3 h-3 rounded-full bg-slate-700"></div><div class="w-3 h-3 rounded-full bg-slate-700"></div></div>
-                                    <div class="text-xs text-brand-400 font-mono tracking-widest flex items-center gap-2">
-                                        <span class="w-2 h-2 rounded-full bg-brand-400 animate-pulse"></span> SECURE_ENV_ACTIVE
+                    <div class="relative hidden lg:block reveal delay-200">
+                        <div class="bg-white rounded-2xl border border-slate-200 shadow-2xl p-2 transform rotate-y-[-5deg] rotate-x-[2deg] hover:rotate-y-0 hover:rotate-x-0 transition-transform duration-700">
+                            <div class="bg-slate-50 rounded-xl border border-slate-200 h-[400px] w-full p-6 flex flex-col relative overflow-hidden">
+                                <div class="flex justify-between items-center border-b border-slate-200 pb-4 mb-4">
+                                    <div class="flex gap-2"><div class="w-3 h-3 rounded-full bg-slate-300"></div><div class="w-3 h-3 rounded-full bg-slate-300"></div><div class="w-3 h-3 rounded-full bg-slate-300"></div></div>
+                                    <div class="text-[10px] text-brand-600 font-mono font-bold tracking-widest flex items-center gap-2">
+                                        <span class="w-2 h-2 rounded-full bg-brand-500 animate-pulse"></span> SECURE_ENV_ACTIVE
                                     </div>
                                 </div>
-                                <!-- Content -->
                                 <div class="flex-grow flex flex-col items-center justify-center gap-8 relative z-10">
-                                    <div class="relative w-40 h-40 flex items-center justify-center">
-                                        <div class="absolute inset-0 border border-brand-500/30 rounded-full animate-[spin_10s_linear_infinite]"></div>
-                                        <div class="absolute inset-2 border-t-2 border-brand-400 rounded-full animate-[spin_3s_linear_infinite]"></div>
-                                        <div class="absolute inset-4 border border-purple-500/30 rounded-full animate-[spin_5s_linear_infinite_reverse]"></div>
-                                        <svg class="w-12 h-12 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 11c0 3.517-1.009 6.799-2.753 9.571m-3.44-2.04l.054-.09A13.916 13.916 0 008 11a4 4 0 118 0c0 1.017-.07 2.019-.203 3m-2.118 6.844A21.88 21.88 0 0015.171 17m3.839 1.132c.645-2.266.99-4.659.99-7.132A8 8 0 008 4.07M3 15.364c.64-1.319 1-2.8 1-4.364 0-1.457.39-2.823 1.07-4"></path></svg>
+                                    <div class="relative w-32 h-32 flex items-center justify-center">
+                                        <div class="absolute inset-0 border border-brand-200 rounded-full animate-[spin_10s_linear_infinite]"></div>
+                                        <div class="absolute inset-2 border-t-2 border-brand-500 rounded-full animate-[spin_3s_linear_infinite]"></div>
+                                        <svg class="w-8 h-8 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 11c0 3.517-1.009 6.799-2.753 9.571m-3.44-2.04l.054-.09A13.916 13.916 0 008 11a4 4 0 118 0c0 1.017-.07 2.019-.203 3m-2.118 6.844A21.88 21.88 0 0015.171 17m3.839 1.132c.645-2.266.99-4.659.99-7.132A8 8 0 008 4.07M3 15.364c.64-1.319 1-2.8 1-4.364 0-1.457.39-2.823 1.07-4"></path></svg>
                                     </div>
-                                    <div class="w-full space-y-3">
-                                        <div class="h-2 w-full bg-white/5 rounded overflow-hidden"><div class="h-full bg-brand-500 w-full animate-[pulse_2s_ease-in-out_infinite]"></div></div>
-                                        <div class="flex justify-between text-[10px] font-mono text-slate-500"><span>ANALYZING STREAM</span><span>100%</span></div>
+                                    <div class="w-full space-y-3 px-8 text-center">
+                                        <div class="h-1.5 w-full bg-slate-200 rounded overflow-hidden"><div class="h-full bg-brand-500 w-full animate-[pulse_2s_ease-in-out_infinite]"></div></div>
+                                        <span class="text-[10px] font-mono text-slate-500">ANALYZING BIOMETRIC FEED</span>
                                     </div>
                                 </div>
-                                <!-- Grid bg inner -->
-                                <div class="absolute inset-0 bg-grid-pattern opacity-20 z-0"></div>
                             </div>
                         </div>
                     </div>
@@ -626,80 +615,104 @@
             </div>
         </section>
 
-        <!-- ECOSYSTEM (BENTO GRID) -->
-        <section id="products" class="py-24 relative z-20">
+        <!-- ECOSYSTEM (BENTO GRID for Products) -->
+        <section id="ecosystem" class="py-24 relative z-20 bg-slate-50">
             <div class="max-w-7xl mx-auto px-6">
                 <div class="mb-16 md:text-center reveal">
-                    <span class="text-brand-400 font-bold tracking-widest uppercase text-xs">Proprietary Products</span>
-                    <h2 class="text-3xl md:text-5xl font-display font-bold mt-2 text-white tracking-tight">The Xeta Ecosystem</h2>
-                    <p class="text-slate-400 mt-4 max-w-2xl mx-auto text-lg">Purpose-built software engineered to optimize human capital, streamline hiring, and evaluate talent at scale.</p>
+                    <span class="text-brand-600 font-bold tracking-widest uppercase text-xs">Division II: Proprietary Software</span>
+                    <h2 class="text-3xl md:text-4xl font-display font-bold mt-2 text-slate-900 tracking-tight">The Complete Xeta Ecosystem</h2>
+                    <p class="text-slate-500 mt-4 max-w-2xl mx-auto text-base">Purpose-built enterprise applications engineered internally to optimize human capital, streamline corporate hiring, and evaluate talent at a global scale.</p>
                 </div>
                 
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- BENTO GRID -->
+                <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-5 auto-rows-fr">
                     
-                    <!-- Voxelyt -->
-                    <a href="https://voxylet.proctorix.in/" target="_blank" class="glass-card p-8 rounded-2xl block group reveal cursor-pointer flex flex-col h-full border-t-2 border-t-cyan-400">
-                        <div class="mb-8 image-container-white">
-                            <img src="https://res.cloudinary.com/dpz44zf0z/image/upload/v1768062552/Voxylet_kyk0hm.png" alt="Voxelyt" class="h-8 w-auto object-contain">
+                    <!-- Xeta Hire (Large Block) -->
+                    <a href="https://hirewithus.xetatech.in" target="_blank" class="glass-card p-8 md:col-span-2 lg:col-span-2 row-span-2 group flex flex-col justify-between hover:border-brand-400 reveal border-t-4 border-t-brand-500">
+                        <div>
+                            <div class="mb-6 image-container-white inline-block">
+                                <!-- Re-used dark logo wrapper for consistency if image is white, but it looks like a black/blue image based on URL structure, assume it's fine -->
+                                <img src="https://res.cloudinary.com/dpz44zf0z/image/upload/v1760086493/HireWithUS_wtn0pc.png" alt="Xeta Hire" class="h-8 w-auto object-contain">
+                            </div>
+                            <h4 class="text-2xl font-display font-bold mb-3 text-slate-900 group-hover:text-brand-600 transition-colors">Xeta Hire Platform</h4>
+                            <p class="text-slate-500 text-sm leading-relaxed mb-6">An end-to-end automated recruitment workflow engine designed for enterprises. Source, vet, conduct technical assessments, and onboard top engineering talent globally with zero friction.</p>
                         </div>
-                        <h4 class="text-2xl font-display font-bold mb-2 text-white">Voxelyt</h4>
-                        <p class="text-sm text-slate-400 mb-8 flex-grow leading-relaxed">AI-powered language assessment and real-time communication analysis for global enterprises.</p>
-                        <div class="text-xs font-bold text-white uppercase tracking-widest flex items-center group-hover:text-cyan-400 transition-colors">
-                            Launch Portal <svg class="w-4 h-4 ml-1 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+                        <div class="text-xs font-bold text-brand-600 uppercase tracking-widest flex items-center w-fit bg-brand-50 px-4 py-2 rounded-md">
+                            Launch Portal <svg class="w-4 h-4 ml-2 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
                         </div>
                     </a>
 
                     <!-- Testify -->
-                    <a href="https://testify.xetasolutions.in" target="_blank" class="glass-card p-8 rounded-2xl block group reveal delay-100 cursor-pointer flex flex-col h-full border-t-2 border-t-brand-500">
-                         <div class="mb-8 image-container-white flex items-center gap-2">
-                            <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAMAAABEpIrGAAAAclBMVEX///+93Nzi8PDv8POfmrsAhZAAlJRysrOPkLIAAGAAAHIAjpY9mJfl5+bs6+s0OIC5us0AAGVUlJr5+fmZmJiVlp3NzdC4ub3d3uDExci+v8I4PH2ysr6enp1+f4jW1tmjpKp6fKYAAFPCwsstMX2oqcJMpBy7AAAAZklEQVR4Ae3ERQLCQAAEwYbFibt7/v9E5ATRa7RGmKHd4cgYcTpfrgy73R9PSVYYpGq6YVrCtB3Xcb3v+wH/wkgQxwqunKQJbpB5gcy/vCizOAYTxVQwTROTBrMq7NhjTB2ZzNvuDYlNBdEWwbxBAAAAAElFTkSuQmCC" alt="Testify" class="h-8 w-auto object-contain">
-                            <span class="font-display font-bold text-xl text-black pr-2">Testify</span>
+                    <a href="https://testify.xetasolutions.in" target="_blank" class="glass-card p-6 md:col-span-1 lg:col-span-2 group flex flex-col justify-between hover:border-brand-400 reveal delay-100 border-t-4 border-t-purple-500">
+                         <div class="mb-4 image-container-white inline-flex items-center gap-2">
+                            <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAMAAABEpIrGAAAAclBMVEX///+93Nzi8PDv8POfmrsAhZAAlJRysrOPkLIAAGAAAHIAjpY9mJfl5+bs6+s0OIC5us0AAGVUlJr5+fmZmJiVlp3NzdC4ub3d3uDExci+v8I4PH2ysr6enp1+f4jW1tmjpKp6fKYAAFPCwsstMX2oqcJMpBy7AAAAZklEQVR4Ae3ERQLCQAAEwYbFibt7/v9E5ATRa7RGmKHd4cgYcTpfrgy73R9PSVYYpGq6YVrCtB3Xcb3v+wH/wkgQxwqunKQJbpB5gcy/vCizOAYTxVQwTROTBrMq7NhjTB2ZzNvuDYlNBdEWwbxBAAAAAElFTkSuQmCC" alt="Testify" class="h-6 w-auto object-contain">
+                            <span class="font-display font-bold text-lg text-slate-900 pr-2">Testify</span>
                         </div>
-                        <h4 class="text-2xl font-display font-bold mb-2 text-white">Testify</h4>
-                        <p class="text-sm text-slate-400 mb-8 flex-grow leading-relaxed">A centralized curriculum management and enterprise certification hub.</p>
-                        <div class="text-xs font-bold text-white uppercase tracking-widest flex items-center group-hover:text-brand-400 transition-colors">
-                            Launch Portal <svg class="w-4 h-4 ml-1 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+                        <div>
+                            <h4 class="text-lg font-bold mb-2 text-slate-900 group-hover:text-brand-600 transition-colors">Testify Certification Hub</h4>
+                            <p class="text-xs text-slate-500 mb-4 leading-relaxed">Centralized curriculum management and secure corporate credentialing system. Manage organizational training compliance efficiently.</p>
                         </div>
+                        <div class="text-xs font-bold text-brand-600 flex items-center">Open Application <svg class="w-3 h-3 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg></div>
+                    </a>
+
+                    <!-- Voxelyt -->
+                    <a href="https://voxylet.proctorix.in/" target="_blank" class="glass-card p-6 group flex flex-col justify-between hover:border-brand-400 reveal delay-200">
+                        <div class="mb-4 image-container-white w-fit">
+                            <img src="https://res.cloudinary.com/dpz44zf0z/image/upload/v1768062552/Voxylet_kyk0hm.png" alt="Voxelyt" class="h-6 w-auto object-contain">
+                        </div>
+                        <div>
+                            <h4 class="text-lg font-bold mb-2 text-slate-900 group-hover:text-brand-600 transition-colors">Voxelyt</h4>
+                            <p class="text-xs text-slate-500 mb-4 leading-relaxed">AI-powered language & real-time communication analysis engine.</p>
+                        </div>
+                        <div class="text-xs font-bold text-brand-600 flex items-center">Open <svg class="w-3 h-3 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg></div>
                     </a>
 
                     <!-- Mock Interviews -->
-                    <a href="https://xetasolutions.in/mockinterview" target="_blank" class="glass-card p-8 rounded-2xl block group reveal delay-200 cursor-pointer flex flex-col h-full lg:col-span-1 md:col-span-2">
-                        <div class="mb-8 image-container-white">
-                            <img src="https://res.cloudinary.com/dpz44zf0z/image/upload/v1762319046/MOCK_INTERVIEWS_tlno45.png" alt="Mock" class="h-8 w-auto object-contain">
+                    <a href="https://mockinterviews.xetatech.in" target="_blank" class="glass-card p-6 group flex flex-col justify-between hover:border-brand-400 reveal delay-300">
+                        <div class="mb-4 image-container-white w-fit">
+                            <img src="https://res.cloudinary.com/dpz44zf0z/image/upload/v1762319046/MOCK_INTERVIEWS_tlno45.png" alt="Mock" class="h-6 w-auto object-contain">
                         </div>
-                        <h4 class="text-2xl font-display font-bold mb-2 text-white">Mock Interviews</h4>
-                        <p class="text-sm text-slate-400 mb-8 flex-grow leading-relaxed">Technical & behavioral interview simulation environments to pre-vet candidates securely.</p>
-                        <div class="text-xs font-bold text-white uppercase tracking-widest flex items-center group-hover:text-slate-300 transition-colors">
-                            Launch Portal <svg class="w-4 h-4 ml-1 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+                        <div>
+                            <h4 class="text-lg font-bold mb-2 text-slate-900 group-hover:text-brand-600 transition-colors">Mock Interviews</h4>
+                            <p class="text-xs text-slate-500 mb-4 leading-relaxed">Highly secure simulation environments to pre-vet candidates technically.</p>
                         </div>
-                    </a>
-
-                    <!-- Xeta Hire -->
-                    <a href="https://xetasolutions.in/hirewithus" target="_blank" class="glass-card p-8 rounded-2xl block group reveal cursor-pointer md:col-span-1 lg:col-span-2 flex flex-col justify-center relative overflow-hidden">
-                        <div class="relative z-10">
-                            <div class="mb-6 image-container-white inline-block">
-                                <img src="https://res.cloudinary.com/dpz44zf0z/image/upload/v1760086493/HireWithUS_wtn0pc.png" alt="Xeta Hire" class="h-6 w-auto object-contain">
-                            </div>
-                            <h4 class="text-3xl font-display font-bold mb-3 text-white">Xeta Hire Platform</h4>
-                            <p class="text-slate-400 max-w-lg mb-8 leading-relaxed">End-to-end automated recruitment workflows designed for enterprises to source, vet, and onboard top engineering talent globally.</p>
-                            <div class="text-xs font-bold text-white uppercase tracking-widest flex items-center bg-white/10 w-fit px-4 py-2 rounded border border-white/10 group-hover:bg-white/20 transition-colors">
-                                Open Platform <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
-                            </div>
-                        </div>
+                        <div class="text-xs font-bold text-brand-600 flex items-center">Open <svg class="w-3 h-3 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg></div>
                     </a>
 
                     <!-- Inview -->
-                    <a href="https://inview.xetasolutions.in/" target="_blank" class="glass-card p-8 rounded-2xl block group reveal delay-100 cursor-pointer flex flex-col justify-between">
-                         <div class="mb-6 image-container-white inline-block">
+                    <a href="https://inview.xetasolutions.in/" target="_blank" class="glass-card p-6 group flex flex-col justify-between hover:border-brand-400 reveal">
+                         <div class="mb-4 image-container-white w-fit">
                             <img src="https://res.cloudinary.com/dpz44zf0z/image/upload/v1766073096/INVIEW_ct336y.png" alt="Inview" class="h-6 w-auto object-contain">
                         </div>
                         <div>
-                            <h4 class="text-2xl font-display font-bold mb-2 text-white">Inview</h4>
-                            <p class="text-sm text-slate-400 mb-6 leading-relaxed">Smart technical interview panel scheduling and management interface.</p>
+                            <h4 class="text-lg font-bold mb-2 text-slate-900 group-hover:text-brand-600 transition-colors">Inview</h4>
+                            <p class="text-xs text-slate-500 mb-4 leading-relaxed">Smart corporate interview panel scheduling and management interface.</p>
                         </div>
-                        <div class="text-xs font-bold text-white uppercase tracking-widest flex items-center group-hover:text-brand-400 transition-colors">
-                            Launch Portal <svg class="w-4 h-4 ml-1 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+                        <div class="text-xs font-bold text-brand-600 flex items-center">Open <svg class="w-3 h-3 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg></div>
+                    </a>
+
+                    <!-- E-Learn -->
+                    <a href="https://e-learn.xetasolutions.in" target="_blank" class="glass-card p-6 group flex flex-col justify-between hover:border-brand-400 reveal delay-100">
+                         <div class="mb-4 w-12 h-12 rounded-lg bg-blue-50 border border-blue-100 flex items-center justify-center text-blue-600">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path></svg>
                         </div>
+                        <div>
+                            <h4 class="text-lg font-bold mb-2 text-slate-900 group-hover:text-brand-600 transition-colors">E-Learn</h4>
+                            <p class="text-xs text-slate-500 mb-4 leading-relaxed">Enterprise Learning Management System tailored for internal development.</p>
+                        </div>
+                        <div class="text-xs font-bold text-brand-600 flex items-center">Open <svg class="w-3 h-3 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg></div>
+                    </a>
+
+                    <!-- Labs -->
+                    <a href="https://labs.xetatech.in" target="_blank" class="glass-card p-6 md:col-span-2 group flex flex-col justify-between hover:border-brand-400 reveal delay-200 bg-slate-900 text-white border-transparent hover:shadow-2xl">
+                         <div class="mb-4 w-12 h-12 rounded-lg bg-white/10 border border-white/20 flex items-center justify-center text-white">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"></path></svg>
+                        </div>
+                        <div>
+                            <h4 class="text-lg font-bold mb-2 text-white group-hover:text-brand-300 transition-colors">Xeta Labs</h4>
+                            <p class="text-sm text-slate-400 mb-4 leading-relaxed">Our experimental R&D division focused on next-generation AI integrations, predictive algorithms, and distributed systems architecture testing.</p>
+                        </div>
+                        <div class="text-xs font-bold text-brand-300 flex items-center">Open Labs <svg class="w-3 h-3 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg></div>
                     </a>
 
                 </div>
@@ -707,29 +720,29 @@
         </section>
 
         <!-- CTA SECTION -->
-        <section class="py-32 relative border-t border-white/5 overflow-hidden text-center">
-            <div class="absolute inset-0 bg-brand-600/5 z-0"></div>
-            <div class="max-w-4xl mx-auto px-6 reveal relative z-10">
-                <h2 class="text-4xl md:text-6xl font-display font-bold text-white mb-6 tracking-tight">Ready to Scale Infrastructure?</h2>
-                <p class="text-slate-400 mb-10 text-lg md:text-xl font-light max-w-2xl mx-auto">
-                    Engage with our engineering team to discuss architecture, proprietary tools, or custom deployment strategies.
+        <section class="py-32 relative border-t border-slate-200 overflow-hidden text-center bg-white">
+            <div class="absolute inset-0 bg-brand-50/50 z-0 pointer-events-none"></div>
+            <div class="max-w-3xl mx-auto px-6 reveal relative z-10">
+                <h2 class="text-3xl md:text-5xl font-display font-extrabold text-slate-900 mb-6 tracking-tight">Ready to Architect Scale?</h2>
+                <p class="text-slate-600 mb-10 text-lg mx-auto">
+                    Engage with our engineering architects to discuss technical requirements, proprietary tool integration, or custom enterprise deployment strategies.
                 </p>
-                <button onclick="openModal('contact-modal')" class="bg-white text-black px-10 py-5 rounded-full font-bold hover:bg-slate-200 transition-all hover:scale-105 shadow-[0_0_30px_rgba(255,255,255,0.2)]">
-                    Contact Xeta Tech Solutions
+                <button onclick="openModal('contact-modal')" class="bg-brand-600 text-white px-10 py-4 rounded-full font-bold hover:bg-brand-700 transition-all shadow-xl shadow-brand-500/20 hover:shadow-2xl">
+                    Contact Xeta Tech Sales
                 </button>
             </div>
         </section>
     </main>
 
-    <!-- FOOTER -->
-    <footer class="bg-[#01040a] pt-20 pb-10 border-t border-white/10 text-slate-400">
+    <!-- FOOTER (Dark contrast footer for strong MNC grounding) -->
+    <footer class="bg-slate-900 pt-20 pb-10 border-t border-slate-800 text-slate-400">
         <div class="max-w-7xl mx-auto px-6">
-            <div class="grid lg:grid-cols-4 md:grid-cols-2 gap-12 mb-16">
-                <div class="lg:col-span-1 md:col-span-2">
-                    <div class="bg-white/10 p-1.5 rounded border border-white/10 inline-block mb-6">
+            <div class="grid lg:grid-cols-5 md:grid-cols-2 gap-12 mb-16">
+                <div class="lg:col-span-2 md:col-span-2">
+                    <div class="mb-6 bg-slate-800 inline-block p-2 rounded-lg border border-slate-700">
                         <img src="https://res.cloudinary.com/dpz44zf0z/image/upload/v1760704788/XETA_SOLUTIONS_LOGO_bcsbwh.png" alt="Xeta Tech Logo" class="h-6 w-auto">
                     </div>
-                    <p class="text-sm leading-relaxed mb-8">Engineering the next generation of enterprise technology. Architected in India, deployed globally.</p>
+                    <p class="text-sm leading-relaxed mb-8 max-w-sm text-slate-400">Engineering the next generation of enterprise technology. Architected in India, deployed globally.</p>
                     
                     <div class="space-y-4">
                         <a href="mailto:info@xetasolutions.in" class="flex items-center gap-3 hover:text-white transition-colors">
@@ -745,114 +758,123 @@
                 
                 <div>
                     <h5 class="font-bold text-white mb-6 uppercase tracking-widest text-xs">Corporate</h5>
-                    <ul class="space-y-4 text-sm flex flex-col items-start">
-                        <li><button onclick="openModal('content-about')" class="hover:text-white transition text-left">About Us</button></li>
-                        <li><a href="https://xetasolutions.in/careers" target="_blank" class="hover:text-white transition">Careers</a></li>
-                        <li><button onclick="openModal('contact-modal')" class="hover:text-white transition text-left">Contact Sales</button></li>
+                    <ul class="space-y-3 text-sm flex flex-col items-start">
+                        <li><button onclick="openModal('content-about')" class="hover:text-brand-400 transition text-left">Company Profile</button></li>
+                        <li><a href="https://xetasolutions.in/careers" target="_blank" class="hover:text-brand-400 transition">Careers</a></li>
+                        <li><button onclick="openModal('content-cloud')" class="hover:text-brand-400 transition text-left">Cloud Capabilities</button></li>
+                        <li><button onclick="openModal('contact-modal')" class="hover:text-brand-400 transition text-left">Contact Sales</button></li>
                     </ul>
                 </div>
                 
                 <div>
-                    <h5 class="font-bold text-white mb-6 uppercase tracking-widest text-xs">Products</h5>
-                    <ul class="space-y-4 text-sm flex flex-col items-start">
-                        <li><a href="#proctorix" class="hover:text-white transition text-brand-400">Proctorix</a></li>
-                        <li><a href="https://voxylet.proctorix.in/" target="_blank" class="hover:text-white transition">Voxelyt</a></li>
-                        <li><a href="https://testify.xetasolutions.in" target="_blank" class="hover:text-white transition">Testify</a></li>
-                        <li><a href="https://xetasolutions.in/ems.login.html" target="_blank" class="text-white bg-white/10 px-3 py-1.5 rounded-md hover:bg-white/20 transition flex items-center gap-2 font-semibold border border-white/10">EMS Login <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg></a></li>
+                    <h5 class="font-bold text-white mb-6 uppercase tracking-widest text-xs">Proprietary</h5>
+                    <ul class="space-y-3 text-sm flex flex-col items-start">
+                        <li><a href="https://proctorix.in" target="_blank" class="hover:text-brand-400 transition">Proctorix</a></li>
+                        <li><a href="https://voxylet.proctorix.in/" target="_blank" class="hover:text-brand-400 transition">Voxelyt</a></li>
+                        <li><a href="https://testify.xetasolutions.in" target="_blank" class="hover:text-brand-400 transition">Testify</a></li>
+                        <li><a href="https://hirewithus.xetatech.in" target="_blank" class="hover:text-brand-400 transition">Xeta Hire</a></li>
+                        <li><a href="https://xetasolutions.in/ems.login.html" target="_blank" class="text-white mt-2 bg-white/10 px-3 py-1.5 rounded-md hover:bg-white/20 transition flex items-center gap-2 font-semibold text-xs border border-white/10">EMS Login <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg></a></li>
                     </ul>
                 </div>
                 
                 <div>
-                    <h5 class="font-bold text-white mb-6 uppercase tracking-widest text-xs">Legal (Modals)</h5>
-                    <ul class="space-y-4 text-sm flex flex-col items-start">
-                        <li><button onclick="openModal('content-privacy')" class="hover:text-white transition text-left">Privacy Policy</button></li>
-                        <li><button onclick="openModal('content-terms')" class="hover:text-white transition text-left">Terms of Service</button></li>
-                        <li><button onclick="resetCookies()" class="hover:text-white transition text-left">Cookie Settings</button></li>
+                    <h5 class="font-bold text-white mb-6 uppercase tracking-widest text-xs">Legal & Data</h5>
+                    <ul class="space-y-3 text-sm flex flex-col items-start">
+                        <li><button onclick="openModal('content-privacy')" class="hover:text-brand-400 transition text-left">Privacy Policy</button></li>
+                        <li><button onclick="openModal('content-terms')" class="hover:text-brand-400 transition text-left">Terms of Service</button></li>
+                        <li><button onclick="resetCookies()" class="hover:text-brand-400 transition text-left">Cookie Settings</button></li>
                     </ul>
                 </div>
             </div>
             
-            <div class="border-t border-white/10 pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-xs">
+            <div class="border-t border-slate-800 pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-slate-500">
                 <div>© 2026 Xeta Tech Solutions Pvt. Ltd. All rights reserved.</div>
-                <div class="font-mono bg-white/5 px-3 py-1.5 rounded-full border border-white/10 text-slate-300 flex items-center gap-2">
-                    <span class="w-1.5 h-1.5 rounded-full bg-green-500"></span> ISO Compliant
+                <div class="font-mono bg-slate-800 px-3 py-1.5 rounded-full border border-slate-700 text-slate-400 flex items-center gap-2">
+                    <span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span> ISO/IEC 27001 Compliant
                 </div>
             </div>
         </div>
     </footer>
 
 
-    <!-- DYNAMIC CONTENT MODAL SYSTEM -->
+    <!-- DYNAMIC CONTENT MODAL SYSTEM (Light Theme) -->
     <div id="dynamic-modal" class="fixed inset-0 z-[100] hidden">
-        <div class="absolute inset-0 bg-black/60 backdrop-blur-sm transition-opacity" onclick="closeModal('dynamic-modal')"></div>
+        <div class="absolute inset-0 bg-slate-900/60 backdrop-blur-sm transition-opacity" onclick="closeModal('dynamic-modal')"></div>
         <div class="absolute inset-0 flex items-center justify-center p-4 md:p-6">
-            <div class="modal-glass rounded-2xl w-full max-w-3xl shadow-2xl transform transition-all scale-95 opacity-0 duration-300 overflow-hidden flex flex-col max-h-[90vh]">
-                <div class="p-6 md:p-8 border-b border-white/10 relative flex-shrink-0 flex items-center justify-between">
-                    <h3 id="modal-title" class="text-2xl font-display font-bold text-white pr-8">Title</h3>
-                    <button onclick="closeModal('dynamic-modal')" class="text-slate-400 hover:text-white transition-colors bg-white/5 rounded-full p-2 border border-white/10 hover:bg-white/10">
+            <div class="modal-glass rounded-xl w-full max-w-3xl shadow-2xl transform transition-all scale-95 opacity-0 duration-300 overflow-hidden flex flex-col max-h-[90vh]">
+                <div class="p-6 md:p-8 border-b border-slate-200 relative flex-shrink-0 flex items-center justify-between bg-slate-50">
+                    <h3 id="modal-title" class="text-2xl font-display font-bold text-slate-900 pr-8">Enterprise Detail</h3>
+                    <button onclick="closeModal('dynamic-modal')" class="text-slate-500 hover:text-slate-900 transition-colors bg-white rounded-md p-2 border border-slate-200 hover:bg-slate-100 shadow-sm">
                         <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" /></svg>
                     </button>
                 </div>
-                <div class="p-6 md:p-8 overflow-y-auto text-slate-300 text-sm md:text-base custom-scroll modal-body-content" id="modal-body">
-                    <!-- Content injected here -->
+                <div class="p-6 md:p-8 overflow-y-auto text-slate-600 text-sm md:text-base custom-scroll modal-body-content" id="modal-body">
+                    <!-- Content injected here via JS -->
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- CONTACT FORM MODAL -->
+    <!-- CONTACT FORM MODAL (Light Theme) -->
     <div id="contact-modal" class="fixed inset-0 z-[100] hidden">
-        <div class="absolute inset-0 bg-black/60 backdrop-blur-sm transition-opacity" onclick="closeModal('contact-modal')"></div>
+        <div class="absolute inset-0 bg-slate-900/60 backdrop-blur-sm transition-opacity" onclick="closeModal('contact-modal')"></div>
         <div class="absolute inset-0 flex items-center justify-center p-4 md:p-6">
-            <div class="modal-glass rounded-2xl w-full max-w-2xl shadow-2xl transform transition-all scale-95 opacity-0 duration-300 overflow-hidden flex flex-col max-h-[90vh]">
+            <div class="modal-glass rounded-xl w-full max-w-2xl shadow-2xl transform transition-all scale-95 opacity-0 duration-300 overflow-hidden flex flex-col max-h-[90vh]">
                 
-                <div class="p-8 border-b border-white/10 relative flex-shrink-0 flex justify-between items-start">
+                <div class="p-6 md:p-8 border-b border-slate-200 relative flex-shrink-0 flex justify-between items-start bg-slate-50">
                     <div>
-                        <h3 class="text-3xl font-display font-bold mb-2 text-white">Enterprise Inquiry</h3>
-                        <p class="text-slate-400 text-sm">Connect with our engineering architects to discuss your scale requirements.</p>
+                        <h3 class="text-2xl font-display font-bold mb-2 text-slate-900">Engage Enterprise Sales</h3>
+                        <p class="text-slate-500 text-sm">Connect with our architects to discuss your infrastructure scale requirements.</p>
                     </div>
-                    <button onclick="closeModal('contact-modal')" class="text-slate-400 hover:text-white transition-colors bg-white/5 rounded-full p-2 border border-white/10 hover:bg-white/10">
+                    <button onclick="closeModal('contact-modal')" class="text-slate-500 hover:text-slate-900 transition-colors bg-white rounded-md p-2 border border-slate-200 hover:bg-slate-100 shadow-sm">
                         <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" /></svg>
                     </button>
                 </div>
 
-                <div class="p-8 overflow-y-auto custom-scroll">
+                <div class="p-6 md:p-8 overflow-y-auto custom-scroll">
+                    <!-- Success State -->
                     <div id="form-success" class="hidden flex-col items-center justify-center py-10 text-center">
-                        <div class="w-16 h-16 bg-brand-500/20 rounded-full border border-brand-500/30 flex items-center justify-center text-brand-400 mb-6">
+                        <div class="w-16 h-16 bg-brand-50 rounded-full border border-brand-100 flex items-center justify-center text-brand-600 mb-6">
                             <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
                         </div>
-                        <h4 class="text-2xl font-display font-bold text-white mb-2">Inquiry Received</h4>
-                        <p class="text-slate-400 mb-8 max-w-xs mx-auto text-sm">A senior technical representative will be in touch shortly.</p>
-                        <button onclick="closeModal('contact-modal')" class="bg-white text-black px-8 py-3 rounded-full font-bold hover:bg-slate-200 transition">Acknowledge</button>
+                        <h4 class="text-2xl font-display font-bold text-slate-900 mb-2">Inquiry Received</h4>
+                        <p class="text-slate-500 mb-8 max-w-sm mx-auto text-sm">Your technical brief has been secured. A senior representative will contact you within 1 business day.</p>
+                        <button onclick="closeModal('contact-modal')" class="bg-slate-900 text-white px-8 py-3 rounded-md font-bold hover:bg-slate-800 transition shadow-sm">Acknowledge</button>
                     </div>
 
-                    <form id="contact-form" action="https://formspree.io/f/mqeezyje" method="POST" class="space-y-6">
-                        <div class="grid md:grid-cols-2 gap-6">
+                    <!-- Error State -->
+                    <div id="form-error" class="hidden mb-6 bg-red-50 border border-red-200 text-red-600 px-4 py-3 rounded-md text-sm flex items-center gap-3">
+                        <svg class="w-5 h-5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                        <span>System Error: Unable to route request. Please verify connection.</span>
+                    </div>
+
+                    <form id="contact-form" action="https://formspree.io/f/mqeezyje" method="POST" class="space-y-5">
+                        <div class="grid md:grid-cols-2 gap-5">
                             <div>
-                                <label class="block text-xs font-bold text-slate-400 uppercase tracking-wider mb-2">Full Name</label>
-                                <input type="text" name="name" required class="form-input">
+                                <label class="block text-[10px] font-bold text-slate-500 uppercase tracking-wider mb-2">Full Name</label>
+                                <input type="text" name="name" required class="form-input shadow-inner border border-slate-200">
                             </div>
                             <div>
-                                <label class="block text-xs font-bold text-slate-400 uppercase tracking-wider mb-2">Organization</label>
-                                <input type="text" name="organization" required class="form-input">
+                                <label class="block text-[10px] font-bold text-slate-500 uppercase tracking-wider mb-2">Organization</label>
+                                <input type="text" name="organization" required class="form-input shadow-inner border border-slate-200">
                             </div>
                         </div>
-                        <div class="grid md:grid-cols-2 gap-6">
+                        <div class="grid md:grid-cols-2 gap-5">
                             <div>
-                                <label class="block text-xs font-bold text-slate-400 uppercase tracking-wider mb-2">Work Email</label>
-                                <input type="email" name="email" required class="form-input">
+                                <label class="block text-[10px] font-bold text-slate-500 uppercase tracking-wider mb-2">Work Email</label>
+                                <input type="email" name="email" required class="form-input shadow-inner border border-slate-200">
                             </div>
                             <div>
-                                <label class="block text-xs font-bold text-slate-400 uppercase tracking-wider mb-2">Phone Number</label>
-                                <input type="tel" name="mobile" class="form-input">
+                                <label class="block text-[10px] font-bold text-slate-500 uppercase tracking-wider mb-2">Phone Number</label>
+                                <input type="tel" name="mobile" class="form-input shadow-inner border border-slate-200">
                             </div>
                         </div>
                         <div>
-                            <label class="block text-xs font-bold text-slate-400 uppercase tracking-wider mb-2">Requirement Overview</label>
-                            <textarea name="message" rows="4" required class="form-input"></textarea>
+                            <label class="block text-[10px] font-bold text-slate-500 uppercase tracking-wider mb-2">Requirement Overview</label>
+                            <textarea name="message" rows="4" required class="form-input shadow-inner border border-slate-200"></textarea>
                         </div>
-                        <button type="submit" id="submit-btn" class="w-full bg-white text-black py-4 rounded-xl font-bold hover:bg-slate-200 transition-colors mt-4 flex justify-center items-center gap-2">
-                            <span>Submit Inquiry</span>
+                        <button type="submit" id="submit-btn" class="w-full bg-brand-600 text-white py-3.5 rounded-md font-bold hover:bg-brand-700 transition-colors mt-2 flex justify-center items-center gap-2 shadow-md">
+                            <span>Submit Secure Inquiry</span>
                             <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
                         </button>
                     </form>
@@ -862,12 +884,12 @@
     </div>
 
     <!-- COOKIE CONSENT BANNER -->
-    <div id="cookie-banner" class="fixed bottom-6 left-6 z-[100] modal-glass border border-white/10 shadow-2xl rounded-2xl p-6 max-w-sm hidden transition-all translate-y-20 opacity-0 duration-500">
-        <h4 class="text-sm font-bold text-white mb-2">Cookie Preferences</h4>
-        <p class="text-xs text-slate-400 mb-5 leading-relaxed">We use essential cookies to make our site work. We'd also like to set optional analytics cookies to improve our infrastructure.</p>
+    <div id="cookie-banner" class="fixed bottom-6 left-6 z-[100] bg-white border border-slate-200 shadow-2xl rounded-xl p-6 max-w-sm hidden transition-all translate-y-20 opacity-0 duration-500 border-l-4 border-l-brand-600">
+        <h4 class="text-sm font-bold text-slate-900 mb-2">Data Privacy & Cookies</h4>
+        <p class="text-xs text-slate-500 mb-5 leading-relaxed">Xeta Tech Solutions utilizes essential cookies for platform stability. Analytics cookies help us optimize infrastructure routing.</p>
         <div class="flex gap-3">
-            <button onclick="acceptCookies()" class="flex-1 bg-white text-black py-2.5 rounded-lg text-xs font-bold hover:bg-slate-200 transition">Accept All</button>
-            <button onclick="acceptCookies()" class="flex-1 bg-transparent border border-white/20 text-white py-2.5 rounded-lg text-xs font-bold hover:bg-white/5 transition">Essential</button>
+            <button onclick="acceptCookies()" class="flex-1 bg-slate-900 text-white py-2 rounded-md text-xs font-bold hover:bg-slate-800 transition">Accept All</button>
+            <button onclick="acceptCookies()" class="flex-1 bg-white border border-slate-300 text-slate-700 py-2 rounded-md text-xs font-bold hover:bg-slate-50 transition">Essential</button>
         </div>
     </div>
 
@@ -890,109 +912,97 @@
 
         if (video) {
             video.addEventListener('ended', endIntro);
-            
-            // Fallback in case video doesn't autoplay or load correctly
+            // Fallback
             setTimeout(() => {
                 if(video.paused && video.currentTime === 0) {
                      video.play().catch(() => endIntro());
                 }
             }, 1500);
-            
-            // Failsafe timeout just in case it hangs
-            setTimeout(endIntro, 8000); 
+            setTimeout(endIntro, 6000); 
         } else {
             body.classList.remove('loading');
         }
 
-        // --- EXPANDED DATA DICTIONARY FOR MODALS (T&C, Privacy, etc.) ---
+        // --- EXPANDED MNC-GRADE DATA DICTIONARY FOR MODALS ---
         const modalData = {
             'content-about': {
-                title: 'Engineering Excellence',
+                title: 'Corporate Profile: Xeta Tech Solutions',
                 body: `
-                    <p class="text-lg text-slate-300 font-medium border-b border-white/10 pb-4">Xeta Tech Solutions is a premier technology consultancy and product lab based in India. We bridge the gap between complex business challenges and cutting-edge digital infrastructure.</p>
-                    <h4>Our Mission</h4>
-                    <p>With a focus on enterprise-grade software, AI-driven platforms, and custom engineering, we empower global organizations to scale efficiently and securely. Our mandate is performance without compromise.</p>
-                    <h4>Our Ecosystem</h4>
+                    <p class="text-lg font-medium border-b pb-4">Xeta Tech Solutions is an advanced technology engineering firm operating uniquely as a dual-force enterprise: executing bespoke structural services and developing proprietary AI products.</p>
+                    
+                    <h4>Our Core Mandate</h4>
+                    <p>Established with a singular focus on eliminating technological friction, we bridge the gap between complex business challenges and scalable, highly-available digital infrastructure. We do not just deploy software; we engineer resilient pipelines capable of processing millions of transactions without failure.</p>
+                    
+                    <h4>Division I: The Engineering Branch</h4>
+                    <p>Our services division is trusted by major institutions to execute zero-downtime cloud migrations, develop custom microservices, and manage massive concurrent-user events. We have successfully engineered and scaled platforms like Lakshya, DigiAdhyapak, and centralized Alumni portals.</p>
+
+                    <h4>Division II: The Xeta Ecosystem</h4>
+                    <p>Driven by our internal R&D facility (Xeta Labs), we have successfully developed and launched an entire suite of enterprise-grade SaaS platforms:</p>
                     <ul>
-                        <li><strong>Proctorix:</strong> Global leader in AI cognitive proctoring.</li>
-                        <li><strong>Voxelyt:</strong> Language assessment through neural networks.</li>
-                        <li><strong>Testify:</strong> Centralized corporate credentialing.</li>
-                        <li><strong>Xeta Hire:</strong> High-volume, secure tech talent acquisition workflows.</li>
+                        <li><strong>Proctorix:</strong> A global leader in AI-driven cognitive proctoring and academic integrity.</li>
+                        <li><strong>Xeta Hire:</strong> High-volume, automated tech talent acquisition workflows for enterprise recruiters.</li>
+                        <li><strong>Testify:</strong> Secure, centralized corporate credentialing and compliance management.</li>
+                        <li><strong>Voxelyt:</strong> Advanced language assessment via neural network evaluation.</li>
                     </ul>
-                    <p>We do not just build software; we engineer critical business pipelines that do not fail under pressure.</p>
                 `
             },
             'content-privacy': {
-                title: 'Privacy Policy',
+                title: 'Data Privacy & Security Architecture',
                 body: `
-                    <p class="text-brand-400 font-mono text-sm tracking-widest uppercase border-b border-white/10 pb-4">Last Updated: March 2026</p>
-                    <p class="mt-4">At Xeta Tech Solutions, data security is paramount. This comprehensive policy dictates our strict data handling architectures regarding personal and enterprise data.</p>
-                    <h4>1. Information Collection</h4>
-                    <p>We collect information that you voluntarily provide to us when you register on our platforms, express an interest in obtaining information about us or our products, or otherwise contact our engineering and sales teams. This includes Corporate Emails, Names, and Usage Metadata.</p>
-                    <h4>2. Cryptographic Storage & Security</h4>
-                    <p>All data ingested via our platforms (Proctorix, Voxelyt, etc.) is protected using military-grade encryption.</p>
+                    <p class="text-brand-600 font-mono text-sm tracking-widest uppercase border-b pb-4">ISO/IEC 27001 Aligned Security Posture</p>
+                    
+                    <p class="mt-4">At Xeta Tech Solutions, data security is embedded natively into our foundational architecture. This outlines our strict data handling and enterprise privacy protocols.</p>
+                    
+                    <h4>1. Cryptographic Standards</h4>
+                    <p>All data ingested via our platforms (Proctorix, Xeta Hire, etc.) is protected using military-grade encryption models.</p>
                     <ul>
-                        <li>Data at rest is encrypted using <strong>AES-256</strong>.</li>
-                        <li>Data in transit is secured via <strong>TLS 1.3</strong> protocols.</li>
+                        <li><strong>Data at Rest:</strong> Encrypted using AES-256 standard across all distributed databases.</li>
+                        <li><strong>Data in Transit:</strong> Secured exclusively via TLS 1.3 protocols, neutralizing interception vectors.</li>
                     </ul>
-                    <h4>3. Zero-Trust Architecture</h4>
-                    <p>We operate on a zero-trust model. Internal access to customer data is strictly governed by Role-Based Access Control (RBAC) and requires multi-factor authentication (MFA) and secure VPN tunneling.</p>
-                    <h4>4. Data Sharing & Third Parties</h4>
-                    <p>We do not sell your personal information. Data is only shared with trusted cloud infrastructure providers (AWS, Azure) strictly for hosting and processing purposes under legally binding Data Processing Agreements (DPAs).</p>
+                    
+                    <h4>2. Zero-Trust Internal Policy</h4>
+                    <p>We operate on a strict Zero-Trust model. Internal engineering access to customer environments is governed by programmatic Role-Based Access Control (RBAC), requiring hardware-level Multi-Factor Authentication (MFA) and audited VPN tunneling.</p>
+                    
+                    <h4>3. Biometric Data Processing (Proctorix)</h4>
+                    <p>For platforms utilizing computer vision, facial geometry and behavioral metadata are processed in volatile memory (RAM) wherever structurally possible. Persistent data required for audit logs is automatically purged upon completion of the client's retention SLA.</p>
+                    
+                    <h4>4. Third-Party Infrastructure Agreements</h4>
+                    <p>We do not broker, sell, or leverage your data for external advertising. Information is only processed through audited Tier-1 cloud providers (AWS, Microsoft Azure) strictly bound by our custom Data Processing Agreements (DPAs).</p>
                 `
             },
             'content-terms': {
-                title: 'Terms & Conditions',
+                title: 'Enterprise Terms of Service (MSA)',
                 body: `
-                    <p class="text-brand-400 font-mono text-sm tracking-widest uppercase border-b border-white/10 pb-4">Enterprise Agreement</p>
-                    <p class="mt-4">By utilizing the Xeta Tech Solutions website and proprietary ecosystem, you bind your organization to these operational parameters and terms of service.</p>
+                    <p class="text-brand-600 font-mono text-sm tracking-widest uppercase border-b pb-4">Master Service Agreement Parameters</p>
+                    
+                    <p class="mt-4">By deploying Xeta Tech Solutions proprietary software or engaging our engineering division, your organization legally binds itself to these core operational parameters.</p>
+                    
                     <h4>1. Intellectual Property Matrix</h4>
-                    <p>The core algorithms, cognitive AI models, source code, and infrastructure scaffolding powering Proctorix, Voxelyt, Testify, and the wider suite remain the exclusive intellectual property of Xeta Tech Solutions Pvt. Ltd.</p>
+                    <p>The algorithmic models, cognitive AI logic, compiled source code, and infrastructure scaffolding powering the Xeta Ecosystem (Proctorix, Voxelyt, Testify, etc.) remain the exclusive intellectual property of Xeta Tech Solutions Pvt. Ltd.</p>
                     <ul>
-                        <li>You are granted a limited, non-exclusive license to use the platforms.</li>
-                        <li>Reverse engineering, scraping, or duplicating our service logic is strictly prohibited.</li>
+                        <li>Clients are granted a SaaS license strictly for internal organizational use.</li>
+                        <li>Reverse engineering, packet-sniffing, or attempting to duplicate our proprietary logic is explicitly prohibited and actively monitored by our network firewalls.</li>
                     </ul>
-                    <h4>2. Service Level Agreement (SLA)</h4>
-                    <p>We guarantee <strong>99.99% uptime</strong> for enterprise-tier clients, backed by redundant multi-cloud deployments across AWS and Azure. Planned maintenance windows will be communicated 48 hours in advance.</p>
-                    <h4>3. Enterprise Compliance</h4>
-                    <p>When using our tools for organizational purposes (e.g., Proctorix for exams, Xeta Hire for recruitment), your organization remains responsible for ensuring that your specific use cases comply with local employment and educational laws.</p>
-                    <h4>4. Limitation of Liability</h4>
-                    <p>Xeta Tech Solutions shall not be liable for any indirect, incidental, special, consequential or punitive damages, including without limitation, loss of profits, data, use, goodwill, or other intangible losses, resulting from your access to or use of our services.</p>
-                `
-            },
-            'content-enterprise': {
-                title: 'Enterprise Software Engineering',
-                body: `
-                    <p class="text-xl text-white border-b border-white/10 pb-4">Building mission-critical applications designed for high availability and immense scale.</p>
-                    <h4>Core Capabilities</h4>
-                    <ul>
-                        <li><strong>Custom Systems:</strong> Tailored platforms aligning with complex workflows, removing off-the-shelf dependencies.</li>
-                        <li><strong>Microservices Modernization:</strong> Deconstructing outdated monolithic architectures into resilient microservices (Docker/K8s).</li>
-                        <li><strong>API Ecosystems:</strong> Robust REST and GraphQL APIs for seamless cross-corporate data synchronization.</li>
-                    </ul>
+                    
+                    <h4>2. Service Level Agreement (SLA) Guarantee</h4>
+                    <p>Enterprise-tier clients receive a mathematically guaranteed <strong>99.99% uptime SLA</strong>. This is backed by our redundant, multi-region cloud deployment architecture. Planned maintenance windows are minimal and communicated a minimum of 72 hours in advance.</p>
+                    
+                    <h4>3. Liability Limitation & Compliance</h4>
+                    <p>Xeta Tech Solutions architects systems for maximum resilience. However, we shall not be liable for indirect, incidental, or consequential damages arising from external network failures, DNS routing issues by third-party ISPs, or client misconfiguration of API endpoints. Clients are responsible for ensuring their usage of platforms like Proctorix complies with local employee or student privacy laws.</p>
                 `
             },
             'content-cloud': {
-                title: 'Cloud Architecture',
+                title: 'Cloud Architecture Capabilities',
                 body: `
-                    <p class="text-xl text-white border-b border-white/10 pb-4">Transition digital assets to the cloud with zero downtime.</p>
-                    <h4>Cloud Solutions</h4>
+                    <p class="text-lg font-medium border-b pb-4">Transitioning legacy monolithic systems to distributed, cloud-native environments with zero operational downtime.</p>
+                    
+                    <h4>Our Deployment Methodologies</h4>
+                    <p>We do not rely on standard monolithic VPS hosting. Our architects design hyper-scalable, decoupled environments tailored specifically for sudden, massive traffic spikes.</p>
                     <ul>
-                        <li><strong>Cloud-Native Dev:</strong> Leveraging native AWS (Lambda, ECS), Azure, and Google Cloud capabilities.</li>
-                        <li><strong>Container Orchestration:</strong> Reducing infrastructure overhead utilizing Docker and Kubernetes clusters.</li>
-                        <li><strong>CI/CD Automation:</strong> Rapid delivery using Jenkins, GitLab CI, GitHub Actions, and Terraform (Infrastructure as Code).</li>
-                    </ul>
-                `
-            },
-            'content-ai': {
-                title: 'AI & ML Systems',
-                body: `
-                    <p class="text-xl text-white border-b border-white/10 pb-4">Future-proof operations with intelligent, adaptive systems.</p>
-                    <h4>Implementations</h4>
-                    <ul>
-                        <li><strong>Predictive Analytics:</strong> Forecasting market trends, predictive maintenance, and optimizing corporate supply chains using large datasets.</li>
-                        <li><strong>NLP & Cognitive Models:</strong> Deploying intelligent sentiment analysis, chatbot architectures, and automated document processing workflows.</li>
-                        <li><strong>Computer Vision:</strong> Real-time video stream analysis (as seen in our Proctorix platform) for security and behavioral tracking.</li>
+                        <li><strong>Container Orchestration:</strong> Utilizing Docker and Kubernetes (K8s) clusters to ensure microservices self-heal and auto-scale dynamically based on CPU/Memory load parameters.</li>
+                        <li><strong>Serverless Edge Computing:</strong> Implementing AWS Lambda and Cloudflare Workers to push processing logic to the network edge, drastically reducing latency for global end-users.</li>
+                        <li><strong>Infrastructure as Code (IaC):</strong> Complete environment provisioning using Terraform. We version-control your infrastructure alongside your code, eliminating configuration drift entirely.</li>
+                        <li><strong>Distributed Data Caching:</strong> Leveraging Redis and Memcached layers to absorb massive database read-requests (a technique proven effectively in our 6,000+ concurrent user benchmarks).</li>
                     </ul>
                 `
             }
@@ -1000,26 +1010,19 @@
 
         // --- UI INTERACTION LOGIC ---
         
-        // Mobile Menu Toggle with Icon Swap
         function toggleMobileMenu() {
             const menu = document.getElementById('mobile-menu');
             const iconMenu = document.getElementById('icon-menu');
             const iconClose = document.getElementById('icon-close');
             
             if(menu.classList.contains('translate-x-full')) {
-                // Open Menu
                 menu.classList.remove('translate-x-full');
-                document.body.style.overflow = 'hidden'; // Prevent background scroll
-                
-                // Swap to Close Icon
+                document.body.style.overflow = 'hidden'; 
                 iconMenu.classList.replace('opacity-100', 'opacity-0');
                 iconClose.classList.replace('opacity-0', 'opacity-100');
             } else {
-                // Close Menu
                 menu.classList.add('translate-x-full');
                 document.body.style.overflow = '';
-                
-                // Swap back to Hamburger Icon
                 iconMenu.classList.replace('opacity-0', 'opacity-100');
                 iconClose.classList.replace('opacity-100', 'opacity-0');
             }
@@ -1027,7 +1030,6 @@
 
         function openModal(modalId) {
             let actualId = modalId;
-            // Handle dynamic content mapping
             if (modalId.startsWith('content-')) {
                 const data = modalData[modalId];
                 if(data) {
@@ -1039,9 +1041,8 @@
             
             const modal = document.getElementById(actualId);
             modal.classList.remove('hidden');
-            document.body.classList.add('overflow-hidden'); // Prevent background scroll
+            document.body.classList.add('overflow-hidden');
             
-            // Small delay for CSS transition to apply correctly
             setTimeout(() => {
                 const inner = modal.querySelector('div.transform');
                 inner.classList.remove('opacity-0', 'scale-95');
@@ -1055,20 +1056,27 @@
             inner.classList.remove('opacity-100', 'scale-100');
             inner.classList.add('opacity-0', 'scale-95');
             
-            // Wait for transition to finish before hiding
             setTimeout(() => {
                 modal.classList.add('hidden');
                 document.body.classList.remove('overflow-hidden');
+                // Reset form state if it was the contact modal
+                if(modalId === 'contact-modal') {
+                    document.getElementById('contact-form').classList.remove('hidden');
+                    document.getElementById('form-success').classList.remove('flex');
+                    document.getElementById('form-success').classList.add('hidden');
+                    document.getElementById('form-error').classList.add('hidden');
+                    document.getElementById('contact-form').reset();
+                }
             }, 300);
         }
 
-        // --- SCROLL ANIMATIONS (Intersection Observer) ---
+        // --- SCROLL ANIMATIONS ---
         const observerOptions = { threshold: 0.1, rootMargin: "0px 0px -50px 0px" };
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
                     entry.target.classList.add('active');
-                    observer.unobserve(entry.target); // Run once
+                    observer.unobserve(entry.target);
                 }
             });
         }, observerOptions);
@@ -1079,19 +1087,24 @@
         window.addEventListener('scroll', () => {
             const nav = document.getElementById('navbar');
             if (window.scrollY > 50) {
-                nav.classList.add('border-b', 'border-white/5', 'shadow-2xl');
+                nav.classList.add('shadow-sm');
+                nav.style.background = 'rgba(255, 255, 255, 0.95)';
             } else {
-                nav.classList.remove('border-b', 'border-white/5', 'shadow-2xl');
+                nav.classList.remove('shadow-sm');
+                nav.style.background = 'rgba(255, 255, 255, 0.85)';
             }
         });
 
-        // --- FORM HANDLING ---
+        // --- CLEAN FORM HANDLING (No Alerts) ---
         document.getElementById('contact-form').addEventListener('submit', async (e) => {
             e.preventDefault();
             const btn = document.getElementById('submit-btn');
+            const errorBox = document.getElementById('form-error');
             const originalHTML = btn.innerHTML;
-            btn.innerHTML = '<span class="animate-pulse">Processing Request...</span>';
+            
+            btn.innerHTML = '<span class="animate-pulse">Authenticating & Routing...</span>';
             btn.disabled = true;
+            errorBox.classList.add('hidden');
             
             try {
                 const response = await fetch(e.target.action, {
@@ -1100,16 +1113,15 @@
                     headers: {'Accept': 'application/json'}
                 });
                 if(response.ok) {
-                    e.target.reset();
                     e.target.classList.add('hidden');
                     const success = document.getElementById('form-success');
                     success.classList.remove('hidden');
                     success.classList.add('flex');
                 } else {
-                    alert("System Error. Please verify input parameters.");
+                    errorBox.classList.remove('hidden');
                 }
             } catch(err) {
-                alert("Network Routing Error. Please check your connection.");
+                errorBox.classList.remove('hidden');
             } finally {
                 btn.innerHTML = originalHTML;
                 btn.disabled = false;
@@ -1118,7 +1130,7 @@
 
         // --- COOKIE LOGIC ---
         setTimeout(() => {
-            if (!localStorage.getItem('xeta_cookies_v3')) {
+            if (!localStorage.getItem('xeta_cookies_enterprise')) {
                 const banner = document.getElementById('cookie-banner');
                 banner.classList.remove('hidden');
                 setTimeout(() => {
@@ -1128,14 +1140,14 @@
         }, 2000);
 
         function acceptCookies() {
-            localStorage.setItem('xeta_cookies_v3', 'true');
+            localStorage.setItem('xeta_cookies_enterprise', 'true');
             const banner = document.getElementById('cookie-banner');
             banner.classList.add('translate-y-20', 'opacity-0');
             setTimeout(() => banner.classList.add('hidden'), 500);
         }
 
         function resetCookies() {
-            localStorage.removeItem('xeta_cookies_v3');
+            localStorage.removeItem('xeta_cookies_enterprise');
             const banner = document.getElementById('cookie-banner');
             banner.classList.remove('hidden');
             setTimeout(() => banner.classList.remove('translate-y-20', 'opacity-0'), 100);
