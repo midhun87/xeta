@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>QuizCom | Welcome</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS via CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Tailwind Configuration for Custom Brand Colors -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Poppins', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            purple: '#A21D7F',
+                            teal: '#2C5E5D',
+                            yellow: '#F8A836',
+                            green: '#8DC63F',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        /* Prevents pull-to-refresh on mobile browsers for an app-like feel */
+        body {
+            overscroll-behavior-y: none;
+        }
+    </style>
+</head>
+<body class="antialiased bg-slate-50 min-h-[100dvh] flex flex-col text-slate-800 selection:bg-brand-purple selection:text-white">
+
+    <!-- Top Navigation Bar -->
+    <header class="w-full px-5 py-4 bg-white/80 backdrop-blur-md sticky top-0 z-50 border-b border-slate-100 flex justify-between items-center">
+        <!-- Parent Product Branding -->
+        <div class="flex items-center gap-2">
+            <span class="text-[10px] sm:text-xs font-bold text-slate-400 tracking-wider uppercase">Powered By</span>
+            <img src="https://res.cloudinary.com/dpz44zf0z/image/upload/v1756037774/Gemini_Generated_Image_eu0ib0eu0ib0eu0i_z0amjh.png" 
+                 alt="Testify" 
+                 class="h-5 sm:h-6 object-contain grayscale-[20%]">
+        </div>
+        
+        <!-- Admin Access -->
+        <a href="https://testify.xetasolutions.in/quizcom/quiz-moderator-login.html" 
+           class="flex items-center gap-1.5 text-sm font-semibold text-slate-500 hover:text-brand-purple transition-colors bg-slate-100/50 hover:bg-brand-purple/10 px-3 py-1.5 rounded-full">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
+                <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-6-3a2 2 0 11-4 0 2 2 0 014 0zm-2 4a5 5 0 00-4.546 2.916A5.986 5.986 0 0010 16a5.986 5.986 0 004.546-2.084A5 5 0 0010 11z" clip-rule="evenodd" />
+            </svg>
+            <span class="hidden sm:inline">Admin Login</span>
+            <span class="sm:hidden">Admin</span>
+        </a>
+    </header>
+
+    <!-- Main Content Area -->
+    <main class="flex-1 flex flex-col items-center justify-center p-4 sm:p-6 w-full max-w-lg mx-auto">
+        
+        <!-- App-like White Card Container -->
+        <div class="bg-white w-full px-6 py-10 sm:p-12 rounded-3xl shadow-[0_8px_30px_rgb(0,0,0,0.04)] border border-slate-100 flex flex-col items-center text-center">
+            
+            <!-- QuizCom Logo -->
+            <img src="https://res.cloudinary.com/dpz44zf0z/image/upload/v1760086493/QuizCom_u5wzcp.png" 
+                 alt="QuizCom Logo" 
+                 class="w-48 sm:w-56 mb-8 drop-shadow-sm">
+
+            <!-- Hero Text -->
+            <h1 class="text-2xl sm:text-3xl font-extrabold text-slate-800 mb-2 leading-tight">
+                Join a Live Quiz
+            </h1>
+            <p class="text-slate-500 text-sm sm:text-base mb-8 px-2">
+                Enter your session instantly and test your knowledge. No account required.
+            </p>
+
+            <!-- Primary Action Button -->
+            <a href="https://testify.xetasolutions.in/student/quiz-join" 
+               class="w-full group relative inline-flex items-center justify-center px-6 py-4 font-bold text-white transition-all duration-200 bg-brand-purple rounded-2xl shadow-lg shadow-brand-purple/25 hover:bg-brand-teal hover:shadow-brand-teal/25 active:scale-[0.98]">
+                <span class="text-lg">Join Quiz Now</span>
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-2 group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                </svg>
+            </a>
+
+        </div>
+
+    </main>
+
+    <!-- Footer Area -->
+    <footer class="w-full py-6 px-4 flex flex-col items-center justify-center gap-2 mt-auto">
+        <span class="text-xs font-semibold text-slate-400 tracking-wide uppercase">Developed By</span>
+        <a href="#" class="opacity-70 hover:opacity-100 transition-opacity">
+            <img src="https://res.cloudinary.com/djdwpjm7x/image/upload/v1771001520/Xeta_Header_wfw12w.png" 
+                 alt="Xeta Tech" 
+                 class="h-6 sm:h-7 object-contain">
+        </a>
+    </footer>
+
+</body>
+</html>
