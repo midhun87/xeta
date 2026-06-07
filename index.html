@@ -43,6 +43,7 @@
                     animation: {
                         'float': 'float 6s ease-in-out infinite',
                         'blob': 'blob 10s infinite',
+                        'marquee': 'marquee 40s linear infinite',
                     },
                     keyframes: {
                         float: {
@@ -54,6 +55,14 @@
                             '33%': { transform: 'translate(30px, -50px) scale(1.1)' },
                             '66%': { transform: 'translate(-20px, 20px) scale(0.9)' },
                             '100%': { transform: 'translate(0px, 0px) scale(1)' },
+                        },
+                        marquee: {
+                            '0%': { transform: 'translateX(0%)' },
+                            '100%': { transform: 'translateX(-50%)' },
+                        },
+                        pipeline: {
+                            '0%': { width: '0%' },
+                            '100%': { width: '100%' }
                         }
                     }
                 }
@@ -309,13 +318,55 @@
                         Engage Engineering
                     </button>
                 </div>
+                
+                <!-- Trust Indicator -->
+                <div class="reveal delay-300 mt-10 flex flex-col sm:flex-row items-center gap-4 text-slate-500 text-sm font-medium bg-white/50 backdrop-blur-sm px-6 py-3 rounded-full border border-slate-200/60 shadow-sm">
+                    <div class="flex -space-x-2">
+                        <img class="w-8 h-8 rounded-full border-2 border-white" src="https://placehold.co/100x100/e2e8f0/64748b?text=L" alt="Institution">
+                        <img class="w-8 h-8 rounded-full border-2 border-white" src="https://placehold.co/100x100/f1f5f9/64748b?text=G" alt="Institution">
+                        <img class="w-8 h-8 rounded-full border-2 border-white" src="https://placehold.co/100x100/e2e8f0/64748b?text=E" alt="Institution">
+                    </div>
+                    <span>Trusted by enterprise platforms powering <strong class="text-brand-600">300K+</strong> active users</span>
+                </div>
             </div>
             
             <!-- Bottom Fade to pure white -->
             <div class="absolute bottom-0 left-0 w-full h-32 bg-gradient-to-t from-white to-transparent z-0 pointer-events-none"></div>
         </section>
 
-        <!-- PROVEN AT SCALE: BESPOKE DEPLOYMENTS (PRIORITY SECTION) -->
+        <!-- TECH STACK MARQUEE -->
+        <div class="relative z-20 bg-white border-b border-slate-100 py-8 overflow-hidden flex">
+            <!-- Fade overlays for smooth scrolling effect -->
+            <div class="absolute left-0 top-0 bottom-0 w-32 bg-gradient-to-r from-white to-transparent z-10 pointer-events-none"></div>
+            <div class="absolute right-0 top-0 bottom-0 w-32 bg-gradient-to-l from-white to-transparent z-10 pointer-events-none"></div>
+            
+            <div class="flex animate-marquee whitespace-nowrap items-center w-max">
+                <!-- Group 1 -->
+                <div class="flex items-center gap-16 px-8 opacity-50 grayscale hover:grayscale-0 hover:opacity-100 transition-all duration-300">
+                    <span class="text-xl font-display font-bold text-slate-800 tracking-tight">React.js</span>
+                    <span class="text-xl font-display font-bold text-slate-800 tracking-tight">Node.js</span>
+                    <span class="text-xl font-display font-bold text-slate-800 tracking-tight">Amazon Web Services</span>
+                    <span class="text-xl font-display font-bold text-slate-800 tracking-tight">Kubernetes</span>
+                    <span class="text-xl font-display font-bold text-slate-800 tracking-tight">PostgreSQL</span>
+                    <span class="text-xl font-display font-bold text-slate-800 tracking-tight">Python</span>
+                    <span class="text-xl font-display font-bold text-slate-800 tracking-tight">TensorFlow</span>
+                    <span class="text-xl font-display font-bold text-slate-800 tracking-tight">Docker</span>
+                </div>
+                <!-- Group 2 (Duplicate for seamless loop) -->
+                <div class="flex items-center gap-16 px-8 opacity-50 grayscale hover:grayscale-0 hover:opacity-100 transition-all duration-300">
+                    <span class="text-xl font-display font-bold text-slate-800 tracking-tight">React.js</span>
+                    <span class="text-xl font-display font-bold text-slate-800 tracking-tight">Node.js</span>
+                    <span class="text-xl font-display font-bold text-slate-800 tracking-tight">Amazon Web Services</span>
+                    <span class="text-xl font-display font-bold text-slate-800 tracking-tight">Kubernetes</span>
+                    <span class="text-xl font-display font-bold text-slate-800 tracking-tight">PostgreSQL</span>
+                    <span class="text-xl font-display font-bold text-slate-800 tracking-tight">Python</span>
+                    <span class="text-xl font-display font-bold text-slate-800 tracking-tight">TensorFlow</span>
+                    <span class="text-xl font-display font-bold text-slate-800 tracking-tight">Docker</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- PROVEN AT SCALE: BESPOKE DEPLOYMENTS -->
         <section id="deployments" class="py-24 relative z-20 bg-surface-50 border-y border-slate-200">
             <div class="max-w-7xl mx-auto px-6 relative z-10">
                 <div class="mb-16 md:text-center reveal">
@@ -324,27 +375,25 @@
                     <p class="text-slate-500 mt-4 max-w-2xl mx-auto text-lg leading-relaxed">High-concurrency, custom-architected platforms tailored to complex institutional needs and massive traffic surges.</p>
                 </div>
                 
-                <!-- Deployment Grids -->
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                     
-                    <!-- LBRCE Alumni (Featured) -->
-                    <div class="premium-card p-10 reveal lg:col-span-3 border-t-4 border-t-brand-500 flex flex-col md:flex-row items-center gap-10 bg-white">
-                        <div class="w-full md:w-1/3 flex justify-center order-2 md:order-1">
-                            <div class="w-48 h-48 rounded-full bg-surface-50 border border-slate-200 flex items-center justify-center shadow-inner relative">
-                                <div class="absolute inset-0 border border-brand-200 rounded-full animate-[spin_10s_linear_infinite]"></div>
-                                <svg class="w-16 h-16 text-brand-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path></svg>
+                    <!-- LBRCE Alumni (Fixed Size) -->
+                    <a href="https://alumni.lbrce.ac.in" target="_blank" class="premium-card p-8 reveal group flex flex-col h-full hover:border-brand-300 border-t-4 border-t-brand-500">
+                        <div class="flex items-center gap-4 mb-6">
+                            <div class="bg-surface-50 p-2 rounded-xl shrink-0 h-16 w-16 flex items-center justify-center border border-slate-200 shadow-sm transition-transform duration-300 group-hover:scale-105 relative overflow-hidden">
+                                <div class="absolute inset-0 border border-brand-200 rounded-xl animate-[spin_10s_linear_infinite]"></div>
+                                <svg class="w-8 h-8 text-brand-500 relative z-10" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path></svg>
+                            </div>
+                            <div>
+                                <h4 class="text-2xl font-display font-bold text-slate-900 tracking-tight group-hover:text-brand-600 transition-colors">Alumni Network</h4>
+                                <p class="text-xs text-brand-500 uppercase tracking-widest font-bold mt-1">LBRCE Community</p>
                             </div>
                         </div>
-                        <div class="w-full md:w-2/3 order-1 md:order-2 text-center md:text-left">
-                            <div class="badge bg-brand-50 text-brand-600 border border-brand-200 mb-4">Institution Scale</div>
-                            <h4 class="text-3xl md:text-5xl font-display font-bold mb-3 text-slate-900 tracking-tight">Alumni Association</h4>
-                            <h5 class="text-lg md:text-xl text-brand-600 font-medium mb-4">Empowering the LBRCE Community</h5>
-                            <p class="text-slate-600 mb-8 leading-relaxed max-w-2xl mx-auto md:mx-0">A centralized digital platform connecting students, alumni, and administrators to foster structured communication, career opportunities, and lifelong institutional engagement. Engineered for high concurrency and secure data management.</p>
-                            <a href="https://alumni.lbrce.ac.in" target="_blank" class="btn-secondary px-6 py-3 rounded-xl text-sm font-bold uppercase tracking-widest inline-flex items-center group">
-                                View Live Deployment <svg class="w-4 h-4 ml-2 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
-                            </a>
+                        <p class="text-sm text-slate-600 mb-8 leading-relaxed flex-grow">A centralized digital platform connecting students, alumni, and administrators to foster structured communication, career opportunities, and lifelong institutional engagement.</p>
+                        <div class="text-xs font-bold text-slate-900 uppercase tracking-widest flex items-center group-hover:text-brand-600 transition-colors mt-auto">
+                            View Deployment <svg class="w-4 h-4 ml-2 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
                         </div>
-                    </div>
+                    </a>
 
                     <!-- Lakshya -->
                     <a href="https://lakshya.lbrce.ac.in" target="_blank" class="premium-card p-8 reveal delay-100 group flex flex-col h-full hover:border-brand-300">
@@ -380,13 +429,24 @@
                         </div>
                     </a>
 
-                    <!-- Metric Callout -->
-                    <div class="premium-card p-8 reveal delay-300 bg-brand-600 text-white flex flex-col justify-center items-center text-center">
-                        <div class="text-5xl font-display font-bold mb-2">3 Lakh+</div>
-                        <div class="text-sm font-medium text-brand-100 uppercase tracking-widest mb-6">Transactions Processed</div>
-                        <div class="w-12 h-1 bg-brand-400 rounded-full mb-6"></div>
-                        <div class="text-5xl font-display font-bold mb-2">6,000+</div>
-                        <div class="text-sm font-medium text-brand-100 uppercase tracking-widest">Concurrent Live Users</div>
+                    <!-- Metric Callout (Moved to span bottom row) -->
+                    <div class="premium-card p-10 reveal delay-300 bg-brand-600 text-white flex flex-col md:flex-row justify-center items-center text-center md:text-left gap-8 md:gap-16 lg:col-span-3">
+                        <div>
+                            <div class="text-5xl font-display font-bold mb-2">3 Lakh+</div>
+                            <div class="text-sm font-medium text-brand-100 uppercase tracking-widest">Transactions Processed</div>
+                        </div>
+                        <div class="hidden md:block w-px h-16 bg-brand-400"></div>
+                        <div class="md:hidden w-16 h-px bg-brand-400"></div>
+                        <div>
+                            <div class="text-5xl font-display font-bold mb-2">6,000+</div>
+                            <div class="text-sm font-medium text-brand-100 uppercase tracking-widest">Concurrent Live Users</div>
+                        </div>
+                        <div class="hidden md:block w-px h-16 bg-brand-400"></div>
+                        <div class="md:hidden w-16 h-px bg-brand-400"></div>
+                        <div>
+                            <div class="text-5xl font-display font-bold mb-2">Zero</div>
+                            <div class="text-sm font-medium text-brand-100 uppercase tracking-widest">Downtime Under Load</div>
+                        </div>
                     </div>
 
                 </div>
@@ -440,6 +500,64 @@
                         </button>
                     </div>
 
+                </div>
+            </div>
+        </section>
+
+        <!-- ENGINEERING PIPELINE -->
+        <section class="py-24 relative z-20 bg-white border-t border-slate-200">
+            <div class="max-w-7xl mx-auto px-6">
+                <div class="mb-16 md:text-center reveal">
+                    <span class="text-brand-600 font-bold tracking-widest uppercase text-xs">Our Process</span>
+                    <h2 class="text-4xl md:text-5xl font-display font-bold mt-3 text-slate-900 tracking-tight">The Xeta Pipeline</h2>
+                    <p class="text-slate-500 mt-4 max-w-2xl mx-auto text-lg leading-relaxed">How we transform complex enterprise requirements into high-performance, fault-tolerant digital systems.</p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-4 gap-8 relative">
+                    <!-- Animated Connector Line (Desktop only) -->
+                    <div class="hidden md:block absolute top-8 left-10 w-[calc(100%-5rem)] h-1.5 bg-slate-100 z-0 rounded-full overflow-hidden">
+                        <div class="h-full bg-gradient-to-r from-brand-500 via-indigo-500 to-brand-500 w-full origin-left animate-[pipeline_4s_ease-in-out_infinite_alternate]"></div>
+                    </div>
+
+                    <!-- Step 1 -->
+                    <div class="relative z-10 flex flex-col items-center md:items-start text-center md:text-left reveal group">
+                        <div class="w-16 h-16 rounded-2xl bg-white border-2 border-brand-100 flex items-center justify-center mb-6 shadow-sm group-hover:border-brand-500 group-hover:scale-110 transition-all duration-300 relative">
+                            <div class="absolute inset-0 rounded-2xl bg-brand-400 opacity-0 group-hover:opacity-20 group-hover:animate-ping"></div>
+                            <span class="text-2xl font-display font-bold text-brand-600 relative z-10">01</span>
+                        </div>
+                        <h4 class="text-xl font-display font-bold text-slate-900 mb-2 group-hover:text-brand-600 transition-colors">Discovery</h4>
+                        <p class="text-sm text-slate-500 leading-relaxed">Deep-dive into load profiling, concurrency goals, and legacy system constraints.</p>
+                    </div>
+
+                    <!-- Step 2 -->
+                    <div class="relative z-10 flex flex-col items-center md:items-start text-center md:text-left reveal delay-100 group">
+                        <div class="w-16 h-16 rounded-2xl bg-white border-2 border-brand-100 flex items-center justify-center mb-6 shadow-sm group-hover:border-brand-500 group-hover:scale-110 transition-all duration-300 relative">
+                            <div class="absolute inset-0 rounded-2xl bg-brand-400 opacity-0 group-hover:opacity-20 group-hover:animate-ping"></div>
+                            <span class="text-2xl font-display font-bold text-brand-600 relative z-10">02</span>
+                        </div>
+                        <h4 class="text-xl font-display font-bold text-slate-900 mb-2 group-hover:text-brand-600 transition-colors">Architecture</h4>
+                        <p class="text-sm text-slate-500 leading-relaxed">Designing decoupled microservices and zero-trust security scaffolds.</p>
+                    </div>
+
+                    <!-- Step 3 -->
+                    <div class="relative z-10 flex flex-col items-center md:items-start text-center md:text-left reveal delay-200 group">
+                        <div class="w-16 h-16 rounded-2xl bg-white border-2 border-brand-100 flex items-center justify-center mb-6 shadow-sm group-hover:border-brand-500 group-hover:scale-110 transition-all duration-300 relative">
+                            <div class="absolute inset-0 rounded-2xl bg-brand-400 opacity-0 group-hover:opacity-20 group-hover:animate-ping"></div>
+                            <span class="text-2xl font-display font-bold text-brand-600 relative z-10">03</span>
+                        </div>
+                        <h4 class="text-xl font-display font-bold text-slate-900 mb-2 group-hover:text-brand-600 transition-colors">Stress Testing</h4>
+                        <p class="text-sm text-slate-500 leading-relaxed">Simulating massive traffic spikes to guarantee zero downtime under extreme pressure.</p>
+                    </div>
+
+                    <!-- Step 4 -->
+                    <div class="relative z-10 flex flex-col items-center md:items-start text-center md:text-left reveal delay-300 group">
+                        <div class="w-16 h-16 rounded-2xl bg-white border-2 border-brand-100 flex items-center justify-center mb-6 shadow-sm group-hover:border-brand-500 group-hover:scale-110 transition-all duration-300 relative">
+                            <div class="absolute inset-0 rounded-2xl bg-brand-400 opacity-0 group-hover:opacity-20 group-hover:animate-ping"></div>
+                            <span class="text-2xl font-display font-bold text-brand-600 relative z-10">04</span>
+                        </div>
+                        <h4 class="text-xl font-display font-bold text-slate-900 mb-2 group-hover:text-brand-600 transition-colors">Deployment</h4>
+                        <p class="text-sm text-slate-500 leading-relaxed">Live observability, auto-scaling integration, and continuous delivery.</p>
+                    </div>
                 </div>
             </div>
         </section>
@@ -537,6 +655,21 @@
             </div>
         </section>
 
+        <!-- DYNAMIC INSIGHTS / BLOG SECTION -->
+        <section id="insights" class="py-24 relative z-20 bg-white border-t border-slate-200">
+            <div class="max-w-7xl mx-auto px-6">
+                <div class="mb-16 md:text-center reveal">
+                    <span class="text-brand-600 font-bold tracking-widest uppercase text-xs">Latest Thinking</span>
+                    <h2 class="text-4xl md:text-5xl font-display font-bold mt-3 text-slate-900 tracking-tight">Engineering Insights</h2>
+                    <p class="text-slate-500 mt-4 max-w-2xl mx-auto text-lg leading-relaxed">Articles, case studies, and engineering deep-dives from the Xeta Tech team.</p>
+                </div>
+                
+                <div id="blogs-container" class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <!-- Blogs injected here by JS -->
+                </div>
+            </div>
+        </section>
+
         <!-- CTA SECTION -->
         <section class="py-32 relative border-t border-slate-200 overflow-hidden text-center bg-white">
             <div class="absolute inset-0 bg-dot-pattern opacity-40 z-0"></div>
@@ -571,7 +704,7 @@
                         </a>
                         <div class="flex items-start gap-3">
                             <div class="w-8 h-8 rounded-full bg-white border border-slate-200 flex items-center justify-center shrink-0"><svg class="w-4 h-4 text-brand-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.243-4.243a8 8 0 1111.314 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path></svg></div>
-                            <span class="text-sm leading-relaxed mt-1">Gachibowli, Near ORR,<br>Telangana, Hyderabad, India</span>
+                            <span class="text-sm leading-relaxed mt-1">Xeta Tech Solutions<br>Gachibowli Financial District<br>Hyderabad, Telangana 500032</span>
                         </div>
                     </div>
                 </div>
@@ -801,6 +934,92 @@
                 `
             }
         };
+
+        const blogsData = [
+            {
+                id: 'blog-1',
+                title: 'Scaling Node.js for Massive Event Loads',
+                date: 'June 4, 2026',
+                category: 'Architecture',
+                summary: 'How we re-architected our core event management engine to handle 6K+ concurrent users without dropping a single websocket connection.',
+                content: '<p class="mb-4">Scaling real-time applications presents unique challenges, especially when managing thousands of active concurrent connections during flagship university events.</p><p class="mb-4">By transitioning to a highly decoupled microservices architecture deployed on AWS infrastructure, and utilizing Redis for high-speed caching and pub/sub message brokering, we entirely eliminated our previous bottlenecks.</p><p>This case study breaks down our journey, the exact cluster configuration we use, and our strategies for maintaining zero downtime during extreme stress tests.</p>'
+            },
+            {
+                id: 'blog-2',
+                title: 'The Future of AI Cognitive Proctoring',
+                date: 'May 28, 2026',
+                category: 'AI & ML',
+                summary: 'A deep dive into the computer vision models and behavioral analytics powering Proctorix\'s zero-trust ecosystem.',
+                content: '<p class="mb-4">Maintaining integrity in remote assessments requires more than just locking down a browser. It requires intelligent, contextual understanding of the hardware environment.</p><p class="mb-4">Our engineering team has developed proprietary computer vision models that analyze micro-expressions, eye-tracking patterns, and ambient noise levels in real-time, functioning entirely on the edge to respect user privacy and drastically reduce latency.</p><p>Learn how we optimized TensorFlow Lite models to run flawlessly on standard enterprise and student hardware without thermal throttling.</p>'
+            },
+            {
+                id: 'blog-3',
+                title: 'Implementing Zero-Trust Security Scaffolds',
+                date: 'May 15, 2026',
+                category: 'Cloud Security',
+                summary: 'Why traditional perimeter defense is outdated, and how Xeta Tech implements zero-trust architecture across all enterprise deployments.',
+                content: '<p class="mb-4">In a multi-cloud, remote-first world, assuming trust based on network location is a massive liability. That is why Xeta Tech adopts a strict Zero-Trust Architecture.</p><p class="mb-4">Every user, internal or external, must be authenticated and authorized continuously. We utilize automated certificate rotation, highly restricted IAM roles, and strict network policies within our deployment clusters.</p><p>This rigorous approach ensures that even in the unlikely event of a compromised microservice layer, the blast radius is strictly contained and sensitive enterprise data remains entirely inaccessible.</p>'
+            }
+        ];
+
+        function renderBlogs() {
+            const container = document.getElementById('blogs-container');
+            if(!container) return;
+            
+            container.innerHTML = blogsData.map((blog, index) => `
+                <div class="premium-card p-0 flex flex-col h-full reveal delay-${index * 100} group cursor-pointer" onclick="openBlogModal('${blog.id}')">
+                    <div class="h-48 bg-surface-100 overflow-hidden relative">
+                        <div class="absolute inset-0 bg-gradient-to-br from-brand-100 to-indigo-50 opacity-50"></div>
+                        <div class="absolute inset-0 flex items-center justify-center text-brand-200 group-hover:scale-110 transition-transform duration-700">
+                            <svg class="w-16 h-16 opacity-50" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 13a2 2 0 002-2V9.5a2.5 2.5 0 00-2.5-2.5H15M9 11l3 3m0 0l3-3m-3 3V8"></path></svg>
+                        </div>
+                    </div>
+                    <div class="p-6 flex-grow flex flex-col">
+                        <div class="flex justify-between items-center mb-4">
+                            <span class="text-[10px] font-bold text-brand-600 uppercase tracking-widest bg-brand-50 border border-brand-100 px-2 py-1 rounded">${blog.category}</span>
+                            <span class="text-xs text-slate-400 font-medium">${blog.date}</span>
+                        </div>
+                        <h4 class="text-xl font-display font-bold text-slate-900 mb-3 group-hover:text-brand-600 transition-colors leading-tight">${blog.title}</h4>
+                        <p class="text-sm text-slate-500 mb-6 flex-grow leading-relaxed">${blog.summary}</p>
+                        <div class="text-xs font-bold text-brand-600 uppercase tracking-widest flex items-center mt-auto">
+                            Read Article <svg class="w-4 h-4 ml-1 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+                        </div>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function openBlogModal(blogId) {
+            const blog = blogsData.find(b => b.id === blogId);
+            if(blog) {
+                document.getElementById('modal-title').innerText = blog.title;
+                
+                const blogBody = `
+                    <div class="mb-8 flex items-center gap-4 border-b border-slate-100 pb-6">
+                        <span class="badge bg-brand-50 text-brand-600 border border-brand-100">${blog.category}</span>
+                        <span class="text-sm text-slate-500 font-medium">${blog.date}</span>
+                    </div>
+                    <div class="text-slate-600 leading-relaxed text-base md:text-lg">
+                        ${blog.content}
+                    </div>
+                `;
+                
+                document.getElementById('modal-body').innerHTML = blogBody;
+                
+                const modal = document.getElementById('dynamic-modal');
+                modal.classList.remove('hidden');
+                document.body.classList.add('overflow-hidden');
+                
+                setTimeout(() => {
+                    const inner = modal.querySelector('div.transform');
+                    inner.classList.remove('opacity-0', 'scale-95');
+                    inner.classList.add('opacity-100', 'scale-100');
+                }, 10);
+            }
+        }
+
+        // Initialize Blogs immediately
+        renderBlogs();
 
         // --- UI LOGIC ---
         function toggleMobileMenu() {
