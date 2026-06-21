@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Sales | Xeta Tech Solutions</title>
+    <meta name="description" content="Connect with Xeta Tech Solutions engineering architects to discuss your scale requirements or inquire about our platforms.">
+    <link rel="icon" type="image/png" href="https://res.cloudinary.com/dpz44zf0z/image/upload/v1760704788/XETA_SOLUTIONS_LOGO_bcsbwh.png">
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: { sans: ['Inter', 'sans-serif'], display: ['Plus Jakarta Sans', 'sans-serif'] },
+                    colors: {
+                        brand: { 50: '#f0fdfa', 100: '#ccfbf1', 500: '#2563eb', 600: '#1d4ed8', 900: '#1e3a8a' },
+                        surface: { 50: '#f8fafc', 100: '#f1f5f9', 200: '#e2e8f0' }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { background-color: #f8fafc; color: #334155; -webkit-font-smoothing: antialiased; }
+        .bg-dot-pattern { background-image: radial-gradient(rgba(148, 163, 184, 0.25) 1px, transparent 1px); background-size: 24px 24px; }
+        .nav-glass { background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(20px); border-bottom: 1px solid rgba(226, 232, 240, 0.9); }
+        .nav-link { padding: 0.5rem 0.75rem; border-radius: 0.5rem; font-weight: 600; transition: all 0.2s ease; }
+        .nav-link:hover { background-color: #f1f5f9; color: #2563eb; }
+        .active-route { color: #2563eb; background-color: #eff6ff; }
+        .premium-card { background: #ffffff; border: 1px solid #e2e8f0; border-radius: 1.5rem; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.02); transition: all 0.4s ease; }
+        .btn-primary { background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%); color: #ffffff; box-shadow: 0 4px 14px 0 rgba(37,99,235,0.39); transition: all 0.3s ease; }
+        .btn-primary:hover { box-shadow: 0 6px 20px rgba(37,99,235,0.23); transform: translateY(-2px); }
+        .form-input { width: 100%; padding: 1rem 1.25rem; border-radius: 0.75rem; border: 1px solid #e2e8f0; background-color: #ffffff; color: #0f172a; transition: all 0.3s ease; outline: none; font-family: 'Inter', sans-serif; font-size: 0.95rem; }
+        .form-input:focus { border-color: #2563eb; box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.1); }
+    </style>
+</head>
+<body class="selection:bg-brand-500 selection:text-white">
+
+    <!-- GLOBAL NAVIGATION -->
+    <nav class="fixed w-full top-0 z-50 nav-glass transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <a href="index.html" class="flex-shrink-0 flex items-center gap-3 group">
+                    <div class="bg-surface-50 p-1.5 rounded-lg border border-surface-200 shadow-sm group-hover:bg-white transition-all">
+                        <img src="https://res.cloudinary.com/dpz44zf0z/image/upload/v1760704788/XETA_SOLUTIONS_LOGO_bcsbwh.png" alt="Xeta Tech" class="h-8 w-auto">
+                    </div>
+                    <span class="text-slate-900 font-display font-bold text-xl hidden sm:block">Xeta Tech.</span>
+                </a>
+
+                <div class="hidden lg:flex items-center space-x-2">
+                    <a href="index.html" class="nav-link text-sm text-slate-600">Overview</a>
+                    <a href="about.html" class="nav-link text-sm text-slate-600">About Us</a>
+                    <a href="products.html" class="nav-link text-sm text-slate-600">Ecosystem (12+)</a>
+                    <a href="process.html" class="nav-link text-sm text-slate-600">Process</a>
+                    <a href="technologies.html" class="nav-link text-sm text-slate-600">Technologies</a>
+                    <a href="blogs-by-xeta.html" class="nav-link text-sm text-slate-600">Insights</a>
+                    <div class="h-5 w-px bg-slate-200 mx-3"></div>
+                    <a href="contact.html" class="btn-primary px-6 py-2.5 rounded-full text-sm font-bold shadow-md hover:shadow-lg">Engage Sales</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <main class="pt-20">
+        <section class="py-20 lg:py-32 relative z-20 min-h-screen">
+            <div class="absolute inset-0 bg-dot-pattern opacity-40 z-0"></div>
+            <div class="max-w-3xl mx-auto px-6 relative z-10">
+                
+                <div class="text-center mb-12 animate-[fadeIn_0.5s_ease-out]">
+                    <h1 class="text-4xl md:text-5xl font-display font-bold mt-3 text-slate-900 tracking-tight">Enterprise Inquiry</h1>
+                    <p class="text-slate-500 mt-4 text-lg">Connect with our engineering architects to discuss your scale requirements or inquire about our platforms.</p>
+                </div>
+
+                <div class="premium-card p-8 md:p-12 animate-[fadeIn_0.7s_ease-out]">
+                    <form action="https://formspree.io/f/mqeezyje" method="POST" class="space-y-6">
+                        <div class="grid md:grid-cols-2 gap-6">
+                            <div>
+                                <label class="block text-xs font-bold text-slate-500 uppercase tracking-wider mb-2">Full Name</label>
+                                <input type="text" name="name" required class="form-input">
+                            </div>
+                            <div>
+                                <label class="block text-xs font-bold text-slate-500 uppercase tracking-wider mb-2">Organization</label>
+                                <input type="text" name="organization" required class="form-input">
+                            </div>
+                        </div>
+                        <div class="grid md:grid-cols-2 gap-6">
+                            <div>
+                                <label class="block text-xs font-bold text-slate-500 uppercase tracking-wider mb-2">Work Email</label>
+                                <input type="email" name="email" required class="form-input">
+                            </div>
+                            <div>
+                                <label class="block text-xs font-bold text-slate-500 uppercase tracking-wider mb-2">Phone Number</label>
+                                <input type="tel" name="mobile" class="form-input">
+                            </div>
+                        </div>
+                        <div>
+                            <label class="block text-xs font-bold text-slate-500 uppercase tracking-wider mb-2">Requirement Overview</label>
+                            <textarea name="message" rows="5" required class="form-input"></textarea>
+                        </div>
+
+                        <button type="submit" class="w-full btn-primary py-4 rounded-xl font-bold mt-4 flex justify-center items-center gap-2 text-lg">
+                            <span>Submit Inquiry</span>
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+                        </button>
+                    </form>
+                </div>
+
+            </div>
+        </section>
+    </main>
+
+    <footer class="bg-white border-t border-slate-200 py-8 text-center text-slate-500 text-sm">
+        <p>&copy; 2026 Xeta Tech Solutions Pvt. Ltd. All rights reserved.</p>
+    </footer>
+</body>
+</html>
