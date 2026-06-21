@@ -11,6 +11,11 @@
         <changefreq>daily</changefreq>
         <priority>1.0</priority>
     </url>
+          <url>
+        <loc>https://xetasolutions.in/founder</loc>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
     <url>
         <loc>https://xetasolutions.in/about</loc>
         <lastmod>2026-06-21</lastmod>
