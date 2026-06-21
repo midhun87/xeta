@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Engineering Insights | Xeta Tech Solutions</title>
+    <meta name="description" content="Articles, case studies, and engineering deep-dives from the elite Xeta Tech architecture team.">
+    <link rel="icon" type="image/png" href="https://res.cloudinary.com/dpz44zf0z/image/upload/v1760704788/XETA_SOLUTIONS_LOGO_bcsbwh.png">
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: { sans: ['Inter', 'sans-serif'], display: ['Plus Jakarta Sans', 'sans-serif'] },
+                    colors: {
+                        brand: { 50: '#f0fdfa', 100: '#ccfbf1', 500: '#2563eb', 600: '#1d4ed8', 900: '#1e3a8a' },
+                        surface: { 50: '#f8fafc', 100: '#f1f5f9', 200: '#e2e8f0' }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { background-color: #f8fafc; color: #334155; -webkit-font-smoothing: antialiased; }
+        .bg-dot-pattern { background-image: radial-gradient(rgba(148, 163, 184, 0.25) 1px, transparent 1px); background-size: 24px 24px; }
+        .nav-glass { background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(20px); border-bottom: 1px solid rgba(226, 232, 240, 0.9); }
+        .nav-link { padding: 0.5rem 0.75rem; border-radius: 0.5rem; font-weight: 600; transition: all 0.2s ease; }
+        .nav-link:hover { background-color: #f1f5f9; color: #2563eb; }
+        .active-route { color: #2563eb; background-color: #eff6ff; }
+        .premium-card { background: #ffffff; border: 1px solid #e2e8f0; border-radius: 1.5rem; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.02); transition: all 0.4s ease; cursor: pointer; }
+        .premium-card:hover { transform: translateY(-4px); box-shadow: 0 20px 40px -10px rgba(37,99,235,0.1); border-color: rgba(37,99,235,0.2); }
+        .btn-primary { background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%); color: #ffffff; box-shadow: 0 4px 14px 0 rgba(37,99,235,0.39); transition: all 0.3s ease; }
+        .btn-primary:hover { box-shadow: 0 6px 20px rgba(37,99,235,0.23); transform: translateY(-2px); }
+        .modal-glass { background: #ffffff; border: 1px solid #e2e8f0; box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.15); }
+    </style>
+</head>
+<body class="selection:bg-brand-500 selection:text-white">
+
+    <!-- GLOBAL NAVIGATION -->
+    <nav class="fixed w-full top-0 z-50 nav-glass transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <a href="index.html" class="flex-shrink-0 flex items-center gap-3 group">
+                    <div class="bg-surface-50 p-1.5 rounded-lg border border-surface-200 shadow-sm group-hover:bg-white transition-all">
+                        <img src="https://res.cloudinary.com/dpz44zf0z/image/upload/v1760704788/XETA_SOLUTIONS_LOGO_bcsbwh.png" alt="Xeta Tech" class="h-8 w-auto">
+                    </div>
+                    <span class="text-slate-900 font-display font-bold text-xl hidden sm:block">Xeta Tech.</span>
+                </a>
+
+                <div class="hidden lg:flex items-center space-x-2">
+                    <a href="index.html" class="nav-link text-sm text-slate-600">Overview</a>
+                    <a href="about.html" class="nav-link text-sm text-slate-600">About Us</a>
+                    <a href="products.html" class="nav-link text-sm text-slate-600">Ecosystem (12+)</a>
+                    <a href="process.html" class="nav-link text-sm text-slate-600">Process</a>
+                    <a href="technologies.html" class="nav-link text-sm text-slate-600">Technologies</a>
+                    <a href="blogs-by-xeta.html" class="nav-link text-sm active-route">Insights</a>
+                    <div class="h-5 w-px bg-slate-200 mx-3"></div>
+                    <a href="contact.html" class="btn-primary px-6 py-2.5 rounded-full text-sm font-bold shadow-md hover:shadow-lg">Engage Sales</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <main class="pt-20">
+        <section class="py-20 lg:py-32 relative z-20 min-h-screen">
+            <div class="max-w-7xl mx-auto px-6">
+                <div class="mb-16 md:text-center animate-[fadeIn_0.5s_ease-out]">
+                    <span class="text-brand-600 font-bold tracking-widest uppercase text-xs">Latest Thinking</span>
+                    <h1 class="text-4xl md:text-5xl font-display font-bold mt-3 text-slate-900 tracking-tight">Engineering Insights</h1>
+                    <p class="text-slate-500 mt-4 max-w-2xl mx-auto text-lg leading-relaxed">Articles, case studies, and engineering deep-dives from the elite Xeta Tech architecture team.</p>
+                </div>
+                
+                <div id="blogs-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <!-- Populated by JS -->
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- MODAL FOR READING BLOGS -->
+    <div id="dynamic-modal" class="fixed inset-0 z-[100] hidden">
+        <div class="absolute inset-0 bg-slate-900/40 backdrop-blur-sm transition-opacity" onclick="closeModal()"></div>
+        <div class="absolute inset-0 flex items-center justify-center p-4 md:p-6">
+            <div class="modal-glass rounded-2xl w-full max-w-3xl transform transition-all scale-95 opacity-0 duration-300 overflow-hidden flex flex-col max-h-[90vh]">
+                <div class="p-6 md:p-8 border-b border-slate-100 relative flex-shrink-0 flex items-center justify-between bg-surface-50">
+                    <h3 id="modal-title" class="text-2xl md:text-3xl font-display font-bold text-slate-900 pr-8 tracking-tight">Title</h3>
+                    <button onclick="closeModal()" class="text-slate-400 hover:text-slate-700 transition-colors bg-white rounded-full p-2 border border-slate-200 hover:bg-surface-100">
+                        <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" /></svg>
+                    </button>
+                </div>
+                <div class="p-6 md:p-8 overflow-y-auto bg-white text-slate-600 leading-relaxed" id="modal-body"></div>
+            </div>
+        </div>
+    </div>
+    
+    <footer class="bg-white border-t border-slate-200 py-8 text-center text-slate-500 text-sm">
+        <p>&copy; 2026 Xeta Tech Solutions Pvt. Ltd. All rights reserved.</p>
+    </footer>
+
+    <script>
+        const blogsData = [
+            {
+                id: 'blog-1',
+                title: 'Scaling Node.js for Massive Event Loads',
+                date: 'June 4, 2026',
+                category: 'Architecture',
+                summary: 'How we re-architected our core event management engine to handle 6K+ concurrent users without dropping a single websocket connection.',
+                content: '<p class="mb-4">Scaling real-time applications presents unique challenges, especially when managing thousands of active concurrent connections during flagship university events.</p><p class="mb-4">By transitioning to a highly decoupled microservices architecture deployed on AWS infrastructure, and utilizing Redis for high-speed caching and pub/sub message brokering, we entirely eliminated our previous bottlenecks.</p><p>This case study breaks down our journey, the exact cluster configuration we use, and our strategies for maintaining zero downtime during extreme stress tests.</p>'
+            },
+            {
+                id: 'blog-2',
+                title: 'The Future of AI Cognitive Proctoring',
+                date: 'May 28, 2026',
+                category: 'AI & ML',
+                summary: 'A deep dive into the computer vision models and behavioral analytics powering Proctorix\'s zero-trust ecosystem.',
+                content: '<p class="mb-4">Maintaining integrity in remote assessments requires more than just locking down a browser. It requires intelligent, contextual understanding of the hardware environment.</p><p class="mb-4">Our engineering team has developed proprietary computer vision models that analyze micro-expressions, eye-tracking patterns, and ambient noise levels in real-time, functioning entirely on the edge to respect user privacy and drastically reduce latency.</p><p>Learn how we optimized TensorFlow Lite models to run flawlessly on standard enterprise and student hardware without thermal throttling.</p>'
+            },
+            {
+                id: 'blog-3',
+                title: 'Implementing Zero-Trust Security Scaffolds',
+                date: 'May 15, 2026',
+                category: 'Cloud Security',
+                summary: 'Why traditional perimeter defense is outdated, and how Xeta Tech implements zero-trust architecture across all enterprise deployments.',
+                content: '<p class="mb-4">In a multi-cloud, remote-first world, assuming trust based on network location is a massive liability. That is why Xeta Tech adopts a strict Zero-Trust Architecture.</p><p class="mb-4">Every user, internal or external, must be authenticated and authorized continuously. We utilize automated certificate rotation, highly restricted IAM roles, and strict network policies within our deployment clusters.</p><p>This rigorous approach ensures that even in the unlikely event of a compromised microservice layer, the blast radius is strictly contained and sensitive enterprise data remains entirely inaccessible.</p>'
+            },
+            {
+                id: 'blog-4',
+                title: 'Micro-Frontends: Scaling Enterprise UI Teams',
+                date: 'April 22, 2026',
+                category: 'Frontend Engineering',
+                summary: 'Breaking down massive React monoliths into manageable micro-frontends to allow independent team deployments without stepping on toes.',
+                content: '<p class="mb-4">As our engineering team grew, coordinating deployments for our massive enterprise portals became a bottleneck. The solution was Micro-Frontends.</p><p class="mb-4">By utilizing Webpack Module Federation, we allowed disparate teams to build, test, and deploy their own React components completely independently, pulling them all together at runtime.</p><p>This article details the exact Webpack configurations we use and the CI/CD pipelines required to ensure CSS isolation and zero versioning conflicts.</p>'
+            },
+            {
+                id: 'blog-5',
+                title: 'Optimizing PostgreSQL for 10M+ Rows',
+                date: 'April 02, 2026',
+                category: 'Database Architecture',
+                summary: 'Indexing strategies, connection pooling, and horizontal scaling techniques used to keep our core databases blazing fast under load.',
+                content: '<p class="mb-4">When your platform tracks millions of candidate assessments and system logs, traditional database queries grind to a halt.</p><p class="mb-4">We explore our transition from basic B-Tree indexes to advanced BRIN and GIN indexes for JSONB columns, alongside the implementation of PgBouncer for efficient connection pooling during traffic spikes.</p>'
+            },
+            {
+                id: 'blog-6',
+                title: 'React Native vs. Native: The 2026 Verdict',
+                date: 'March 14, 2026',
+                category: 'Mobile Engineering',
+                summary: 'Why we still rely on React Native for our mobile enterprise ecosystem, and how we squeeze native-level performance out of it.',
+                content: '<p class="mb-4">The debate between React Native and pure Native development never ends. However, for rapid enterprise deployment, cross-platform synergy is key.</p><p class="mb-4">We discuss the JSI (JavaScript Interface) improvements, the new architecture of React Native, and how writing custom C++ TurboModules allows us to achieve flawless 60FPS animations while maintaining a single unified codebase.</p>'
+            }
+        ];
+
+        function renderBlogs() {
+            const container = document.getElementById('blogs-container');
+            container.innerHTML = blogsData.map((blog, index) => {
+                const isFeatured = index === 0;
+                const colSpanClass = isFeatured ? 'md:col-span-2 lg:col-span-2' : '';
+                const titleSize = isFeatured ? 'text-2xl md:text-3xl' : 'text-xl';
+                const imgHeight = isFeatured ? 'h-64 md:h-80' : 'h-48';
+                
+                return `
+                <div class="premium-card p-0 flex flex-col h-full group ${colSpanClass}" onclick="openBlogModal('${blog.id}')">
+                    <div class="${imgHeight} bg-surface-100 overflow-hidden relative">
+                        <div class="absolute inset-0 bg-gradient-to-br from-brand-100 to-indigo-50 opacity-50"></div>
+                        <div class="absolute inset-0 flex items-center justify-center text-brand-200 group-hover:scale-110 transition-transform duration-700">
+                            <svg class="w-16 h-16 opacity-50" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 13a2 2 0 002-2V9.5a2.5 2.5 0 00-2.5-2.5H15M9 11l3 3m0 0l3-3m-3 3V8"></path></svg>
+                        </div>
+                    </div>
+                    <div class="p-6 md:p-8 flex-grow flex flex-col">
+                        <div class="flex justify-between items-center mb-4">
+                            <span class="text-[10px] font-bold text-brand-600 uppercase tracking-widest bg-brand-50 border border-brand-100 px-2 py-1 rounded">${blog.category}</span>
+                            <span class="text-xs text-slate-400 font-medium">${blog.date}</span>
+                        </div>
+                        <h4 class="${titleSize} font-display font-bold text-slate-900 mb-3 group-hover:text-brand-600 transition-colors leading-tight">${blog.title}</h4>
+                        <p class="text-sm md:text-base text-slate-500 mb-6 flex-grow leading-relaxed">${blog.summary}</p>
+                        <div class="text-xs font-bold text-brand-600 uppercase tracking-widest flex items-center mt-auto">
+                            Read Article <svg class="w-4 h-4 ml-1 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+                        </div>
+                    </div>
+                </div>
+                `;
+            }).join('');
+        }
+
+        function openBlogModal(blogId) {
+            const blog = blogsData.find(b => b.id === blogId);
+            if(blog) {
+                document.getElementById('modal-title').innerText = blog.title;
+                document.getElementById('modal-body').innerHTML = `
+                    <div class="mb-8 flex items-center gap-4 border-b border-slate-100 pb-6">
+                        <span class="text-[10px] font-bold text-brand-600 uppercase tracking-widest bg-brand-50 border border-brand-100 px-2 py-1 rounded">${blog.category}</span>
+                        <span class="text-sm text-slate-500 font-medium">${blog.date}</span>
+                    </div>
+                    <div>${blog.content}</div>
+                `;
+                const modal = document.getElementById('dynamic-modal');
+                modal.classList.remove('hidden');
+                document.body.classList.add('overflow-hidden');
+                setTimeout(() => {
+                    const inner = modal.querySelector('div.transform');
+                    inner.classList.remove('opacity-0', 'scale-95');
+                    inner.classList.add('opacity-100', 'scale-100');
+                }, 10);
+            }
+        }
+
+        function closeModal() {
+            const modal = document.getElementById('dynamic-modal');
+            const inner = modal.querySelector('div.transform');
+            inner.classList.remove('opacity-100', 'scale-100');
+            inner.classList.add('opacity-0', 'scale-95');
+            setTimeout(() => {
+                modal.classList.add('hidden');
+                document.body.classList.remove('overflow-hidden');
+            }, 300);
+        }
+
+        renderBlogs();
+    </script>
+</body>
+</html>
