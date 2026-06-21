@@ -1,53 +1,58 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-    
-    <!-- CORE MULTI-PAGE ARCHITECTURE -->
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
+                            http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
+
+    <!-- CORE BRAND PAGES (Highest Priority for "Xeta Tech Solutions" search) -->
     <url>
         <loc>https://xetasolutions.in/</loc>
         <lastmod>2026-06-21</lastmod>
-        <changefreq>weekly</changefreq>
+        <changefreq>daily</changefreq>
         <priority>1.0</priority>
     </url>
     <url>
-        <loc>https://xetasolutions.in/products.html</loc>
+        <loc>https://xetasolutions.in/about</loc>
         <lastmod>2026-06-21</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.9</priority>
     </url>
     <url>
-        <loc>https://xetasolutions.in/about.html</loc>
+        <loc>https://xetasolutions.in/products</loc>
+        <lastmod>2026-06-21</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.9</priority>
+    </url>
+
+    <!-- SECONDARY PAGES -->
+    <url>
+        <loc>https://xetasolutions.in/process</loc>
         <lastmod>2026-06-21</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
     </url>
     <url>
-        <loc>https://xetasolutions.in/process.html</loc>
+        <loc>https://xetasolutions.in/technologies</loc>
         <lastmod>2026-06-21</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
     </url>
     <url>
-        <loc>https://xetasolutions.in/technologies.html</loc>
-        <lastmod>2026-06-21</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.8</priority>
-    </url>
-    <url>
-        <loc>https://xetasolutions.in/blogs-by-xeta.html</loc>
+        <loc>https://xetasolutions.in/blogs-by-xeta</loc>
         <lastmod>2026-06-21</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
     </url>
     <url>
-        <loc>https://xetasolutions.in/contact.html</loc>
+        <loc>https://xetasolutions.in/contact</loc>
         <lastmod>2026-06-21</lastmod>
         <changefreq>yearly</changefreq>
         <priority>0.7</priority>
     </url>
 
-    <!-- INTERNAL PORTALS & INCUBATION -->
+    <!-- INTERNAL PORTALS -->
     <url>
-        <loc>https://xetasolutions.in/ems.login.html</loc>
+        <loc>https://xetasolutions.in/ems.login</loc>
         <changefreq>monthly</changefreq>
         <priority>0.6</priority>
     </url>
@@ -62,19 +67,22 @@
         <priority>0.8</priority>
     </url>
 
-    <!-- EXTERNAL ECOSYSTEM & SUBDOMAINS -->
-    <!-- Note: For perfect strict SEO compliance in Google Search Console, 
-         different root domains (like proctorix.in) technically require their own sitemap.xml files. 
-         They are included here to map your complete requested ecosystem. -->
+    <!-- EXTERNAL ECOSYSTEM PLATFORMS -->
+    <!-- Placing these here helps associate the brand domains with the main domain -->
     <url>
-        <loc>https://inview.xetatech.in/</loc>
+        <loc>https://proctorix.in/</loc>
         <changefreq>weekly</changefreq>
         <priority>0.9</priority>
     </url>
     <url>
+        <loc>https://inview.xetatech.in/</loc>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
         <loc>https://contestpro.xetatech.in/</loc>
         <changefreq>weekly</changefreq>
-        <priority>0.9</priority>
+        <priority>0.8</priority>
     </url>
     <url>
         <loc>https://ims.xetatech.in/</loc>
@@ -102,14 +110,9 @@
         <priority>0.8</priority>
     </url>
     <url>
-        <loc>https://proctorix.in/</loc>
-        <changefreq>weekly</changefreq>
-        <priority>0.9</priority>
-    </url>
-    <url>
         <loc>https://voxylet.proctorix.in/</loc>
         <changefreq>monthly</changefreq>
-        <priority>0.8</priority>
+        <priority>0.7</priority>
     </url>
     <url>
         <loc>https://www.digiadhyapak.com/</loc>
