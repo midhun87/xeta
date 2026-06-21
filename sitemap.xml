@@ -1,137 +1,120 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-
-    <!-- ============================= -->
-    <!-- 1. CORE (HIGHEST PRIORITY) -->
-    <!-- ============================= -->
+    
+    <!-- CORE MULTI-PAGE ARCHITECTURE -->
     <url>
         <loc>https://xetasolutions.in/</loc>
-        <lastmod>2026-04-29</lastmod>
+        <lastmod>2026-06-21</lastmod>
         <changefreq>weekly</changefreq>
         <priority>1.0</priority>
     </url>
-
-    <!-- ============================= -->
-    <!-- 2. PRODUCT PAGES -->
-    <!-- ============================= -->
     <url>
-        <loc>https://xetasolutions.in/products/proctorix</loc>
-        <lastmod>2026-04-29</lastmod>
+        <loc>https://xetasolutions.in/products.html</loc>
+        <lastmod>2026-06-21</lastmod>
         <changefreq>weekly</changefreq>
-        <priority>0.95</priority>
-    </url>
-
-    <url>
-        <loc>https://xetasolutions.in/products/testify</loc>
-        <lastmod>2026-04-29</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.95</priority>
-    </url>
-
-    <url>
-        <loc>https://xetasolutions.in/products/voxelyt</loc>
-        <lastmod>2026-04-29</lastmod>
-        <changefreq>monthly</changefreq>
         <priority>0.9</priority>
     </url>
-
     <url>
-        <loc>https://xetasolutions.in/products/inview</loc>
-        <lastmod>2026-04-29</lastmod>
+        <loc>https://xetasolutions.in/about.html</loc>
+        <lastmod>2026-06-21</lastmod>
         <changefreq>monthly</changefreq>
-        <priority>0.9</priority>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://xetasolutions.in/process.html</loc>
+        <lastmod>2026-06-21</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://xetasolutions.in/technologies.html</loc>
+        <lastmod>2026-06-21</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://xetasolutions.in/blogs-by-xeta.html</loc>
+        <lastmod>2026-06-21</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://xetasolutions.in/contact.html</loc>
+        <lastmod>2026-06-21</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.7</priority>
     </url>
 
-    <!-- ============================= -->
-    <!-- 3. SOLUTION / PLATFORM -->
-    <!-- ============================= -->
+    <!-- INTERNAL PORTALS & INCUBATION -->
+    <url>
+        <loc>https://xetasolutions.in/ems.login.html</loc>
+        <changefreq>monthly</changefreq>
+        <priority>0.6</priority>
+    </url>
     <url>
         <loc>https://xetasolutions.in/hirewithus</loc>
-        <lastmod>2026-04-29</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.9</priority>
-    </url>
-
-    <url>
-        <loc>https://xetasolutions.in/mockinterview</loc>
-        <lastmod>2026-04-29</lastmod>
         <changefreq>monthly</changefreq>
-        <priority>0.85</priority>
+        <priority>0.7</priority>
     </url>
-
-    <!-- ============================= -->
-    <!-- 4. SERVICES -->
-    <!-- ============================= -->
     <url>
-        <loc>https://xetasolutions.in/services/enterprise-infrastructure</loc>
-        <lastmod>2026-04-29</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.85</priority>
-    </url>
-
-    <url>
-        <loc>https://xetasolutions.in/services/ai-ml-systems</loc>
-        <lastmod>2026-04-29</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.85</priority>
-    </url>
-
-    <url>
-        <loc>https://xetasolutions.in/services/software-engineering</loc>
-        <lastmod>2026-04-29</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.85</priority>
-    </url>
-
-    <!-- ============================= -->
-    <!-- 5. CONVERSION PAGES -->
-    <!-- ============================= -->
-    <url>
-        <loc>https://xetasolutions.in/contact</loc>
-        <lastmod>2026-04-29</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.9</priority>
-    </url>
-
-    <url>
-        <loc>https://xetasolutions.in/careers</loc>
-        <lastmod>2026-04-29</lastmod>
-        <changefreq>daily</changefreq>
-        <priority>0.85</priority>
-    </url>
-
-    <!-- ============================= -->
-    <!-- 6. TRUST / BRAND -->
-    <!-- ============================= -->
-    <url>
-        <loc>https://xetasolutions.in/about</loc>
-        <lastmod>2026-04-29</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.75</priority>
-    </url>
-
-    <url>
-        <loc>https://xetasolutions.in/midhun</loc>
-        <lastmod>2026-04-29</lastmod>
+        <loc>https://xetasolutions.in/xetatechlabs</loc>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
     </url>
 
-    <!-- ============================= -->
-    <!-- 7. LEGAL -->
-    <!-- ============================= -->
+    <!-- EXTERNAL ECOSYSTEM & SUBDOMAINS -->
+    <!-- Note: For perfect strict SEO compliance in Google Search Console, 
+         different root domains (like proctorix.in) technically require their own sitemap.xml files. 
+         They are included here to map your complete requested ecosystem. -->
     <url>
-        <loc>https://xetasolutions.in/privacy-policy</loc>
-        <lastmod>2026-04-29</lastmod>
-        <changefreq>yearly</changefreq>
-        <priority>0.3</priority>
+        <loc>https://inview.xetatech.in/</loc>
+        <changefreq>weekly</changefreq>
+        <priority>0.9</priority>
     </url>
-
     <url>
-        <loc>https://xetasolutions.in/terms</loc>
-        <lastmod>2026-04-29</lastmod>
-        <changefreq>yearly</changefreq>
-        <priority>0.3</priority>
+        <loc>https://contestpro.xetatech.in/</loc>
+        <changefreq>weekly</changefreq>
+        <priority>0.9</priority>
+    </url>
+    <url>
+        <loc>https://ims.xetatech.in/</loc>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://elts.xetatech.in/</loc>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://credex.xetasolutions.in/</loc>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://testify.xetasolutions.in/</loc>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://e-learn.xetasolutions.in/</loc>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://proctorix.in/</loc>
+        <changefreq>weekly</changefreq>
+        <priority>0.9</priority>
+    </url>
+    <url>
+        <loc>https://voxylet.proctorix.in/</loc>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://www.digiadhyapak.com/</loc>
+        <changefreq>weekly</changefreq>
+        <priority>0.9</priority>
     </url>
 
 </urlset>
