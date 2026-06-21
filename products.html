@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ecosystem & Products | Xeta Tech Solutions</title>
+    <meta name="description" content="Explore the proprietary 12+ enterprise platforms developed by Xeta Tech Solutions, including Inview, Proctorix, Contest Pro, and ELTS.">
+    <link rel="icon" type="image/png" href="https://res.cloudinary.com/dpz44zf0z/image/upload/v1760704788/XETA_SOLUTIONS_LOGO_bcsbwh.png">
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: { sans: ['Inter', 'sans-serif'], display: ['Plus Jakarta Sans', 'sans-serif'] },
+                    colors: {
+                        brand: { 50: '#f0fdfa', 100: '#ccfbf1', 500: '#2563eb', 600: '#1d4ed8', 900: '#1e3a8a' },
+                        surface: { 50: '#f8fafc', 100: '#f1f5f9', 200: '#e2e8f0' }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { background-color: #f8fafc; color: #334155; -webkit-font-smoothing: antialiased; }
+        .bg-dot-pattern { background-image: radial-gradient(rgba(148, 163, 184, 0.25) 1px, transparent 1px); background-size: 24px 24px; }
+        .nav-glass { background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(20px); border-bottom: 1px solid rgba(226, 232, 240, 0.9); }
+        .nav-link { padding: 0.5rem 0.75rem; border-radius: 0.5rem; font-weight: 600; transition: all 0.2s ease; }
+        .nav-link:hover { background-color: #f1f5f9; color: #2563eb; }
+        .active-route { color: #2563eb; background-color: #eff6ff; }
+        .premium-card { background: #ffffff; border: 1px solid #e2e8f0; border-radius: 1.5rem; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.02); transition: all 0.4s ease; position: relative; overflow: hidden; }
+        .premium-card:hover { transform: translateY(-4px); box-shadow: 0 20px 40px -10px rgba(37,99,235,0.1); border-color: rgba(37,99,235,0.2); }
+        .btn-primary { background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%); color: #ffffff; box-shadow: 0 4px 14px 0 rgba(37,99,235,0.39); transition: all 0.3s ease; }
+        .btn-primary:hover { box-shadow: 0 6px 20px rgba(37,99,235,0.23); transform: translateY(-2px); }
+        .product-logo-wrapper { height: 3rem; display: flex; align-items: center; justify-content: flex-start; margin-bottom: 1rem; transition: transform 0.3s ease; }
+        .premium-card:hover .product-logo-wrapper { transform: translateX(8px); }
+        .product-logo-wrapper img { height: 100%; width: auto; object-fit: contain; }
+    </style>
+</head>
+<body class="selection:bg-brand-500 selection:text-white">
+
+    <!-- GLOBAL NAVIGATION (MULTI-PAGE SETUP) -->
+    <nav class="fixed w-full top-0 z-50 nav-glass transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <a href="index.html" class="flex-shrink-0 flex items-center gap-3 group">
+                    <div class="bg-surface-50 p-1.5 rounded-lg border border-surface-200 shadow-sm group-hover:bg-white transition-all">
+                        <img src="https://res.cloudinary.com/dpz44zf0z/image/upload/v1760704788/XETA_SOLUTIONS_LOGO_bcsbwh.png" alt="Xeta Tech" class="h-8 w-auto">
+                    </div>
+                    <span class="text-slate-900 font-display font-bold text-xl hidden sm:block">Xeta Tech.</span>
+                </a>
+
+                <div class="hidden lg:flex items-center space-x-2">
+                    <a href="index.html" class="nav-link text-sm text-slate-600">Overview</a>
+                    <a href="about.html" class="nav-link text-sm text-slate-600">About Us</a>
+                    <a href="products.html" class="nav-link text-sm active-route">Ecosystem (12+)</a>
+                    <a href="process.html" class="nav-link text-sm text-slate-600">Process</a>
+                    <a href="technologies.html" class="nav-link text-sm text-slate-600">Technologies</a>
+                    <a href="blogs-by-xeta.html" class="nav-link text-sm text-slate-600">Insights</a>
+                    <div class="h-5 w-px bg-slate-200 mx-3"></div>
+                    <a href="contact.html" class="btn-primary px-6 py-2.5 rounded-full text-sm font-bold shadow-md hover:shadow-lg">Engage Sales</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <main class="pt-20">
+        <section class="py-20 lg:py-32 relative z-20 min-h-screen">
+            <div class="absolute inset-0 bg-dot-pattern opacity-40 z-0 pointer-events-none"></div>
+            <div class="max-w-7xl mx-auto px-6 relative z-10">
+                
+                <div class="mb-16 md:text-center animate-[fadeIn_0.5s_ease-out]">
+                    <span class="text-brand-600 font-bold tracking-widest uppercase text-xs">Proprietary Platforms</span>
+                    <h1 class="text-4xl md:text-5xl font-display font-bold mt-3 text-slate-900 tracking-tight">The Complete Xeta Ecosystem</h1>
+                    <p class="text-slate-500 mt-4 max-w-2xl mx-auto text-lg leading-relaxed">Our massive suite of 12+ enterprise software products engineered to optimize human capital, secure academic integrity, and evaluate talent at massive scale.</p>
+                </div>
+
+                <!-- FEATURED PLATFORMS -->
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-12">
+                    <!-- INVIEW -->
+                    <div class="premium-card bg-white p-8 md:p-10 flex flex-col border-t-4 border-t-blue-600 shadow-lg">
+                        <div class="product-logo-wrapper"><img src="https://res.cloudinary.com/dpz44zf0z/image/upload/v1766073096/INVIEW_ct336y.png" alt="Inview"></div>
+                        <h3 class="text-3xl font-display font-extrabold text-slate-900 mb-2">Inview</h3>
+                        <p class="text-blue-600 font-bold tracking-wider uppercase text-xs mb-4">"Interview Smarter. Hire Better." 🚀</p>
+                        <p class="text-slate-600 leading-relaxed mb-6 flex-grow">An AI-enabled technical recruitment platform that streamlines the entire interview process through automation, bias-free interviewer allocation, integrated IDE coding assessments, and centralized HR reporting.</p>
+                        <a href="https://inview.xetatech.in" target="_blank" class="btn-primary w-full py-3 rounded-xl font-bold flex items-center justify-center gap-2">Access Inview</a>
+                    </div>
+                    
+                    <!-- PROCTORIX -->
+                    <div class="premium-card bg-white p-8 md:p-10 flex flex-col border-t-4 border-t-purple-600 shadow-lg bg-gradient-to-b from-white to-purple-50/30">
+                        <div class="product-logo-wrapper"><img src="https://res.cloudinary.com/dzuxwvamy/image/upload/v1774461599/proctorix_w82lug.png" alt="Proctorix"></div>
+                        <h3 class="text-3xl font-display font-extrabold text-slate-900 mb-2">Proctorix</h3>
+                        <p class="text-purple-600 font-bold tracking-wider uppercase text-xs mb-4">Enterprise PC App & Cognitive AI</p>
+                        <p class="text-slate-600 leading-relaxed mb-6 flex-grow">A next-generation, AI-driven proctoring and assessment ecosystem designed to secure academic and corporate integrity globally with hardware-level lockdown and behavioral tracking.</p>
+                        <a href="https://proctorix.in" target="_blank" class="btn-secondary border-purple-200 hover:border-purple-400 w-full py-3 rounded-xl font-bold flex items-center justify-center gap-2">Launch Client</a>
+                    </div>
+                </div>
+
+                <!-- ALL OTHER 10 PRODUCTS -->
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <!-- Contest Pro -->
+                    <a href="https://contestpro.xetatech.in" target="_blank" class="premium-card p-8 block group flex flex-col h-full border-t-4 border-t-emerald-500">
+                        <div class="product-logo-wrapper"><img src="https://res.cloudinary.com/dzuxwvamy/image/upload/v1782032497/logo_contest_pro_baiwgm.png" alt="Contest Pro"></div>
+                        <h4 class="text-2xl font-display font-bold mb-1 text-slate-900">Contest Pro</h4>
+                        <h5 class="text-emerald-600 font-semibold text-xs uppercase tracking-widest mb-3">Code. Compete. Conquer.</h5>
+                        <p class="text-sm text-slate-600 mb-6 flex-grow leading-relaxed">Unified coding and contest management platform bridging learning, assessment, and competition. Host secure coding assessments via a central dashboard.</p>
+                        <div class="text-xs font-bold text-slate-900 uppercase tracking-widest group-hover:text-emerald-600 mt-auto">Access Platform &rarr;</div>
+                    </a>
+
+                    <!-- IMS -->
+                    <a href="https://ims.xetatech.in" target="_blank" class="premium-card p-8 block group flex flex-col h-full border-t-4 border-t-indigo-500">
+                        <div class="product-logo-wrapper"><img src="https://res.cloudinary.com/dzuxwvamy/image/upload/v1782031836/ims_sbqh5h.png" alt="IMS"></div>
+                        <h4 class="text-2xl font-display font-bold mb-1 text-slate-900">IMS</h4>
+                        <h5 class="text-indigo-600 font-semibold text-xs uppercase tracking-widest mb-3">Intern Management System</h5>
+                        <p class="text-sm text-slate-600 mb-6 flex-grow leading-relaxed">Comprehensive platform designed to streamline the complete intern lifecycle—from onboarding and attendance to HR evaluations and progress monitoring.</p>
+                        <div class="text-xs font-bold text-slate-900 uppercase tracking-widest group-hover:text-indigo-600 mt-auto">Access Portal &rarr;</div>
+                    </a>
+
+                    <!-- ELTS -->
+                    <a href="https://elts.xetatech.in" target="_blank" class="premium-card p-8 block group flex flex-col h-full border-t-4 border-t-teal-500">
+                        <div class="product-logo-wrapper"><img src="https://res.cloudinary.com/dzuxwvamy/image/upload/v1782034258/ELTS_Logo_1_bmlirw.png" alt="ELTS"></div>
+                        <h4 class="text-2xl font-display font-bold mb-1 text-slate-900">ELTS</h4>
+                        <h5 class="text-teal-600 font-semibold text-xs uppercase tracking-widest mb-3">Employee Location Tracking</h5>
+                        <p class="text-sm text-slate-600 mb-6 flex-grow leading-relaxed">Workforce management platform for real-time location monitoring, attendance, login activities, and operational reporting for HR teams.</p>
+                        <div class="text-xs font-bold text-slate-900 uppercase tracking-widest group-hover:text-teal-600 mt-auto">Launch System &rarr;</div>
+                    </a>
+
+                    <!-- Credex -->
+                    <a href="https://credex.xetasolutions.in" target="_blank" class="premium-card p-8 block group flex flex-col h-full border-t-4 border-t-yellow-400">
+                        <div class="product-logo-wrapper"><img src="https://res.cloudinary.com/dzuxwvamy/image/upload/v1780483593/Credex_szkzcq.png" alt="Credex"></div>
+                        <h4 class="text-2xl font-display font-bold mb-1 text-slate-900">Credex</h4>
+                        <h5 class="text-yellow-600 font-semibold text-xs uppercase tracking-widest mb-3">Skills Become Credentials</h5>
+                        <p class="text-sm text-slate-600 mb-6 flex-grow leading-relaxed">Practice with industry-standard assessments, experience real exam simulations, and earn professional credentials that showcase your true expertise.</p>
+                        <div class="text-xs font-bold text-slate-900 uppercase tracking-widest group-hover:text-yellow-600 mt-auto">Launch Platform &rarr;</div>
+                    </a>
+                    
+                    <!-- Digi Adhyapak -->
+                    <a href="https://www.digiadhyapak.com" target="_blank" class="premium-card p-8 block group flex flex-col h-full border-t-4 border-t-orange-500">
+                        <div class="product-logo-wrapper"><img src="https://res.cloudinary.com/dzuxwvamy/image/upload/v1777455185/final_tzya00.png" alt="Digi Adhyapak"></div>
+                        <h4 class="text-2xl font-display font-bold mb-1 text-slate-900">Digi Adhyapak</h4>
+                        <h5 class="text-orange-600 font-semibold text-xs uppercase tracking-widest mb-3">Gateway to Guidance</h5>
+                        <p class="text-sm text-slate-600 mb-6 flex-grow leading-relaxed">A premier platform empowering GATE Aspirants with top-tier preparation material and highly accurate simulated test engines.</p>
+                        <div class="text-xs font-bold text-slate-900 uppercase tracking-widest group-hover:text-orange-600 mt-auto">Visit Portal &rarr;</div>
+                    </a>
+
+                    <!-- Testify -->
+                    <a href="https://testify.xetasolutions.in" target="_blank" class="premium-card p-8 block group flex flex-col h-full border-t-4 border-t-blue-500">
+                        <div class="product-logo-wrapper gap-2">
+                            <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAMAAABEpIrGAAAAclBMVEX///+93Nzi8PDv8POfmrsAhZAAlJRysrOPkLIAAGAAAHIAjpY9mJfl5+bs6+s0OIC5us0AAGVUlJr5+fmZmJiVlp3NzdC4ub3d3uDExci+v8I4PH2ysr6enp1+f4jW1tmjpKp6fKYAAFPCwsstMX2oqcJMpBy7AAAAZklEQVR4Ae3ERQLCQAAEwYbFibt7/v9E5ATRa7RGmKHd4cgYcTpfrgy73R9PSVYYpGq6YVrCtB3Xcb3v+wH/wkgQxwqunKQJbpB5gcy/vCizOAYTxVQwTROTBrMq7NhjTB2ZzNvuDYlNBdEWwbxBAAAAAElFTkSuQmCC" alt="Testify" class="h-8">
+                            <span class="font-display font-bold text-2xl text-slate-900">Testify</span>
+                        </div>
+                        <h5 class="text-blue-600 font-semibold text-xs uppercase tracking-widest mb-3">Enterprise Certification</h5>
+                        <p class="text-sm text-slate-600 mb-6 flex-grow leading-relaxed">Centralized curriculum management and enterprise certification hub with dedicated desktop hardware lockdown capabilities for corporate evaluation.</p>
+                        <div class="text-xs font-bold text-slate-900 uppercase tracking-widest group-hover:text-blue-600 mt-auto">Launch Portal &rarr;</div>
+                    </a>
+
+                    <!-- Voxelyt -->
+                    <a href="https://voxylet.proctorix.in/" target="_blank" class="premium-card p-8 block group flex flex-col h-full border-t-4 border-t-cyan-400">
+                        <div class="product-logo-wrapper"><img src="https://res.cloudinary.com/dpz44zf0z/image/upload/v1768062552/Voxylet_kyk0hm.png" alt="Voxelyt" style="height: 1.5rem;"></div>
+                        <h4 class="text-2xl font-display font-bold mb-1 text-slate-900">Voxelyt</h4>
+                        <h5 class="text-cyan-600 font-semibold text-xs uppercase tracking-widest mb-3">AI Language Assessment</h5>
+                        <p class="text-sm text-slate-600 mb-6 flex-grow leading-relaxed">AI-powered language assessment and real-time communication analysis designed to evaluate candidate talent and speech proficiency globally.</p>
+                        <div class="text-xs font-bold text-slate-900 uppercase tracking-widest group-hover:text-cyan-600 mt-auto">Launch Portal &rarr;</div>
+                    </a>
+
+                    <!-- Xeta Hire -->
+                    <a href="https://xetasolutions.in/hirewithus" target="_blank" class="premium-card p-8 block group flex flex-col h-full border-t-4 border-t-emerald-500">
+                        <div class="product-logo-wrapper"><img src="https://res.cloudinary.com/dpz44zf0z/image/upload/v1760086493/HireWithUS_wtn0pc.png" alt="Xeta Hire" style="height: 1.2rem;"></div>
+                        <h4 class="text-2xl font-display font-bold mb-1 text-slate-900">Xeta Hire</h4>
+                        <h5 class="text-emerald-600 font-semibold text-xs uppercase tracking-widest mb-3">Automated Recruitment</h5>
+                        <p class="text-sm text-slate-600 mb-6 flex-grow leading-relaxed">End-to-end automated recruitment workflows designed for enterprises to source, securely vet, and onboard top engineering talent at scale.</p>
+                        <div class="text-xs font-bold text-slate-900 uppercase tracking-widest group-hover:text-emerald-600 mt-auto">Access Platform &rarr;</div>
+                    </a>
+
+                    <!-- Xeta Tech Labs -->
+                    <a href="https://xetasolutions.in/xetatechlabs" target="_blank" class="premium-card p-8 block group flex flex-col h-full border-t-4 border-t-indigo-600 bg-gradient-to-b from-white to-indigo-50/40">
+                        <div class="product-logo-wrapper mb-2"><img src="https://res.cloudinary.com/dzuxwvamy/image/upload/v1778310254/Screenshot_2026-05-09_123319_ajunjj.png" alt="Xeta Tech Labs" class="mix-blend-multiply"></div>
+                        <h4 class="text-2xl font-display font-bold mb-1 text-slate-900">Xeta Tech Labs</h4>
+                        <h5 class="text-indigo-600 font-semibold text-xs uppercase tracking-widest mb-3">Forged in Production</h5>
+                        <p class="text-sm text-slate-600 mb-6 flex-grow leading-relaxed">Stop watching tutorials. Build real applications, deploy on AWS, and earn paid internships working directly on our enterprise systems.</p>
+                        <div class="text-xs font-bold text-slate-900 uppercase tracking-widest group-hover:text-indigo-600 mt-auto">Apply to Cohort &rarr;</div>
+                    </a>
+
+                    <!-- Xeta E-Learn -->
+                    <a href="https://e-learn.xetasolutions.in/" target="_blank" class="premium-card p-8 block group flex flex-col h-full border-t-4 border-t-sky-500 bg-gradient-to-b from-white to-sky-50/40">
+                        <div class="product-logo-wrapper mb-2"><img src="https://res.cloudinary.com/dzuxwvamy/image/upload/v1779359850/Screenshot_2026-05-21_160628_w4sryr.png" alt="E-Learn" class="mix-blend-multiply"></div>
+                        <h4 class="text-2xl font-display font-bold mb-1 text-slate-900">Xeta E-Learn</h4>
+                        <h5 class="text-sky-600 font-semibold text-xs uppercase tracking-widest mb-3">Enterprise Academy</h5>
+                        <p class="text-sm text-slate-600 mb-6 flex-grow leading-relaxed">A comprehensive digital learning environment providing curated enterprise-grade curricula, seamless course management, and practical skill assessments.</p>
+                        <div class="text-xs font-bold text-slate-900 uppercase tracking-widest group-hover:text-sky-600 mt-auto">Start Learning &rarr;</div>
+                    </a>
+
+                </div>
+            </div>
+        </section>
+    </main>
+    
+    <footer class="bg-white border-t border-slate-200 py-8 text-center text-slate-500 text-sm">
+        <p>&copy; 2026 Xeta Tech Solutions Pvt. Ltd. All rights reserved.</p>
+    </footer>
+</body>
+</html>
