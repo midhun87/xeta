@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- Primary Meta Tags -->
+    <title>Leadership Team | Xeta Tech Solutions</title>
+    <meta name="title" content="Leadership Team | Xeta Tech Solutions">
+    <meta name="description" content="Meet the visionary minds behind Xeta Tech Solutions. Our leadership team consists of top-tier cloud architects, AI engineers, and strategic directors building massive digital ecosystems.">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- html2canvas for Image Download -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    
+    <!-- Google Fonts: Outfit (Headings) & Inter (Body) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Outfit:wght@300;400;500;700;800&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        heading: ['Outfit', 'sans-serif'],
+                    },
+                    colors: {
+                        obsidian: '#09090b',
+                        surface: '#18181b',
+                        primary: '#0ea5e9', // Sky 500
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <style>
+        body {
+            background-color: #09090b;
+            color: #fafafa;
+            overflow-x: hidden;
+        }
+
+        /* Smooth Scrolling & Selection */
+        html { scroll-behavior: smooth; }
+        ::selection { background: rgba(14, 165, 233, 0.3); color: #38bdf8; }
+
+        /* Hide scrollbar for modal but keep functionality */
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+
+        /* Card Hover Animations */
+        .profile-card {
+            transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .profile-card:hover {
+            transform: translateY(-8px);
+        }
+        .profile-card:hover .card-img {
+            transform: scale(1.05);
+        }
+        .profile-card:hover .card-overlay {
+            opacity: 0.9;
+        }
+        .profile-card:hover .view-profile-btn {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Modal Animations */
+        #profile-modal {
+            transition: opacity 0.4s ease, visibility 0.4s ease;
+        }
+        #modal-panel {
+            transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.4s ease;
+        }
+        #profile-modal.hidden-modal {
+            opacity: 0;
+            visibility: hidden;
+            pointer-events: none;
+        }
+        #profile-modal.hidden-modal #modal-panel {
+            transform: scale(0.95) translateY(20px);
+            opacity: 0;
+        }
+
+        /* Text Gradients */
+        .text-gradient {
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-image: linear-gradient(to right, #38bdf8, #3b82f6);
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <!-- Navbar -->
+    <nav class="fixed w-full z-40 bg-obsidian/80 backdrop-blur-xl border-b border-white/5">
+        <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+            <div class="flex items-center">
+                <!-- Using provided logo, inverted/brightened slightly via CSS for dark background -->
+                <img 
+                    src="https://res.cloudinary.com/dpz44zf0z/image/upload/v1760704788/XETA_SOLUTIONS_LOGO_bcsbwh.png" 
+                    alt="Xeta Tech Logo" 
+                    class="h-8 object-contain brightness-[2] contrast-[1.2]"
+                />
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="relative pt-40 pb-20 overflow-hidden">
+        <!-- Subtle radial background glow -->
+        <div class="absolute top-[-20%] left-1/2 -translate-x-1/2 w-[800px] h-[800px] bg-sky-900/20 rounded-full blur-[120px] pointer-events-none"></div>
+
+        <div class="relative z-10 max-w-7xl mx-auto px-6 text-center">
+            <h1 class="font-heading text-5xl md:text-7xl font-bold tracking-tight mb-6 text-white leading-[1.1]">
+                The Architects of <br />
+                <span class="text-gradient">Digital Scale.</span>
+            </h1>
+            
+            <p class="max-w-2xl mx-auto text-lg text-zinc-400 leading-relaxed font-sans font-light">
+                Meet the visionary leadership team at Xeta Tech Solutions. A dedicated product laboratory of cloud architects, AI engineers, and strategists.
+            </p>
+        </div>
+    </header>
+
+    <!-- Team Grid Section -->
+    <main class="max-w-7xl mx-auto px-6 pb-32 relative z-10">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" id="team-grid">
+            <!-- Cards populated by JS -->
+        </div>
+    </main>
+
+    <!-- Premium Modal Profile -->
+    <div id="profile-modal" class="hidden-modal fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 bg-black/80 backdrop-blur-sm">
+        
+        <!-- Modal Backdrop Click Area -->
+        <div class="absolute inset-0 z-0" onclick="closeModal()"></div>
+
+        <!-- Modal Panel -->
+        <div id="modal-panel" class="relative z-10 w-full max-w-5xl bg-surface border border-white/10 rounded-[2rem] shadow-2xl overflow-hidden flex flex-col md:flex-row max-h-[90vh]">
+            
+            <!-- Close Button -->
+            <button onclick="closeModal()" class="absolute top-4 right-4 z-50 w-10 h-10 bg-black/50 hover:bg-black backdrop-blur-md rounded-full flex items-center justify-center text-zinc-400 hover:text-white transition-all border border-white/10">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
+            </button>
+            
+            <!-- Modal Image Side -->
+            <div class="w-full md:w-2/5 h-64 md:h-auto relative bg-black flex-shrink-0">
+                <img id="modal-image" src="" alt="Profile" class="absolute inset-0 w-full h-full object-cover object-center" crossorigin="anonymous" />
+                <div class="absolute inset-0 bg-gradient-to-t from-surface via-transparent to-transparent md:bg-gradient-to-r"></div>
+            </div>
+            
+            <!-- Modal Content Side -->
+            <div class="p-8 md:p-12 w-full md:w-3/5 flex flex-col relative overflow-y-auto no-scrollbar">
+                
+                <div class="mb-8">
+                    <h2 id="modal-name" class="font-heading text-4xl md:text-5xl font-bold text-white tracking-tight mb-2">Name</h2>
+                    <h3 id="modal-role" class="font-heading text-xl md:text-2xl font-medium text-sky-400 mb-3">Role</h3>
+                    
+                    <!-- Added Email Row -->
+                    <div class="flex items-center gap-2 text-zinc-400">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+                        <a id="modal-email" href="#" class="text-sm font-medium hover:text-sky-400 transition-colors">email@xetatechsolutions.com</a>
+                    </div>
+
+                    <h4 id="modal-subtitle" class="text-sm font-semibold text-zinc-500 mt-4 uppercase tracking-widest hidden">Subtitle</h4>
+                </div>
+                
+                <div class="w-12 h-1 bg-gradient-to-r from-sky-400 to-blue-600 rounded-full mb-8"></div>
+                
+                <div id="modal-fullbio" class="text-zinc-300 font-light leading-relaxed space-y-4 mb-10">
+                    <!-- Full Bio injected here -->
+                </div>
+                
+                <div class="mt-auto">
+                    <p class="text-xs font-bold text-zinc-600 uppercase tracking-widest mb-3">Core Expertise</p>
+                    <div id="modal-skills" class="flex flex-wrap gap-2 mb-8">
+                        <!-- Skills injected here -->
+                    </div>
+
+                    <!-- Download Image Button -->
+                    <button id="download-btn" onclick="generateProfileCard()" class="group relative w-full sm:w-auto flex items-center justify-center gap-3 bg-white hover:bg-zinc-200 text-black font-semibold py-3.5 px-8 rounded-full transition-all duration-300">
+                        <span id="download-text">Download Profile Card</span>
+                        <svg id="download-icon" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="transition-transform group-hover:translate-y-0.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" x2="12" y1="15" y2="3"/></svg>
+                        
+                        <!-- Loading Spinner (Hidden by default) -->
+                        <svg id="download-spinner" class="animate-spin hidden h-5 w-5 text-black" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"><circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle><path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path></svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 
+      HIDDEN EXPORT TEMPLATE
+      Redesigned for flawless html2canvas rendering.
+      Bypasses CSS filter bugs and text-overflow issues.
+    -->
+    <div id="export-card-template" class="fixed top-0 left-[-9999px] w-[1200px] h-[675px] bg-[#09090b] flex overflow-hidden z-[-1]" style="font-family: 'Inter', sans-serif; box-sizing: border-box;">
+        
+        <!-- Premium Ambient Glow -->
+        <div class="absolute inset-0 z-0 pointer-events-none overflow-hidden">
+            <div class="absolute top-[-200px] right-[-200px] w-[600px] h-[600px] bg-sky-900/40 rounded-full blur-[100px]"></div>
+            <div class="absolute bottom-[-100px] left-[300px] w-[400px] h-[400px] bg-blue-900/30 rounded-full blur-[80px]"></div>
+        </div>
+
+        <!-- Left Image Frame -->
+        <div class="w-[480px] h-full relative z-10 p-12 pr-0 flex items-center">
+            <div class="w-full h-[579px] rounded-[2rem] overflow-hidden border border-white/10 shadow-2xl relative bg-zinc-900">
+                <img id="export-image" src="" crossorigin="anonymous" class="w-full h-full object-cover" style="object-position: center;" />
+                <div class="absolute inset-0 bg-gradient-to-t from-[#09090b] via-transparent to-transparent opacity-80"></div>
+            </div>
+        </div>
+        
+        <!-- Right Content -->
+        <div class="w-[720px] h-full p-16 pt-16 flex flex-col z-10 relative box-border">
+            
+            <!-- Real Logo & Full Company Name -->
+            <div class="flex items-center gap-4 mb-8">
+                <div class="h-12 bg-white rounded-xl flex items-center justify-center px-4 shadow-lg">
+                    <img src="https://res.cloudinary.com/dpz44zf0z/image/upload/v1760704788/XETA_SOLUTIONS_LOGO_bcsbwh.png" crossorigin="anonymous" class="h-6 object-contain" />
+                </div>
+                <div class="text-2xl font-extrabold tracking-[0.15em] text-white uppercase" style="font-family: 'Outfit', sans-serif;">Xeta Tech Solutions</div>
+            </div>
+            
+            <h1 id="export-name" class="text-5xl font-bold text-white mb-2" style="font-family: 'Outfit', sans-serif; letter-spacing: -1px;">Name</h1>
+            <h2 id="export-role" class="text-2xl font-medium text-sky-400 mb-5" style="font-family: 'Outfit', sans-serif;">Role</h2>
+            
+            <!-- Email Area -->
+            <div class="flex items-center gap-3 mb-6 text-zinc-300">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-sky-500"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+                <span id="export-email" class="text-xl font-medium tracking-wide">email@xetatechsolutions.com</span>
+            </div>
+
+            <div class="w-20 h-1.5 bg-gradient-to-r from-sky-400 to-blue-600 rounded-full mb-6"></div>
+            
+            <!-- Expanded Bio - Removed height constraints to prevent html2canvas text slicing -->
+            <div class="mb-8 pr-4">
+                <p id="export-bio" class="text-xl text-zinc-300 leading-normal font-light m-0">Bio here...</p>
+            </div>
+            
+            <!-- Skill Pills -->
+            <div id="export-skills" class="flex flex-wrap gap-3">
+                <!-- Skills injected here dynamically -->
+            </div>
+            
+            <!-- Footer Area (Absolutely positioned to prevent layout squishing) -->
+            <div class="absolute bottom-12 left-16 border-t border-white/10 pt-6 flex justify-between items-center w-[calc(100%-8rem)]">
+                <div class="flex items-center gap-3">
+                    <div class="w-2.5 h-2.5 rounded-full bg-sky-500"></div>
+                    <p class="text-zinc-400 font-semibold text-lg tracking-wide">xetasolutions.in</p>
+                </div>
+                <p class="text-zinc-500 font-bold text-base uppercase tracking-[0.15em]">Leadership Team</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="border-t border-white/5 bg-obsidian py-10 text-center text-zinc-600 text-sm font-sans">
+        <div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-4">
+            <p>© 2026 Xeta Tech Solutions Pvt. Ltd. All rights reserved.</p>
+            <p>Gachibowli Financial District • Hyderabad, Telangana</p>
+        </div>
+    </footer>
+
+    <script>
+        // Exact Hierarchy & Designations Required
+        const teamData = [
+            {
+                slug: "founder",
+                name: "Mr. Midhun Kotagiri",
+                role: "CEO & CPO", 
+                email: "ceo@xetatechsolutions.com",
+                image: "https://res.cloudinary.com/dzuxwvamy/image/upload/v1775551815/WhatsApp_Image_2026-03-29_at_7.37.24_PM_2_xl5tio.jpg",
+                shortBio: "Driving the core vision, financial strategy, and product innovation at Xeta Tech.",
+                fullBio: "<p>As the Chief Executive Officer and Chief Product Officer, Midhun Kotagiri steers the macro-strategy and product architecture of Xeta Tech Solutions. With a profound understanding of market dynamics and enterprise scalability, he ensures that the company remains at the bleeding edge of technological innovation.</p><p>His leadership bridges the gap between aggressive cloud product development and sustainable corporate economics, guiding the creation of industry-defining solutions.</p>",
+                skills: ["Enterprise Strategy", "Product Innovation", "Corporate Vision", "Scale Operations"]
+            },
+            {
+                slug: "coo",
+                name: "A. Charitha Sharma",
+                role: "Co-Founder, COO & CSO",
+                email: "coo@xetatechsolutions.com",
+                image: "https://res.cloudinary.com/dzuxwvamy/image/upload/v1775552197/DSC_0142_jo7mfu.jpg",
+                shortBio: "Architecting operational excellence and formulating corporate strategies.",
+                fullBio: "<p>Charitha Sharma serves as Co-Founder, Chief Operating Officer, and Chief Strategy Officer, bringing a rare blend of operational rigor and strategic foresight. She is responsible for translating high-level corporate vision into executable, day-to-day operations across all engineering and business divisions.</p><p>Under her guidance, Xeta Tech has streamlined cross-functional workflows, enabling elite engineering teams to deliver massive digital ecosystems rapidly and reliably.</p>",
+                skills: ["Strategic Operations", "Process Optimization", "Corporate Strategy", "Workflow Engineering"]
+            },
+            {
+                slug: "cto",
+                name: "P. Sathvika",
+                role: "Co-Founder, CTO & CIO",
+                email: "cto@xetatechsolutions.com",
+                image: "https://res.cloudinary.com/dzuxwvamy/image/upload/v1775561260/kjnb_hs4fp4.jpg",
+                shortBio: "Leading cloud infrastructure and pioneering AI-driven product ecosystems.",
+                fullBio: "<p>Sathvika is the technological anchor of Xeta Tech Solutions. As Co-Founder, CTO, and CIO, she commands the architecture, deployment, and security of hyper-scalable cloud infrastructures. Her deep expertise in distributed systems allows the company to build resilient platforms that serve millions of concurrent events seamlessly.</p><p>She is a passionate advocate for incorporating advanced AI models directly into core product pipelines, setting new industry standards.</p>",
+                skills: ["Cloud Architecture", "System Design", "Artificial Intelligence", "Cybersecurity"]
+            },
+            {
+                slug: "chro",
+                name: "N. Varshika",
+                role: "CHRO & Director",
+                email: "chro@xetatechsolutions.com",
+                subtitle: "Learning Strategies & Assessments",
+                image: "https://res.cloudinary.com/dzuxwvamy/image/upload/v1782480568/Varshika_f9p5wi.jpg",
+                shortBio: "Formulating next-gen assessment architectures and talent acquisition frameworks.",
+                fullBio: "<p>As Chief Human Resources Officer and Director of Learning Strategies & Assessments, Varshika is the driving force behind Xeta Tech's most valuable asset: its people. She pioneers innovative cognitive assessments and continuous learning protocols that identify, nurture, and retain top-tier tech talent.</p><p>Her frameworks ensure that the organization's workforce is not only highly skilled but constantly evolving alongside the rapidly shifting AI and cloud technology landscape.</p>",
+                skills: ["Talent Architecture", "Assessment Strategies", "HR Technology", "Organizational Learning"]
+            },
+            {
+                slug: "cdo-delivery",
+                name: "P. Bhargavi",
+                role: "Chief Delivery Officer (CDO)", 
+                email: "cdo.delivery@xetatechsolutions.com",
+                image: "https://res.cloudinary.com/dzuxwvamy/image/upload/v1775553696/bhargavi_rktdqk.png",
+                shortBio: "Directing delivery lifecycles to ensure flawless, high-concurrency deployments.",
+                fullBio: "<p>Bhargavi ensures the successful execution and deployment of Xeta Tech's massive digital ecosystems. As the Chief Delivery Officer, she oversees the entire delivery lifecycle, championing agile methodologies, rigorous quality assurance, and high-concurrency deployments.</p><p>Her ability to synchronize complex engineering capabilities into seamless client handovers is central to the operational success and reliability of Xeta Tech's rapidly expanding software portfolio.</p>",
+                skills: ["Delivery Management", "Agile Deployment", "Quality Assurance", "Client Operations"]
+            },
+            {
+                slug: "cdo-data",
+                name: "Sk. Sadhik",
+                role: "Chief Data Officer (CDO)",
+                email: "cdo.data@xetatechsolutions.com",
+                image: "https://res.cloudinary.com/dzuxwvamy/image/upload/v1775553987/WhatsApp_Image_2026-04-07_at_2.52.23_PM_hkamog.jpg",
+                shortBio: "Transforming massive data pipelines into actionable enterprise intelligence.",
+                fullBio: "<p>As Chief Data Officer, Sk. Sadhik governs the vast data lakes and analytics pipelines at Xeta Tech. He specializes in transforming raw, high-velocity data streams into highly structured, actionable intelligence that drives both internal strategy and customer-facing features.</p><p>His implementation of advanced machine learning operations (MLOps) and data governance ensures pristine data quality and deep predictive capabilities across all product suites.</p>",
+                skills: ["Big Data Pipelines", "Data Governance", "Predictive Analytics", "MLOps"]
+            }
+        ];
+
+        const teamGrid = document.getElementById('team-grid');
+        const modal = document.getElementById('profile-modal');
+        let currentActiveMember = null;
+
+        // Render Editorial Style Cards
+        teamData.forEach((member) => {
+            const subtitleHtml = member.subtitle 
+                ? `<p class="text-zinc-400 font-sans text-xs mt-1 uppercase tracking-widest">${member.subtitle}</p>` 
+                : '';
+
+            const cardHtml = `
+                <div onclick="openProfile('${member.slug}')" class="profile-card group relative bg-surface rounded-2xl overflow-hidden cursor-pointer aspect-[3/4] border border-white/5">
+                    
+                    <!-- Full Cover Image -->
+                    <img 
+                        src="${member.image}" 
+                        alt="${member.name}" 
+                        crossorigin="anonymous"
+                        class="card-img w-full h-full object-cover object-center transition-transform duration-700 ease-out"
+                        loading="lazy"
+                    />
+                    
+                    <!-- Dark Gradient Overlay -->
+                    <div class="card-overlay absolute inset-0 bg-gradient-to-t from-obsidian via-obsidian/40 to-transparent opacity-80 transition-opacity duration-500"></div>
+
+                    <!-- Content at Bottom -->
+                    <div class="absolute bottom-0 left-0 w-full p-6 sm:p-8 transform transition-transform duration-500">
+                        <h3 class="font-heading text-2xl font-bold text-white mb-1 leading-tight">${member.name}</h3>
+                        <p class="text-sky-400 font-medium text-sm">${member.role}</p>
+                        ${subtitleHtml}
+                        
+                        <!-- Hidden Action Button that appears on hover -->
+                        <div class="view-profile-btn opacity-0 translate-y-4 transition-all duration-500 mt-6 flex items-center gap-2 text-white font-semibold text-sm">
+                            View Profile
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="transform group-hover:translate-x-1 transition-transform"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+                        </div>
+                    </div>
+                </div>
+            `;
+            teamGrid.insertAdjacentHTML('beforeend', cardHtml);
+        });
+
+        // Hash Routing & Modal Logic
+        function openProfile(slug) {
+            window.location.hash = slug; // Triggers handleHashChange
+        }
+
+        function handleHashChange() {
+            const hash = window.location.hash.replace('#', '');
+            if (hash) {
+                const member = teamData.find(m => m.slug === hash);
+                if (member) {
+                    populateAndShowModal(member);
+                } else {
+                    closeModal();
+                }
+            } else {
+                closeModal();
+            }
+        }
+
+        function populateAndShowModal(member) {
+            currentActiveMember = member;
+            
+            // Populate Modal UI
+            document.getElementById('modal-image').src = member.image;
+            document.getElementById('modal-name').textContent = member.name;
+            document.getElementById('modal-role').textContent = member.role;
+            
+            const emailEl = document.getElementById('modal-email');
+            emailEl.textContent = member.email;
+            emailEl.href = `mailto:${member.email}`;
+            
+            const subtitleEl = document.getElementById('modal-subtitle');
+            if (member.subtitle) {
+                subtitleEl.textContent = member.subtitle;
+                subtitleEl.classList.remove('hidden');
+            } else {
+                subtitleEl.classList.add('hidden');
+            }
+            
+            document.getElementById('modal-fullbio').innerHTML = member.fullBio;
+            
+            // Populate Skills
+            const skillsContainer = document.getElementById('modal-skills');
+            skillsContainer.innerHTML = '';
+            member.skills.forEach(skill => {
+                const pill = document.createElement('span');
+                pill.className = 'px-3 py-1 bg-zinc-800/50 text-zinc-300 border border-zinc-700/50 rounded-full text-xs font-medium';
+                pill.textContent = skill;
+                skillsContainer.appendChild(pill);
+            });
+
+            // Show Modal
+            modal.classList.remove('hidden-modal');
+            document.body.style.overflow = 'hidden'; 
+        }
+
+        function closeModal() {
+            modal.classList.add('hidden-modal');
+            document.body.style.overflow = '';
+            currentActiveMember = null;
+            if (window.location.hash) {
+                history.pushState("", document.title, window.location.pathname + window.location.search);
+            }
+        }
+
+        // Robust Export Function using the Hidden Template
+        async function generateProfileCard() {
+            if (!currentActiveMember) return;
+            if (typeof html2canvas === 'undefined') {
+                alert("Download tool is still loading. Please try again in a moment.");
+                return;
+            }
+
+            const btn = document.getElementById('download-btn');
+            const text = document.getElementById('download-text');
+            const icon = document.getElementById('download-icon');
+            const spinner = document.getElementById('download-spinner');
+
+            // Set Loading State
+            btn.classList.add('pointer-events-none', 'opacity-80');
+            text.textContent = 'Generating...';
+            icon.classList.add('hidden');
+            spinner.classList.remove('hidden');
+
+            try {
+                // 1. Populate the hidden static export template
+                document.getElementById('export-image').src = currentActiveMember.image;
+                document.getElementById('export-name').textContent = currentActiveMember.name;
+                document.getElementById('export-role').textContent = currentActiveMember.role;
+                document.getElementById('export-email').textContent = currentActiveMember.email;
+                
+                // Extract the larger first paragraph of the fullBio for the card
+                const tempDiv = document.createElement("div");
+                tempDiv.innerHTML = currentActiveMember.fullBio;
+                const paragraphs = tempDiv.getElementsByTagName("p");
+                const descriptionText = paragraphs.length > 0 ? paragraphs[0].textContent : currentActiveMember.shortBio;
+                document.getElementById('export-bio').textContent = descriptionText;
+
+                // Populate up to 3 skills for the export card
+                const exportSkillsContainer = document.getElementById('export-skills');
+                exportSkillsContainer.innerHTML = '';
+                currentActiveMember.skills.slice(0, 3).forEach(skill => {
+                    const pill = document.createElement('span');
+                    pill.className = 'px-4 py-2 bg-zinc-800/80 text-zinc-200 border border-zinc-700 rounded-full text-base font-medium';
+                    pill.textContent = skill;
+                    exportSkillsContainer.appendChild(pill);
+                });
+
+                const targetNode = document.getElementById('export-card-template');
+
+                // 2. Wait a brief moment to ensure fonts/images are completely painted
+                await new Promise(resolve => setTimeout(resolve, 800));
+
+                // 3. Capture the flawless fixed template (Scale 3 for 4K clarity)
+                const canvas = await html2canvas(targetNode, {
+                    useCORS: true,           
+                    allowTaint: false,       
+                    backgroundColor: '#09090b',
+                    scale: 3                 
+                });
+
+                // 4. Download
+                const link = document.createElement('a');
+                link.download = `${currentActiveMember.name.replace(/\s+/g, '_')}_Xeta_Profile.png`;
+                link.href = canvas.toDataURL('image/png');
+                link.click();
+
+            } catch (error) {
+                console.error("Export Error: ", error);
+                alert("Could not generate image. Please check your internet connection and try again.");
+            } finally {
+                // Reset Button State
+                btn.classList.remove('pointer-events-none', 'opacity-80');
+                text.textContent = 'Download Profile Card';
+                icon.classList.remove('hidden');
+                spinner.classList.add('hidden');
+            }
+        }
+
+        // Global Event Listeners
+        window.addEventListener('hashchange', handleHashChange);
+        window.addEventListener('DOMContentLoaded', handleHashChange);
+        
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape' && !modal.classList.contains('hidden-modal')) {
+                closeModal();
+            }
+        });
+    </script>
+</body>
+</html>
